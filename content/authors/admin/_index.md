@@ -11,7 +11,7 @@ education:
   - course: BA in Business Management, with specialisation in Economics
     institution: Universidad Catolica del Norte
     year: 2007
-email: ""
+email: "F.Rowe-Gonzalez@liverpool.ac.uk"
 highlight_name: false
 interests:
 - Human Mobility and Migration
@@ -19,7 +19,7 @@ interests:
 - Computational Social Science
 organizations:
 - name: University of Liverpool
-  url: ""
+  url: "https://www.liverpool.ac.uk"
 role: Senior Lecturer in Quantitative Human Geography
 social:
 - icon: envelope
