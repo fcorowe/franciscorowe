@@ -3,7 +3,7 @@ abstract: Accommodating transparent research in Regional Science is a cornerston
 authors:
 - Sierdjan Koster
 - admin
-date: "2020-03-04T00:00:00Z"
+date: "2019-12-30T00:00:00Z"
 doi: "10.18335/region.v6i3.309"
 featured: false
 image:
@@ -15,7 +15,7 @@ publication: '*REGION*'
 publication_short: ""
 publication_types:
 - "2"
-publishDate: "2020-03-04T00:00:00Z"
+publishDate: "2019-12-30T00:00:00Z"
 slides: 
 summary: This article introduces two new types of publication that further accommodate transparent research in Regional Science, The Discussion section, and Computational Notebooks.
 tags:
