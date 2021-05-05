@@ -9,3 +9,7 @@ The theme is from [Hugo: Academic template](https://themes.gohugo.io/academic/).
 Build site:
 
 > blogdown::serve_site()
+
+Check content
+
+> blogdown::check_content()
