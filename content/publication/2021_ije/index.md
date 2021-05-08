@@ -82,11 +82,11 @@ publishDate: "2021-01-06T00:00:00Z"
 slides: 
 summary: We examine the career pathways of forced migrants using sequence analysis from their arrival in 1991 through to 2013.
 tags:
-- Talent distribution
-- Determinants
-- Eigenvector spatial filtering
-- Panel data analysis
-- China
+- COVID-19
+- Mortality
+- Cases
+- Pandemic
+- Global
 title: COVeAGE-DB. A database of age-structured COVID-19 cases and deaths
 url_code: "https://doi.org/10.17605/OSF.IO/MPWJQ"
 url_dataset: "​https://bit.ly/3g8nIVU"
