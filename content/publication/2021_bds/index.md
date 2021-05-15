@@ -18,7 +18,7 @@ authors:
 - Sally Sheard
 
 date: "2021-03-25T00:00:00Z"
-doi: ""
+doi: "doi.org/10.1177/20539517211013869"
 featured: false
 image:
   caption: 
@@ -39,11 +39,11 @@ tags:
 - COVID-19
 - bots
 title: Identifying how COVID-19 related misinformation reacts to the announcement of the UK national lockdown. An interrupted time-series study
-url_code: ""
-url_dataset: ""
-url_pdf: 
+url_code: "https://github.com/fcorowe/misinformation_uk_lockdown_2020"
+url_dataset: "https://github.com/fcorowe/misinformation_uk_lockdown_2020"
+url_pdf: https://doi.org/10.1177/20539517211013869
 url_poster: ""
-url_project: ""
+url_project: "https://www.franciscorowe.com/project/covid19_misinformation/"
 url_slides: ""
 url_source: ""
 url_video: ""
