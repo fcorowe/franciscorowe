@@ -66,7 +66,7 @@ authors:
 - Iván Williams
 - Virginia Zarulli
 
-date: "2021-01-06T00:00:00Z"
+date: "2021-05-15T00:00:00Z"
 doi: "doi.org/10.1101/2020.09.18.20197228"
 featured: false
 image:
@@ -78,7 +78,7 @@ publication: '*International Journal of Epidemiology*'
 publication_short: ""
 publication_types:
 - "2"
-publishDate: "2021-01-06T00:00:00Z"
+publishDate: "2021-05-15T00:00:00Z"
 slides: 
 summary: We examine the career pathways of forced migrants using sequence analysis from their arrival in 1991 through to 2013.
 tags:

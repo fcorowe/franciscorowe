@@ -6,7 +6,7 @@ authors:
 - Stefano Cavazzi
 - Dani Arribas-Bel
 
-date: "2021-05-08T00:00:00Z"
+date: "2021-05-19T00:00:00Z"
 doi: ""
 featured: false
 image:
@@ -18,7 +18,7 @@ publication: '*Landscape and Urban Planning*'
 publication_short: ""
 publication_types:
 - "2"
-publishDate: "2021-05-08T00:00:00Z"
+publishDate: "2021-05-19T00:00:00Z"
 slides: 
 summary: This paper draws on a series of unique historical datasets obtained from Ordnance Survey, covering the largest British urban areas over the last 15 years (2001-2016) to develop a set of twelve indicators and a composite Sustainable Urban Development Index to quantitatively measure and assess key built environment features and their relative change compared to other areas at each point in time based on regular 1 km2 grids.
 tags:
