@@ -36,23 +36,23 @@ You will learn how to:
 
 ## Module Programme
 
-* [Week 1. Overview](https://gdsl-ul.github.io/san/overview.html#learning-outcomes), [Spatial Data](https://gdsl-ul.github.io/san/spatial-data.html), [Data Wrangling](https://gdsl-ul.github.io/san/data-wrangling.html)
+* [Week 1. Overview](https://gdsl-ul.github.io/san/overview.html), [Spatial Data](https://gdsl-ul.github.io/san/spatial-data.html), [Data Wrangling](https://gdsl-ul.github.io/san/data-wrangling.html)
 
 * [Week 2. Point Data Analysis](https://gdsl-ul.github.io/san/points.html)
 
 * [Week 3. Flow Data Analysis](https://gdsl-ul.github.io/san/flows.html)
 
-* [Week 4. Spatial Econometrics](https://gdsl-ul.github.io/san/spatial-econometrics.html)
+* [Week 4. Spatial Econometrics](https://gdsl-ul.github.io/san/spatialecon.html)
 
 * Week 5: Assignment Clinic
 
-* [Week 6. Multilevel Modelling Part 1](https://gdsl-ul.github.io/san/multilevel-modelling-part-1.html)
+* [Week 6. Multilevel Modelling Part 1](https://gdsl-ul.github.io/san/mlm1.html)
     
-* [Week 7. Multilevel Modelling Part 2](https://gdsl-ul.github.io/san/multilevel-models-pt-ii.html)
+* [Week 7. Multilevel Modelling Part 2](https://gdsl-ul.github.io/san/mlm2.html)
 
-* [Week 8: Geographically Weighted Regression](https://gdsl-ul.github.io/san/geographically-weighted-regression.html)
+* [Week 8: Geographically Weighted Regression](https://gdsl-ul.github.io/san/gwr.html)
 
-* [Week 9: Spatio-Temporal Data Analysis](https://gdsl-ul.github.io/san/spatio-temporal-analysis.html)
+* [Week 9: Spatio-Temporal Data Analysis](https://gdsl-ul.github.io/san/sta.html)
 
 * Week 11: Assignment Clinic
 
