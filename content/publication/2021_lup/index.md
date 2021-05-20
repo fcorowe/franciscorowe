@@ -7,7 +7,7 @@ authors:
 - Dani Arribas-Bel
 
 date: "2021-05-19T00:00:00Z"
-doi: ""
+doi: "doi.org/10.1016/j.landurbplan.2021.104148"
 featured: false
 image:
   caption: 
@@ -30,7 +30,7 @@ tags:
 title: Sustainable Urban Development Indicators in Great Britain from 2011 to 2016
 url_code: ""
 url_dataset: ""
-url_pdf: 
+url_pdf: https://doi.org/10.1016/j.landurbplan.2021.104148
 url_poster: ""
 url_project: "https://patnik.github.io/sustainable-urban-development-index/"
 url_slides: ""
