@@ -4,7 +4,7 @@ authors:
 - Mark Green
 - Fran Darlington-Pollock
 - admin
-date: "2020-06-21T00:00:00Z"
+date: "2021-06-21T00:00:00Z"
 doi: "https://link.springer.com/chapter/10.1007/978-3-030-70179-6_56"
 featured: false
 image:
@@ -16,7 +16,7 @@ publication: '*Book Chapter in COVID-19 and Similar Futures Pandemic Geographies
 publication_short: ""
 publication_types:
 - "6"
-publishDate: "2020-06-21T00:00:00Z"
+publishDate: "2021-06-21T00:00:00Z"
 slides: 
 summary: We evaluate the contribution of new forms of (big) data for studying the socio-demographic and health issues emerging from COVID-19.
 tags:
