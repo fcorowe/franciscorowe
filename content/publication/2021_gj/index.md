@@ -6,7 +6,7 @@ authors:
 - Dani Arribas-Bel
 
 date: "2021-10-16T00:00:00Z"
-doi: ""
+doi: "doi.org/10.1111/geoj.12420"
 featured: false
 image:
   caption: 
@@ -28,10 +28,10 @@ tags:
 - Census
 title: Trajectories of Neighbourhood Inequality in Britain Unpacking Inter-regional Socioeconomic Imbalances, 1971-2011
 url_code: ""
-url_dataset: ""
-url_pdf: 
+url_dataset: "https://neighbourhood-trajectories.netlify.app/open-data/"
+url_pdf: https://doi.org/10.1111/geoj.12420
 url_poster: ""
-url_project: ""
+url_project: "https://neighbourhood-trajectories.netlify.app"
 url_slides: ""
 url_source: ""
 url_video: ""
