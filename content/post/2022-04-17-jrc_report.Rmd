@@ -1,0 +1,16 @@
+---
+title: "Data Innovation in Demography, Migration and Human Mobility"
+subtitle: "New Report by the European Commission Joint Research Centre"
+draft: false
+author: "Francisco Rowe"
+date: '2022-04-17'
+categories: ["R"]
+tags: ["Migration", "Human mobility", "New forms of data", "Data innovation", "Twitter", "Machine learning"]
+---
+
+Back in February, the European Commission Joint Research Centre published a [report on data innovation applications in demography, migration and human mobility](https://op.europa.eu/s/v10H). This report is a very welcome contribution summarising all the relevant case applications in the field of migration and human mobility. It showcases the various applications of the use of social media data, satellite imagery, photography, web search, mobility phone, location and passenger data to capture migration movements, perceptions, segregation, integration and outcomes. *A win*: the report also highlights my work on using Twitter data to measure and understand attitudes towards migration. You can find a description of this work [HERE](https://www.franciscorowe.com/project/bigdata_perception/).
+
+The report is comprehensive offering the most up-to-data account in the use of new forms of data in the field. But it does not stop there. The report also offers an interesting and relevant discussion on the ethics of new forms of data providing remarks on data accessibility protocols and the needed digital infrastructure needed to deliver this. I had the chance to read the report and make suggestions on these fronts. I discuss some of these issues on my paper on **Big Data and Human Geography** which is due to be published by Edward Elgar in a concise encyclopedia of human geography, but you can grab the [preprint](https://doi.org/10.31235/osf.io/phz3e).
+
+I would 100% recommend reading and adding the report to your collection. 
+
