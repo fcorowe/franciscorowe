@@ -22,7 +22,7 @@ publication_types:
 - "4"
 publishDate: "2022-01-28T00:00:00Z"
 slides: 
-summary: The report seeks to summarise the views of theparticipants of the Using mobility data in urban science online workshop on 27-28 October.
+summary: The report seeks to summarise the views of the experts participants in the use of mobility data in the contect of urban science.
 tags:
 - Mobility
 - Urban science
@@ -36,5 +36,5 @@ url_poster: ""
 url_project: ""
 url_slides: ""
 url_source: ""
-url_video: ""
+url_video: "https://youtu.be/uVF9c6Q3aK8"
 ---
