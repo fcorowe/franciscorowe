@@ -28,7 +28,7 @@ projects:
 publishDate: "2022-05-19T00:00:00Z"
 slides: 
 summary: 
-title: 
+title: Using Mobile Phone Data to Measure Human Mobility. Progress, Challenges and Practice
 url_code: ""
 url_pdf: ""
 url_slides: ""
