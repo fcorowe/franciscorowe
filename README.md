@@ -6,9 +6,13 @@ This repository contains files used for Francisco Rowe's academic website. An on
 
 The theme is from [Hugo: Academic template](https://themes.gohugo.io/academic/).
 
-Build site:
+Serve site:
 
 > blogdown::serve_site()
+
+Build site:
+
+> blogdown::build_site()
 
 Check content
 
