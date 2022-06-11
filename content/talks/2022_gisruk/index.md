@@ -27,7 +27,7 @@ projects:
 - internal-project
 publishDate: "2022-04-13T00:00:00Z"
 slides: 
-summary: 
+summary: During this presentation I aim to discuss what is impact, why impact is important for research and the society at large, different pathways to impacts and how academics can use their research to impact society and provide expertise and skills.
 title: GIS Research Impact
 url_code: ""
 url_pdf: ""

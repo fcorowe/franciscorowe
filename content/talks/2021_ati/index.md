@@ -33,5 +33,5 @@ title:  InequaliTies IN Experiencing uRbAn fuNcTion (ITINERANT)
 url_code: ""
 url_pdf: "https://www.turing.ac.uk/research/publications/workshop-mobility-data-urban-science-workshop-report"
 url_slides: ""
-url_video: ""
+url_video: "https://youtu.be/uVF9c6Q3aK8"
 ---

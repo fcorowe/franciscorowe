@@ -31,6 +31,6 @@ summary:
 title: Using Mobile Phone Data to Measure Human Mobility. Progress, Challenges and Practice
 url_code: ""
 url_pdf: ""
-url_slides: ""
-url_video: "https://spatial-data-science-conference.com/2022/london/index.html"
+url_slides: "https://go.carto.com/hubfs/SDSC22London/Francisco-Rowe-UniversityofLiverpool.pdf"
+url_video: "https://youtu.be/saj7nku5YRE"
 ---
