@@ -17,7 +17,7 @@ projects: []
 publication: '*European Demographic Data Sheet 2020*'
 publication_short: ""
 publication_types:
-- "9"
+- "1"
 publishDate: "2020-05-31T00:00:00Z"
 slides: 
 summary: This article is included in the 2020 European Demographic Data Sheet which  for the first time includes an overview of the intensity and impacts of internal migration across Europe.
