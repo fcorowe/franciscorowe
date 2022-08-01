@@ -1,5 +1,5 @@
 ---
-bio: My research interests include human mobility and migration; economic geography and spatial inequality; computational social science.
+bio: My research interests include human mobility and migration; economic geography and spatial inequality; geographic data science.
 education:
   courses:
   - course: PhD in Economic Geography
@@ -16,7 +16,7 @@ highlight_name: false
 interests:
 - Human Mobility and Migration
 - Economic Geography and Spatial Inequality
-- Computational Social Science
+- Geographic Data Science
 organizations:
 - name: University of Liverpool
   url: "https://www.liverpool.ac.uk"

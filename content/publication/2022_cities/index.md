@@ -5,8 +5,8 @@ authors:
 - Caitlin Robinson
 - Nikos Patias
 
-date: "2022-03-11T00:00:00Z"
-doi: "doi.org/10.21203/rs.3.rs-846222/v2"
+date: "2022-06-16T00:00:00Z"
+doi: "https://doi.org/10.1016/j.cities.2022.103808"
 featured: false
 image:
   caption: 
@@ -17,7 +17,7 @@ publication: ''
 publication_short: ""
 publication_types:
 - "3"
-publishDate: "2022-03-11T00:00:00Z"
+publishDate: "2022-06-16T00:00:00Z"
 slides: 
 summary: We provide high resolution estimates (450m2) of spatio-temporal changes in urban energy consumption in response to COVID-19.
 tags:
@@ -28,9 +28,9 @@ tags:
 - Mobility
 - Cities
 title: Sensing Global Changes in Local Patterns of Energy Consumption in Cities During the Early Stages of the COVID-19 Pandemic
-url_code: ""
-url_dataset: ""
-url_pdf: https://doi.org/10.21203/rs.3.rs-846222/v2
+url_code: "https://github.com/fcorowe/covid_energy"
+url_dataset: "https://github.com/fcorowe/covid_energy"
+url_pdf: https://doi.org/10.1016/j.cities.2022.103808
 url_poster: ""
 url_project: ""
 url_slides: ""
