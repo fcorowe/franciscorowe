@@ -6,7 +6,7 @@ authors:
 - Jorge Rodríguez-Vignoli
 
 date: "2019-01-02T00:00:00Z"
-doi: "10.13140/RG.2.2.11135.05280"
+doi: "https://doi.org/10.13140/RG.2.2.11135.05280"
 featured: false
 image:
   caption: 

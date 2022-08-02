@@ -4,7 +4,7 @@ authors:
 - Niall Newsham
 - admin
 date: "2019-01-22T00:00:00Z"
-doi: "10.1007/s10109-018-00290-y"
+doi: "https://doi.org/10.1007/s10109-018-00290-y"
 featured: false
 image:
   caption: 

@@ -5,7 +5,7 @@ authors:
 - Esteban Lopez
 - admin
 date: "2020-01-06T00:00:00Z"
-doi: "doi.org/10.1007/s11187-019-00312-z"
+doi: "https://doi.org/10.1007/s11187-019-00312-z"
 featured: false
 image:
   caption: 

@@ -7,7 +7,7 @@ authors:
 - admin
 
 date: "2022-01-26T00:00:00Z"
-doi: "ced.cat/PD/PerspectivesDemografiques_026_ENG.pdf"
+doi: "https://ced.cat/PD/PerspectivesDemografiques_026_ENG.pdf"
 featured: false
 image:
   caption: 

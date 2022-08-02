@@ -4,7 +4,7 @@ authors:
 - Jorge Rodrígue- Vignoli
 - admin
 date: "2019-09-01T00:00:00Z"
-doi: "http://uk2070.org.uk/wp-content/uploads/2020/02/07-Neighbourhood-Inequality.pdf"
+doi: "https://repositorio.cepal.org/handle/11362/44367"
 featured: false
 image:
   caption: 

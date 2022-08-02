@@ -9,7 +9,7 @@ authors:
 - Martin Fleischmann
 
 date: "2022-01-28T00:00:00Z"
-doi: "uk2070.org.uk/wp-content/uploads/2021/06/UK2070-PAPERS-SERIES-4.pdf"
+doi: "https://doi.org/10.13140/RG.2.2.16202.24009"
 featured: false
 image:
   caption: 
@@ -31,7 +31,7 @@ tags:
 title: Mobility data in urban science
 url_code: ""
 url_dataset: ""
-url_pdf: https://www.turing.ac.uk/research/publications/workshop-mobility-data-urban-science-workshop-report
+url_pdf: https://doi.org/10.13140/RG.2.2.16202.24009
 url_poster: ""
 url_project: ""
 url_slides: ""

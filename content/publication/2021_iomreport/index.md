@@ -8,7 +8,7 @@ authors:
 - Eduardo Graells-Garrido
 
 date: "2021-11-30T00:00:00Z"
-doi: "doi.org/10.31219/osf.io/sf7u4"
+doi: "https://doi.org/10.31219/osf.io/sf7u4"
 featured: false
 image:
   caption: 

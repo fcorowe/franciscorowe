@@ -6,7 +6,7 @@ authors:
 - Dani Arribas-Bel
 
 date: "2021-10-16T00:00:00Z"
-doi: "doi.org/10.1111/geoj.12420"
+doi: "https://doi.org/10.1111/geoj.12420"
 featured: false
 image:
   caption: 

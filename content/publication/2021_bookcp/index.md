@@ -5,7 +5,7 @@ authors:
 - Fran Darlington-Pollock
 - admin
 date: "2021-06-21T00:00:00Z"
-doi: "https://link.springer.com/chapter/10.1007/978-3-030-70179-6_56"
+doi: "https://doi.org/10.1007/978-3-030-70179-6_56"
 featured: false
 image:
   caption: 
@@ -29,7 +29,7 @@ tags:
 title: New Forms of Data and New Forms of Opportunities to Monitor and Tackle a Pandemic
 url_code: ""
 url_dataset: ""
-url_pdf: https://link.springer.com/chapter/10.1007/978-3-030-70179-6_56
+url_pdf: https://doi.org/10.1007/978-3-030-70179-6_56
 url_poster: ""
 url_project: ""
 url_slides: ""

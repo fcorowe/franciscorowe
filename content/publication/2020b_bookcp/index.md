@@ -6,7 +6,7 @@ authors:
 - Jonathan Corcoran
 - Alessandra Faggian
 date: "2020-02-02T00:00:00Z"
-doi: "https://www.springer.com/gp/book/9789811002298"
+doi: "https://doi.org/10.1007/978-981-10-0230-4_9"
 featured: false
 image:
   caption: 
@@ -30,7 +30,7 @@ tags:
 title: The changing composition and fortunes of overseas graduates in Australia. The case of Chinese and Indian graduates
 url_code: ""
 url_dataset: ""
-url_pdf: 
+url_pdf: https://doi.org/10.1007/978-981-10-0230-4_9
 url_poster: ""
 url_project: ""
 url_slides: ""

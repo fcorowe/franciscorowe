@@ -7,7 +7,7 @@ authors:
 
 
 date: "2021-10-18T00:00:00Z"
-doi: "doi.org/10.3390/app11209689"
+doi: "https://doi.org/10.3390/app11209689"
 featured: false
 image:
   caption: 

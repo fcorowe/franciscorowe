@@ -7,7 +7,7 @@ authors:
 - Elin Charles-Edwards
 - Philipp Ueffing
 date: "2019-11-06T00:00:00Z"
-doi: "10.12765/CPoS-2019-18en"
+doi: "https://doi.org/10.12765/CPoS-2019-18en"
 featured: false
 image:
   caption: 

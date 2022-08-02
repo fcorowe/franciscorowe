@@ -4,7 +4,7 @@ authors:
 - admin
 
 date: "2021-11-17T00:00:00Z"
-doi: "doi.org/10.31235/osf.io/phz3e"
+doi: "https://doi.org/10.31235/osf.io/phz3e"
 featured: false
 image:
   caption: 

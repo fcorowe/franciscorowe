@@ -4,7 +4,7 @@ authors:
 - Sierdjan Koster
 - admin
 date: "2019-12-30T00:00:00Z"
-doi: "10.18335/region.v6i3.309"
+doi: "https://doi.org/10.18335/region.v6i3.309"
 featured: false
 image:
   caption: 

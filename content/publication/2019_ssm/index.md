@@ -8,7 +8,7 @@ authors:
 - Karyn Morrissey
 
 date: "2019-05-30T00:00:00Z"
-doi: "10.1016/j.ssmph.2019.100413"
+doi: "https://doi.org/10.1016/j.ssmph.2019.100413"
 featured: false
 image:
   caption: 

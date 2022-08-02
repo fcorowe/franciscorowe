@@ -67,7 +67,7 @@ authors:
 - Virginia Zarulli
 
 date: "2021-05-15T00:00:00Z"
-doi: "doi.org/10.1101/2020.09.18.20197228"
+doi: "https://doi.org/10.1101/2020.09.18.20197228"
 featured: false
 image:
   caption: 

@@ -7,7 +7,7 @@ authors:
 - Dani Arribas-Bel
 
 date: "2021-05-19T00:00:00Z"
-doi: "doi.org/10.1016/j.landurbplan.2021.104148"
+doi: "https://doi.org/10.1016/j.landurbplan.2021.104148"
 featured: false
 image:
   caption: 

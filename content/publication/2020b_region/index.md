@@ -8,7 +8,7 @@ authors:
 - Sergio Rey
 
 date: "2020-12-31T00:00:00Z"
-doi: "10.18335/region.v7i3.357"
+doi: "https://10.18335/region.v7i3.357"
 featured: false
 image:
   caption: 

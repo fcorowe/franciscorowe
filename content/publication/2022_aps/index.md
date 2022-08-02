@@ -6,7 +6,7 @@ authors:
 - Eric Lin
 
 date: "2022-02-08T00:00:00Z"
-doi: "doi.org/10.1080/17441730.2022.2035555"
+doi: "https://doi.org/10.1080/17441730.2022.2035555"
 featured: false
 image:
   caption: 

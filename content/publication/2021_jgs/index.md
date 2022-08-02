@@ -7,7 +7,7 @@ authors:
 - Alex Singleton 
 
 date: "2021-10-20T00:00:00Z"
-doi: "doi.org/10.1007/s10109-021-00363-5"
+doi: "https://doi.org/10.1007/s10109-021-00363-5"
 featured: false
 image:
   caption: 

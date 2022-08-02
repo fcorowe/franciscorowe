@@ -7,7 +7,7 @@ authors:
 - Janeen Baxter
 
 date: "2021-02-25T00:00:00Z"
-doi: "doi.org/10.2139/ssrn.3791715"
+doi: "https://doi.org/10.2139/ssrn.3791715"
 featured: false
 image:
   caption: 

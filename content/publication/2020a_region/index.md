@@ -8,7 +8,7 @@ authors:
 - admin
 
 date: "2020-12-05T00:00:00Z"
-doi: "10.18335/region.v7i2.295"
+doi: "https://doi.org.10.18335/region.v7i2.295"
 featured: false
 image:
   caption: 

@@ -8,7 +8,7 @@ authors:
 - Patricio Reyes
 
 date: "2021-05-02T00:00:00Z"
-doi: "doi.org/10.1016/j.jretconser.2021.102501"
+doi: "https://doi.org/10.1016/j.jretconser.2021.102501"
 featured: false
 image:
   caption: 

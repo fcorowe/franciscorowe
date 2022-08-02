@@ -6,7 +6,7 @@ authors:
 - admin
 - Dani Arribas-Bel 
 date: "2019-06-12T00:00:00Z"
-doi: "10.3390/rs11121395"
+doi: "https://doi.org/10.3390/rs11121395"
 featured: false
 image:
   caption: 

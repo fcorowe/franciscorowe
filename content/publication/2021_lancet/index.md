@@ -7,7 +7,7 @@ authors:
 - et al.
 
 date: "2021-08-14T00:00:00Z"
-doi: "doi.org/10.1016/S0140-6736(21)01051-5"
+doi: "https://doi.org/10.1016/S0140-6736(21)01051-5"
 featured: false
 image:
   caption: 

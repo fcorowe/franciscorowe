@@ -4,7 +4,7 @@ authors:
 - admin
 - Martin Bell
 date: "2020-02-15T00:00:00Z"
-doi: "https://www.springer.com/gp/book/9789811002298"
+doi: "https://doi.org/10.1007/978-981-10-0230-4_6"
 featured: false
 image:
   caption: 
@@ -27,7 +27,7 @@ tags:
 title: The drivers of long-distance commuting in Chile. The role of spatial distribution of economic activities
 url_code: ""
 url_dataset: ""
-url_pdf: https://www.researchgate.net/profile/Francisco_Rowe2/publication/320556949_The_drivers_of_long-distance_commuting_in_Chile_The_role_of_spatial_distribution_of_economic_activities_and_population/links/59ed0fb60f7e9bfdeb71ac4b/The-drivers-of-long-distance-commuting-in-Chile-The-role-of-spatial-distribution-of-economic-activities-and-population.pdf
+url_pdf: https://doi.org/10.1007/978-981-10-0230-4_6
 url_poster: ""
 url_project: ""
 url_slides: ""
