@@ -1,5 +1,5 @@
 ---
-abstract:
+abstract: Technological advances have enabled the emerge of "Big Data" through the production, processing, analysis and storage of large volumes of digital data. Data that could not previously be stored or used to be captured using analogue devices can now be digitally recorded. These data offer high geographic and temporal granularity, extensive coverage and instant information to measure and transform our understanding of human mobility. Yet, they also present major challenges. This talk identifies these challenges and discusses current practices and potential opportunities for future research.
 address:
   city: London
   country: United Kingdom
@@ -27,7 +27,7 @@ projects:
 - internal-project
 publishDate: "2022-05-19T00:00:00Z"
 slides: 
-summary: 
+summary: Technological advances have enabled the emerge of "Big Data" through the production, processing, analysis and storage of large volumes of digital data. Data that could not previously be stored or used to be captured using analogue devices can now be digitally recorded. These data offer high geographic and temporal granularity, extensive coverage and instant information to measure and transform our understanding of human mobility. Yet, they also present major challenges. This talk identifies these challenges and discusses current practices and potential opportunities for future research.
 title: Using Mobile Phone Data to Measure Human Mobility. Progress, Challenges and Practice
 url_code: ""
 url_pdf: ""
