@@ -5,7 +5,7 @@ authors:
 - Nikos Patias
 - Dani Arribas-Bel
 date: "2018-12-28T00:00:00Z"
-doi: "10.13140/RG.2.2.22554.70083"
+doi: "https://doi.org/10.13140/RG.2.2.22554.70083"
 featured: false
 image:
   caption: 

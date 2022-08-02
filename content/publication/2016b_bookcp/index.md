@@ -6,7 +6,7 @@ authors:
 - Jonathan Corcoran
 - Thomas Sigler
 date: "2016-01-05T00:00:00Z"
-doi: "10.1007/978-3-319-22135-9_10"
+doi: "https://doi.org/10.1007/978-3-319-22135-9_10"
 featured: false
 image:
   caption: 

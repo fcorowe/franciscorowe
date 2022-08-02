@@ -4,7 +4,7 @@ authors:
 - Jorge Rodríguez Vignoli
 - admin
 date: "2018-12-31T00:00:00Z"
-doi: "LC/TS.2018/110"
+doi: "http://hdl.handle.net/11362/44367"
 featured: false
 image:
   caption: 

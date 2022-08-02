@@ -6,7 +6,7 @@ authors:
 - Jonathan Corcoran
 - Thomas Sigler
 date: "2014-09-01T00:00:00Z"
-doi: "10.1016/j.apgeog.2014.06.004"
+doi: "https://doi.org/10.1016/j.apgeog.2014.06.004"
 featured: false
 image:
   caption: 

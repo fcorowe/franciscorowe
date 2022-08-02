@@ -3,7 +3,7 @@ abstract: This article presents some of the key findings of a Regional Studies A
 authors:
 - admin
 date: "2018-02-06T00:00:00Z"
-doi: "10.1080/13673882.2018.00001008"
+doi: "https://doi.org/10.1080/13673882.2018.00001008"
 featured: false
 image:
   caption: 

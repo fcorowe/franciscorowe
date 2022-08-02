@@ -5,7 +5,7 @@ authors:
 - admin
 - Clara H Mulder
 date: "2015-12-14T00:00:00Z"
-doi: "10.12765/CPoS-2015-18en"
+doi: "https://doi.org/10.12765/CPoS-2015-18en"
 featured: false
 image:
   caption: 

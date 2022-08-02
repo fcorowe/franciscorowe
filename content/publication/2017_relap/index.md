@@ -4,7 +4,7 @@ authors:
 - Jorge Rodríguez-Vignoli
 - admin
 date: "2017-12-20T00:00:00Z"
-doi: ""
+doi: "https://doi.org/10.31406/relap2017.v11.i2.n21.1"
 featured: false
 image:
   caption: 
@@ -26,7 +26,7 @@ tags:
 title: ¿Contribuye la migración interna a reducir la segregación residencial? El caso de Santiago de Chile 1977-2002
 url_code: ""
 url_dataset: ""
-url_pdf: 
+url_pdf: https://doi.org/10.31406/relap2017.v11.i2.n21.1
 url_poster: ""
 url_project: ""
 url_slides: ""

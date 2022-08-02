@@ -4,7 +4,7 @@ authors:
 - Jorge Rodríguez-Vignoli
 - admin
 date: "2017-09-12T00:00:00Z"
-doi: ""
+doi: "https://www.researchgate.net/publication/321998653"
 featured: false
 image:
   caption: 

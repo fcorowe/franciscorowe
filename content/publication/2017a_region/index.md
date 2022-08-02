@@ -5,7 +5,7 @@ authors:
 - Lucas Martínez-Bernabéu
 - admin
 date: "2017-07-22T00:00:00Z"
-doi: "10.18335/region.v4i3.199"
+doi: "https://doi.org/10.18335/region.v4i3.199"
 featured: false
 image:
   caption: 

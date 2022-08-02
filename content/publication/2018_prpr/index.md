@@ -6,7 +6,7 @@ authors:
 - admin
 - Ludi Simpson
 date: "2018-01-02T00:00:00Z"
-doi: "10.1007/s11113-017-9450-4"
+doi: "https://doi.org/10.1007/s11113-017-9450-4"
 featured: false
 image:
   caption: 

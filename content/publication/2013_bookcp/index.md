@@ -3,7 +3,7 @@ abstract: In the context of the transition to a knowledge-based economy, an incr
 authors:
 - admin
 date: "2013-04-10T00:00:00Z"
-doi: "10.1007/978-3-642-39674-8_17"
+doi: "https://doi.org/10.1007/978-3-642-39674-8_17"
 featured: false
 image:
   caption: 
@@ -26,7 +26,7 @@ tags:
 title: The geography and determinants of regional human capital in eight Latin American and Caribbean countries
 url_code: ""
 url_dataset: ""
-url_pdf: https://www.researchgate.net/publication/302367888_The_Geography_and_Determinants_of_Regional_Human_Capital_in_Eight_Latin_American_and_Caribbean_Countries
+url_pdf: https://doi.org/10.1007/978-3-642-39674-8_17
 url_poster: ""
 url_project: ""
 url_slides: ""

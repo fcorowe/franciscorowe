@@ -5,7 +5,7 @@ authors:
 - Jonathan Corcoran
 - Martin Bell
 date: "2015-04-17T00:00:00Z"
-doi: ""
+doi: "https://www.researchgate.net/publication/292148825_Determinants_of_post-school_choices_of_young_people_The_workforce_university_or_vocational_studies"
 featured: false
 image:
   caption: 

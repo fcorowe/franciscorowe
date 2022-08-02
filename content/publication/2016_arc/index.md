@@ -6,7 +6,7 @@ authors:
 - Martin Bell
 - Fiona McKenzie
 date: "2015-03-17T00:00:00Z"
-doi: ""
+doi: "https://www.planning.vic.gov.au/__data/assets/pdf_file/0033/97683/Attraction-and-Retention-2016.pdf"
 featured: false
 image:
   caption: 

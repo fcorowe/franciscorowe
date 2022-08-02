@@ -3,7 +3,7 @@ abstract: Changes in zonal boundaries and coding schemes severely compromise tem
 authors:
 - admin
 date: "2017-07-22T00:00:00Z"
-doi: "10.18335/region.v4i3.198"
+doi: "https://doi.org/10.18335/region.v4i3.198"
 featured: false
 image:
   caption: 

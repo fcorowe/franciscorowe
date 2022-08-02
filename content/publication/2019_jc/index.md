@@ -9,7 +9,7 @@ authors:
 - Karyn Morrissey
 
 date: "2019-07-08T00:00:00Z"
-doi: "10.1177/2235042X19872030"
+doi: "https://doi.org/10.1177/2235042X19872030"
 featured: false
 image:
   caption: 

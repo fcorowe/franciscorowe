@@ -5,7 +5,7 @@ authors:
 - Lucas Martínez-Bernabéu
 - admin
 date: "2017-02-13T00:00:00Z"
-doi: "10.1080/17421772.2017.127354"
+doi: "https://doi.org/10.1080/17421772.2017.127354"
 featured: false
 image:
   caption: 
