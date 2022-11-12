@@ -13,10 +13,10 @@ image:
   focal_point: ""
   preview_only: false
 projects: []
-publication: ''
+publication: 'Cities'
 publication_short: ""
 publication_types:
-- "3"
+- "2"
 publishDate: "2022-06-16T00:00:00Z"
 slides: 
 summary: We provide high resolution estimates (450m2) of spatio-temporal changes in urban energy consumption in response to COVID-19.

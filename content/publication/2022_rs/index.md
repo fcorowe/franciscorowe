@@ -13,10 +13,10 @@ image:
   focal_point: ""
   preview_only: false
 projects: []
-publication: ''
+publication: 'Journal of Rural Studies'
 publication_short: ""
 publication_types:
-- "3"
+- "2"
 publishDate: "2022-07-14T00:00:00Z"
 slides: 
 summary: We analysed the main types of rural areas pulling internal migrants in Spain and their demographic characteristics, namely age, sex and place of birth.
