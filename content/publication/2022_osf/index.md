@@ -6,7 +6,7 @@ authors:
 - Ruth Neville
 - Miguel González-Leonardo
 
-date: "2022-31-08T00:00:00Z"
+date: "2022-08-31T00:00:00Z"
 doi: "https://doi.org/10.31219/osf.io/7n6wm"
 featured: false
 image:
@@ -18,7 +18,7 @@ publication: '*OSFPrepints*'
 publication_short: ""
 publication_types:
 - "3"
-publishDate: "2022-31-08T00:00:00Z"
+publishDate: "2022-08-31T00:00:00Z"
 slides: 
 summary: We aim to identify and assess the potential settlement areas and impacts of population displacements on the demographic and economic structures of sub-national communities within and outside Ukraine
 tags:
