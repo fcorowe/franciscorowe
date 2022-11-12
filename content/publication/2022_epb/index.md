@@ -6,7 +6,7 @@ authors:
 - admin
 
 date: "2022-07-18T00:00:00Z"
-doi: ""
+doi: "https://doi.org/10.1177/23998083221117830"
 featured: false
 image:
   caption: 
@@ -28,7 +28,7 @@ tags:
 title: Measuring the local complementarity of population, amenities and digital activities to identify and understand urban areas of interest
 url_code: ""
 url_dataset: ""
-url_pdf: 
+url_pdf: https://doi.org/10.1177/23998083221117830
 url_poster: ""
 url_project: ""
 url_slides: ""

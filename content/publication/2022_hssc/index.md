@@ -7,7 +7,7 @@ authors:
 - Eric Lin
 
 date: "2022-07-21T00:00:00Z"
-doi: ""
+doi: "https://doi.org/10.1057/s41599-022-01270-w"
 featured: false
 image:
   caption: 
@@ -29,7 +29,7 @@ tags:
 title: The Effect of Parental Leave Policies on Increasing Fertility. A Systematic Review
 url_code: ""
 url_dataset: ""
-url_pdf: 
+url_pdf: https://doi.org/10.1057/s41599-022-01270-w
 url_poster: ""
 url_project: ""
 url_slides: ""

@@ -67,7 +67,7 @@ authors:
 - Virginia Zarulli
 
 date: "2021-05-15T00:00:00Z"
-doi: "https://doi.org/10.1101/2020.09.18.20197228"
+doi: "https://doi.org/10.1371/journal.pone.0250080"
 featured: false
 image:
   caption: 
@@ -80,7 +80,7 @@ publication_types:
 - "2"
 publishDate: "2021-05-15T00:00:00Z"
 slides: 
-summary: We examine the career pathways of forced migrants using sequence analysis from their arrival in 1991 through to 2013.
+summary: We introduce COVerAGE-DB which is an open access database including cumulative counts of confirmed COVID-19 cases, deaths, and tests by age and sex.
 tags:
 - COVID-19
 - Mortality
@@ -90,7 +90,7 @@ tags:
 title: COVeAGE-DB. A database of age-structured COVID-19 cases and deaths
 url_code: "https://doi.org/10.17605/OSF.IO/MPWJQ"
 url_dataset: "​https://bit.ly/3g8nIVU"
-url_pdf: https://doi.org/10.1101/2020.09.18.20197228
+url_pdf: https://doi.org/10.1371/journal.pone.0250080
 url_poster: ""
 url_project: "https://osf.io/mpwjq/wiki/home/"
 url_slides: ""

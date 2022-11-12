@@ -6,8 +6,8 @@ authors:
 - admin
 - Janeen Baxter
 
-date: "2022-07-26T00:00:00Z"
-doi: ""
+date: "2022-08-23T00:00:00Z"
+doi: "https://doi.org/10.1007/s12546-022-09291-7"
 featured: false
 image:
   caption: 
@@ -18,7 +18,7 @@ publication: '*Journal of Population Research*'
 publication_short: ""
 publication_types:
 - "2"
-publishDate: "2022-07-26T00:00:00Z"
+publishDate: "2022-09-01T00:00:00Z"
 slides: 
 summary: We analysed unique large-scale survey data from the Australian Graduate Survey to identify the factors underlying the deteriorating labour market outcomes of international graduates from 2000
 tags:
@@ -29,7 +29,7 @@ tags:
 title: From bad to worse. Examining the deteriorating labour market outcomes of international graduates in Australia
 url_code: ""
 url_dataset: ""
-url_pdf: 
+url_pdf: https://doi.org/10.1007/s12546-022-09291-7
 url_poster: ""
 url_project: ""
 url_slides: ""
