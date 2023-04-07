@@ -5,7 +5,7 @@ authors:
 - admin
 - Dani Arribas-Bel
 
-date: "2022-09-11T00:00:00Z"
+date: "2023-01-11T00:00:00Z"
 doi: "https://doi.org/10.1016/j.cities.2022.103967"
 featured: false
 image:
@@ -17,7 +17,7 @@ publication: 'Cities'
 publication_short: ""
 publication_types:
 - "2"
-publishDate: "2022-09-13T00:00:00Z"
+publishDate: "2023-01-13T00:00:00Z"
 slides: 
 summary: We employed a series of multilevel models to explore the within and between city variations in the relationship across ethnic segregation, and key socioeconomic and built environment features of neighbourhoods.
 tags:

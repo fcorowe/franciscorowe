@@ -7,19 +7,19 @@ authors:
 - Krasen Samardzhiev
 - Martin Fleischmann
 
-date: "2022-06-11T00:00:00Z"
-doi: "https://doi.org/10.48550/arXiv.2206.03272"
+date: "2023-01-11T00:00:00Z"
+doi: "https://doi.org/10.1002/psp.2637"
 featured: false
 image:
   caption: 
   focal_point: ""
   preview_only: false
 projects: []
-publication: '*Arvix*'
+publication: 'Population, Space and Place'
 publication_short: ""
 publication_types:
-- "3"
-publishDate: "2022-06-11T00:00:00Z"
+- "2"
+publishDate: "2023-03-11T00:00:00Z"
 slides: 
 summary: We aim to analyse the extent and evolution of changes in the spatial patterns of population movement across the rural-urban continuum in Britain over an 18-month period from March, 2020 to August, 2021.
 tags:
@@ -31,12 +31,12 @@ tags:
 - Urban exodus
 - Great Britain
 title: Urban Exodus? Understanding Human Mobility in Britain During the COVID-19 Pandemic Using Facebook Data
-url_code: ""
+url_code: "https://github.com/gdsl-itinerant/human-mobility"
 url_dataset: ""
-url_pdf: https://doi.org/10.48550/arXiv.2206.03272
+url_pdf: https://doi.org/10.1002/psp.2637
 url_poster: ""
 url_project: ""
 url_slides: ""
-url_source: ""
+url_source: "https://doi.org/10.48550/arXiv.2206.03272"
 url_video: ""
 ---

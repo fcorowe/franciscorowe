@@ -6,8 +6,8 @@ authors:
 - Dilek Yildiz
 - admin
 
-date: "2022-07-28T00:00:00Z"
-doi: "https://doi.org/10.31219/osf.io/tqfu6"
+date: "2023-01-19T00:00:00Z"
+doi: "https://doi.org/10.1371/journal.pone.0280324"
 featured: false
 image:
   caption: 
@@ -18,7 +18,7 @@ publication: ''
 publication_short: ""
 publication_types:
 - "3"
-publishDate: "2022-07-28T00:00:00Z"
+publishDate: "2023-01-19T00:00:00Z"
 slides: 
 summary: We quantify the impact of COVID-19 on immigration flows in 15 high-income countries by forecasting their counterfactual levels in 2020 assuming no pandemic and comparing these estimates with observed immigration counts.
 tags:
@@ -30,9 +30,9 @@ tags:
 title: Quantifying the impact of COVID-19 on immigration in receiving high-income countries
 url_code: ""
 url_dataset: ""
-url_pdf: https://doi.org/10.31219/osf.io/tqfu6
+url_pdf: https://doi.org/10.1371/journal.pone.0280324
 url_poster: ""
-url_project: ""
+url_project: "https://doi.org/10.31219/osf.io/tqfu6"
 url_slides: ""
 url_source: ""
 url_video: ""
