@@ -14,10 +14,10 @@ image:
   focal_point: ""
   preview_only: false
 projects: []
-publication: ''
+publication: 'Plos One'
 publication_short: ""
 publication_types:
-- "3"
+- "2"
 publishDate: "2023-01-19T00:00:00Z"
 slides: 
 summary: We quantify the impact of COVID-19 on immigration flows in 15 high-income countries by forecasting their counterfactual levels in 2020 assuming no pandemic and comparing these estimates with observed immigration counts.

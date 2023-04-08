@@ -3,19 +3,19 @@ abstract: Technological advances have enabled the emerge of ‘Big Data’ throu
 authors:
 - admin
 
-date: "2021-11-17T00:00:00Z"
-doi: "https://doi.org/10.31235/osf.io/phz3e"
+date: "2023-02-23T00:00:00Z"
+doi: "https://doi.org/10.4337/9781800883499.ch09"
 featured: false
 image:
   caption: 
   focal_point: ""
   preview_only: false
 projects: []
-publication: '*ConciseEncyclopedia of Human Geography. Edward Elgar Encyclopedias in the Social Sciences series*'
+publication: '*Concise Encyclopedia of Human Geography. Edward Elgar Encyclopedias in the Social Sciences series*'
 publication_short: ""
 publication_types:
-- "3"
-publishDate: "2021-11-17T00:00:00Z"
+- "6"
+publishDate: "2023-02-237T00:00:00Z"
 slides: 
 summary: This chapter identifies and discusses the existing and future challenges and opportunities of Big Data for human geography.
 tags:
@@ -23,12 +23,12 @@ tags:
 - Artificial intelligence
 - Machine learning
 - Human geography
-title: Big Data and Human Geography
+title: Big Data
 url_code: ""
 url_dataset: ""
-url_pdf: https://doi.org/10.31235/osf.io/phz3e
+url_pdf: https://doi.org/10.4337/9781800883499.ch09
 url_poster: ""
-url_project: ""
+url_project: "https://doi.org/10.31235/osf.io/phz3e"
 url_slides: ""
 url_source: ""
 url_video: ""
