@@ -35,4 +35,4 @@ The course is structured as follows:
 
 {{< mention "admin" >}}
 
-{{< cta cta_text="Begin the course" cta_link="https://github.com/fcorowe/intro-gds" >}}
+{{< cta cta_text="Begin the course" cta_link="https://fcorowe.github.io/intro-gds/" >}}
