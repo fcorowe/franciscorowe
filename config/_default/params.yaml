@@ -6,9 +6,9 @@
 # Appearance
 
 theme: minimal
-day_night: true
-font: "opensans"
-font_size: M
+day_night: false
+font: "bodoni"
+font_size: S
 
 # SEO
 

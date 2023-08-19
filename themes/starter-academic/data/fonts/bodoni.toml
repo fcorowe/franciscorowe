@@ -1,0 +1,11 @@
+# Font style metadata
+name = "bodoni"
+
+# Optional Google font URL
+google_fonts = "family=Bodoni+Moda:opsz@6..96&family=Roboto+Mono"
+
+# Font families
+heading_font = "Bodoni+Moda"
+body_font = "Bodoni+Moda"
+nav_font = "Bodoni+Moda"
+mono_font = "Roboto Mono"
