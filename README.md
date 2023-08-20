@@ -4,7 +4,7 @@
 
 This repository contains files used for Francisco Rowe's academic website. An online version of it can be found at [franciscorowe.com](www.franciscorowe.com)
 
-The theme is from [Hugo: Academic template](https://themes.gohugo.io/academic/). The font style is *Open Sans* from [Google Fonts](https://fonts.google.com/specimen/Open+Sans?query=open)
+The theme is from [Hugo: Academic template](https://themes.gohugo.io/academic/). The font style is *Roboto* from [Google Fonts](https://fonts.google.com/specimen/Roboto?preview.text=Francisco%20Rowe&preview.text_type=custom&query=roboto)
 
 Serve site:
 
