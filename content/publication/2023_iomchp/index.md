@@ -7,7 +7,7 @@ authors:
 - Marzia Rango
 - Niklas Sievers
 
-date: "2021-04-20T00:00:00Z"
+date: "2023-04-04T00:00:00Z"
 doi: "https://doi.org/10.31219/osf.io/sf7u4"
 featured: false
 image:
@@ -19,7 +19,7 @@ publication: '*International Organization for Migration*'
 publication_short: ""
 publication_types:
 - "3"
-publishDate: "2021-04-20T00:00:00Z"
+publishDate: "2023-04-04T00:00:00Z"
 slides: 
 summary: This paper aims to illustrate how attitudes towards immigration can be measured using Twitter data and natural processing language.
 tags:
@@ -28,7 +28,7 @@ tags:
 - United Kingdom
 - Twitter
 - Xenophobia
-title: Using Twitter Data to Monitor Immigration Sentiment
+title: Using Twitter Data to Monitor Immigration Sentiment. Harnessing Data Innovation for Migration Policy. A Handbook for Practitioners.
 url_code: "https://doi.org/10.31219/osf.io/sf7u4"
 url_dataset: "https://doi.org/10.31219/osf.io/sf7u4"
 url_pdf: https://doi.org/10.31219/osf.io/sf7u4
