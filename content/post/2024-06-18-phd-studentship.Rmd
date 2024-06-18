@@ -1,0 +1,53 @@
+---
+title: "Fully Funded PhD studentship"
+subtitle: "Safeguarding urban communities: Using data science to determine the impact of the spatial structure of urban activities and residential segregation on the spreading of infectious diseases"
+draft: false
+author: "Francisco Rowe"
+date: '2024-06-18'
+categories: ["R"]
+tags: ["Human mobility", "New forms of data", "Data innovation", "PhD"]
+---
+
+# Project Description
+
+This project aims to determine the role of the spatial structure of urban activities and spatial socioeconomic segregation on the speed and geography of infectious disease spreading across socioeconomic groups. The research involves a partnership with the [UK Health Security Agency (UKHSA)](https://www.gov.uk/government/organisations/uk-health-security-agency), and will seek to learn lessons from the COVID-19 pandemic for future health crises, drawing on Second Generation Surveillance System and Respiratory DataMart data. Specifically, the project seeks to:
+
+-   Determine the extent to which differences in the spatial structure of urban activities shape the rate of disease transmission;
+
+-   Assess how different configurations of the spatial structure of urban activities relate to variations in local levels of socioeconomic segregation;
+
+-   Evaluate differences in the effects of nonphamaceuthical interventions on contagion exposure across different socioeconomic groups as a function of the spatial structure of urban activities and socioeconomic segregation.
+
+# Skill requirements:
+
+The project requires the following essential quantitative data science skills, including the capacity to analyse spatial data and / or infections data, GIS, and coding skills in R and / or Python. Desirable skills include knowledge and experience using machine learning, network analysis and simulation methods; the use of GPS mobile phone data; and, experience in writing research academic articles.
+
+# Training:
+
+For exceptional applicant candidates, training can be provided in one or more of the skills required for the project.
+
+# Supervisors for this project:
+
+-   [Geographic Data Science Lab](https://www.liverpool.ac.uk/geographic-data-science/), University of Liverpool: Francisco Rowe (fcorowe@liverpool.ac.uk) and Carmen Cabrera-Arnau (C.Cabrera-Arnau@liverpool.ac.uk)\
+-   UKHSA: Donna Clarke and Lorenzo Cattarino
+
+# Funding Notes
+
+The studentship is co-funded by the ESRC’s North West Social Science Doctoral Training Partnership and the UKHSA. The studentship is open for UK and international students. It is supported for 3 years and includes full tuition fees plus a tax-free stipend (starting at £19,237 for 2024/25 and increasing year by year). Funds for training activities, travel and accommodation, and visits to the UKHSA offices will also be available. A £2,000 bonus per year may be available from UKHSA, subject to funding availability. For more information about the funding, see the NWSSDTP (North West Social Science Doctoral Training Partnership) student handbook at: https://nwssdtp.ac.uk/current-students/
+
+# How to apply
+
+Candidates wishing to apply should complete the University of Liverpool application form [How to apply for a PhD - University of Liverpool](https://www.liverpool.ac.uk/study/postgraduate-research/how-to-apply/) applying for a PhD in Geography (Desk based).
+
+To complete the online application, you'll need:
+
+-   School or college transcripts/certificates  
+-   University transcripts  
+-   Degree certificates  
+-   English language certificates (International applicants)  
+-   A covering letter/personal statement  
+-   Two signed references on letterheaded paper (these should be academic references if you have been in full-time education in the last three years)
+
+**Deadline**: 30th of June, 2024
+
+
