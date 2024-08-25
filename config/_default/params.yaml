@@ -6,7 +6,7 @@
 # Appearance
 
 theme: minimal
-day_night: false
+day_night: true
 font: "roboto"
 font_size: XS
 
@@ -63,7 +63,7 @@ main_menu:
   show_logo: true
   show_language: false
   show_day_night: true
-  show_search: true
+  show_search: false
   highlight_active_link: true
 
 # Localization
@@ -116,8 +116,8 @@ publications:
   date_format: January 2006
   citation_style: apa
 projects:
-  post_view: 2
-  publication_view: 2
+  post_view: 3
+  publication_view: 3
   talk_view: 2
 breadcrumb:
   page_types:
