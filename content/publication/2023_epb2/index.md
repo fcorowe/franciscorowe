@@ -27,10 +27,10 @@ tags:
 - Mobility inequality
 - GPS trajectories
 - Urban functions
-title: Measuring the local complementarity of population, amenities and digital activities to identify and understand urban areas of interest
+title: Inequalities in experiencing urban functions. An exploration of human digital (geo-) footprints
 url_code: "https://github.com/gdsl-itinerant/human-mobility"
 url_dataset: ""
-url_pdf: https://doi.org/10.1177/239980832312085
+url_pdf: https://doi.org/10.1177/23998083231208507
 url_poster: ""
 url_project: "https://github.com/gdsl-itinerant"
 url_slides: ""
