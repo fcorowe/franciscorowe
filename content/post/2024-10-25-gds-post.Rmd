@@ -1,0 +1,25 @@
+---
+title: "Postdoctoral Research Associate in Geographic Data Science"
+subtitle: "Join us at the Geographic Data Science Lab"
+draft: false
+author: "Francisco Rowe"
+date: '2024-10-15'
+categories: [""]
+tags: ["Geographic data science", "mental health", "electronic health records"]
+---
+
+We are expanding! We are looking for a new Postdoctoral Research Associate in Geographic Data Science to join us at the Geographic Data Science Lab at the University of Liverpool (UoL). This is one of various positions that will follow in the coming months. 
+
+This is a new post at UoL to support delivery of the MRC-funded Mental Health Platform Hub titled: *“Building recovery and resilience in severe mental illness (SMI): Leveraging the role of social determinants in illness trajectories and interventions”*. The aim of this hub is to improve understanding of the role of social determinants, their mechanisms of action on illness trajectories, and how these can be addressed in “social treatments” to support people with SMIs in managing their difficulties and facilitate medium-to-long term recovery. The hub involves a multi-disciplinary team from different institutions, including team including experienced psychologists, clinicians, social scientists, geographers and economists: **Professor Francisco Rowe** (UoL), Professor Jennifer Lau (QML – Chief Co-investigator), Professor Craig Morgan & Dr. Raquel Iniesta (KCL), Professor Domenico Giacco (UOW), Professor Rose Mccabe (CITY), Professor Veena Kumari (Brunel), Dr. Alison Copeland (NU), Professor Richard Byng & Dr. Kerryn Husk (UOP), Tanya Mackay & John Gibson (McPinn) and Emmanuel Gattora (Citizens UK).
+
+The post holder will support the delivery of the project focusing on analysing large and complex geospatial datasets and electronic health records, developing small area statistical indicators, disseminating research findings through preparing research papers and delivering presentations at national and international conferences, and actively engaging with project activities. The post-holder will be to support Prof Francisco Rowe in day-to-day running of the project and will work with the project team.
+
+The post-holder will join the Geographic Data Science Lab in the School of Environmental Sciences at the UoL. They will be expected to contribute to the delivery of high-quality and to the intellectual life of the lab and wider institution, and research at the intersection of geography, data science and mental health. They will have opportunities to make contributions to student education and experience through the delivery of teaching activities in the subject area of geographic data science and undertaking student supervisory roles at the PhD and MSc level. They will also, as agreed with the line manager, contribute to the administration of School/lab and/or university teaching and research activities.
+
+We are keen to appoint people not just based on their past achievements, but also on their future potential and drawing on the widest possible range of talents and backgrounds; applications from under-represented groups are encouraged. We believe that a diverse and supportive environment, bringing different perspectives to our work and allowing people to blossom, is the best platform for excellent research.
+
+Interested? Apply [**HERE**](https://my.corehr.com/pls/ulivrecruit/erq_jobspec_version_4.display_form?p_company=1&p_internal_external=E&p_display_in_irish=N&p_process_type=&p_applicant_no=&p_form_profile_detail=&p_display_apply_ind=Y&p_refresh_search=Y&p_recruitment_id=086286) and more information [HERE](https://my.corehr.com/pls/ulivrecruit/core_document_api_2.view_erecruit_document?p_key_1=D6C4E4DA73124F846052F8EEFA74244E80BE7EEDFF214B11C28565B18355A25A65C0163E5E1DC4E9885BA1FBFA108C6F90A7F5E21B82A043D4949378FD50BD189A55B17A7737466F00BF4CB2A4A6DA495CEB4DC0F8676A8663D3E04585A2CD10673EF1C93ED5FBDF2001854CEA3E1F8803C19376C4D0A1E2A6F15E941C0832A67193F906D0713E30D1E8ED7F14CF445DB734BA1F88361892019E1202B417E10D09D9F1AA8F4D2410FE0854DA850B5D22DCFA886CCCC9A2E0B0BBAD7A2871D4B6&p_key_2=52D18E38DB556F101F3C692D8020AB505C6027646C1D1AE16E4175043944A917C352C52D3802F66F59BE84590E4D0D544BF5A333E4039332A449E20150B3B93AA0631C747B1F7F5372EBD0A9E42E674F7746901D1449693C6B9396D6C18EC665D3859B9A1F1B6E29FAC703747E07D0E68655EC833C82A01DC11F6549ED16AA0524D5A98C534C723639B24012D832641175CACFAAF7BE0CAC78CD8E23770FDEDBCDCA44824080B76168F7FC442856721BA97D504AD0E305DF206CF305E0BACAA5)
+
+For questions about the post, contact me [**Francisco Rowe**](fcorowe@liverpool.ac.uk). 
+
+The post is open for UK-based and international applicants!
