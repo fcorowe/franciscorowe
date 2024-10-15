@@ -1,12 +1,22 @@
 ---
-title: "Postdoctoral Research Associate in Geographic Data Science"
-subtitle: "Join us at the Geographic Data Science Lab"
+authors:
+- admin
+categories: []
+date: "2024-10-16T00:00:00Z"
 draft: false
-author: "Francisco Rowe"
-date: '2024-10-15'
-categories: [""]
-tags: ["Geographic data science", "mental health", "electronic health records"]
+featured: false
+image:
+  caption: ""
+  focal_point: ""
+lastMod: "2024-10-16T00:00:00Z"
+projects: []
+subtitle: 
+summary: 
+tags: []
+title: Postdoctoral Research Associate in Geographic Data Science
 ---
+
+![](pdra-gds-socialhealth.png)
 
 We are expanding! We are looking for a new Postdoctoral Research Associate in Geographic Data Science to join us at the Geographic Data Science Lab at the University of Liverpool (UoL). This is one of various positions that will follow in the coming months. 
 
@@ -18,7 +28,7 @@ The post-holder will join the Geographic Data Science Lab in the School of Envir
 
 We are keen to appoint people not just based on their past achievements, but also on their future potential and drawing on the widest possible range of talents and backgrounds; applications from under-represented groups are encouraged. We believe that a diverse and supportive environment, bringing different perspectives to our work and allowing people to blossom, is the best platform for excellent research.
 
-Interested? Apply [**HERE**](https://my.corehr.com/pls/ulivrecruit/erq_jobspec_version_4.display_form?p_company=1&p_internal_external=E&p_display_in_irish=N&p_process_type=&p_applicant_no=&p_form_profile_detail=&p_display_apply_ind=Y&p_refresh_search=Y&p_recruitment_id=086286) and more information [HERE](https://my.corehr.com/pls/ulivrecruit/core_document_api_2.view_erecruit_document?p_key_1=D6C4E4DA73124F846052F8EEFA74244E80BE7EEDFF214B11C28565B18355A25A65C0163E5E1DC4E9885BA1FBFA108C6F90A7F5E21B82A043D4949378FD50BD189A55B17A7737466F00BF4CB2A4A6DA495CEB4DC0F8676A8663D3E04585A2CD10673EF1C93ED5FBDF2001854CEA3E1F8803C19376C4D0A1E2A6F15E941C0832A67193F906D0713E30D1E8ED7F14CF445DB734BA1F88361892019E1202B417E10D09D9F1AA8F4D2410FE0854DA850B5D22DCFA886CCCC9A2E0B0BBAD7A2871D4B6&p_key_2=52D18E38DB556F101F3C692D8020AB505C6027646C1D1AE16E4175043944A917C352C52D3802F66F59BE84590E4D0D544BF5A333E4039332A449E20150B3B93AA0631C747B1F7F5372EBD0A9E42E674F7746901D1449693C6B9396D6C18EC665D3859B9A1F1B6E29FAC703747E07D0E68655EC833C82A01DC11F6549ED16AA0524D5A98C534C723639B24012D832641175CACFAAF7BE0CAC78CD8E23770FDEDBCDCA44824080B76168F7FC442856721BA97D504AD0E305DF206CF305E0BACAA5)
+Interested? Apply [**HERE**](https://my.corehr.com/pls/ulivrecruit/erq_jobspec_version_4.display_form?p_company=1&p_internal_external=E&p_display_in_irish=N&p_process_type=&p_applicant_no=&p_form_profile_detail=&p_display_apply_ind=Y&p_refresh_search=Y&p_recruitment_id=086286) and more information [HERE](https://my.corehr.com/pls/ulivrecruit/core_document_api_2.view_erecruit_document?p_key_1=7F434C88125DBDEE0F8F7C40376869AC09AC9302E014F7C49DB11C9CA4B30E5EE57080E2E85141EB60DEFB68212BCC0BE85F7285838590B33596D1105AF45A01FDE7C1348DF5191E3C8484847A0D8B19FD3920CD2D23EE36BF5E626F42BC1F0B818A4430B27CBB9A98807FA14A916F7ED3A929EBAA3EA58A447775032C09E43491E683480CB45A835BBE257E0A6D5D966A0734491699A6136A2C3C2D05842928846FBDB099A7385D39BD664FC39206419E2A35D4190DE8947D3C6D9067654CF5&p_key_2=23E955B901C38EE5DB9AFF686645DAF9476983F3EC807CF4007CC839040825335EA113530D2B39A0EACE35D8736B8F7A2E9D941B430E05B7334DBFC8CD89FABE12E24CDB1F9C712499D0E40E5572E19772E1CEB6DB3B14AD67CF22DBAA285BDC06F5B6D6FF96600002960C86C8F66D48E2E529D37EEC84715E7D333DBC53076631E4F0184D9CB5D087AEE1B2E998AE43FED97C1A1F9FE90D16B8A5E350B242438FE2CF7AB7DCB48A3B2D1F2F9CA5BFBE53A91DE29DD4CBE6571CCA8AE9A8D2BD)
 
 For questions about the post, contact me [**Francisco Rowe**](fcorowe@liverpool.ac.uk). 
 
