@@ -2,13 +2,13 @@
 authors:
 - admin
 categories: []
-date: "2024-10-16T00:00:00Z"
+date: "2024-10-15T00:00:00Z"
 draft: false
 featured: false
 image:
   caption: ""
   focal_point: ""
-lastMod: "2024-10-16T00:00:00Z"
+lastMod: "2024-10-15T00:00:00Z"
 projects: []
 subtitle: 
 summary: 
