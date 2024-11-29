@@ -1,0 +1,150 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+---
+
+```{r}
+
+# Load ggplot2 library
+library(ggplot2)
+
+# Create data
+set.seed(42)  # For reproducibility
+x <- 1:100
+y <- cumsum(runif(100, min = 1, max = 3))  # Cumulative sum creates an increasing trend
+
+data <- data.frame(Time = x, Level = y)  # Rename columns for axis labels
+
+# Plot the line graph
+ggplot(data, aes(x = Time, y = Level)) +
+  geom_line(color = "black", size = 1) +
+  labs(
+    x = "Time",
+    y = "Level"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.title = element_text(size = 14)
+  )
+
+
+
+
+```
+
+```{r}
+
+# Create data
+set.seed(42)  # For reproducibility
+x <- 1:100  # Time variable
+y <- 2 * exp(0.1 * x) + rnorm(100, sd = 5)  # Exponential growth with some noise
+
+data <- data.frame(Time = x, Level = y)
+
+# Plot the line graph
+ggplot(data, aes(x = Time, y = Level)) +
+  geom_line(color = "black", size = 1) +
+  labs(
+    x = "Time",
+    y = "Level"
+  ) +
+  theme_void() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.title = element_text(size = 14)
+  )
+
+```
+
+```{r}
+
+
+# Create data
+set.seed(42)  # For reproducibility
+x <- 1:200  # Time variable
+y <- 2 * exp(0.02 * x) / (1 + exp(0.05 * (x - 190))) + rnorm(200, sd = 3)  # Exponential rise, peak, decline, and bounce
+
+data <- data.frame(Time = x, Level = y)
+
+# Plot the line graph
+ggplot(data, aes(x = Time, y = Level)) +
+  #geom_line(color = "black", size = 1) +
+  geom_smooth(span = 0.25, 
+              se = FALSE, 
+              color = "black") +
+  labs(
+    x = "Time",
+    y = "Level"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.title = element_text(size = 30, color="black", margin = margin(t = 10), hjust = 1),
+    axis.line = element_line(size = 1, colour = "black", linetype=1),
+    axis.text.x=element_blank(), 
+    axis.ticks.x=element_blank(), 
+    axis.text.y=element_blank(), 
+    axis.ticks.y=element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+
+```
+
+```{r}
+png("/Users/franciscorowe/Dropbox/Francisco/Research/grants/2024/erc_consolidator/forms/figs/trend.png", units="in", width=10, height=4, res=300, bg = "transparent")
+  last_plot()
+dev.off()
+```
+
+```{r}
+# Create data for the temperature curve
+set.seed(42)
+time <- seq(0, 2 * pi, length.out = 200)  # Time variable
+temperature <- 25 + 10 * sin(time)       # Sinusoidal temperature curve
+threshold <- 32                          # Threshold temperature
+
+# Create a data frame
+data <- data.frame(
+  Time = time,
+  Temperature = temperature
+)
+
+# Separate the shaded area for temperatures above the threshold
+data$Shaded <- ifelse(data$Temperature > threshold, data$Temperature, NA)
+
+# Plot the graph
+ggplot(data, aes(x = Time)) +
+  # Full temperature curve
+  geom_line(aes(y = Temperature), color = "black", size = 1) +
+  # Highlight area above threshold
+  geom_ribbon(aes(ymin = threshold, ymax = Shaded), fill = "darkred", alpha = 0.5, na.rm = TRUE) +
+  # Threshold line
+  geom_hline(yintercept = threshold, linetype = "dashed", color = "blue", size = 1) +
+  # Annotate T_max and T_min
+  # annotate("text", x = pi / 2, y = 35, label = "T[max]", color = "black", fontface = "italic") +
+  # annotate("text", x = 3 * pi / 2, y = 15, label = "T[min]", color = "black", fontface = "italic") +
+  # Labels and theme
+  labs(
+    x = "Time",
+    y = "Level"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.title = element_text(size = 30, color="black", margin = margin(t = 10), hjust = 1),
+    axis.line = element_line(size = 1, colour = "black", linetype=1),
+    axis.text.x=element_blank(), 
+    axis.ticks.x=element_blank(), 
+    axis.text.y=element_blank(), 
+    axis.ticks.y=element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+```
+
+```{r}
+png("/Users/franciscorowe/Dropbox/Francisco/Research/grants/2024/erc_consolidator/forms/figs/threshold.png", units="in", width=10, height=4, res=300, bg = "transparent")
+  last_plot()
+dev.off()
+```

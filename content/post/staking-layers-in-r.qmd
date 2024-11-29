@@ -1,0 +1,113 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+library(sf)
+```
+
+```{r}
+rotate_data <- function(data, x_add = 0, y_add = 0) {
+  shear_matrix <- function () { 
+    matrix(c(2, 1.2, 0, 1), 2, 2) 
+  }
+  rotate_matrix <- function(x) { 
+    matrix(c(cos(x), sin(x), -sin(x), cos(x)), 2, 2) 
+  }
+  data %>% 
+    dplyr::mutate(
+      geometry = 
+        .$geometry * shear_matrix() * rotate_matrix(pi/20) + c(x_add, y_add)
+    )
+}
+```
+
+```{r}
+simple_square <-
+  sf::st_point(1:2) %>% 
+  sf::st_sfc() %>%
+  sf::st_sf() %>% 
+  sf::st_buffer(
+    10, 
+    endCapStyle = "SQUARE"
+  )
+```
+
+```{r}
+ggplot() +
+  geom_sf(data = simple_square, 
+          colour= "black", 
+          fill = "grey", 
+          linewidth = 1)
+
+```
+
+```{r}
+simple_square_rotated <-
+  simple_square %>% 
+  rotate_data()
+
+```
+
+```{r}
+ggplot() +
+  geom_sf(data = simple_square_rotated)
+
+```
+
+```{r}
+ggplot() +
+  geom_sf(
+    linewidth = 1,
+    data = 
+      simple_square %>% 
+      rotate_data()
+  ) +
+  geom_sf(
+    linewidth = 1,
+    data = 
+      simple_square %>% 
+      rotate_data(y_add = 15)
+  )
+
+```
+
+```{r}
+delta <- 7
+ggplot() +
+  geom_sf(
+    linewidth = 1,
+    data = 
+      simple_square %>% 
+      rotate_data()
+  ) +
+  geom_sf(
+    linewidth = 1,
+    data = 
+      simple_square %>% 
+      rotate_data(y_add = delta)
+  ) +
+    geom_sf(
+      linewidth = 1,
+    data = 
+      simple_square %>% 
+      rotate_data(y_add = delta*2)
+  ) +
+  geom_sf(
+    linewidth = 1,
+    data = 
+      simple_square %>% 
+      rotate_data(y_add = delta*3)
+  ) +
+  theme_void()
+
+```
+
+```{r}
+png("/Users/franciscorowe/Dropbox/Francisco/Research/grants/2024/erc_consolidator/forms/figs/intersecting-vulnerabilities.png", units="in", width=8, height=10, res=300, bg = "transparent")
+  last_plot()
+dev.off()
+```
