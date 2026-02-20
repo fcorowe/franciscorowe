@@ -1,21 +1,9 @@
 [build]
-  command = "hugo --gc --minify -b $URL"
-  publish = "public"
-
-[build.environment]
-  HUGO_VERSION = "0.81.0"
-  HUGO_ENABLEGITINFO = "true"
-
-[context.production.environment]
-  HUGO_ENV = "production"
+  command = "quarto render"
+  publish = "_site"
 
 [context.deploy-preview]
-  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+  command = "quarto render"
 
 [context.branch-deploy]
-  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
-
-[[plugins]]
-  package = "netlify-plugin-hugo-cache-resources"
-  [plugins.inputs]
-    debug = true
+  command = "quarto render"
