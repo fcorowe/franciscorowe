@@ -1,0 +1,49 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - bio.qmd
+    - projects.qmd
+    - papers.qmd
+    - courses.qmd
+    - blog.qmd
+    - talks.qmd
+    - resources.qmd
+
+website:
+  title: "Francisco Rowe"
+  site-url: "https://franciscorowe.com"
+  navbar:
+    background: "#f4eee4"
+    foreground: "#1f2a37"
+    pinned: true
+    left:
+      - href: projects.qmd
+        text: Projects
+      - href: papers.qmd
+        text: Publications
+      - href: courses.qmd
+        text: Courses
+      - href: blog.qmd
+        text: Blog
+      - href: talks.qmd
+        text: Talks
+      - href: resources.qmd
+        text: Resources
+  page-footer:
+    left: "© 2026 Francisco Rowe"
+    right: "<i class='bi bi-code-slash' aria-hidden='true'></i> Built with Quarto + R + Codex!"
+
+format:
+  html:
+    theme:
+      - flatly
+      - assets/styles.scss
+    toc: false
+    anchor-sections: false
+    smooth-scroll: true
+    include-after-body: assets/menu.html
+
+execute:
+  freeze: auto

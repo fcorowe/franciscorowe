@@ -4,10 +4,34 @@ author: "Francisco Rowe"
 date: '2019-10-11T21:13:14-05:00'
 categories: ["R"]
 tags: ["R Markdown", "Migration", "Spatial Impact"]
+format:
+  html:
+    theme:
+      - flatly
+      - ../../assets/styles.scss
+    toc: false
+    anchor-sections: false
+    smooth-scroll: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
+if (!requireNamespace("CIM", quietly = TRUE)) {
+  stop("Package 'CIM' is required. Install it with install.packages('CIM').")
+}
+if (!requireNamespace("sf", quietly = TRUE)) {
+  stop("Package 'sf' is required. Install it with install.packages('sf').")
+}
+if (!requireNamespace("dplyr", quietly = TRUE)) {
+  stop("Package 'dplyr' is required. Install it with install.packages('dplyr').")
+}
+if (!requireNamespace("tmap", quietly = TRUE)) {
+  stop("Package 'tmap' is required. Install it with install.packages('tmap').")
+}
+library(CIM)
+library(sf)
+library(dplyr)
+library(tmap)
 ```
 
 # R Markdown
@@ -15,7 +39,7 @@ knitr::opts_chunk$set(collapse = TRUE)
 This post introduces our recently published R package, CIM, to measure the impacts of migration on local population structures. We developed the methodology in this [paper](https://doi.org/10.1080/00324728.2017.1416155) in 2018. This paper is one of the top ten most viewed articles in [Population Studies](https://www.tandfonline.com/action/showMostReadArticles?journalCode=rpst20)
 
 ## Installing
-```
+```{r install, eval=FALSE}
 install.packages("CIM")
 library(CIM)
 ```
@@ -30,9 +54,9 @@ Here I provide a short example of how this can be used to measure the impact of 
 
 Compute and print the CIM outputs
 
-```
-  CIM.duncan <- CIM(pop65over, pop1_14, pop15_29, pop30_44, pop45_64, calculation = "duncan", numerator = 1, DuncanAll= TRUE)
-  CIM.duncan$duncan_index
+```{r compute_duncan}
+CIM.duncan <- CIM(pop65over, pop1_14, pop15_29, pop30_44, pop45_64, calculation = "duncan", numerator = 1, DuncanAll = TRUE)
+CIM.duncan$duncan_index
 ```
 
 ### Interpretation
@@ -45,9 +69,9 @@ To visualise where the population aged 65 and over in the Greater London Metropo
 
 First install and load the needed packages
 
-```
-install.packages(c("rgdal", "dplyr", "tmap"))
-library(rgdal)
+```{r viz_packages, eval=FALSE}
+install.packages(c("sf", "dplyr", "tmap"))
+library(sf)
 library(dplyr)
 library(tmap)
 ```
@@ -58,53 +82,61 @@ NOTE: The Local Authority Districts for the City of London and Westminster in ou
 
 Read the shapefile.
 
-```
-Greater_London <- readOGR(dsn = ".", layer = "Greater_London_districts", stringsAsFactors = FALSE)
+```{r read_shapefile}
+library(sf)
+shapefile_path <- file.path("shapefiles", "greater_london", "Greater_London_districts.shp")
+if (!file.exists(shapefile_path)) {
+  stop("Shapefile not found at: ", shapefile_path)
+}
+Greater_London <- st_read(shapefile_path, quiet = TRUE)
 ```
 
 Plot the shapefile
 
-```
-  plot(Greater_London)
+```{r plot_shapefile}
+plot(st_geometry(Greater_London))
 ```
   
 Obtain the differences in the spatial distribution of the population aged 65 and over across local authority districts using the CIM.Duncan function:
 
-```
-  CIM.duncan <- CIM(pop65over, pop1_14, pop15_29, pop30_44, pop45_64, calculation = "duncan", numerator = 1, DuncanAll= TRUE)
-  Dun_65over <- CIM.duncan$duncan_results
+```{r duncan_results}
+CIM.duncan <- CIM(pop65over, pop1_14, pop15_29, pop30_44, pop45_64, calculation = "duncan", numerator = 1, DuncanAll = TRUE)
+Dun_65over <- CIM.duncan$duncan_results
 ```
 
 Visualise the results
   
-```
-  head(Dun_65over)
+```{r preview_results}
+head(Dun_65over)
 ```
 Append these data to the shapefile using the local authority names as joiner
 
-```
-  Duncan_65p <- merge(Greater_London, Dun_65over, by.x = "name", by.y = 0)
-  head(Duncan_65p@data)
+```{r merge_results}
+library(dplyr)
+dun_df <- data.frame(Dun_65over, name = rownames(Dun_65over), row.names = NULL)
+dun_df <- subset(dun_df, name != "totalCol")
+Duncan_65p <- left_join(Greater_London, dun_df, by = "name")
+head(st_drop_geometry(Duncan_65p))
 ```
   
 Set to a static map view and create a map using tmap
 
-```
-  tmap_mode('plot')
-  tm_shape(Duncan_65p) +
-  tm_polygons("ASShareFV_diff", style="quantile",border.alpha = 0.1, palette = "YlOrRd", 
-             title="ASShareFV_diff")+
-  tm_compass(position = c("left", "bottom")) +
-  tm_scale_bar(position = c("left", "bottom"))
+```{r tmap_static}
+tmap_mode('plot')
+tm_shape(Duncan_65p) +
+tm_polygons("ASShareFV_diff", style = "quantile", border.alpha = 0.1, palette = "YlOrRd",
+            title = "ASShareFV_diff") +
+tm_compass(position = c("left", "bottom")) +
+tm_scale_bar(position = c("left", "bottom"))
 ```
   
 Or, even better we can create an interactive map! by setting an interactive map view
 
-```
-  tmap_mode('view')
-  tm_shape(Duncan_65p) +
-  tm_polygons("ASShareFV_diff", style="quantile",border.alpha = 0.1, palette = "YlOrRd", 
-               title="ASShareFV_diff")+
-  tm_compass(position = c("left", "bottom")) +
-  tm_scale_bar(position = c("left", "bottom"))
+```{r tmap_interactive}
+tmap_mode('view')
+tm_shape(Duncan_65p) +
+tm_polygons("ASShareFV_diff", style = "quantile", border.alpha = 0.1, palette = "YlOrRd",
+            title = "ASShareFV_diff") +
+tm_compass(position = c("left", "bottom")) +
+tm_scale_bar(position = c("left", "bottom"))
 ```

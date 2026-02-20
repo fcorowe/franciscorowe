@@ -1,0 +1,47 @@
+---
+title: "Courses"
+---
+
+::: {.media-grid}
+
+::: {.media-card}
+![](content/courses/gds/featured.jpg){fig-alt="Geographic data science course image"}
+
+### Geographic Data Science for Public Policy
+
+<span class="meta">Policy-oriented introduction to geographic data science methods and workflows in R.</span>
+
+[Course website](https://fcorowe.github.io/udd_gds_course/)
+:::
+
+::: {.media-card}
+![](content/courses/intro-gds/featured.jpg){fig-alt="Map and code learning materials"}
+
+### Introduction to Geographic Data Science
+
+<span class="meta">Core concepts for spatial data, mapping and analytic reasoning.</span>
+
+[Course website](https://fcorowe.github.io/intro-gds/)
+:::
+
+::: {.media-card}
+![](content/courses/ls/featured.jpg){fig-alt="Statistical learning course image"}
+
+### Introduction to Statistical Learning in R
+
+<span class="meta">Supervised learning and model-based inference for applied research.</span>
+
+[Course website](https://fcorowe.github.io/sl/)
+:::
+
+::: {.media-card}
+![](content/courses/smds/featured.jpg){fig-alt="Spatial modelling training image"}
+
+### Spatial Modelling for Data Scientists
+
+<span class="meta">Spatial modelling frameworks and implementation strategies for real-world data.</span>
+
+[Course website](https://gdsl-ul.github.io/san/)
+:::
+
+:::

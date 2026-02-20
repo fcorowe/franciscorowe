@@ -1,0 +1,67 @@
+---
+title: "Projects"
+---
+
+::: {.media-grid .projects-grid}
+
+::: {.media-card}
+![](content/project/satellite_cities/featured.jpeg){fig-alt="Satellite imagery over city"}
+
+### IMAGO
+
+<span class="meta">Making satellite imagery useful, usable and used across social research and policy.</span>
+
+[Project website](https://imago.ac.uk)
+:::
+
+::: {.media-card}
+![](content/project/sensing_inequalities/featured.png){fig-alt="Data visualisation map"}
+
+### DEBIAS
+
+<span class="meta">Developing methods to measure and correct biases in digital-footprint mobility data.</span>
+
+[Project website](https://de-bias.github.io/debias/)
+:::
+
+::: {.media-card}
+![](static/media/images/pdra-gds-socialhealth.png){fig-alt="Social health research poster"}
+
+### Social Health Hub
+
+<span class="meta">Social determinants of severe mental illness and place-based pathways for intervention.</span>
+
+[Research hub page](https://www.mentalhealthplatform.ac.uk/research-hubs/social-health)
+:::
+
+::: {.media-card}
+![](content/project/estimating_migration/featured.png){fig-alt="Human mobility network graphic"}
+
+### UN Mobile Phone Data Task Team
+
+<span class="meta">Methods, standards and practice for responsible mobile phone data use in official statistics.</span>
+
+[Task team page](https://unstats.un.org/bigdata/task-teams/mobile-phone/index.cshtml)
+:::
+
+::: {.media-card}
+![](content/project/bigdata_perception/featured.jpg){fig-alt="Social media sentiment project image"}
+
+### Migration and Social Media
+
+<span class="meta">Machine learning and network analysis to track migration sentiment and social polarisation.</span>
+
+[Related papers](papers.html)
+:::
+
+::: {.media-card}
+![](content/project/migration_decline/featured.png){fig-alt="Population trend map"}
+
+### Spatial Inequalities and Mobility
+
+<span class="meta">Measuring place trajectories, mobility shifts and inequality patterns over time.</span>
+
+[Related talks](talks.html)
+:::
+
+:::

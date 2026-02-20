@@ -1,0 +1,76 @@
+---
+title: "Resources"
+format:
+  html:
+    include-in-header:
+      text: |
+        <style>
+          body {
+            background: #0F2143;
+            color: #ffffff;
+          }
+          h1, h2, h3, h4, h5, h6,
+          .meta,
+          .page-subtitle {
+            color: #ffffff;
+          }
+          .media-card {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.25);
+          }
+          .media-card a,
+          .media-card a:visited {
+            color: #ffffff;
+            text-decoration: underline;
+          }
+          .media-card a:hover,
+          .media-card a:focus-visible {
+            color: #dbe8ff;
+            text-decoration: underline;
+          }
+          .media-grid .meta {
+            color: #D4D4D4;
+            font-size: 0.75rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+        </style>
+---
+
+<p class="page-subtitle">Data, tools, profiles and platforms.</p>
+
+::: {.media-grid}
+
+::: {.media-card}
+![](static/media/resources/count-data-modelling.png){fig-alt="Count data modelling resource image"}
+
+### Count Data Modelling
+
+<span class="meta">Methods, examples and code for modelling count outcomes.</span>
+
+[Open website](https://fcorowe.github.io/countdata_modelling/)
+:::
+
+::: {.media-card}
+![](static/media/resources/binary-logistic-regression.png){fig-alt="Binary logistic resource image"}
+
+### Binary Logistic Regression
+
+<span class="meta">Methods, examples and code for binary outcome modelling.</span>
+
+[Open website](https://fcorowe.github.io/binary_logistic/)
+:::
+
+::: {.media-card}
+![](static/media/resources/r-package-cim.png){fig-alt="CIM package resource image"}
+
+### R Package CIM
+
+<span class="meta">Code and resources for compositional impact of migration analysis in R.</span>
+
+[Open website](post/2019-01-31-r-rmarkdown/index.html)
+:::
+
+:::

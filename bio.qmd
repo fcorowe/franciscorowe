@@ -1,0 +1,17 @@
+---
+title: "Bio"
+---
+
+![](assets/media/headshots/headshot_2025v2.jpg){.profile-photo .bio-profile-photo fig-alt="Portrait of Francisco Rowe"}
+
+## Long Bio
+
+::: {.bio-copy}
+Francisco Rowe is a Professor in Population Data Science; the Lead of the Geographic Data Science Lab at the University of Liverpool; and Co-Vice Chair of the Mobile Phone Data Task Team (MPD-TT) at the UN Committee of Experts on Big Data and Data Science for Official Statistics (UN-CEBD). He leads the UN-CEBD Migration Sub-group. His research focuses on human mobility and migration; geographic data science; and climate sustainability. It seeks to advance our understanding of the causes and impacts of human movements for communities and individuals through the novel application of geographic data science methodologies and digital footprint data. His recent work has focused on changes to human mobility patterns during disasters, including climate, health hazards and conflict, and how urban form shapes mobility patterns and impacts climate. Francisco works closely with various sections of the UN, including the Economic Commission for Latin America and the Caribbean, the International Organization for Migration and the Statistics Division. Francisco’s research has been published in international journals of Population Geography, Transport, Migration, GIScience and Urban Planning, including Transportation Research Part C, Cities, Population Studies, Applied Geography, Landscape and Urban Planning, International Journal of Geographical Information Science, and Computers, Environment and Urban Systems. Francisco is Editor of REGION, the Journal of the European Regional Science Association, and member of the Editorial Board of Population, Space and Place, Spatial Economic Analysis, and Applied Spatial Analysis and Policy.
+:::
+
+## Short Bio
+
+::: {.bio-copy}
+Francisco Rowe is a Professor in Population Data Science; Lead of the Geographic Data Science Lab at the University of Liverpool; and Co-Chair of the Mobile Phone Data Task Team (MPD-TT) at the UN Committee of Experts on Big Data and Data Science for Official Statistics (UN-CEBD). Francisco is also a Co-investigator of the UK Smart Data Service for Imagery (Imago). His research focuses on human mobility and migration; geographic data science; and climate sustainability. He has published 100+ scientific articles, works closely with the UN and is Editor of the Journal of the European Regional Science Association, and serves multiple journal editorial boards.
+:::

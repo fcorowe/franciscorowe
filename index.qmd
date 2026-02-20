@@ -1,0 +1,343 @@
+---
+title: ""
+title-block: false
+page-layout: full
+format:
+  html:
+    body-classes: rd-homepage
+---
+
+```{=html}
+<section class="rd-home" aria-label="Home intro">
+  <canvas class="rd-network" aria-hidden="true"></canvas>
+  <div class="rd-grid" aria-hidden="true"></div>
+  <div class="rd-red-marker" aria-hidden="true"></div>
+
+  <h1 class="rd-name">
+    <span>Francisco</span>
+    <span>Rowe</span>
+  </h1>
+
+  <p class="rd-description">
+    Francisco Rowe is a Professor in Population Data Science; the Lead of the <a href="https://www.liverpool.ac.uk/geographic-data-science/">Geographic Data Science Lab</a> at the <a href="https://www.liverpool.ac.uk">University of Liverpool</a>; and Co-Vice Chair of the <a href="https://unstats.un.org/bigdata/task-teams/index.cshtml">Mobile Phone Data Task Team</a> (MPD-TT) at the <a href="https://unstats.un.org/bigdata/">UN Committee of Experts on Big Data and Data Science for Official Statistics</a> (UN-CEBD). I lead the UN-CEBD Migration Sub-group. I am the Chair of the <a href="https://qmrg.github.io/committee">Quantitative Research Methods Group of the Royal Geographical Society</a>; Co-investigator of the <a href="https://imago.ac.uk">UK Smart Data Service for Imagery (Imago)</a>; and, Co-Deputy Director of the <a href="https://www.mentalhealthplatform.ac.uk/research-hubs/social-health">MRC-funded Social Health Hub</a>. My research focuses on human mobility and migration; geographic data science; and climate sustainability. With this work, I seek to advance our understanding of the causes and impacts of human movements for communities and individuals through the novel application of geographic data science methodologies and digitally collected data. My work focuses on changes to human mobility patterns during disasters, including climate, health hazards and conflict, and how urban form shapes mobility patterns and impacts climate. A core principle of my work is to be policy-oriented. I work closely with various sections of the UN, including the Economic Commission for Latin America and the Caribbean, the International Organization for Migration, Displacement Tracking Matrix and the Statistics Division. I have published 100+ scientific articles, works closely with the UN. I serve multiple journal editorial boards and was until recently the Editorin-Chief of the Journal of the European Regional Science Association.
+  </p>
+
+  <p class="rd-focus-label">Interests:</p>
+  <ul class="rd-focus-list">
+    <li>Human mobility and migration</li>
+    <li>Spatial inequality</li>
+    <li>Climate and sustainability</li>
+    <li>Geographic data science and GeoAI</li>
+  </ul>
+
+  <nav class="rd-nav" aria-label="Main">
+    <a href="bio.html">Bio</a>
+    <a href="projects.html">Projects</a>
+    <a href="papers.html">Publications</a>
+    <a href="talks.html">Talks</a>
+    <a href="courses.html">Courses</a>
+    <a href="blog.html">Blog</a>
+    <a href="resources.html">Resources</a>
+  </nav>
+
+  <div class="rd-social" aria-label="Social links">
+    <a href="https://github.com/fcorowe" aria-label="GitHub"><span class="bi bi-github"></span></a>
+    <a href="https://scholar.google.com/citations?user=d8rThGQAAAAJ&hl=en" aria-label="Google Scholar"><span class="bi bi-mortarboard-fill"></span></a>
+    <a href="https://twitter.com/fcorowe" aria-label="X"><span class="bi bi-twitter-x"></span></a>
+    <a href="https://www.linkedin.com/in/francisco-rowe-69207a36/" aria-label="LinkedIn"><span class="bi bi-linkedin"></span></a>
+    <a href="https://bsky.app/profile/fcorowe.bsky.social" aria-label="Bluesky">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.04 3.75c2.14 1.61 4.44 4.89 5.96 8.04 1.52-3.15 3.82-6.43 5.96-8.04 1.54-1.16 4.04-2.06 4.04.8 0 .57-.33 4.79-.53 5.47-.7 2.34-3.23 2.94-5.48 2.56 3.93.67 4.94 2.89 2.78 5.11-4.11 4.22-5.9-1.06-6.36-2.41-.08-.23-.12-.33-.42-.33s-.34.1-.42.33c-.46 1.35-2.25 6.63-6.36 2.41-2.16-2.22-1.15-4.44 2.78-5.11-2.25.38-4.78-.22-5.48-2.56-.2-.68-.53-4.9-.53-5.47 0-2.86 2.5-1.96 4.04-.8Z"/></svg>
+    </a>
+    <a href="static/media/cv-fcorowe.pdf" aria-label="Curriculum vitae"><span class="rd-cv">CV</span></a>
+  </div>
+</section>
+
+<script>
+window.addEventListener("DOMContentLoaded", function () {
+  var section = document.querySelector(".rd-home");
+  if (!section) return;
+  var canvas = section.querySelector(".rd-network");
+  if (!canvas) return;
+  var marker = section.querySelector(".rd-red-marker");
+  var ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var width = 0;
+  var height = 0;
+  var raf = null;
+  var nodes = [];
+  var particles = [];
+  var activeDestinations = [];
+  var origin = { x: 0, y: 0 };
+  var pointer = { x: 0, y: 0, active: false };
+  var cfg = {
+    spacing: 86,
+    jitter: 24,
+    minStepFactor: 0.72,
+    maxStepFactor: 1.28,
+    nodeKeepChance: 0.9,
+    linkDistance: 114,
+    pushRadius: 135,
+    pushStrength: 0.56,
+    springBack: 0.027,
+    friction: 0.9,
+    maxVelocity: 1.8,
+    destinationRadius: 165,
+    maxDestinations: 6,
+    flowSpawnRate: 0.36,
+    maxParticles: 110
+  };
+
+  function updateOrigin() {
+    if (!marker) {
+      origin.x = width - 56;
+      origin.y = 52;
+      return;
+    }
+    var sectionRect = section.getBoundingClientRect();
+    var markerRect = marker.getBoundingClientRect();
+    origin.x = markerRect.left - sectionRect.left + markerRect.width / 2;
+    origin.y = markerRect.top - sectionRect.top + markerRect.height / 2;
+  }
+
+  function clampVelocity(value) {
+    if (value > cfg.maxVelocity) return cfg.maxVelocity;
+    if (value < -cfg.maxVelocity) return -cfg.maxVelocity;
+    return value;
+  }
+
+  function buildNodes() {
+    nodes = [];
+    var y = -cfg.spacing * 0.5;
+    while (y < height + cfg.spacing * 0.5) {
+      var rowPhase = Math.sin(y * 0.02) * cfg.spacing * 0.2;
+      var x = -cfg.spacing * 0.5;
+      while (x < width + cfg.spacing * 0.5) {
+        if (Math.random() <= cfg.nodeKeepChance) {
+          var seedX = (Math.random() - 0.5) * cfg.jitter;
+          var seedY = (Math.random() - 0.5) * cfg.jitter;
+          var baseX = x + rowPhase;
+          var baseY = y;
+          nodes.push({
+            baseX: baseX + seedX,
+            baseY: baseY + seedY,
+            x: baseX + seedX,
+            y: baseY + seedY,
+            vx: 0,
+            vy: 0
+          });
+        }
+        x += cfg.spacing * (cfg.minStepFactor + Math.random() * (cfg.maxStepFactor - cfg.minStepFactor));
+      }
+      y += cfg.spacing * (cfg.minStepFactor + Math.random() * (cfg.maxStepFactor - cfg.minStepFactor));
+    }
+
+    var extra = Math.max(6, Math.floor((width * height) / 90000));
+    for (var i = 0; i < extra; i += 1) {
+      var rx = Math.random() * width;
+      var ry = Math.random() * height;
+      nodes.push({
+        baseX: rx,
+        baseY: ry,
+        x: rx,
+        y: ry,
+        vx: 0,
+        vy: 0
+      });
+    }
+  }
+
+  function resize() {
+    var rect = section.getBoundingClientRect();
+    width = Math.max(1, Math.floor(rect.width));
+    height = Math.max(1, Math.floor(rect.height));
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    updateOrigin();
+    buildNodes();
+    draw();
+  }
+
+  function pointOnRoute(startX, startY, endX, endY, t) {
+    var cx = startX + (endX - startX) * 0.55 + (endY - startY) * 0.12;
+    var cy = startY + (endY - startY) * 0.45 - (endX - startX) * 0.08;
+    var inv = 1 - t;
+    return {
+      x: inv * inv * startX + 2 * inv * t * cx + t * t * endX,
+      y: inv * inv * startY + 2 * inv * t * cy + t * t * endY
+    };
+  }
+
+  function refreshDestinations() {
+    if (!pointer.active) {
+      activeDestinations = [];
+      return;
+    }
+    var ranked = [];
+    for (var i = 0; i < nodes.length; i += 1) {
+      var n = nodes[i];
+      var dx = n.x - pointer.x;
+      var dy = n.y - pointer.y;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist > cfg.destinationRadius) continue;
+      var fromOrigin = Math.sqrt((n.x - origin.x) * (n.x - origin.x) + (n.y - origin.y) * (n.y - origin.y));
+      if (fromOrigin < 75) continue;
+      ranked.push({ idx: i, dist: dist });
+    }
+    ranked.sort(function (a, b) { return a.dist - b.dist; });
+    activeDestinations = ranked.slice(0, cfg.maxDestinations).map(function (v) { return v.idx; });
+  }
+
+  function spawnFlowParticles() {
+    if (!pointer.active || activeDestinations.length === 0) return;
+    if (particles.length >= cfg.maxParticles) return;
+    if (Math.random() > cfg.flowSpawnRate) return;
+    var destination = activeDestinations[Math.floor(Math.random() * activeDestinations.length)];
+    particles.push({
+      target: destination,
+      t: Math.random() * 0.15,
+      speed: 0.009 + Math.random() * 0.012,
+      size: 1.5 + Math.random() * 1.5
+    });
+  }
+
+  function drawFlows() {
+    if (activeDestinations.length > 0) {
+      for (var i = 0; i < activeDestinations.length; i += 1) {
+        var idx = activeDestinations[i];
+        var node = nodes[idx];
+        if (!node) continue;
+        var lineAlpha = 0.15 + (i / Math.max(1, activeDestinations.length - 1)) * 0.12;
+        ctx.strokeStyle = "rgba(191, 45, 36, " + lineAlpha.toFixed(3) + ")";
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(origin.x, origin.y);
+        var controlX = origin.x + (node.x - origin.x) * 0.55 + (node.y - origin.y) * 0.12;
+        var controlY = origin.y + (node.y - origin.y) * 0.45 - (node.x - origin.x) * 0.08;
+        ctx.quadraticCurveTo(controlX, controlY, node.x, node.y);
+        ctx.stroke();
+      }
+    }
+
+    for (var p = 0; p < particles.length; p += 1) {
+      var flow = particles[p];
+      var targetNode = nodes[flow.target];
+      if (!targetNode) continue;
+      var pos = pointOnRoute(origin.x, origin.y, targetNode.x, targetNode.y, flow.t);
+      ctx.fillStyle = "rgba(191, 45, 36, 0.82)";
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, flow.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.fillStyle = "rgba(191, 45, 36, 0.95)";
+    ctx.beginPath();
+    ctx.arc(origin.x, origin.y, 2.3, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (var i = 0; i < nodes.length; i += 1) {
+      for (var j = i + 1; j < nodes.length; j += 1) {
+        var a = nodes[i];
+        var b = nodes[j];
+        var dx = b.x - a.x;
+        var dy = b.y - a.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist > cfg.linkDistance) continue;
+        var alpha = 1 - dist / cfg.linkDistance;
+        ctx.strokeStyle = "rgba(20, 34, 45," + (alpha * 0.2).toFixed(3) + ")";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+
+    drawFlows();
+
+    for (var k = 0; k < nodes.length; k += 1) {
+      var p = nodes[k];
+      ctx.fillStyle = "rgba(16, 29, 39, 0.45)";
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function step() {
+    for (var i = 0; i < nodes.length; i += 1) {
+      var n = nodes[i];
+      var backX = n.baseX - n.x;
+      var backY = n.baseY - n.y;
+
+      n.vx += backX * cfg.springBack;
+      n.vy += backY * cfg.springBack;
+
+      if (pointer.active) {
+        var dx = n.x - pointer.x;
+        var dy = n.y - pointer.y;
+        var distSq = dx * dx + dy * dy;
+        if (distSq > 0.01) {
+          var dist = Math.sqrt(distSq);
+          if (dist < cfg.pushRadius) {
+            var force = (1 - dist / cfg.pushRadius) * cfg.pushStrength;
+            n.vx += (dx / dist) * force;
+            n.vy += (dy / dist) * force;
+          }
+        }
+      }
+
+      n.vx = clampVelocity(n.vx * cfg.friction);
+      n.vy = clampVelocity(n.vy * cfg.friction);
+      n.x += n.vx;
+      n.y += n.vy;
+    }
+
+    refreshDestinations();
+    spawnFlowParticles();
+    var survivors = [];
+    for (var p = 0; p < particles.length; p += 1) {
+      var flow = particles[p];
+      flow.t += flow.speed;
+      if (flow.t <= 1.02) survivors.push(flow);
+    }
+    particles = survivors;
+
+    draw();
+    raf = window.requestAnimationFrame(step);
+  }
+
+  function eventPoint(e) {
+    var rect = canvas.getBoundingClientRect();
+    pointer.x = e.clientX - rect.left;
+    pointer.y = e.clientY - rect.top;
+    pointer.active = true;
+  }
+
+  section.addEventListener("pointermove", eventPoint, { passive: true });
+  section.addEventListener("pointerenter", eventPoint, { passive: true });
+  section.addEventListener("pointerleave", function () {
+    pointer.active = false;
+  });
+  window.addEventListener("resize", resize);
+
+  resize();
+  if (!prefersReducedMotion) {
+    raf = window.requestAnimationFrame(step);
+  }
+
+  window.addEventListener("beforeunload", function () {
+    if (raf) window.cancelAnimationFrame(raf);
+  });
+});
+</script>
+```
