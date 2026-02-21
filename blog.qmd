@@ -175,6 +175,7 @@ extract_html_body <- function(html_text) {
 normalize_body_html <- function(body_html) {
   if (is.na(body_html) || !nzchar(trim(body_html))) return("<p>Content unavailable.</p>")
   body_html <- gsub("<h1 class=\"title\">.*?</h1>", "", body_html, perl = TRUE)
+  body_html <- gsub("(?s)<header id=\"title-block-header\"[^>]*>.*?</header>", "", body_html, perl = TRUE)
   body_html <- gsub(
     "href=\"([^\"]+@[^\"]+)\"",
     "href=\"mailto:\\1\"",
