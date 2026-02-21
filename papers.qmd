@@ -56,88 +56,10 @@ format:
         </style>
 ---
 
-```{r}
-#| echo: false
-#| warning: false
-#| message: false
-
-papers <- read.csv("data/papers_master.csv", stringsAsFactors = FALSE)
-if (nrow(papers) == 0) {
-  stop("No publication data found. Run scripts/update_publications.py first.")
-}
-
-papers$year_num <- suppressWarnings(as.integer(papers$year))
-papers <- papers[!is.na(papers$year_num) & papers$year_num >= 2008 & papers$year_num <= 2026, ]
-papers <- papers[order(is.na(papers$year_num), papers$year_num, papers$title, na.last = TRUE), ]
-papers$paper_no <- seq_len(nrow(papers))
-papers$year_label <- ifelse(is.na(papers$year_num), "n.d.", as.character(papers$year_num))
-papers_display <- papers[order(is.na(papers$year_num), -papers$year_num, papers$title, na.last = TRUE), ]
-
-```
-
 ::: {.papers-hero}
 ::: {.papers-hero-left}
 <p class="papers-note-condensed">This list may not be up date. Check my <a href="https://scholar.google.com/citations?user=d8rThGQAAAAJ&hl=en">Google Scholar profile</a>.</p>
 :::
 :::
 
-```{r}
-#| echo: false
-#| results: asis
-
-cat('<ol class="papers-list">\n')
-platform_from_link <- function(link, doi, source) {
-  x <- tolower(trimws(ifelse(is.na(link), "", link)))
-  d <- tolower(trimws(ifelse(is.na(doi), "", doi)))
-  s <- tolower(trimws(ifelse(is.na(source), "", source)))
-  if (grepl("arxiv\\.org", x) || grepl("^10\\.48550/arxiv\\.", d)) return("arXiv")
-  if (grepl("osf\\.io", x) || grepl("^10\\.312(19|35)/osf\\.io/", d)) return("OSF Preprints")
-  if (grepl("ssrn\\.com", x) || grepl("^10\\.2139/ssrn\\.", d)) return("SSRN")
-  if (grepl("medrxiv\\.org", x)) return("medRxiv")
-  if (grepl("biorxiv\\.org", x)) return("bioRxiv")
-  if (grepl("researchsquare\\.com", x)) return("Research Square")
-  if (grepl("zenodo\\.org", x) || grepl("^10\\.5281/zenodo\\.", d)) return("Zenodo")
-  if (s == "scholar") return("Google Scholar")
-  if (s == "openalex_recent") return("Preprint/Working Paper")
-  return("Preprint/Working Paper")
-}
-
-for (i in seq_len(nrow(papers_display))) {
-  p <- papers_display[i, ]
-  journal_link <- ifelse(is.na(p$journal_link), "", trimws(p$journal_link))
-  doi <- ifelse(is.na(p$doi), "", trimws(p$doi))
-  pdf_link <- ifelse(is.na(p$pdf_link), "", trimws(p$pdf_link))
-
-  journal_tab <- if (nzchar(journal_link)) {
-    paste0('<a class="paper-tab" href="', journal_link, '">Journal page</a>')
-  } else {
-    '<span class="paper-tab is-disabled">Journal page</span>'
-  }
-
-  doi_tab <- if (nzchar(doi)) {
-    paste0('<a class="paper-tab" href="https://doi.org/', doi, '">DOI</a>')
-  } else {
-    '<span class="paper-tab is-disabled">DOI</span>'
-  }
-
-  pdf_tab <- if (nzchar(pdf_link)) {
-    paste0('<a class="paper-tab" href="', pdf_link, '">PDF</a>')
-  } else {
-    '<span class="paper-tab is-disabled">PDF</span>'
-  }
-
-  journal_label <- ifelse(
-    is.na(p$journal) || !nzchar(trimws(p$journal)),
-    platform_from_link(journal_link, doi, p$source),
-    p$journal
-  )
-  authors <- ifelse(is.na(p$authors), "", trimws(p$authors))
-
-  cat('<li class="paper-card" value="', p$paper_no, '">\n', sep = '')
-  cat('<strong>', p$title, '</strong><br>\n', sep = '')
-  cat('<span class="meta">', authors, ' · ', journal_label, ' · ', p$year_label, '</span><br>\n', sep = '')
-  cat('<span class="paper-links">', journal_tab, doi_tab, pdf_tab, '</span>\n', sep = '')
-  cat('</li>\n')
-}
-cat('</ol>\n')
-```
+{{< include generated/papers_list.html >}}
