@@ -1,5 +1,7 @@
 ---
 title: "Blog"
+execute:
+  freeze: false
 format:
   html:
     include-in-header:
