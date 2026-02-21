@@ -1,11 +1,11 @@
 ---
-title: "Projects"
+title: "Project"
 ---
 
 ::: {.media-grid .projects-grid}
 
 ::: {.media-card}
-![](content/project/satellite_cities/featured.jpeg){fig-alt="Satellite imagery over city"}
+![](static/media/images/projects-page-2026-02-21.png){fig-alt="Satellite imagery over city"}
 
 ### IMAGO
 
@@ -15,7 +15,7 @@ title: "Projects"
 :::
 
 ::: {.media-card}
-![](content/project/sensing_inequalities/featured.png){fig-alt="Data visualisation map"}
+![](static/media/images/debias-logo-white-bgn.png){fig-alt="Data visualisation map"}
 
 ### DEBIAS
 
@@ -25,7 +25,7 @@ title: "Projects"
 :::
 
 ::: {.media-card}
-![](static/media/images/pdra-gds-socialhealth.png){fig-alt="Social health research poster"}
+![](static/media/images/social-health-hub-2026-02-21.png){fig-alt="Social health research poster"}
 
 ### Social Health Hub
 
@@ -35,7 +35,7 @@ title: "Projects"
 :::
 
 ::: {.media-card}
-![](content/project/estimating_migration/featured.png){fig-alt="Human mobility network graphic"}
+![](static/media/images/un-mobile-phone-data-task-team-2026-02-21.png){fig-alt="Human mobility network graphic"}
 
 ### UN Mobile Phone Data Task Team
 
@@ -47,21 +47,23 @@ title: "Projects"
 ::: {.media-card}
 ![](content/project/bigdata_perception/featured.jpg){fig-alt="Social media sentiment project image"}
 
-### Migration and Social Media
+### Migration Sentiment, Digital Technology and AI
 
-<span class="meta">Machine learning and network analysis to track migration sentiment and social polarisation.</span>
+<span class="meta">Measures migration attitudes from social media using theory-informed AI methods.<br>
+Maps spatial and network dynamics of anti-immigration discourse over time.<br>
+Builds scalable multilingual LLM pipelines for policy-relevant monitoring.</span>
 
-[Related papers](papers.html)
+[Project description](migration-sentiment-digital-technology-ai.html)
 :::
 
 ::: {.media-card}
 ![](content/project/migration_decline/featured.png){fig-alt="Population trend map"}
 
-### Spatial Inequalities and Mobility
+### Human Mobility and Hazards
 
 <span class="meta">Measuring place trajectories, mobility shifts and inequality patterns over time.</span>
 
-[Related talks](talks.html)
+[Project description](human-mobility-and-hazards.html)
 :::
 
 :::

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resources – Francisco Rowe</title>
+<title>Human Mobility and Hazards – Francisco Rowe</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,39 +65,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
-<style>
-  body {
-    background: #0F2143;
-    color: #ffffff;
-  }
-  h1, h2, h3, h4, h5, h6,
-  .meta,
-  .page-subtitle {
-    color: #ffffff;
-  }
-  .media-card {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.25);
-  }
-  .media-card a,
-  .media-card a:visited {
-    color: #ffffff;
-    text-decoration: underline;
-  }
-  .media-card a:hover,
-  .media-card a:focus-visible {
-    color: #dbe8ff;
-    text-decoration: underline;
-  }
-  .media-grid .meta {
-    color: #D4D4D4;
-    font-size: 0.75rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style>
 
 
 </head>
@@ -140,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Talks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./resources.html" aria-current="page"> 
+    <a class="nav-link" href="./resources.html"> 
 <span class="menu-text">Resources</span></a>
   </li>  
 </ul>
@@ -160,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Resources</h1>
+<h1 class="title">Human Mobility and Hazards</h1>
 </div>
 
 
@@ -177,37 +144,28 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p class="page-subtitle">
-Data, tools, profiles and platforms.
-</p>
-<div class="media-grid">
-<div class="media-card">
-<p><img src="static/media/resources/count-data-modelling.png" class="img-fluid" alt="Count data modelling resource image"></p>
-<section id="count-data-modelling" class="level3">
-<h3 data-anchor-id="count-data-modelling">Count Data Modelling</h3>
-<p><span class="meta">Methods, examples and code for modelling count outcomes.</span></p>
-<p><a href="https://fcorowe.github.io/countdata_modelling/">Open website</a></p>
+<p>Understanding how human mobility systems respond to crisis is central to designing effective policy in an era of climate instability, geopolitical conflict and global health risk. Climate extremes, armed conflict and pandemics send shock waves reorganising mobility systems across territories. My research programme brings these domains together through a unified, empirically grounded framework that integrates digital trace data with demographic baselines to understand how mobility systems are perturbed under conditions of stress. Across climate change, conflict and epidemics, the central questions are consistent: how do populations reorganise in space when exposed to systemic shock? How can we measure that reorganisation rigorously and in near real time? And how can we leverage fast-evolving artificial intelligence and machine learning technologies and digitally collected data to address these questions?</p>
+<section id="human-mobility-and-climate" class="level2">
+<h2 data-anchor-id="human-mobility-and-climate">Human mobility and climate</h2>
+<p>The climate strand of this work demonstrates how digital footprint data can support rapid humanitarian response and hazard monitoring. I show how spatially aggregated Meta Facebook data can identify sharp localised population declines along the Indus River during the 2022 Pakistan floods, with declines exceeding 20 per cent relative to baseline in severely affected areas (<a href="https://doi.org/10.1080/21681376.2022.2135458">Rowe, 2022</a>). The study illustrates both the operational value and the methodological challenges of such data. This work connects directly with disaster displacement modelling in <a href="https://doi.org/10.48550/arXiv.2511.01955">Pietrostefani et al.&nbsp;(2025)</a>, where we develop a policy-driven framework to triangulate digital traces with administrative and humanitarian data to produce calibrated displacement estimates. Similarly, wildfire displacement in Chile reveals spatially structured evacuation and return patterns rather than indiscriminate flight, highlighting how hazard exposure interacts with existing settlement systems (<a href="https://doi.org/10.1080/21681376.2024.2407404">Graells Garrido and Rowe, 2024</a>). Together, these studies move beyond speculative climate migration narratives and document short-term displacement dynamics embedded within broader spatial inequalities.</p>
 </section>
-</div>
-<div class="media-card">
-<p><img src="static/media/resources/binary-logistic-regression.png" class="img-fluid" alt="Binary logistic resource image"></p>
-<section id="binary-logistic-regression" class="level3">
-<h3 data-anchor-id="binary-logistic-regression">Binary Logistic Regression</h3>
-<p><span class="meta">Methods, examples and code for binary outcome modelling.</span></p>
-<p><a href="https://fcorowe.github.io/binary_logistic/">Open website</a></p>
+<section id="human-mobility-and-conflict" class="level2">
+<h2 data-anchor-id="human-mobility-and-conflict">Human mobility and conflict</h2>
+<p>The conflict strand advances this approach under conditions of active conflict. With Rodgers (my PhD student) and Elisabetta, we used data from approximately 25 million anonymised devices to generate daily subnational displacement estimates during the early phases of the Russian invasion (<a href="https://doi.org/10.1057/s41599-025-06137-4">Iradukunda, Rowe and Pietrostefani, 2025</a>). The core contribution lies in the bias correction and uncertainty quantification architecture that adjusts for uneven device penetration and validates estimates against independent humanitarian statistics. Complementing this, we integrated Facebook data with Eurostat to identify subnational refugee settlement patterns across Europe (<a href="https://doi.org/10.1002/psp.2790">Gonzalez Leonardo et al., 2024</a>). These studies demonstrated that digital trace data, when corrected and triangulated, can provide credible demographic intelligence during conflict, reducing reliance on delayed reporting systems.</p>
 </section>
-</div>
-<div class="media-card">
-<p><img src="static/media/resources/r-package-cim.png" class="img-fluid" alt="CIM package resource image"></p>
-<section id="r-package-cim" class="level3">
-<h3 data-anchor-id="r-package-cim">R Package CIM</h3>
-<p><span class="meta">Code and resources for compositional impact of migration analysis in R.</span></p>
-<p><a href="post/2019-01-31-r-rmarkdown/index.html">Open website</a></p>
+<section id="human-mobility-and-epidemics" class="level2">
+<h2 data-anchor-id="human-mobility-and-epidemics">Human mobility and epidemics</h2>
+<p>The epidemic strand examines how mobility systems were restructured during epidemics. Most of this work has focused on the impacts of the COVID-19 pandemic but its implications have wider applicability. In Britain, we analysed 21 million observations over 18 months (<a href="https://doi.org/10.1002/psp.2637">Rowe et al., 2022</a>). We showed sustained reductions in movement during high-stringency periods, particularly in dense urban areas, alongside temporary increases in flows from high- to low-density areas. These shifts were transient. Mobility levels rebounded and the national structure of population movement remained largely intact.</p>
+<p>In Spain, administrative register data reveal similar dynamics (<a href="https://doi.org/10.1002/psp.2578">Gonzalez Leonardo et al., 2022</a>). We estimated a 2.5 per cent decline in internal moves in 2020, unusually large net losses in core cities and gains in rural areas, followed by convergence towards pre-pandemic patterns by late 2020. A complementary policy brief reinforced this evidence that rural gains were measurable but temporary. We did further work on this rural dimension (<a href="https://doi.org/10.1016/j.jrurstud.2022.11.006">Gonzalez Leonardo, Rowe and Fresolone Caparros, 2022</a>). We showed that inflows concentrated in rural municipalities close to cities and with high prevalence of second homes, with inflows persisting into 2021 while outflows converged to pre-pandemic levels. Expanding this evidence to less developed contexts, we revealed that mobility recorded the sharpest declines and remained below pre-pandemic levels in most high-density and low socio-economic deprivation areas, while low-density and more deprived communities returned to baseline (<a href="https://doi.org/10.48550/arXiv.2504.15871">Cabrera et al 2025</a>). These differences reflect the scale of the initial mobility shock rather than subsequent recovery rates. Net mobility to urban cores remained consistently below pre-pandemic levels, suggesting a shift in their functional role. By revealing how COVID-19 reinforced mobility-related inequalities, we contribute novel evidence for planners and policymakers seeking to build more inclusive and resilient mobility systems.</p>
+<p>We also examined how COVID-19 disrupted international migration systems (<a href="https://doi.org/10.1080/21681376.2022.2125824">Gonzalez Leonardo and Rowe, 2022</a>). We showed that net international migration declined across all provinces in 2020, particularly in dense regions, with gradual convergence in late 2021. At the European scale, we used ARIMA counterfactual forecasting to demonstrate that immigration to high-income countries fell sharply in 2020 but largely returned to expected levels in 2021, except for flows from outside the Schengen Area, which remained depressed (<a href="https://doi.org/10.1177/01979183241242445">Gonzalez Leonardo et al., 2024</a>). These findings reinforce a broader conclusion across hazard domains: mobility systems are shock-sensitive but tend to be structurally resilient.</p>
 </section>
-</div>
-</div>
+<section id="methodological-innovation" class="level2">
+<h2 data-anchor-id="methodological-innovation">Methodological innovation</h2>
+<p>Running through all three research areas is DEBIAS, the cross-cutting methodological strand that transforms selective digital traces into calibrated demographic inference (<a href="https://doi.org/10.48550/arXiv.2509.02603">Cabrera and Rowe, 2025</a>). Digital mobility data systematically over-represent some groups and under-represent others, vary across space and time and are sensitive to behavioural change. Without correction, hazard mobility analysis risks misinterpreting platform dynamics as population dynamics. The displacement modelling in Ukraine and the humanitarian applications in Pakistan make explicit that penetration rate adjustment, weighting schemes and validation protocols are not optional technical refinements but necessary conditions for credible inference. DEBIAS therefore provides the statistical architecture that allows climate, conflict and epidemic applications to be analytically comparable and operationally robust.</p>
+<p>Taken together, this body of work reframes climate mobility, conflict displacement and epidemic redistribution as interconnected manifestations of hazard-induced perturbations of mobility systems. It demonstrates empirically that dramatic narratives of permanent exodus often overstate structural transformation, while simultaneously revealing profound short-term spatial inequalities in who moves, where and with what consequences. By integrating geographic data science, bias correction and multi-source validation, this programme builds a scientifically rigorous foundation for real-time mobility intelligence that is directly relevant to humanitarian agencies, national statistical offices and international policy frameworks.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script src="assets/menu.js"></script>

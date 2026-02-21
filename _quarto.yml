@@ -5,6 +5,8 @@ project:
     - index.qmd
     - bio.qmd
     - projects.qmd
+    - migration-sentiment-digital-technology-ai.qmd
+    - human-mobility-and-hazards.qmd
     - papers.qmd
     - courses.qmd
     - blog.qmd
@@ -20,7 +22,7 @@ website:
     pinned: true
     left:
       - href: projects.qmd
-        text: Projects
+        text: Project
       - href: papers.qmd
         text: Publications
       - href: courses.qmd

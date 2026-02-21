@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resources – Francisco Rowe</title>
+<title>Migration Sentiment, Digital Technology and AI – Francisco Rowe</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,39 +65,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
-<style>
-  body {
-    background: #0F2143;
-    color: #ffffff;
-  }
-  h1, h2, h3, h4, h5, h6,
-  .meta,
-  .page-subtitle {
-    color: #ffffff;
-  }
-  .media-card {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.25);
-  }
-  .media-card a,
-  .media-card a:visited {
-    color: #ffffff;
-    text-decoration: underline;
-  }
-  .media-card a:hover,
-  .media-card a:focus-visible {
-    color: #dbe8ff;
-    text-decoration: underline;
-  }
-  .media-grid .meta {
-    color: #D4D4D4;
-    font-size: 0.75rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style>
 
 
 </head>
@@ -140,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Talks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./resources.html" aria-current="page"> 
+    <a class="nav-link" href="./resources.html"> 
 <span class="menu-text">Resources</span></a>
   </li>  
 </ul>
@@ -160,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Resources</h1>
+<h1 class="title">Migration Sentiment, Digital Technology and AI</h1>
 </div>
 
 
@@ -177,37 +144,57 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p class="page-subtitle">
-Data, tools, profiles and platforms.
-</p>
-<div class="media-grid">
-<div class="media-card">
-<p><img src="static/media/resources/count-data-modelling.png" class="img-fluid" alt="Count data modelling resource image"></p>
-<section id="count-data-modelling" class="level3">
-<h3 data-anchor-id="count-data-modelling">Count Data Modelling</h3>
-<p><span class="meta">Methods, examples and code for modelling count outcomes.</span></p>
-<p><a href="https://fcorowe.github.io/countdata_modelling/">Open website</a></p>
+<section id="rationale" class="level2">
+<h2 data-anchor-id="rationale">Rationale</h2>
+<p>Public attitudes towards migration shape electoral outcomes, policy design, integration trajectories and social cohesion. Yet, conventional instruments used to measure such attitudes, particularly surveys, are temporally coarse, spatially aggregated and slow to update. They are poorly suited to capture rapid opinion shifts during crises such as pandemics, refugee inflows or political campaigns.</p>
+<p>At the same time, digital platforms generate vast volumes of user-produced text that encode real-time expressions of political opinion. Advances in natural language processing and machine learning make it possible to extract structured measures of migration-related sentiment from these data at unprecedented temporal and spatial resolution. However, digital trace data are not neutral reflections of public opinion. They are shaped by demographic selection, platform affordances, algorithmic amplification and linguistic bias. In parallel, artificial intelligence is increasingly embedded within migration governance systems including risk scoring, border technologies and automated decision systems. This creates a dual analytical challenge: (i) how to measure migration sentiment rigorously using AI while correcting for bias and (ii) how to understand the feedback effects between digital technologies and public attitudes.</p>
+<p>My research addresses this dual challenge through an integrated programme combining computational social science, geographic data science and AI system development in collaboration with international partners including the International Organization for Migration (IOM-UN Migration).</p>
 </section>
-</div>
-<div class="media-card">
-<p><img src="static/media/resources/binary-logistic-regression.png" class="img-fluid" alt="Binary logistic resource image"></p>
-<section id="binary-logistic-regression" class="level3">
-<h3 data-anchor-id="binary-logistic-regression">Binary Logistic Regression</h3>
-<p><span class="meta">Methods, examples and code for binary outcome modelling.</span></p>
-<p><a href="https://fcorowe.github.io/binary_logistic/">Open website</a></p>
+<section id="overall-research-programme" class="level2">
+<h2 data-anchor-id="overall-research-programme">Overall research programme</h2>
+<p>My work on migration sentiment and digital technology has developed across four interlinked strands:</p>
+<ol type="1">
+<li>Measuring migration sentiment using social media based on migration theory</li>
+<li>Structural and network dynamics of anti-immigration discourse</li>
+<li>Policy translation and ethical AI guidance with IOM-UN Migration</li>
+<li>Multilingual large language model (LLM) classification at planetary scale</li>
+</ol>
+<p>Together, these strands move from feasibility demonstration to scalable AI systems capable of analysing billions of multilingual posts.</p>
 </section>
-</div>
-<div class="media-card">
-<p><img src="static/media/resources/r-package-cim.png" class="img-fluid" alt="CIM package resource image"></p>
-<section id="r-package-cim" class="level3">
-<h3 data-anchor-id="r-package-cim">R Package CIM</h3>
-<p><span class="meta">Code and resources for compositional impact of migration analysis in R.</span></p>
-<p><a href="post/2019-01-31-r-rmarkdown/index.html">Open website</a></p>
+<section id="measuring-and-understanding-migration-sentiment-through-social-media-data" class="level2">
+<h2 data-anchor-id="measuring-and-understanding-migration-sentiment-through-social-media-data">1. Measuring and understanding migration sentiment through social media data</h2>
+<p>Early work established the feasibility of measuring migration sentiment using large-scale social media data. In <a href="https://doi.org/10.1017/dap.2021.38">Rowe et al.&nbsp;(2021)</a>, I analysed over 30 million tweets across five countries to examine immigration sentiment during the early stages of the COVID-19 pandemic. The study demonstrated that migration-related discourse responds to epidemiological shocks and political developments and that sentiment content varies across national contexts. This provided empirical evidence that digital trace data can detect rapid attitudinal shifts that conventional surveys cannot capture in real time.</p>
+<p>Building on social psychology theory, we (<a href="https://doi.org/10.3390/app11209689">Freire-Vidal, Graells-Garrido and Rowe, 2021</a>) developed a theory-grounded framework to classify attitudes towards immigration using Twitter data. Drawing on Intergroup Contact Theory and Integrated Threat Theory, we operationalised empathy and threat as measurable stance categories. The framework combined seed-based labelling, machine learning classification, network interactions and psycholinguistic profiling to identify stance groups and characterise their emotional and semantic structure. This work moved beyond simple sentiment polarity to capture theoretically meaningful attitude dimensions.</p>
+<p>I subsequently extended this research spatially with my PhD student, Matt Mason (<a href="https://doi.org/10.31219/osf.io/sf7u4">preprint</a>). We analysed nearly a decade of data to demonstrate persistent sub-national variation in migration sentiment across Great Britain. This research showed that attitudes towards migration are embedded within local socio-economic and political contexts. It established that digital sentiment measures can be geographically disaggregated to reveal enduring spatial inequalities. We also demonstrated that Twitter-based migration sentiment produces long-term trends comparable to survey-based data.</p>
 </section>
-</div>
-</div>
+<section id="understanding-online-anti-immigration-networks" class="level2">
+<h2 data-anchor-id="understanding-online-anti-immigration-networks">2. Understanding online anti-immigration networks</h2>
+<p>Beyond aggregate sentiment trends, with my PhD student Andrea Nasuto, I examined the structural diffusion of anti-immigration discourse (<a href="https://doi.org/10.1371/journal.pone.0307917">Nasuto and Rowe, 2024</a>). We analysed over 220,000 UK tweets to investigate how anti-immigration narratives spread online. We demonstrated that although anti-immigration users constitute a numerical minority, they form dense and cohesive network structures that enable disproportionate amplification of hostile narratives. This finding challenges the assumption that volume alone drives visibility and highlights the importance of network topology in shaping discourse. This work contributed to understanding how digital infrastructures interact with political polarisation and how small but organised communities can exert outsized influence in online migration debates.</p>
+</section>
+<section id="policy-translation-and-ethical-ai-with-iom-un-migration" class="level2">
+<h2 data-anchor-id="policy-translation-and-ethical-ai-with-iom-un-migration">3. Policy translation and ethical AI with IOM-UN Migration</h2>
+<p>In collaboration with IOM-UN Migration, I translated computational methods into practitioner-oriented guidance. This work contributed to the IOM handbook <em>Harnessing Data Innovation for Migration Policy: A Handbook for Practitioners</em> (<a href="https://publications.iom.int/books/harnessing-data-innovation-migration-policy-handbook-practitioners">Rowe et al., 2021</a>). The handbook provides operational guidance on using social media and digital trace data for migration policy while emphasising transparency, bias awareness and ethical safeguards. This collaboration bridged methodological innovation and institutional practice, embedding digital sentiment analysis within real-world migration governance discussions. It positioned digital data not as a replacement for official statistics but as a complementary monitoring tool when used with appropriate safeguards.</p>
+</section>
+<section id="multilingual-large-language-models-llms-and-scalable-ai-systems" class="level2">
+<h2 data-anchor-id="multilingual-large-language-models-llms-and-scalable-ai-systems">4. Multilingual large language models (LLMs) and scalable AI systems</h2>
+<p>Recent work extends my agenda to multilingual, AI-native classification at planetary scale. With colleagues at Harvard University and Andrea Nasuto (<a href="https://doi.org/10.48550/arXiv.2508.06435">Nasuto, Iacus, Rowe and Jain, 2026</a>), we developed a lightweight open-source LLaMA 3.2-3B fine-tuned framework to classify immigration-related discourse across 13 languages. Unlike prior work relying on BERT-style encoders or translation pipelines, we jointly modelled topic detection and nuanced stance classification (pro, anti, neutral). We demonstrate three key findings: (1) fine-tuning in one or two languages enables reliable cross-lingual transfer for identifying whether content is about immigration; (2) capturing nuanced ideological stance benefits from multilingual exposure during fine-tuning; and (3) incorporating even small volumes of low-resource language data mitigates English-centric pretraining bias and improves classification accuracy.</p>
+<p>By using 4-bit quantisation and LoRA fine-tuning, we achieved 26-168x faster inference and orders-of-magnitude cost reductions relative to proprietary LLMs. This makes it feasible to analyse billions of tweets in near-real time using open, reproducible infrastructure. The framework provides a scalable alternative to commercial API-dependent systems and advances theory on cross-lingual representation in LLMs.</p>
+</section>
+<section id="addressing-important-gaps" class="level2">
+<h2 data-anchor-id="addressing-important-gaps">Addressing important gaps</h2>
+<p>Across these strands, my work has sought to address three persistent gaps in the literature:</p>
+<ol type="1">
+<li>Representativeness and bias. The idea has been to move beyond descriptive sentiment analysis to theory-informed classification and explicit consideration of platform and sampling bias.</li>
+<li>Spatial and network structure. Our core intent has been to integrate geographic and network perspectives to understand local inequalities and amplification dynamics.</li>
+<li>Scalable multilingual AI. We sought to demonstrate that open-source LLMs can generalise migration discourse classification across languages without reliance on costly translation or proprietary systems.</li>
+</ol>
+</section>
+<section id="contributions" class="level2">
+<h2 data-anchor-id="contributions">Contributions</h2>
+<p>We have aimed to make substantive and innovative contributions to the literature by establishing a coherent framework for studying migration sentiment in the digital age. We have provided evidence that digital trace data can provide high-frequency, geographically disaggregated measures of migration attitudes. We showed that theoretical constructs such as empathy and threat can be operationalised computationally. We evidenced that network structure shapes the amplification of anti-immigration narratives. We demonstrated that open-source multilingual LLMs can classify migration discourse at global scale in a cost-efficient and reproducible manner. Collectively, our research has contributed to moving work on migration sentiment analysis from exploratory computational experiments to bias-aware, theoretically grounded and institutionally relevant AI systems capable of informing policy debates in real time.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script src="assets/menu.js"></script>
