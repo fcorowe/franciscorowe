@@ -39,7 +39,7 @@ In collaboration with IOM-UN Migration, I translated computational methods into 
 
 ## 4. Multilingual large language models (LLMs) and scalable AI systems
 
-Recent work extends my agenda to multilingual, AI-native classification at planetary scale. With colleagues at Harvard University and Andrea Nasuto ([Nasuto, Iacus, Rowe and Jain, 2026](https://doi.org/10.48550/arXiv.2508.06435)), we developed a lightweight open-source LLaMA 3.2-3B fine-tuned framework to classify immigration-related discourse across 13 languages. Unlike prior work relying on BERT-style encoders or translation pipelines, we jointly modelled topic detection and nuanced stance classification (pro, anti, neutral). We demonstrate three key findings: (1) fine-tuning in one or two languages enables reliable cross-lingual transfer for identifying whether content is about immigration; (2) capturing nuanced ideological stance benefits from multilingual exposure during fine-tuning; and (3) incorporating even small volumes of low-resource language data mitigates English-centric pretraining bias and improves classification accuracy.
+Recent work extends my agenda to multilingual, AI-native classification at planetary scale. With colleagues at Harvard University and Andrea Nasuto ([Nasuto, Iacus, Rowe and Jain, 2025](https://doi.org/10.48550/arXiv.2508.06435)), we developed a lightweight open-source LLaMA 3.2-3B fine-tuned framework to classify immigration-related discourse across 13 languages. Unlike prior work relying on BERT-style encoders or translation pipelines, we jointly modelled topic detection and nuanced stance classification (pro, anti, neutral). We demonstrate three key findings: (1) fine-tuning in one or two languages enables reliable cross-lingual transfer for identifying whether content is about immigration; (2) capturing nuanced ideological stance benefits from multilingual exposure during fine-tuning; and (3) incorporating even small volumes of low-resource language data mitigates English-centric pretraining bias and improves classification accuracy.
 
 By using 4-bit quantisation and LoRA fine-tuning, we achieved 26-168x faster inference and orders-of-magnitude cost reductions relative to proprietary LLMs. This makes it feasible to analyse billions of tweets in near-real time using open, reproducible infrastructure. The framework provides a scalable alternative to commercial API-dependent systems and advances theory on cross-lingual representation in LLMs.
 
@@ -59,11 +59,11 @@ We have aimed to make substantive and innovative contributions to the literature
 
 Freire-Vidal, Y., Graells-Garrido, E., & Rowe, F. (2021). A framework to understand attitudes towards immigration through Twitter. *Applied Sciences, 11*(20), 9689. [https://doi.org/10.3390/app11209689](https://doi.org/10.3390/app11209689)
 
-Rowe, F. (2021). Using Twitter data to monitor immigration sentiment. *OSF Preprints*. [https://doi.org/10.31219/osf.io/sf7u4](https://doi.org/10.31219/osf.io/sf7u4)
+Rowe, F., Mahony, M., Sievers, N., Rango, M., & Graells-Garrido, E. (2021). Sentiment towards migration during COVID-19: What Twitter data can tell us. *OSF Preprints*. [https://doi.org/10.31219/osf.io/sf7u4](https://doi.org/10.31219/osf.io/sf7u4)
 
 Nasuto, A., & Rowe, F. (2024). Understanding anti-immigration sentiment spreading on Twitter. *PLOS ONE*. [https://doi.org/10.1371/journal.pone.0307917](https://doi.org/10.1371/journal.pone.0307917)
 
-Nasuto, A., Iacus, S., Rowe, F., & Jain, S. (2026). Learning the topic, not the language: How LLMs classify online immigration discourse across languages. *arXiv*. [https://doi.org/10.48550/arXiv.2508.06435](https://doi.org/10.48550/arXiv.2508.06435)
+Nasuto, A., Iacus, S., Rowe, F., & Jain, S. (2025). Learning the topic, not the language: How LLMs classify online immigration discourse across languages. *arXiv (Cornell University)*. [https://doi.org/10.48550/arXiv.2508.06435](https://doi.org/10.48550/arXiv.2508.06435)
 
 Rowe, F., Mahony, M., Graells-Garrido, E., Rango, M., & Sievers, N. (2021). Using Twitter to track immigration sentiment during early stages of the COVID-19 pandemic. *Data & Policy, 3*, E36. [https://doi.org/10.1017/dap.2021.38](https://doi.org/10.1017/dap.2021.38)
 
