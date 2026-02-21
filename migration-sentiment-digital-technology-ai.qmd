@@ -57,14 +57,14 @@ We have aimed to make substantive and innovative contributions to the literature
 
 ## References
 
-Freire-Vidal, Y., Graells-Garrido, E., & Rowe, F. (2021). Theory-grounded classification of attitudes towards immigration from social media data. *Applied Sciences, 11*(20), 9689. [https://doi.org/10.3390/app11209689](https://doi.org/10.3390/app11209689)
+Freire-Vidal, Y., Graells-Garrido, E., & Rowe, F. (2021). A framework to understand attitudes towards immigration through Twitter. *Applied Sciences, 11*(20), 9689. [https://doi.org/10.3390/app11209689](https://doi.org/10.3390/app11209689)
 
-Mason, M., & Rowe, F. (2023). Sub-national migration sentiment dynamics in Great Britain (preprint). *OSF Preprints*. [https://doi.org/10.31219/osf.io/sf7u4](https://doi.org/10.31219/osf.io/sf7u4)
+Rowe, F. (2021). Using Twitter data to monitor immigration sentiment. *OSF Preprints*. [https://doi.org/10.31219/osf.io/sf7u4](https://doi.org/10.31219/osf.io/sf7u4)
 
-Nasuto, A., & Rowe, F. (2024). Structural diffusion of anti-immigration discourse on social media. *PLOS ONE*. [https://doi.org/10.1371/journal.pone.0307917](https://doi.org/10.1371/journal.pone.0307917)
+Nasuto, A., & Rowe, F. (2024). Understanding anti-immigration sentiment spreading on Twitter. *PLOS ONE*. [https://doi.org/10.1371/journal.pone.0307917](https://doi.org/10.1371/journal.pone.0307917)
 
-Nasuto, A., Iacus, S., Rowe, F., & Jain, S. (2026). Multilingual LLM classification of immigration discourse at scale. *arXiv*. [https://doi.org/10.48550/arXiv.2508.06435](https://doi.org/10.48550/arXiv.2508.06435)
+Nasuto, A., Iacus, S., Rowe, F., & Jain, S. (2026). Learning the topic, not the language: How LLMs classify online immigration discourse across languages. *arXiv*. [https://doi.org/10.48550/arXiv.2508.06435](https://doi.org/10.48550/arXiv.2508.06435)
 
-Rowe, F., et al. (2021). Migration sentiment during COVID-19 from social media data. *Data & Policy*. [https://doi.org/10.1017/dap.2021.38](https://doi.org/10.1017/dap.2021.38)
+Rowe, F., Mahony, M., Graells-Garrido, E., Rango, M., & Sievers, N. (2021). Using Twitter to track immigration sentiment during early stages of the COVID-19 pandemic. *Data & Policy, 3*, E36. [https://doi.org/10.1017/dap.2021.38](https://doi.org/10.1017/dap.2021.38)
 
 Rowe, F., et al. (2021). *Harnessing Data Innovation for Migration Policy: A Handbook for Practitioners*. International Organization for Migration. [https://publications.iom.int/books/harnessing-data-innovation-migration-policy-handbook-practitioners](https://publications.iom.int/books/harnessing-data-innovation-migration-policy-handbook-practitioners)
