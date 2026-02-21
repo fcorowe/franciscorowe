@@ -9,7 +9,7 @@ This repository update and migration were completed collaboratively by Francisco
 ## Stack
 
 - Quarto website project (`_quarto.yml`)
-- Python pre-generation for dynamic sections (`scripts/generate_static_fragments.py`)
+- R-powered page generation for selected sections (`blog.qmd`, `papers.qmd`, `talks.qmd`)
 - Netlify deployment via `netlify.toml` + `@quarto/netlify-plugin-quarto`
 
 ## Key Files
@@ -17,24 +17,21 @@ This repository update and migration were completed collaboratively by Francisco
 - `_quarto.yml`: Quarto project config, page list, and output dir (`_site`)
 - `netlify.toml`: Netlify publish settings and Quarto plugin
 - `package.json`: Netlify Quarto plugin dependency
-- `scripts/generate_static_fragments.py`: generates blog/papers/talks HTML fragments and post pages
-- `generated/`: generated include fragments used by Quarto pages
-- `post/`: generated static blog post pages
 - `assets/styles.scss`: Site styling overrides
 - `data/papers_master.csv`: publication source data
 
 ## Local Development
 
-Generate dynamic page fragments and post pages:
-
-```bash
-python3 scripts/generate_static_fragments.py
-```
-
 Render the full site:
 
 ```bash
 quarto render
+```
+
+Render without executing code chunks:
+
+```bash
+quarto render --no-execute
 ```
 
 Preview the built homepage:
