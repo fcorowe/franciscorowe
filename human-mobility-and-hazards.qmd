@@ -14,7 +14,7 @@ The conflict strand advances this approach under conditions of active conflict. 
 
 ## Human mobility and epidemics
 
-The epidemic strand examines how mobility systems were restructured during epidemics. Most of this work has focused on the impacts of the COVID-19 pandemic but its implications have wider applicability. In Britain, we analysed 21 million observations over 18 months ([Rowe et al., 2022](https://doi.org/10.1002/psp.2637)). We showed sustained reductions in movement during high-stringency periods, particularly in dense urban areas, alongside temporary increases in flows from high- to low-density areas. These shifts were transient. Mobility levels rebounded and the national structure of population movement remained largely intact.
+The epidemic strand examines how mobility systems were restructured during epidemics. Most of this work has focused on the impacts of the COVID-19 pandemic but its implications have wider applicability. In Britain, we analysed 21 million observations over 18 months ([Rowe et al., 2023](https://doi.org/10.1002/psp.2637)). We showed sustained reductions in movement during high-stringency periods, particularly in dense urban areas, alongside temporary increases in flows from high- to low-density areas. These shifts were transient. Mobility levels rebounded and the national structure of population movement remained largely intact.
 
 In Spain, administrative register data reveal similar dynamics ([Gonzalez Leonardo et al., 2022](https://doi.org/10.1002/psp.2578)). We estimated a 2.5 per cent decline in internal moves in 2020, unusually large net losses in core cities and gains in rural areas, followed by convergence towards pre-pandemic patterns by late 2020. A complementary policy brief reinforced this evidence that rural gains were measurable but temporary. We did further work on this rural dimension ([Gonzalez Leonardo, Rowe and Fresolone Caparros, 2022](https://doi.org/10.1016/j.jrurstud.2022.11.006)). We showed that inflows concentrated in rural municipalities close to cities and with high prevalence of second homes, with inflows persisting into 2021 while outflows converged to pre-pandemic levels. Expanding this evidence to less developed contexts, we revealed that mobility recorded the sharpest declines and remained below pre-pandemic levels in most high-density and low socio-economic deprivation areas, while low-density and more deprived communities returned to baseline ([Cabrera et al 2025](https://doi.org/10.48550/arXiv.2504.15871)). These differences reflect the scale of the initial mobility shock rather than subsequent recovery rates. Net mobility to urban cores remained consistently below pre-pandemic levels, suggesting a shift in their functional role. By revealing how COVID-19 reinforced mobility-related inequalities, we contribute novel evidence for planners and policymakers seeking to build more inclusive and resilient mobility systems.
 
@@ -28,26 +28,26 @@ Taken together, this body of work reframes climate mobility, conflict displaceme
 
 ## References
 
-Cabrera, A., et al. (2025). Epidemic-era mobility inequalities in less developed contexts. *arXiv*. [https://doi.org/10.48550/arXiv.2504.15871](https://doi.org/10.48550/arXiv.2504.15871)
+Cabrera, A., et al. (2025). Sustained changes to urban mobility after COVID-19 amplified socio-economic inequalities in Latin America. *arXiv (Cornell University)*. [https://doi.org/10.48550/arXiv.2504.15871](https://doi.org/10.48550/arXiv.2504.15871)
 
-Cabrera, A., & Rowe, F. (2025). DEBIAS: Calibrating selective digital traces for demographic inference. *arXiv*. [https://doi.org/10.48550/arXiv.2509.02603](https://doi.org/10.48550/arXiv.2509.02603)
+Cabrera, A., & Rowe, F. (2025). A systematic machine learning approach to measure and assess biases in mobile phone population data. *arXiv (Cornell University)*. [https://doi.org/10.48550/arXiv.2509.02603](https://doi.org/10.48550/arXiv.2509.02603)
 
-Gonzalez Leonardo, M., et al. (2022). Internal mobility restructuring in Spain during COVID-19. *Population, Space and Place*. [https://doi.org/10.1002/psp.2578](https://doi.org/10.1002/psp.2578)
+Gonzalez Leonardo, M., et al. (2022). Understanding patterns of internal migration during the COVID-19 pandemic in Spain. *Population, Space and Place*. [https://doi.org/10.1002/psp.2578](https://doi.org/10.1002/psp.2578)
 
-Gonzalez Leonardo, M., Rowe, F., & Fresolone Caparros, L. (2022). Rural mobility shifts and second-home dynamics during COVID-19. *Journal of Rural Studies*. [https://doi.org/10.1016/j.jrurstud.2022.11.006](https://doi.org/10.1016/j.jrurstud.2022.11.006)
+Gonzalez Leonardo, M., Rowe, F., & Fresolone Caparros, L. (2022). Rural revival? The rise in internal migration to rural areas during the COVID-19 pandemic. Who moved and where? *Journal of Rural Studies*. [https://doi.org/10.1016/j.jrurstud.2022.11.006](https://doi.org/10.1016/j.jrurstud.2022.11.006)
 
-Gonzalez Leonardo, M., & Rowe, F. (2022). International migration disruption during COVID-19 in Spain. *Regional Studies, Regional Science*. [https://doi.org/10.1080/21681376.2022.2125824](https://doi.org/10.1080/21681376.2022.2125824)
+Gonzalez Leonardo, M., & Rowe, F. (2022). Visualizing internal and international migration in the Spanish provinces during the COVID-19 pandemic. *Regional Studies, Regional Science*. [https://doi.org/10.1080/21681376.2022.2125824](https://doi.org/10.1080/21681376.2022.2125824)
 
-Gonzalez Leonardo, M., et al. (2024). Refugee settlement patterns across Europe from digital traces and official statistics. *Population, Space and Place*. [https://doi.org/10.1002/psp.2790](https://doi.org/10.1002/psp.2790)
+Gonzalez Leonardo, M., et al. (2024). Where have Ukrainian refugees gone? Identifying potential settlement areas across European regions integrating digital and traditional geographic data. *Population Space and Place*. [https://doi.org/10.1002/psp.2790](https://doi.org/10.1002/psp.2790)
 
-Gonzalez Leonardo, M., et al. (2024). Immigration recovery patterns in Europe after COVID-19 disruptions. *International Migration Review*. [https://doi.org/10.1177/01979183241242445](https://doi.org/10.1177/01979183241242445)
+Gonzalez Leonardo, M., et al. (2024). Assessing the differentiated impacts of COVID-19 on the immigration flows to Europe. *International Migration Review*. [https://doi.org/10.1177/01979183241242445](https://doi.org/10.1177/01979183241242445)
 
-Graells Garrido, E., & Rowe, F. (2024). Wildfire displacement dynamics in Chile from digital mobility data. *Regional Studies, Regional Science*. [https://doi.org/10.1080/21681376.2024.2407404](https://doi.org/10.1080/21681376.2024.2407404)
+Graells Garrido, E., & Rowe, F. (2024). Identifying the spatial patterns of population displacement during wildfires in Valparaiso, Chile. *Regional Studies Regional Science*. [https://doi.org/10.1080/21681376.2024.2407404](https://doi.org/10.1080/21681376.2024.2407404)
 
-Iradukunda, R., Rowe, F., & Pietrostefani, E. (2025). Bias-corrected subnational displacement estimates during the war in Ukraine. *Humanities and Social Sciences Communications*. [https://doi.org/10.1057/s41599-025-06137-4](https://doi.org/10.1057/s41599-025-06137-4)
+Iradukunda, R., Rowe, F., & Pietrostefani, E. (2025). Estimating internal displacement in Ukraine from high-frequency GPS mobile phone data. *Humanities and Social Sciences Communications*. [https://doi.org/10.1057/s41599-025-06137-4](https://doi.org/10.1057/s41599-025-06137-4)
 
 Pietrostefani, E., et al. (2025). Policy-driven disaster displacement modelling from digital traces and administrative data. *arXiv*. [https://doi.org/10.48550/arXiv.2511.01955](https://doi.org/10.48550/arXiv.2511.01955)
 
-Rowe, F. (2022). Population change during the 2022 Pakistan floods using Meta Facebook data. *Regional Studies, Regional Science*. [https://doi.org/10.1080/21681376.2022.2135458](https://doi.org/10.1080/21681376.2022.2135458)
+Rowe, F. (2022). Using digital footprint data to monitor human mobility and support rapid humanitarian responses. *Regional Studies, Regional Science*. [https://doi.org/10.1080/21681376.2022.2135458](https://doi.org/10.1080/21681376.2022.2135458)
 
-Rowe, F., et al. (2022). Sustained and transient mobility reorganisation in Britain during COVID-19. *Population, Space and Place*. [https://doi.org/10.1002/psp.2637](https://doi.org/10.1002/psp.2637)
+Rowe, F., et al. (2023). Urban exodus? Understanding human mobility in Britain during the COVID-19 pandemic using Meta-Facebook data. *Population, Space and Place*. [https://doi.org/10.1002/psp.2637](https://doi.org/10.1002/psp.2637)
