@@ -1,12 +1,5 @@
 [build]
-  command = "quarto render"
   publish = "_site"
-
-[context.deploy-preview]
-  command = "quarto render"
-
-[context.branch-deploy]
-  command = "quarto render"
 
 [[plugins]]
   package = "@quarto/netlify-plugin-quarto"
