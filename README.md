@@ -14,11 +14,11 @@ This repository update and migration were completed collaboratively by Francisco
 
 ## Key Files
 
-- `/Users/franciscorowe/Library/CloudStorage/Dropbox/Francisco/Research/github_projects/websites/franciscorowe/_quarto.yml`: Quarto project config, page list, and output dir (`_site`)
-- `/Users/franciscorowe/Library/CloudStorage/Dropbox/Francisco/Research/github_projects/websites/franciscorowe/netlify.toml`: Netlify publish settings and Quarto plugin
-- `/Users/franciscorowe/Library/CloudStorage/Dropbox/Francisco/Research/github_projects/websites/franciscorowe/package.json`: Netlify Quarto plugin dependency
-- `/Users/franciscorowe/Library/CloudStorage/Dropbox/Francisco/Research/github_projects/websites/franciscorowe/assets/styles.scss`: Site styling overrides
-- `/Users/franciscorowe/Library/CloudStorage/Dropbox/Francisco/Research/github_projects/websites/franciscorowe/data/papers_master.csv`: publication source data
+- `_quarto.yml`: Quarto project config, page list, and output dir (`_site`)
+- `netlify.toml`: Netlify publish settings and Quarto plugin
+- `package.json`: Netlify Quarto plugin dependency
+- `assets/styles.scss`: Site styling overrides
+- `data/papers_master.csv`: publication source data
 
 ## Local Development
 
