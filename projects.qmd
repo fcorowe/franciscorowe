@@ -61,7 +61,9 @@ Builds scalable multilingual LLM pipelines for policy-relevant monitoring.</span
 
 ### Human Mobility and Hazards
 
-<span class="meta">Measuring place trajectories, mobility shifts and inequality patterns over time.</span>
+<span class="meta">Tracks how climate extremes, conflict and epidemics disrupt mobility systems.<br>
+Combines digital trace data with demographic baselines for near-real-time inference.<br>
+Develops bias-corrected, policy-ready evidence for humanitarian and planning decisions.</span>
 
 [Project description](human-mobility-and-hazards.html)
 :::
