@@ -4,6 +4,8 @@
 
 Source code for [franciscorowe.com](https://franciscorowe.com), built with Quarto and deployed on Netlify.
 
+This repository update and migration were completed collaboratively by Francisco Rowe and Codex.
+
 ## Stack
 
 - Quarto website project (`_quarto.yml`)
