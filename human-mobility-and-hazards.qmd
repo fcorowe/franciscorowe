@@ -25,3 +25,29 @@ We also examined how COVID-19 disrupted international migration systems ([Gonzal
 Running through all three research areas is DEBIAS, the cross-cutting methodological strand that transforms selective digital traces into calibrated demographic inference ([Cabrera and Rowe, 2025](https://doi.org/10.48550/arXiv.2509.02603)). Digital mobility data systematically over-represent some groups and under-represent others, vary across space and time and are sensitive to behavioural change. Without correction, hazard mobility analysis risks misinterpreting platform dynamics as population dynamics. The displacement modelling in Ukraine and the humanitarian applications in Pakistan make explicit that penetration rate adjustment, weighting schemes and validation protocols are not optional technical refinements but necessary conditions for credible inference. DEBIAS therefore provides the statistical architecture that allows climate, conflict and epidemic applications to be analytically comparable and operationally robust.
 
 Taken together, this body of work reframes climate mobility, conflict displacement and epidemic redistribution as interconnected manifestations of hazard-induced perturbations of mobility systems. It demonstrates empirically that dramatic narratives of permanent exodus often overstate structural transformation, while simultaneously revealing profound short-term spatial inequalities in who moves, where and with what consequences. By integrating geographic data science, bias correction and multi-source validation, this programme builds a scientifically rigorous foundation for real-time mobility intelligence that is directly relevant to humanitarian agencies, national statistical offices and international policy frameworks.
+
+## References
+
+Cabrera, A., et al. (2025). Epidemic-era mobility inequalities in less developed contexts. *arXiv*. [https://doi.org/10.48550/arXiv.2504.15871](https://doi.org/10.48550/arXiv.2504.15871)
+
+Cabrera, A., & Rowe, F. (2025). DEBIAS: Calibrating selective digital traces for demographic inference. *arXiv*. [https://doi.org/10.48550/arXiv.2509.02603](https://doi.org/10.48550/arXiv.2509.02603)
+
+Gonzalez Leonardo, M., et al. (2022). Internal mobility restructuring in Spain during COVID-19. *Population, Space and Place*. [https://doi.org/10.1002/psp.2578](https://doi.org/10.1002/psp.2578)
+
+Gonzalez Leonardo, M., Rowe, F., & Fresolone Caparros, L. (2022). Rural mobility shifts and second-home dynamics during COVID-19. *Journal of Rural Studies*. [https://doi.org/10.1016/j.jrurstud.2022.11.006](https://doi.org/10.1016/j.jrurstud.2022.11.006)
+
+Gonzalez Leonardo, M., & Rowe, F. (2022). International migration disruption during COVID-19 in Spain. *Regional Studies, Regional Science*. [https://doi.org/10.1080/21681376.2022.2125824](https://doi.org/10.1080/21681376.2022.2125824)
+
+Gonzalez Leonardo, M., et al. (2024). Refugee settlement patterns across Europe from digital traces and official statistics. *Population, Space and Place*. [https://doi.org/10.1002/psp.2790](https://doi.org/10.1002/psp.2790)
+
+Gonzalez Leonardo, M., et al. (2024). Immigration recovery patterns in Europe after COVID-19 disruptions. *International Migration Review*. [https://doi.org/10.1177/01979183241242445](https://doi.org/10.1177/01979183241242445)
+
+Graells Garrido, E., & Rowe, F. (2024). Wildfire displacement dynamics in Chile from digital mobility data. *Regional Studies, Regional Science*. [https://doi.org/10.1080/21681376.2024.2407404](https://doi.org/10.1080/21681376.2024.2407404)
+
+Iradukunda, R., Rowe, F., & Pietrostefani, E. (2025). Bias-corrected subnational displacement estimates during the war in Ukraine. *Humanities and Social Sciences Communications*. [https://doi.org/10.1057/s41599-025-06137-4](https://doi.org/10.1057/s41599-025-06137-4)
+
+Pietrostefani, E., et al. (2025). Policy-driven disaster displacement modelling from digital traces and administrative data. *arXiv*. [https://doi.org/10.48550/arXiv.2511.01955](https://doi.org/10.48550/arXiv.2511.01955)
+
+Rowe, F. (2022). Population change during the 2022 Pakistan floods using Meta Facebook data. *Regional Studies, Regional Science*. [https://doi.org/10.1080/21681376.2022.2135458](https://doi.org/10.1080/21681376.2022.2135458)
+
+Rowe, F., et al. (2022). Sustained and transient mobility reorganisation in Britain during COVID-19. *Population, Space and Place*. [https://doi.org/10.1002/psp.2637](https://doi.org/10.1002/psp.2637)
