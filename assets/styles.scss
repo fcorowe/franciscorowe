@@ -119,7 +119,7 @@ body.rd-homepage main#quarto-document-content.content {
 }
 
 body.rd-homepage .rd-home > :not(.rd-network):not(.rd-grid):not(.rd-red-marker) {
-  transform: translateY(-20px);
+  transform: translateY(0);
 }
 
 .rd-home {
@@ -139,7 +139,8 @@ body.rd-homepage .rd-home > :not(.rd-network):not(.rd-grid):not(.rd-red-marker) 
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding: clamp(1.3rem, 3.1vw, 2.6rem);
+  padding: clamp(1.6rem, 3.4vw, 3rem);
+  padding-top: clamp(3rem, 7vw, 5.4rem);
   display: grid;
   align-content: center;
   gap: 0.95rem;
@@ -971,7 +972,7 @@ footer {
 
 @media (max-width: 768px) {
   body.rd-homepage .rd-home > :not(.rd-network):not(.rd-grid):not(.rd-red-marker) {
-    transform: translateY(-12px);
+    transform: translateY(0);
   }
 
   .rd-home {
@@ -980,6 +981,7 @@ footer {
     margin-left: 0;
     margin-right: 0;
     padding: 1rem;
+    padding-top: 2rem;
     border-radius: 0;
     border-left: 0;
     border-right: 0;
