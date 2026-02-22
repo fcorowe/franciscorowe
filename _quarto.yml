@@ -1,6 +1,10 @@
 project:
   type: website
   output-dir: _site
+  resources:
+    - favicon.ico
+    - apple-touch-icon.png
+    - assets/favicon.svg
   render:
     - index.qmd
     - bio.qmd
@@ -43,6 +47,11 @@ format:
     theme:
       - flatly
       - assets/styles.scss
+    include-in-header:
+      text: |
+        <link rel="icon" href="/favicon.ico" sizes="any">
+        <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     toc: false
     anchor-sections: false
     smooth-scroll: true
