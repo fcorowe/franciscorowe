@@ -2,7 +2,9 @@ project:
   type: website
   output-dir: _site
   resources:
+    - favicon.ico
     - favicon-v3.ico
+    - apple-touch-icon.png
     - apple-touch-icon-v3.png
     - assets/favicon.svg
   render:
@@ -49,10 +51,11 @@ format:
       - assets/styles.scss
     include-in-header:
       text: |
+        <link rel="icon" href="/favicon.ico?v=4" sizes="any">
+        <link rel="shortcut icon" href="/favicon.ico?v=4" type="image/x-icon">
         <link rel="icon" href="/favicon-v3.ico" sizes="any">
-        <link rel="shortcut icon" href="/favicon-v3.ico" type="image/x-icon">
-        <link rel="icon" href="/assets/favicon.svg?v=3" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="/apple-touch-icon-v3.png">
+        <link rel="icon" href="/assets/favicon.svg?v=4" type="image/svg+xml">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
     toc: false
     anchor-sections: false
     smooth-scroll: true
