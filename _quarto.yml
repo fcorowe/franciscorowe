@@ -16,6 +16,7 @@ project:
 website:
   title: "Francisco Rowe"
   site-url: "https://franciscorowe.com"
+  favicon: assets/favicon.svg
   navbar:
     background: "#f4eee4"
     foreground: "#1f2a37"
