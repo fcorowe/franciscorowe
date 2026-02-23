@@ -32,7 +32,7 @@ format:
             color: #D4D4D4;
             font-size: 0.75rem;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
           }
@@ -71,6 +71,16 @@ format:
 <span class="meta">Code and resources for compositional impact of migration analysis in R.</span>
 
 [Open website](post/2019-01-31-r-rmarkdown/index.html)
+:::
+
+::: {.media-card}
+![](static/media/resources/census-mapping.png){fig-alt="Census mapping resource image"}
+
+### Census Mapping
+
+<span class="meta">Interactive resources and examples for census-based spatial mapping.</span>
+
+[Open website](https://fcorowe.github.io/census-mapping/)
 :::
 
 :::
