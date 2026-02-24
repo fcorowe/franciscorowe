@@ -44,4 +44,14 @@ title: "Courses"
 [Course website](https://gdsl-ul.github.io/san/)
 :::
 
+::: {.media-card}
+![](https://raw.githubusercontent.com/fcorowe/r4ps/main/css.png){fig-alt="Computational Social Science course cover image"}
+
+### Computational Social Science
+
+<span class="meta">Computational methods and digital trace data for social science research and practice.</span>
+
+[Course website](https://www.population-science.net)
+:::
+
 :::
