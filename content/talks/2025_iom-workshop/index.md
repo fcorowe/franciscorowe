@@ -33,5 +33,5 @@ title: Dynamic Estimates of Displacement in Disaster Regions
 url_code: ""
 url_pdf: ""
 url_slides: ""
-url_video: ""
+url_video: "https://youtu.be/uCQ-D_1290s?si=ksbyL4evxdxCMzg9"
 ---
