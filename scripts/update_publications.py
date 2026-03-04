@@ -13,6 +13,7 @@ PUB_ROOT = ROOT / "content" / "publication"
 DATA_DIR = ROOT / "data"
 SCHOLAR_ID = "d8rThGQAAAAJ"
 MANUAL_SCHOLAR_CITES = DATA_DIR / "google_scholar_citations_by_year.csv"
+MANUAL_OVERRIDES = DATA_DIR / "papers_manual_overrides.csv"
 
 
 def norm_title(s: str) -> str:
@@ -324,41 +325,199 @@ def fetch_openalex_works(min_year=2008, max_year=2026):
     return out
 
 
+def fetch_openalex_work_by_title(title: str, year=None) -> dict:
+    if not title:
+        return {}
+
+    params = {"search": title, "per-page": 5}
+    if isinstance(year, int):
+        params["filter"] = f"from_publication_date:{year}-01-01,to_publication_date:{year}-12-31"
+
+    works_url = "https://api.openalex.org/works?" + urllib.parse.urlencode(params)
+    with urllib.request.urlopen(works_url, timeout=30) as r:
+        works_data = json.loads(r.read().decode())
+
+    target = norm_title(title)
+    best = None
+    best_score = -1
+    for w in works_data.get("results", []):
+        wtitle = clean(w.get("display_name", ""))
+        if not wtitle:
+            continue
+        score = 2 if norm_title(wtitle) == target else 1
+        if score > best_score:
+            best = w
+            best_score = score
+        if score == 2:
+            break
+
+    if not best:
+        return {}
+
+    loc = best.get("primary_location") or {}
+    doi = clean_doi(best.get("doi", ""))
+    journal_link = clean(loc.get("landing_page_url", ""))
+    pdf_link = clean(loc.get("pdf_url", ""))
+    if not pdf_link:
+        oa_loc = best.get("best_oa_location") or {}
+        pdf_link = clean(oa_loc.get("pdf_url", ""))
+
+    return {
+        "doi": doi,
+        "journal_link": journal_link,
+        "pdf_link": pdf_link,
+    }
+
+
+def enrich_links_from_web(records: list) -> tuple:
+    cache_path = DATA_DIR / "doi_lookup_cache.json"
+    if cache_path.exists():
+        try:
+            cache = json.loads(cache_path.read_text(encoding="utf-8"))
+        except Exception:
+            cache = {}
+    else:
+        cache = {}
+
+    stats = {"lookups": 0, "cache_hits": 0, "updated": 0, "errors": 0}
+    scholar_q = "scholar.google.com/scholar?q="
+
+    for rec in records:
+        title = clean(rec.get("title", ""))
+        if not title:
+            continue
+
+        year_raw = str(rec.get("year", "")).strip()
+        year = int(year_raw) if year_raw.isdigit() else None
+        doi = clean_doi(rec.get("doi", ""))
+        journal_link = clean(rec.get("journal_link", ""))
+        pdf_link = clean(rec.get("pdf_link", ""))
+
+        needs_lookup = (not doi) or (scholar_q in journal_link) or (not pdf_link)
+        if not needs_lookup:
+            continue
+
+        key = f"{norm_title(title)}|{year_raw}"
+        web = cache.get(key)
+        if web is None:
+            stats["lookups"] += 1
+            try:
+                web = fetch_openalex_work_by_title(title, year=year)
+            except Exception:
+                web = {}
+                stats["errors"] += 1
+            cache[key] = web
+        else:
+            stats["cache_hits"] += 1
+
+        before = (doi, journal_link, pdf_link)
+        web_doi = clean_doi(web.get("doi", "")) if isinstance(web, dict) else ""
+        web_journal = clean(web.get("journal_link", "")) if isinstance(web, dict) else ""
+        web_pdf = clean(web.get("pdf_link", "")) if isinstance(web, dict) else ""
+
+        if web_doi and not doi:
+            doi = web_doi
+        doi_url = f"https://doi.org/{doi}" if doi else ""
+
+        if scholar_q in journal_link and doi_url:
+            journal_link = doi_url
+        elif not journal_link:
+            journal_link = web_journal or doi_url
+
+        if not pdf_link:
+            # Prefer a true PDF URL, then DOI landing page to avoid Scholar links.
+            pdf_link = web_pdf or doi_url
+
+        rec["doi"] = doi
+        rec["journal_link"] = journal_link
+        rec["pdf_link"] = pdf_link
+
+        after = (doi, journal_link, pdf_link)
+        if after != before:
+            stats["updated"] += 1
+
+    cache_path.write_text(json.dumps(cache, indent=2), encoding="utf-8")
+    return records, stats
+
+
+def year_value(v) -> int:
+    s = str(v).strip()
+    return int(s) if s.isdigit() else -1
+
+
 def record_score(rec: dict) -> tuple:
     source_rank = {"local": 3, "openalex_recent": 2, "scholar": 1}.get(rec.get("source", ""), 0)
     has_authors = 1 if clean_text(rec.get("authors", "")) else 0
     has_journal = 1 if clean_text(rec.get("journal", "")) else 0
     has_pdf = 1 if clean(rec.get("pdf_link", "")) else 0
     has_journal_link = 1 if clean(rec.get("journal_link", "")) else 0
-    return (source_rank, has_authors, has_journal, has_pdf, has_journal_link)
+    has_doi = 1 if clean_doi(rec.get("doi", "")) else 0
+    return (source_rank, has_authors, has_journal, has_pdf, has_journal_link, has_doi)
+
+
+def _pick_better(a: dict, b: dict) -> dict:
+    # Keep the most recent record; break ties by metadata completeness.
+    ya, yb = year_value(a.get("year", "")), year_value(b.get("year", ""))
+    if yb > ya:
+        return b
+    if ya > yb:
+        return a
+    return b if record_score(b) > record_score(a) else a
+
+
+def _merge_missing(base: dict, extra: dict) -> dict:
+    out = dict(base)
+    for f in ["authors", "journal", "journal_link", "doi", "pdf_link"]:
+        if not clean(out.get(f, "")) and clean(extra.get(f, "")):
+            out[f] = extra[f]
+
+    # Prefer non-scholar journal links when available.
+    base_link = clean(out.get("journal_link", ""))
+    extra_link = clean(extra.get("journal_link", ""))
+    if base_link and extra_link:
+        if "scholar.google.com/scholar?q=" in base_link and "scholar.google.com/scholar?q=" not in extra_link:
+            out["journal_link"] = extra_link
+
+    if not clean(out.get("source", "")) and clean(extra.get("source", "")):
+        out["source"] = extra["source"]
+    return out
 
 
 def dedupe_records(records: list) -> list:
-    # Prefer DOI matches; if DOI missing, dedupe exact title+year variants.
+    # Stage 1: collapse DOI-identical records while retaining richest metadata.
     by_doi = {}
     no_doi = []
     for r in records:
-        doi = clean_doi(r.get("doi", ""))
+        r = dict(r)
+        r["doi"] = clean_doi(r.get("doi", ""))
+        doi = r["doi"]
         if doi:
             key = doi.lower()
             prev = by_doi.get(key)
-            if prev is None or record_score(r) > record_score(prev):
+            if prev is None:
                 by_doi[key] = r
+            else:
+                best = _pick_better(prev, r)
+                other = r if best is prev else prev
+                by_doi[key] = _merge_missing(best, other)
         else:
             no_doi.append(r)
 
-    by_title_year = {}
+    # Stage 2: collapse title-duplicates and keep the most recent version.
+    by_title = {}
     for r in list(by_doi.values()) + no_doi:
         tkey = norm_title(r.get("title", ""))
-        ykey = str(r.get("year", "")).strip()
-        key = (tkey, ykey)
         if not tkey:
             continue
-        prev = by_title_year.get(key)
-        if prev is None or record_score(r) > record_score(prev):
-            by_title_year[key] = r
+        prev = by_title.get(tkey)
+        if prev is None:
+            by_title[tkey] = r
+        else:
+            best = _pick_better(prev, r)
+            other = r if best is prev else prev
+            by_title[tkey] = _merge_missing(best, other)
 
-    out = list(by_title_year.values())
+    out = list(by_title.values())
     out.sort(key=lambda x: ((x.get("year") or 9999), (x.get("title") or "")))
     return out
 
@@ -375,6 +534,43 @@ def load_manual_scholar_cites() -> dict:
             if y.isdigit() and c.isdigit():
                 out[int(y)] = int(c)
     return out
+
+
+def load_manual_overrides() -> dict:
+    if not MANUAL_OVERRIDES.exists():
+        return {}
+    out = {}
+    with MANUAL_OVERRIDES.open(newline="", encoding="utf-8") as f:
+        r = csv.DictReader(f)
+        for row in r:
+            title = clean(row.get("title", ""))
+            tkey = norm_title(title)
+            if not tkey:
+                continue
+            out[tkey] = {
+                "title": title,
+                "authors": clean(row.get("authors", "")),
+                "journal": clean(row.get("journal", "")),
+                "year": clean(row.get("year", "")),
+                "journal_link": clean(row.get("journal_link", "")),
+                "doi": clean_doi(row.get("doi", "")),
+                "pdf_link": clean(row.get("pdf_link", "")),
+            }
+    return out
+
+
+def apply_manual_overrides(records: list, overrides: dict) -> list:
+    if not overrides:
+        return records
+    for rec in records:
+        tkey = norm_title(rec.get("title", ""))
+        ov = overrides.get(tkey)
+        if not ov:
+            continue
+        for f in ["title", "authors", "journal", "year", "journal_link", "doi", "pdf_link"]:
+            if clean(ov.get(f, "")):
+                rec[f] = ov[f]
+    return records
 
 
 def main():
@@ -406,6 +602,8 @@ def main():
         if p["doi"] and not p.get("journal_link"):
             p["journal_link"] = f"https://doi.org/{p['doi']}"
     papers = dedupe_records(papers)
+    papers, enrich_stats = enrich_links_from_web(papers)
+    papers = apply_manual_overrides(papers, load_manual_overrides())
 
     with (DATA_DIR / "papers_master.csv").open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(
@@ -430,6 +628,10 @@ def main():
                 "scholar_error": scholar_data.get("error", ""),
                 "fallback": "openalex" if (not scholar_data.get("ok")) else "",
                 "scholar_id": SCHOLAR_ID,
+                "doi_web_lookups": enrich_stats.get("lookups", 0),
+                "doi_web_cache_hits": enrich_stats.get("cache_hits", 0),
+                "doi_links_updated": enrich_stats.get("updated", 0),
+                "doi_lookup_errors": enrich_stats.get("errors", 0),
             },
             f,
             indent=2,

@@ -68,10 +68,9 @@ if (nrow(papers) == 0) {
 
 papers$year_num <- suppressWarnings(as.integer(papers$year))
 papers <- papers[!is.na(papers$year_num) & papers$year_num >= 2008 & papers$year_num <= 2026, ]
-papers <- papers[order(is.na(papers$year_num), papers$year_num, papers$title, na.last = TRUE), ]
-papers$paper_no <- seq_len(nrow(papers))
 papers$year_label <- ifelse(is.na(papers$year_num), "n.d.", as.character(papers$year_num))
 papers_display <- papers[order(is.na(papers$year_num), -papers$year_num, papers$title, na.last = TRUE), ]
+papers_display$paper_no <- rev(seq_len(nrow(papers_display)))
 
 ```
 

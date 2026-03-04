@@ -1,8 +1,12 @@
 {
-  "count": 182,
+  "count": 209,
   "local_records": 104,
-  "scholar_ok": false,
-  "scholar_error": "timeout",
-  "fallback": "openalex",
-  "scholar_id": "d8rThGQAAAAJ"
+  "scholar_ok": true,
+  "scholar_error": "",
+  "fallback": "",
+  "scholar_id": "d8rThGQAAAAJ",
+  "doi_web_lookups": 0,
+  "doi_web_cache_hits": 204,
+  "doi_links_updated": 178,
+  "doi_lookup_errors": 0
 }
