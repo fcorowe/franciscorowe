@@ -10,13 +10,13 @@ This repository update and migration were completed collaboratively by Francisco
 
 - Quarto website project (`_quarto.yml`)
 - R-powered page generation for selected sections (`blog.qmd`, `papers.qmd`, `talks.qmd`)
-- Netlify deployment via `netlify.toml` + `@quarto/netlify-plugin-quarto`
+- Netlify deployment from committed static output in `_site`
 
 ## Key Files
 
 - `_quarto.yml`: Quarto project config, page list, and output dir (`_site`)
-- `netlify.toml`: Netlify publish settings and Quarto plugin
-- `package.json`: Netlify Quarto plugin dependency
+- `netlify.toml`: Netlify publish settings and preflight command
+- `scripts/netlify-preflight.sh`: build-time check that `_site` exists
 - `assets/styles.scss`: Site styling overrides
 - `data/papers_master.csv`: publication source data
 
@@ -43,10 +43,13 @@ open _site/index.html
 ## Deployment
 
 - Deploys are triggered by pushes to `main`.
-- Netlify publishes from `_site`.
+- Netlify publishes from `_site` (pre-rendered locally).
+- Netlify runs `bash scripts/netlify-preflight.sh` and does not render Quarto in the cloud.
+- Before pushing content changes, run `quarto render` and commit both source files and updated `_site/`.
 - GitHub Pages is intentionally disabled for this repository.
 
 ## Notes
 
-- `_site/` and `_freeze/` are generated artifacts and ignored by Git.
+- `_freeze/` is generated and ignored by Git.
+- `_site/` is committed on purpose for reliable static deploys.
 - If deployment fails, check the latest Netlify deploy logs first.
