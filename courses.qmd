@@ -45,6 +45,16 @@ title: "Courses"
 :::
 
 ::: {.media-card}
+![](static/media/courses/smds-uruguay-logo.svg){fig-alt="Spatial Data Modelling for Social Scientists logo"}
+
+### Spatial Data Modelling for Social Scientists
+
+<span class="meta">Hands-on spatial data modelling methods and workflows for social science applications.</span>
+
+[Course website](https://fcorowe.github.io/smds_uruguay/)
+:::
+
+::: {.media-card}
 ![](https://raw.githubusercontent.com/fcorowe/r4ps/main/css.png){fig-alt="Computational Social Science course cover image"}
 
 ### Computational Social Science
