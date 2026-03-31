@@ -1,0 +1,55 @@
+---
+title: "DEBIAS Workshop and Symposium 2026"
+subtitle: "Setting standards for bias-adjusted digital mobility data"
+draft: false
+author: "Francisco Rowe"
+date: "2026-03-31"
+categories: ["Events"]
+tags: ["DEBIAS", "Digital mobility data", "Bias adjustment", "Workshop", "Symposium"]
+---
+
+We are welcoming applications for the next **DEBIAS Workshop and Symposium: Setting standards for bias-adjusted digital mobility data**, taking place on the **7th and 8th of July 2026** at the **University of Liverpool, UK**.
+
+## What is DEBIAS?
+
+**DEBIAS** is a project focused on improving the quality, transparency and usability of digitally collected mobility data. As data from mobile phones and digital platforms are increasingly used in research, policy and operational decision-making, questions of bias, representativeness, validation and transparency are becoming ever more important.
+
+More information can be found here: [DEBIAS project information](https://de-bias.github.io/debias/)
+
+This two-day event will bring together researchers, national statistical offices, industry partners and international organisations, including **IOM - UN Migration**, the **Foreign, Commonwealth and Development Office**, and the **Instituto Nacional de Estadistica (INE)**, to explore how we can move from recognising these challenges towards practical standards and solutions for bias-adjusted mobility data.
+
+## Programme
+
+### 7th July 2026
+
+A hands-on technical workshop demonstrating bias adjustment workflows developed within the DEBIAS project.
+
+### 8th July 2026
+
+A symposium on the methodological, governance and ethical dimensions of bias-adjusted mobility indicators.
+
+Confirmed keynote speakers include:
+
+- Esteban Moro, Northeastern University, US
+- Damien Jusselme, Head of Data Science and Analytics, IOM - UN Migration
+
+## Registration
+
+Registration is free, but places are limited. To attend, please apply by the **15th of April 2026** by filling out the following form:
+
+[Apply here](https://forms.cloud.microsoft/pages/responsepage.aspx?id=MVElUymxEECG4UdL_X6AdqlrJ7cc_UNLtjpT5wEFHPdURVE5S1A1OVYzWlZCV1lHRjJNNUNaVlYzWC4u&route=shorturl)
+
+## Lightning Presentations
+
+We welcome expressions of interest from participants who would like to give a **lightning presentation** on ongoing or recent work related to:
+
+- bias evaluation
+- adjustment methodologies
+- validation approaches
+- applied uses of digital mobility data
+
+## Travel Bursaries
+
+A limited number of travel bursaries are available for **Early Career Researchers** to support travel expenses to Liverpool.
+
+Bursary recipients will become part of the **DEBIAS Fellows Network**, contributing to ongoing collaboration, future development of the DEBIAS software package and related research initiatives.
