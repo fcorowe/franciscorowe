@@ -1,0 +1,42 @@
+---
+title: "New ReliefWeb situation report on the Iran conflict"
+subtitle: "Digital trace data analysis for the reporting period 28 February 2026 to 19 March 2026"
+draft: false
+author: "Francisco Rowe"
+date: "2026-04-04"
+categories: ["Publications"]
+tags: ["ReliefWeb", "Iran", "Conflict", "Digital trace data", "Human mobility"]
+---
+
+We have published a new situation report on [ReliefWeb](https://reliefweb.int/report/iran-islamic-republic/situation-report-iran-conflict-digital-trace-data-analysis-experimental-reporting-period-28th-february-2026-19th-march-2026): **_Situation Report: Iran Conflict Digital Trace Data Analysis - Experimental (Reporting period: 28th of February 2026 to 19th of March 2026)_**.
+
+The report was produced by **Francisco Rowe, Carmen Cabrera, Elisabetta Pietrostefani, Matt Mason, Rodgers Iradukunda, Andrea Nasuto and Emiliano Beltran** at the **Geographic Data Science Lab, University of Liverpool**, and was published on **26 March 2026**.
+
+You can read the published article here:
+
+- [ReliefWeb article](https://reliefweb.int/report/iran-islamic-republic/situation-report-iran-conflict-digital-trace-data-analysis-experimental-reporting-period-28th-february-2026-19th-march-2026)
+- [Download the report (PDF)](https://reliefweb.int/attachments/f4de2155-27a0-4703-8b42-e1688780b0f9/FR_CC_EP_SITREP_DigitalTrace.pdf)
+
+## What the report does
+
+Conventional data sources to monitor population displacement in Iran following the outbreak of war on **28 February 2026** are limited by sanctions, active hostilities, information controls and restricted humanitarian access. In this report, we use **digital trace data** as an alternative way to measure likely population dynamics in near real time during the reporting period.
+
+Our analysis uses **Cloudflare HTTPS request data** as the main proxy for relative changes in population presence at the provincial level. Because internet blackouts do not usually affect the entire network uniformly, these data can still provide informative signals of population activity through partial routing, selected networks, brief restoration periods and the continued operation of essential services.
+
+The report is explicitly **experimental**. Our Cloudflare-based estimates capture **relative shifts in population presence across provinces**, rather than flows or absolute counts. To strengthen interpretation, we assess these patterns against **Farsi Wikipedia pageviews** and **Iran Strike Map event data**.
+
+## Main insights
+
+- The estimates indicate early displacement towards border provinces near **Turkey, Armenia and Azerbaijan**.
+- As the conflict evolves, population hotspots become more prominent in **North-central and Eastern provinces**.
+- **Tehran** shows a modest positive population change against its pre-war baseline, consistent with previous research on urban concentration during conflict.
+- **Central and south-western provinces** emerge as likely origins of displacement.
+- The evidence complements **IOM DTM** cross-border data recording approximately **40,000 departures between 3 and 10 March 2026**, primarily towards **Afghanistan, Pakistan, Turkey and Azerbaijan**.
+
+## Why this matters
+
+This report is part of our broader work on using digitally collected data to support near-real-time humanitarian analysis when conventional data systems are delayed, incomplete or inaccessible. The aim is not to replace official statistics or humanitarian reporting, but to provide additional evidence that can help identify emerging displacement dynamics under conditions of crisis.
+
+As we stress in the report, these findings should be interpreted carefully and alongside the stated caveats. Even so, they show the potential of calibrated digital trace data to contribute timely demographic intelligence in fast-moving conflict settings.
+
+A more complete analysis will follow in a subsequent report.
