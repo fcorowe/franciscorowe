@@ -1,24 +1,57 @@
 ---
-title: 'Modelling Count Data in R: A Multilevel Framework'
+title: "Modelling Count Data in R: A Multilevel Framework"
+subtitle: "A quick practical guide to Poisson, zero-inflated and negative binomial mixed models"
 author: "Francisco Rowe"
 date: "2021-01-11"
-output: pdf_document
-categories: R
+categories: ["R"]
 tags:
-- Count data
-- Hierarchial modelling
-- Multilevel modelling
-- R
-- Generalised linear mixed models
-draft: no
+  - Count data
+  - Hierarchical modelling
+  - Multilevel modelling
+  - R
+  - Generalised linear mixed models
+draft: false
 ---
 
+I put this guide together as a practical reference for modelling **count data** in a **multilevel framework** in R. Many of the datasets I work with, especially in human mobility and migration research, involve outcomes that are counts, strongly right-skewed, often overdispersed, and in some cases zero-inflated. That combination makes model choice important.
 
-# A Quick Practical Guide
+The aim of the guide is not to be exhaustive. It is meant to be a quick starting point for people who want to estimate count models in R and need a clear path through the main options and the functions that support them.
 
-One of my research areas of interest revolves around understanding human mobility and migration flows. Key attributes of flow data are that they are counts and a right-skewed, overdispesed and often zero-inflated distribution. And I was interested in measuring the variability in region-specific intercepts and slopes in a multilevel modelling framework in R! So, I decided to test the most commonly used R packages to fit four different variants: Poisson, Zero-inflated Poisson, Negative Binomial and Zero-inflated Negative Binomial models - and I wrote a quick practical guide to do this using three R packages: `glmmTMB()`, `glmer()` or `glmer.nb()`, and `lme4`. I wrote the tweet thread when I did this here:
+## What the guide covers
+
+The tutorial walks through four commonly used model variants:
+
+- Poisson
+- Zero-inflated Poisson
+- Negative binomial
+- Zero-inflated negative binomial
+
+The examples are framed in a **hierarchical modelling** setting, using random intercepts to account for grouped observations. The implementation focuses mainly on `glmmTMB()`, while also pointing to related functions in `lme4`, such as `glmer()` and `glmer.nb()`.
+
+## Why `glmmTMB()`?
+
+The guide gives particular attention to `glmmTMB()` because it offers a useful combination of speed, flexibility and a syntax that feels familiar if you already use `lme4`. That makes it especially helpful when moving beyond standard Poisson specifications into zero-inflated and negative binomial models.
+
+In the notebook, I use the owl chick negotiation dataset included with `glmmTMB()` to illustrate how these models are specified and interpreted. The examples show how to:
+
+- define a mixed-effects count model
+- include offsets
+- estimate zero-inflation explicitly
+- compare negative binomial parameterisations
+- think about overdispersion in practice
+
+## Why this matters
+
+Count data show up everywhere in applied research, but the default modelling choices are often too simplistic for real-world data. Overdispersion, excess zeros and repeated observations within groups can all lead to misleading inference if they are not handled carefully.
+
+This is why I wanted a short, practical guide that could help people move quickly from a basic Poisson model to more appropriate alternatives when the data demand it.
+
+## Read the full guide
+
+You can read the full notebook here:
+
+[Modelling Count Data in R: A Multilevel Framework](https://fcorowe.github.io/countdata_modelling/)
+
+At the time, I also shared the guide in a short thread:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Been modelling count data in a multilevel framework using <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> &amp; decided to put together this quick guide to sort my thoughts &amp; get a list of common model specs, packages &amp; approaches<br><br>Link to the code if you find it useful: <a href="https://t.co/xRhd0Lo9hu">https://t.co/xRhd0Lo9hu</a> <a href="https://t.co/xcD7qC3h7s">pic.twitter.com/xcD7qC3h7s</a></p>&mdash; Francisco (@Fcorowe) <a href="https://twitter.com/Fcorowe/status/1352538995964616708?ref_src=twsrc%5Etfw">January 22, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-If you are interested in the guide, click [HERE](https://fcorowe.github.io/countdata_modelling/)
-

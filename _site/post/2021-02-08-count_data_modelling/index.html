@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>'Modelling Count Data in R: A Multilevel Framework' | Francisco Rowe</title>
+<title>Modelling Count Data in R: A Multilevel Framework | Francisco Rowe</title>
 <style>
 body{font-family:"Source Sans 3","Open Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f5f7;color:#1d1d1f;margin:0;line-height:1.65}
 .post-wrap{max-width:900px;margin:2rem auto;padding:0 1rem}
@@ -32,31 +32,49 @@ a:hover{color:#012f68;text-decoration:underline}
 <main class="post-wrap">
 <article class="post-card">
 <a class="post-back" href="../../blog.html">Back to Blog</a>
-<h1>'Modelling Count Data in R: A Multilevel Framework'</h1>
+<h1>Modelling Count Data in R: A Multilevel Framework</h1>
+<p class="post-subtitle">A quick practical guide to Poisson, zero-inflated and negative binomial mixed models</p>
 
+<div class="post-meta">2021-01-11 • 2 min read</div>
+<p>I put this guide together as a practical reference for modelling <strong>count data</strong> in a <strong>multilevel framework</strong> in R. Many of the datasets I work with, especially in human mobility and migration research, involve outcomes that are counts, strongly right-skewed, often overdispersed, and in some cases zero-inflated. That combination makes model choice important.</p>
+<p>The aim of the guide is not to be exhaustive. It is meant to be a quick starting point for people who want to estimate count models in R and need a clear path through the main options and the functions that support them.</p>
+<h2>What the guide covers</h2>
+<p>The tutorial walks through four commonly used model variants:</p>
+<ul>
+<li>Poisson</li>
+<li>Zero-inflated Poisson</li>
+<li>Negative binomial</li>
+<li>Zero-inflated negative binomial</li>
+</ul>
+<p>The examples are framed in a <strong>hierarchical modelling</strong> setting, using random intercepts to account for grouped observations. The implementation focuses mainly on <code>glmmTMB()</code>, while also pointing to related functions in <code>lme4</code>, such as <code>glmer()</code> and <code>glmer.nb()</code>.</p>
+<h2>Why <code>glmmTMB()</code>?</h2>
+<p>The guide gives particular attention to <code>glmmTMB()</code> because it offers a useful combination of speed, flexibility and a syntax that feels familiar if you already use <code>lme4</code>. That makes it especially helpful when moving beyond standard Poisson specifications into zero-inflated and negative binomial models.</p>
+<p>In the notebook, I use the owl chick negotiation dataset included with <code>glmmTMB()</code> to illustrate how these models are specified and interpreted. The examples show how to:</p>
+<ul>
+<li>define a mixed-effects count model</li>
+<li>include offsets</li>
+<li>estimate zero-inflation explicitly</li>
+<li>compare negative binomial parameterisations</li>
+<li>think about overdispersion in practice</li>
+</ul>
+<h2>Why this matters</h2>
+<p>Count data show up everywhere in applied research, but the default modelling choices are often too simplistic for real-world data. Overdispersion, excess zeros and repeated observations within groups can all lead to misleading inference if they are not handled carefully.</p>
+<p>This is why I wanted a short, practical guide that could help people move quickly from a basic Poisson model to more appropriate alternatives when the data demand it.</p>
+<h2>Read the full guide</h2>
+<p>You can read the full notebook here:</p>
+<p><a href="https://fcorowe.github.io/countdata_modelling/">Modelling Count Data in R: A Multilevel Framework</a></p>
+<p>At the time, I also shared the guide in a short thread:</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Been modelling count data in a multilevel framework using <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> &amp; decided to put together this quick guide to sort my thoughts &amp; get a list of common model specs, packages &amp; approaches<br><br>Link to the code if you find it useful: <a href="https://t.co/xRhd0Lo9hu">https://t.co/xRhd0Lo9hu</a> <a href="https://t.co/xcD7qC3h7s">pic.twitter.com/xcD7qC3h7s</a></p>&mdash; Francisco (@Fcorowe) <a href="https://twitter.com/Fcorowe/status/1352538995964616708?ref_src=twsrc%5Etfw">January 22, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<div class="post-meta">2021-01-11 • 1 min read</div>
-<div id="a-quick-practical-guide" class="section level1">
-<h1>A Quick Practical Guide</h1>
-<p>One of my research areas of interest revolves around understanding human mobility and migration flows. Key attributes of flow data are that they are counts and a right-skewed, overdispesed and often zero-inflated distribution. And I was interested in measuring the variability in region-specific intercepts and slopes in a multilevel modelling framework in R! So, I decided to test the most commonly used R packages to fit four different variants: Poisson, Zero-inflated Poisson, Negative Binomial and Zero-inflated Negative Binomial models - and I wrote a quick practical guide to do this using three R packages: <code>glmmTMB()</code>, <code>glmer()</code> or <code>glmer.nb()</code>, and <code>lme4</code>. I wrote the tweet thread when I did this here:</p>
-<blockquote class="twitter-tweet">
-<p lang="en" dir="ltr">
-Been modelling count data in a multilevel framework using <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> &amp; decided to put together this quick guide to sort my thoughts &amp; get a list of common model specs, packages &amp; approaches<br><br>Link to the code if you find it useful: <a href="https://t.co/xRhd0Lo9hu">https://t.co/xRhd0Lo9hu</a> <a href="https://t.co/xcD7qC3h7s">pic.twitter.com/xcD7qC3h7s</a>
-</p>
-— Francisco (<span class="citation">@Fcorowe</span>) <a href="https://twitter.com/Fcorowe/status/1352538995964616708?ref_src=twsrc%5Etfw">January 22, 2021</a>
-</blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>If you are interested in the guide, click <a href="https://fcorowe.github.io/countdata_modelling/">HERE</a></p>
-</div>
 <section class="post-citation">
 <h2>Suggested citation</h2>
-<p>Francisco Rowe (2021-01-11). 'Modelling Count Data in R: A Multilevel Framework'. <em>Francisco Rowe</em>. <a href="https://franciscorowe.com/post/2021-02-08-count_data_modelling/">https://franciscorowe.com/post/2021-02-08-count_data_modelling/</a></p>
+<p>Francisco Rowe (2021-01-11). Modelling Count Data in R: A Multilevel Framework. <em>Francisco Rowe</em>. <a href="https://franciscorowe.com/post/2021-02-08-count_data_modelling/">https://franciscorowe.com/post/2021-02-08-count_data_modelling/</a></p>
 
 <details>
 <summary>BibTeX</summary>
 <pre><code>@online{rowe202120210208countdatamodelling,
   author = {Francisco Rowe},
-  title = {'Modelling Count Data in R: A Multilevel Framework'},
+  title = {Modelling Count Data in R: A Multilevel Framework},
   year = {2021},
   date = {2021-01-11},
   url = {https://franciscorowe.com/post/2021-02-08-count_data_modelling/}
