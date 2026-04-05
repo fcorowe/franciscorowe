@@ -172,6 +172,58 @@ extract_html_body <- function(html_text) {
   trim(html_text)
 }
 
+post_url <- function(slug) {
+  paste0("https://franciscorowe.com/post/", slug, "/")
+}
+
+normalize_doi <- function(doi) {
+  if (is.na(doi) || !nzchar(trim(doi))) return(NA_character_)
+  doi <- trim(doi)
+  doi <- sub("^https?://(dx\\.)?doi\\.org/", "", doi, ignore.case = TRUE)
+  doi
+}
+
+doi_url <- function(doi) {
+  doi <- normalize_doi(doi)
+  if (is.na(doi)) return(NA_character_)
+  paste0("https://doi.org/", doi)
+}
+
+suggested_citation <- function(title, author, date, slug, doi = NA_character_) {
+  cite_author <- ifelse(is.na(author) || !nzchar(trim(author)), "Francisco Rowe", trim(author))
+  cite_date <- ifelse(is.na(date) || !nzchar(trim(date)), "n.d.", trim(date))
+  cite_title <- ifelse(is.na(title) || !nzchar(trim(title)), "Untitled post", trim(title))
+  cite_url <- post_url(slug)
+  doi_clean <- normalize_doi(doi)
+  if (!is.na(doi_clean)) {
+    return(paste0(cite_author, " (", cite_date, "). ", cite_title, ". Francisco Rowe. https://doi.org/", doi_clean))
+  }
+  paste0(cite_author, " (", cite_date, "). ", cite_title, ". Francisco Rowe. ", cite_url)
+}
+
+suggested_bibtex <- function(title, author, date, slug, doi = NA_character_) {
+  cite_author <- ifelse(is.na(author) || !nzchar(trim(author)), "Francisco Rowe", trim(author))
+  cite_date <- ifelse(is.na(date) || !nzchar(trim(date)), "n.d.", trim(date))
+  cite_year <- ifelse(grepl("^[0-9]{4}", cite_date), substr(cite_date, 1, 4), "XXXX")
+  key_author <- gsub("[^A-Za-z0-9]+", "", strsplit(cite_author, "\\s+")[[1]][length(strsplit(cite_author, "\\s+")[[1]])])
+  key_slug <- gsub("[^A-Za-z0-9]+", "", slug)
+  key <- paste0(tolower(key_author), cite_year, key_slug)
+  url <- post_url(slug)
+  doi_clean <- normalize_doi(doi)
+  fields <- c(
+    paste0("@online{", key, ","),
+    paste0("  author = {", cite_author, "},"),
+    paste0("  title = {", title, "},"),
+    paste0("  year = {", cite_year, "},"),
+    paste0("  date = {", cite_date, "},"),
+    paste0("  url = {", url, "}")
+  )
+  if (!is.na(doi_clean)) {
+    fields <- append(fields, paste0("  doi = {", doi_clean, "}"), after = length(fields) - 1)
+  }
+  c(fields, "}")
+}
+
 normalize_body_html <- function(body_html) {
   if (is.na(body_html) || !nzchar(trim(body_html))) return("<p>Content unavailable.</p>")
   body_html <- gsub("<h1 class=\"title\">.*?</h1>", "", body_html, perl = TRUE)
@@ -185,11 +237,37 @@ normalize_body_html <- function(body_html) {
   body_html
 }
 
-wrap_post_page <- function(body_html, title, date, read_mins) {
+wrap_post_page <- function(body_html, title, subtitle, author, date, read_mins, slug, doi = NA_character_) {
   t <- html_escape(ifelse(is.na(title), "Post", title))
+  s <- html_escape(ifelse(is.na(subtitle), "", subtitle))
   d <- ifelse(is.na(date) || !nzchar(trim(date)), "Date unavailable", date)
   m <- paste0(read_mins, " min read")
   b <- normalize_body_html(body_html)
+  cite_author <- html_escape(ifelse(is.na(author) || !nzchar(trim(author)), "Francisco Rowe", trim(author)))
+  cite_date <- html_escape(ifelse(is.na(date) || !nzchar(trim(date)), "n.d.", trim(date)))
+  cite_title <- html_escape(ifelse(is.na(title) || !nzchar(trim(title)), "Untitled post", trim(title)))
+  cite_url <- post_url(slug)
+  cite_bib <- html_escape(paste(suggested_bibtex(title, author, date, slug, doi), collapse = "\n"))
+  doi_link <- doi_url(doi)
+  doi_badge <- if (!is.na(doi_link)) {
+    paste0(
+      "<div class=\"post-badges\">",
+      "<a class=\"doi-badge\" href=\"", html_escape(doi_link), "\">DOI: ", html_escape(normalize_doi(doi)), "</a>",
+      "</div>"
+    )
+  } else {
+    ""
+  }
+  citation_html <- if (!is.na(doi_link)) {
+    paste0(cite_author, " (", cite_date, "). ", cite_title, ". <em>Francisco Rowe</em>. <a href=\"", html_escape(doi_link), "\">", html_escape(doi_link), "</a>")
+  } else {
+    paste0(cite_author, " (", cite_date, "). ", cite_title, ". <em>Francisco Rowe</em>. <a href=\"", html_escape(cite_url), "\">", html_escape(cite_url), "</a>")
+  }
+  doi_html <- if (!is.na(doi_link)) {
+    paste0("<div class=\"post-citation-doi\"><strong>DOI:</strong> <a href=\"", html_escape(doi_link), "\">", html_escape(normalize_doi(doi)), "</a></div>")
+  } else {
+    ""
+  }
   c(
     "<!DOCTYPE html>",
     "<html lang=\"en\">",
@@ -204,12 +282,21 @@ wrap_post_page <- function(body_html, title, date, read_mins) {
     ".post-back{display:inline-block;margin-bottom:.9rem;color:#023E8A;text-decoration:underline;box-shadow:none;font-weight:700}",
     ".post-back:hover{color:#012f68;text-decoration:underline}",
     "h1{margin:0 0 .35rem;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.15}",
+    ".post-subtitle{margin:0 0 .8rem;color:#6e6e73;font-size:1.05rem;font-weight:400}",
     ".post-meta{color:#6e6e73;font-size:.95rem;margin-bottom:1rem}",
+    ".post-badges{display:flex;gap:.5rem;flex-wrap:wrap;margin:0 0 1rem}",
+    ".doi-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.28rem .62rem;border-radius:999px;background:#e8f1ff;border:1px solid #b9d2ff;color:#0b4aa2;text-decoration:none;font-size:.78rem;font-weight:700;letter-spacing:.01em}",
+    ".doi-badge:hover{background:#dce9ff;color:#083b80;text-decoration:none}",
     "img{max-width:100%;height:auto;border-radius:10px}",
     "pre{overflow:auto;background:#f6f8fa;border:1px solid #e5e7eb;border-radius:10px;padding:.75rem}",
     "blockquote{border-left:3px solid #d2d2d7;padding:.2rem .9rem;margin:1rem 0;color:#2f3b48;background:#fafbfc}",
     "a{color:#023E8A;text-decoration:underline;box-shadow:none;font-weight:700}",
     "a:hover{color:#012f68;text-decoration:underline}",
+    ".post-citation{margin-top:1.6rem;padding:1rem;border:1px solid #d2d2d7;border-radius:14px;background:#f8f9fb}",
+    ".post-citation h2{font-size:1rem;margin:0 0 .55rem}",
+    ".post-citation p{margin:.35rem 0}",
+    ".post-citation-doi{margin:.45rem 0 .6rem;color:#2f3b48}",
+    ".post-citation pre{margin:.6rem 0 0;white-space:pre-wrap}",
     "</style>",
     "</head>",
     "<body>",
@@ -217,8 +304,19 @@ wrap_post_page <- function(body_html, title, date, read_mins) {
     "<article class=\"post-card\">",
     "<a class=\"post-back\" href=\"../../blog.html\">Back to Blog</a>",
     paste0("<h1>", t, "</h1>"),
+    if (nzchar(s)) paste0("<p class=\"post-subtitle\">", s, "</p>") else "",
+    doi_badge,
     paste0("<div class=\"post-meta\">", d, " • ", m, "</div>"),
     b,
+    "<section class=\"post-citation\">",
+    "<h2>Suggested citation</h2>",
+    paste0("<p>", citation_html, "</p>"),
+    doi_html,
+    "<details>",
+    "<summary>BibTeX</summary>",
+    paste0("<pre><code>", cite_bib, "</code></pre>"),
+    "</details>",
+    "</section>",
     "</article>",
     "</main>",
     "</body>",
@@ -226,11 +324,11 @@ wrap_post_page <- function(body_html, title, date, read_mins) {
   )
 }
 
-write_html_copy <- function(html_src, out_file, out_dir, title, date, read_mins) {
+write_html_copy <- function(html_src, out_file, out_dir, title, subtitle, author, date, read_mins, slug, doi = NA_character_) {
   lines <- readLines(html_src, warn = FALSE, encoding = "UTF-8")
   lines <- strip_front_matter(lines)
   body_html <- extract_html_body(paste(lines, collapse = "\n"))
-  page <- wrap_post_page(body_html, title, date, read_mins)
+  page <- wrap_post_page(body_html, title, subtitle, author, date, read_mins, slug, doi)
   writeLines(page, out_file, useBytes = TRUE)
 
   sidecar <- sub("\\.html$", "_files", html_src)
@@ -239,18 +337,18 @@ write_html_copy <- function(html_src, out_file, out_dir, title, date, read_mins)
   }
 }
 
-render_markdown_post <- function(md_src, out_file, title = NA_character_, date = NA_character_, read_mins = 1L) {
+render_markdown_post <- function(md_src, out_file, title = NA_character_, subtitle = NA_character_, author = NA_character_, date = NA_character_, read_mins = 1L, slug = NA_character_, doi = NA_character_) {
   if (!requireNamespace("commonmark", quietly = TRUE)) return(FALSE)
   lines <- readLines(md_src, warn = FALSE, encoding = "UTF-8")
   lines <- strip_front_matter(lines)
   md_text <- paste(lines, collapse = "\n")
   body <- commonmark::markdown_html(md_text)
-  page <- wrap_post_page(body, title, date, read_mins)
+  page <- wrap_post_page(body, title, subtitle, author, date, read_mins, slug, doi)
   writeLines(page, out_file, useBytes = TRUE)
   file.exists(out_file)
 }
 
-publish_post <- function(path, title, slug, date, read_mins) {
+publish_post <- function(path, title, subtitle, author, slug, date, read_mins, doi = NA_character_) {
   out_dir <- file.path("_site", "post", slug)
   out_file <- file.path(out_dir, "index.html")
   dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
@@ -259,15 +357,15 @@ publish_post <- function(path, title, slug, date, read_mins) {
   if (ext %in% c("rmd", "qmd")) {
     html_src <- if (ext == "rmd") sub("\\.[Rr]md$", ".html", path) else sub("\\.[Qq]md$", ".html", path)
     if (file.exists(html_src)) {
-      write_html_copy(html_src, out_file, out_dir, title, date, read_mins)
+      write_html_copy(html_src, out_file, out_dir, title, subtitle, author, date, read_mins, slug, doi)
       return(file.exists(out_file))
     }
-    return(render_markdown_post(path, out_file, title, date, read_mins))
+    return(render_markdown_post(path, out_file, title, subtitle, author, date, read_mins, slug, doi))
   }
 
   if (basename(path) == "index.md") {
     copy_support_dir(dirname(path), out_dir)
-    return(render_markdown_post(path, out_file, title, date, read_mins))
+    return(render_markdown_post(path, out_file, title, subtitle, author, date, read_mins, slug, doi))
   }
 
   FALSE
@@ -276,6 +374,9 @@ publish_post <- function(path, title, slug, date, read_mins) {
 posts <- lapply(post_files, function(path) {
   front <- get_front_matter(path)
   title <- extract_field(front, "title")
+  subtitle <- extract_field(front, "subtitle")
+  author <- extract_field(front, "author")
+  doi <- extract_field(front, "doi")
   date <- extract_field(front, "date")
   summary <- first_non_empty(c(
     extract_field(front, "summary"),
@@ -294,6 +395,9 @@ posts <- lapply(post_files, function(path) {
   slug <- post_slug(path)
   data.frame(
     title = title,
+    subtitle = subtitle,
+    author = author,
+    doi = doi,
     date = date_clean,
     slug = slug,
     source_path = path,
@@ -307,9 +411,9 @@ posts <- do.call(rbind, posts)
 posts <- posts[!duplicated(posts$slug), ]
 title_clean <- trimws(posts$title)
 posts <- posts[nzchar(title_clean) & tolower(title_clean) != "untitled", ]
-published <- vapply(
+  published <- vapply(
   seq_len(nrow(posts)),
-  function(i) publish_post(posts$source_path[i], posts$title[i], posts$slug[i], posts$date[i], posts$read_mins[i]),
+  function(i) publish_post(posts$source_path[i], posts$title[i], posts$subtitle[i], posts$author[i], posts$slug[i], posts$date[i], posts$read_mins[i], posts$doi[i]),
   logical(1)
 )
 posts <- posts[published, ]

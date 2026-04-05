@@ -1,0 +1,29 @@
+---
+title: "When good work doesn't travel"
+subtitle: "the invisible cost of locally grounded knowledge"
+draft: false
+author: "Francisco Rowe"
+date: "2026-04-05"
+categories: ["reflections"]
+tags: ["Teaching", "Knowledge translation", "Policy", "Uruguay", "Reflections"]
+---
+
+Last week I was in Uruguay, teaching at the Universidad de la Republica. The students I worked with were unusual, not the typical undergraduate or MSc cohort that I normally encounter. Most were already embedded in practice: academics and people working in high-profile roles across ministries in Uruguay, navigating real policy problems. Real business, and it was fascinating.
+
+The difference was immediately apparent. The students were sharp. They asked probing questions. They were working on interesting projects using novel data sources, such as PedidosYa. They pushed back on methodological assumptions and demonstrated a depth of contextual understanding that is often absent even in advanced academic settings. The quality of intellectual engagement was striking.
+
+Yet, as the week progressed, an uncomfortable question kept surfacing: **why does this level of intellectual quality not translate more visibly into academic outputs, broader innovation or contributions that circulate globally?**
+
+A pattern became clear through conversations with students and academics I had the opportunity to speak with. Their work was deeply applied and grounded in specific institutional contexts, focused on solving concrete local problems. This gave it immediate relevance and, in many cases, direct policy impact. But it also constrained how problems were framed. Questions remained local. Framing remained specific. Work rarely scaled conceptually beyond the case at hand.
+
+As a result, much of this high-quality work did not travel. It did not enter academic journals, nor did it feed into broader theoretical or comparative debates. Not because it lacked rigour or insight, but because it was not positioned to speak beyond its immediate context.
+
+This exposed a structural tension. Academic systems reward generalisation, abstraction and global framing. Practice-oriented environments reward specificity, timeliness and direct applicability. These are not the same incentives, and they often pull in opposing directions. The consequence is that some of the most impactful work, particularly within government and policy settings, remains largely invisible in academic spaces. It is produced, it matters, and then it disappears into grey literature or institutional memory.
+
+The more uncomfortable reflection, though, is this: the problem is not that this work is not being published. It is that we lack effective mechanisms to translate locally grounded, high-impact work into forms that can circulate, accumulate and contribute to broader knowledge systems.
+
+The question is not whether this work should become "more academic". It is how we build bridges that allow it to travel without losing the very qualities that make it valuable in the first place. Specificity, contextual embeddedness and direct applicability are not weaknesses to be edited out. They are precisely what makes this kind of work trustworthy and actionable. Any bridge-building effort that flattens those qualities in pursuit of generalisability has already failed.
+
+What we need, and what I left Uruguay thinking about, are new forms of knowledge translation: ways of connecting the local and the global that do not require practitioners to abandon the conditions that made their work meaningful. That is a challenge for institutions, journals, funding bodies and researchers alike. It is also, I think, one of the more urgent and underappreciated problems in how we organise the production and circulation of knowledge today.
+
+*I am still working through what those bridges might look like in practice. But the conversation in Montevideo made clear that the demand for them is real.*

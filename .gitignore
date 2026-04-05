@@ -6,6 +6,7 @@
 Thumbs.db
 /public/
 /resources/
+/tmp/
 
 /.quarto/
 /_freeze/

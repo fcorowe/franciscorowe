@@ -1,0 +1,34 @@
+name: Zenodo DOI Scaffold
+
+on:
+  workflow_dispatch:
+
+jobs:
+  stage-post-metadata:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build Zenodo candidate list
+        run: python scripts/zenodo_stage_post.py
+
+      - name: Upload staged metadata artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: zenodo-post-candidates
+          path: tmp/zenodo-post-candidates.json
+
+      - name: Next step placeholder
+        run: |
+          echo "Zenodo DOI workflow scaffold is ready."
+          echo "Future implementation steps:"
+          echo "1. Add archive: zenodo in post front matter."
+          echo "2. Store ZENODO_ACCESS_TOKEN as a GitHub secret."
+          echo "3. Replace this placeholder with API upload + DOI write-back steps."
