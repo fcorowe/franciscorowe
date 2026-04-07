@@ -1,0 +1,49 @@
+---
+title: "On scale, sustainability and the organisational demands of successful research"
+subtitle: "Visit to WorldPop, Southampton"
+draft: false
+author: "Francisco Rowe"
+date: "2026-04-07"
+categories: ["reflections"]
+tags: ["Research leadership", "WorldPop", "Management", "Funding", "Reflections"]
+---
+
+What does it take to build a globally influential research programme, and what does it cost to sustain one? A recent visit to WorldPop offered a sharper answer than most management textbooks.
+
+WorldPop has done something technically remarkable: produce annually updated, globally granular population estimates at a scale and resolution that governments, international organisations and researchers worldwide now routinely depend upon. The technical achievement is well understood. What receives far less attention, and is arguably far more instructive, is the organisational machinery required to sustain that level of output year after year.
+
+I spent time recently with the WorldPop team in Southampton, and came away with four observations that I think apply well beyond their specific context.
+
+## On leadership capacity
+
+Research groups often grow faster than their managerial capacity. The transition from independent researcher to organisational leader is genuinely non-trivial. Academic training does not prepare people to manage rapidly growing or large teams, coordinate budgets across multiple simultaneous projects, or build institutional processes that outlast any single individual.
+
+The almost inevitable result is a period of organisational friction, involving unclear roles, uneven workloads and dissatisfaction among staff who joined for the science. This phase is not avoidable, but it can be temporary if addressed deliberately. Moving towards a team-based structure, with defined team leads and reduced dependence on a single director, may help stabilise operations.
+
+My conclusion here is that scaling research groups requires intentional investment in leadership capability, and that this is not just a matter of scientific output.
+
+## On structural fragility
+
+Growth creates a paradox that few research leaders discuss openly. Success in attracting funding allows expansion. Expansion increases exposure to funding volatility. Beyond a certain scale, the primary organisational concern shifts from producing research to maintaining employment for a large team.
+
+That is not a marginal observation. It fundamentally reshapes incentives, often nudging groups towards continuity over risk and novelty. A more robust model requires diversification of funding streams and, where possible, core-funded positions that reduce systemic exposure. Without that structural shift, large research infrastructures remain perpetually vulnerable to external shocks.
+
+## On operational clarity
+
+Here WorldPop offers a strong example of pragmatic design. Thematic teams with explicit leads, combined with active cross-team collaboration, reduce coordination costs substantially. Equally notable is their transparent workload allocation system through a matrix mapping individuals to projects, with time commitments reviewed quarterly.
+
+This is a simple intervention with substantial effects. It improves visibility, aligns expectations and allows for dynamic reallocation of effort as priorities shift. Such operational structures are a prerequisite for working at scale.
+
+## On the critical gap
+
+The final reflection is about the challenge of establishing a formal system to evaluate and prioritise research ideas. Creating a structured pipeline for idea generation, testing and selection is hard. In high-performing business organisations, idea selection is not normally left to ad hoc discussions. It is governed by explicit criteria, typically balancing scientific novelty, feasibility and potential impact.
+
+Without such a system, there is a risk of path dependency, where existing projects dominate attention and genuinely innovative ideas struggle to emerge. However, establishing such a formal evaluation framework in academic institutions is tricky given the decentralised organisational structures we have within research teams. After all, we are all independent researchers, and that is usually why we are in academic jobs in the first place.
+
+## What this means
+
+The success of large-scale research programmes is not determined solely by technical capability or scientific vision. It depends equally on organisational design, leadership structures and strategic management of uncertainty. There is a tendency in academia to treat these as secondary concerns. We probably should not.
+
+For my own work, the implications are immediate. Leadership must be deliberate and incorporated as a continuous reflective process. Sustainability requires a portfolio approach to funding. Operational systems must be explicit, transparent and regularly revised. Research ideas must be subjected to systematic evaluation. Without this, scale risks becoming inertia rather than progress.
+
+**This visit was a useful reminder that building successful research infrastructures is not just an intellectual challenge. It is, inescapably, an organisational one.**
