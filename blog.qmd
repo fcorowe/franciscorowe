@@ -35,8 +35,22 @@ format:
             color: #D4D4D4;
             font-size: 0.75rem;
           }
+          .blog-subscribe {
+            margin: 0.75rem 0 1.1rem;
+            font-size: 0.95rem;
+          }
+          .blog-subscribe a,
+          .blog-subscribe a:visited {
+            color: #dbe8ff;
+            text-decoration: underline;
+            font-weight: 700;
+          }
         </style>
 ---
+
+::: {.blog-subscribe}
+Subscribe via RSS: [https://franciscorowe.com/blog.xml](https://franciscorowe.com/blog.xml)
+:::
 
 ```{r}
 #| echo: false

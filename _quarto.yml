@@ -40,9 +40,12 @@ website:
         text: Talks
       - href: resources.qmd
         text: Resources
+    right:
+      - href: blog.xml
+        text: RSS
   page-footer:
     left: "© 2026 Francisco Rowe"
-    right: "<i class='bi bi-code-slash' aria-hidden='true'></i> Built with Quarto + R + Codex!"
+    right: "<a href='/blog.xml'>RSS Feed</a> · <i class='bi bi-code-slash' aria-hidden='true'></i> Built with Quarto + R + Codex!"
 
 format:
   html:
