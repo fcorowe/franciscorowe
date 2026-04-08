@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Francisco Rowe Blog</title>
+  <link>https://franciscorowe.com/blog.html</link>
+  <description>Blog posts by Francisco Rowe</description>
+  <language>en-gb</language>
+  <lastBuildDate>Tue, 07 Apr 2026 00:00:00 GMT</lastBuildDate>
+  <item>
+    <title>On scale, sustainability and the organisational demands of successful research</title>
+    <link>https://franciscorowe.com/post/2026-04-07-worldpop-scale-sustainability/</link>
+    <guid isPermaLink="true">https://franciscorowe.com/post/2026-04-07-worldpop-scale-sustainability/</guid>
+    <pubDate>Tue, 07 Apr 2026 00:00:00 GMT</pubDate>
+    <description>Visit to WorldPop, Southampton</description>
+  </item>
+  <item>
+    <title>When good work doesn&apos;t travel</title>
+    <link>https://franciscorowe.com/post/2026-04-05-when-good-work-doesnt-travel/</link>
+    <guid isPermaLink="true">https://franciscorowe.com/post/2026-04-05-when-good-work-doesnt-travel/</guid>
+    <pubDate>Sun, 05 Apr 2026 00:00:00 GMT</pubDate>
+    <description>the invisible cost of locally grounded knowledge</description>
+  </item>
+  <item>
+    <title>New ReliefWeb situation report on the Iran conflict</title>
+    <link>https://franciscorowe.com/post/2026-04-04-reliefweb-iran-digital-trace-report/</link>
+    <guid isPermaLink="true">https://franciscorowe.com/post/2026-04-04-reliefweb-iran-digital-trace-report/</guid>
+    <pubDate>Sat, 04 Apr 2026 00:00:00 GMT</pubDate>
+    <description>Digital trace data analysis for the reporting period 28 February 2026 to 19 March 2026</description>
+  </item>
+  <item>
+    <title>DEBIAS Workshop and Symposium 2026</title>
+    <link>https://franciscorowe.com/post/2026-03-31-debias-workshop-symposium/</link>
+    <guid isPermaLink="true">https://franciscorowe.com/post/2026-03-31-debias-workshop-symposium/</guid>
+    <pubDate>Tue, 31 Mar 2026 00:00:00 GMT</pubDate>
+    <description>Setting standards for bias-adjusted digital mobility data</description>
+  </item>
+  <item>
+    <title>Postdoctoral Research Associate in Geographic Data Science</title>
+    <link>https://franciscorowe.com/post/gds-post/</link>
+    <guid isPermaLink="true">https://franciscorowe.com/post/gds-post/</guid>
+    <pubDate>Tue, 15 Oct 2024 00:00:00 GMT</pubDate>
+    <description>![](pdra-gds-socialhealth.png) We are expanding! We are looking for a new Postdoctoral Research Associate in Geographic Data Science to join us at the Geographic Data Science Lab at the University of Liverpool (UoL). This is one of various positions ...</description>
+  </item>
+  <item>
+    <title>Publication in the Science in Parliament Magazine</title>
+    <link>https://franciscorowe.com/post/2024-10-03-parliament-article/</link>
+    <guid isPermaLink="true">https://franciscorowe.com/post/2024-10-03-parliament-article/</guid>
+    <pubDate>Thu, 03 Oct 2024 00:00:00 GMT</pubDate>
+    <description>Geographic data science for policy research and impact</description>
+  </item>
+  <item>
+    <title>The role of social media and local deprivation in UK anti-immigration riots</title>
+    <link>https://franciscorowe.com/post/uk-antimigration/</link>
+    <guid isPermaLink="true">https://franciscorowe.com/post/uk-antimigration/</guid>
+    <pubDate>Mon, 26 Aug 2024 00:00:00 GMT</pubDate>
+    <description>Francisco Rowe and Matt Mason The UK has recently experienced a wave of anti-migrant and Islamophobic riots. Towns and cities across England and Northern Ireland have seen large gatherings of rioters clash with police and hundreds of arrests ...</description>
+  </item>
+  <item>
+    <title>Fully Funded PhD studentship</title>
+    <link>https://franciscorowe.com/post/2024-06-18-phd-studentship/</link>
+    <guid isPermaLink="true">https://franciscorowe.com/post/2024-06-18-phd-studentship/</guid>
+    <pubDate>Tue, 18 Jun 2024 00:00:00 GMT</pubDate>
+    <description>Safeguarding urban communities: Using data science to determine the impact of the spatial structure of urban activities and residential segregation on the spreading of infectious diseases</description>
+  </item>
+  <item>
+    <title>Data Innovation in Demography, Migration and Human Mobility</title>
+    <link>https://franciscorowe.com/post/2022-04-17-jrc_report/</link>
+    <guid isPermaLink="true">https://franciscorowe.com/post/2022-04-17-jrc_report/</guid>
+    <pubDate>Sun, 17 Apr 2022 00:00:00 GMT</pubDate>
+    <description>New Report by the European Commission Joint Research Centre</description>
+  </item>
+  <item>
+    <title>Fitting Logistic Regression with Aggregate Data in R</title>
+    <link>https://franciscorowe.com/post/2021-10-16-aggregate_logistic_regression/</link>
+    <guid isPermaLink="true">https://franciscorowe.com/post/2021-10-16-aggregate_logistic_regression/</guid>
+    <pubDate>Sat, 16 Oct 2021 00:00:00 GMT</pubDate>
+    <description>Example Using Simulated Migration Data</description>
+  </item>
+  <item>
+    <title>Modelling Count Data in R: A Multilevel Framework</title>
+    <link>https://franciscorowe.com/post/2021-02-08-count_data_modelling/</link>
+    <guid isPermaLink="true">https://franciscorowe.com/post/2021-02-08-count_data_modelling/</guid>
+    <pubDate>Mon, 11 Jan 2021 00:00:00 GMT</pubDate>
+    <description>A quick practical guide to Poisson, zero-inflated and negative binomial mixed models</description>
+  </item>
+  <item>
+    <title>Mapping The Impact of Internal Migration Across Europe</title>
+    <link>https://franciscorowe.com/post/2020-02-08-eu_netmigration_map/</link>
+    <guid isPermaLink="true">https://franciscorowe.com/post/2020-02-08-eu_netmigration_map/</guid>
+    <pubDate>Sat, 08 Feb 2020 00:00:00 GMT</pubDate>
+    <description># Net Internal Migration Rate Across Europe At the end of last year, we published a paper assessing the impact of internal migration on redistributing population within European countries. Specifically we assessed the impact of internal migration on ...</description>
+  </item>
+  <item>
+    <title>Introducing the R Package CIM</title>
+    <link>https://franciscorowe.com/post/2019-01-31-r-rmarkdown/</link>
+    <guid isPermaLink="true">https://franciscorowe.com/post/2019-01-31-r-rmarkdown/</guid>
+    <pubDate>Fri, 11 Oct 2019 00:00:00 GMT</pubDate>
+    <description># R Markdown This post introduces our recently published R package, CIM, to measure the impacts of migration on local population structures. We developed the methodology in this [paper](https://doi.org/10.1080/00324728.2017.1416155) in 2018. This paper is one of the top ...</description>
+  </item>
+  <item>
+    <title>Migration of Young Human Capital?</title>
+    <link>https://franciscorowe.com/post/si_post/</link>
+    <guid isPermaLink="true">https://franciscorowe.com/post/si_post/</guid>
+    <pubDate>Mon, 23 Oct 2017 00:00:00 GMT</pubDate>
+    <description>Introducing our Special Issue</description>
+  </item>
+  <item>
+    <title>How do we define functional labour market areas?</title>
+    <link>https://franciscorowe.com/post/llma_post/</link>
+    <guid isPermaLink="true">https://franciscorowe.com/post/llma_post/</guid>
+    <pubDate>Thu, 23 Feb 2017 00:00:00 GMT</pubDate>
+    <description>Introducing a new method</description>
+  </item>
+</channel>
+</rss>

@@ -6,6 +6,7 @@ format:
   html:
     include-in-header:
       text: |
+        <link rel="alternate" type="application/rss+xml" title="Francisco Rowe Blog RSS" href="https://franciscorowe.com/blog.xml">
         <style>
           body {
             background: #0F2143;
@@ -435,4 +436,67 @@ if (nrow(posts) == 0) {
   }
   cat("</ul>\n")
 }
+
+xml_escape <- function(x) {
+  if (is.na(x)) return("")
+  x <- gsub("&", "&amp;", x, fixed = TRUE)
+  x <- gsub("<", "&lt;", x, fixed = TRUE)
+  x <- gsub(">", "&gt;", x, fixed = TRUE)
+  x <- gsub("\"", "&quot;", x, fixed = TRUE)
+  x <- gsub("'", "&apos;", x, fixed = TRUE)
+  x
+}
+
+to_rfc822 <- function(date_str) {
+  if (is.na(date_str) || !nzchar(trim(date_str))) return(NA_character_)
+  dt <- as.POSIXct(date_str, tz = "UTC")
+  if (is.na(dt)) return(NA_character_)
+  format(dt, "%a, %d %b %Y %H:%M:%S GMT", tz = "UTC")
+}
+
+rss_out <- file.path("_site", "blog.xml")
+dir.create(dirname(rss_out), recursive = TRUE, showWarnings = FALSE)
+
+if (nrow(posts) > 0) {
+  item_xml <- vapply(seq_len(nrow(posts)), function(i) {
+    item_link <- post_url(posts$slug[i])
+    item_title <- xml_escape(posts$title[i])
+    item_desc <- xml_escape(posts$summary[i])
+    item_date <- to_rfc822(posts$date[i])
+    if (is.na(item_date)) item_date <- format(Sys.time(), "%a, %d %b %Y %H:%M:%S GMT", tz = "UTC")
+    paste0(
+      "  <item>\n",
+      "    <title>", item_title, "</title>\n",
+      "    <link>", item_link, "</link>\n",
+      "    <guid isPermaLink=\"true\">", item_link, "</guid>\n",
+      "    <pubDate>", item_date, "</pubDate>\n",
+      "    <description>", item_desc, "</description>\n",
+      "  </item>"
+    )
+  }, character(1))
+} else {
+  item_xml <- character(0)
+}
+
+channel_pubdate <- if (nrow(posts) > 0 && !is.na(to_rfc822(posts$date[1]))) {
+  to_rfc822(posts$date[1])
+} else {
+  format(Sys.time(), "%a, %d %b %Y %H:%M:%S GMT", tz = "UTC")
+}
+
+rss_lines <- c(
+  "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+  "<rss version=\"2.0\">",
+  "<channel>",
+  "  <title>Francisco Rowe Blog</title>",
+  "  <link>https://franciscorowe.com/blog.html</link>",
+  "  <description>Blog posts by Francisco Rowe</description>",
+  "  <language>en-gb</language>",
+  paste0("  <lastBuildDate>", channel_pubdate, "</lastBuildDate>"),
+  item_xml,
+  "</channel>",
+  "</rss>"
+)
+
+writeLines(rss_lines, rss_out, useBytes = TRUE)
 ```
