@@ -184,6 +184,37 @@ ul.task-list li input[type="checkbox"] {
   .resource-visual-stage-label.is-right {
     right: 0.8rem;
   }
+  .resource-story-visual > p {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    height: 100%;
+  }
+  .resource-story-visual > p > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 0;
+    filter: saturate(0.94) contrast(1.04);
+    transform: scale(1.03);
+  }
+  .resource-story-visual .resource-visual-note {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.34);
+  }
+  .resource-story-caption {
+    position: absolute;
+    right: 0.8rem;
+    bottom: 0.8rem;
+    left: 0.8rem;
+    z-index: 4;
+    color: #ffffff;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.35;
+    text-shadow: 0 3px 14px rgba(0, 0, 0, 0.42);
+    text-transform: uppercase;
+  }
   .resource-emphasis-band {
     position: absolute;
     top: 17%;
@@ -328,6 +359,16 @@ ul.task-list li input[type="checkbox"] {
 
 
 <div class="media-grid">
+<div class="media-card resource-card">
+<div class="resource-visual resource-story-visual" aria-hidden="true">
+<p><img src="assets/stories/iran-conflict-population-redistribution/war-relative-index-maps.png" class="img-fluid" alt=""> <span class="resource-visual-note">interactive story</span> <span class="resource-story-caption">Conflict, mobility, and proxy population signals</span></p>
+</div>
+<section id="iran-conflict-and-population-redistribution" class="level3">
+<h3 data-anchor-id="iran-conflict-and-population-redistribution">Iran Conflict and Population Redistribution</h3>
+<p><span class="meta">Scroll-based narrative on conflict, mobility, and proxy population signals from the Iran sitrep.</span></p>
+<p><a href="iran-conflict-population-redistribution.html">Open story</a></p>
+</section>
+</div>
 <div class="media-card resource-card">
 <div class="resource-visual" aria-hidden="true" data-scene="count" data-palette="#778dff,#bf7bff,#ff6f91,#ffd166" data-seed="11" style="--panel-bg-a: #05070d; --panel-bg-b: #0f1630; --panel-glow-a: rgba(106, 114, 255, 0.30); --panel-glow-b: rgba(255, 89, 152, 0.20); --panel-glow-c: rgba(255, 191, 94, 0.16);">
 <p><span class="resource-visual-note">count distribution</span></p>
