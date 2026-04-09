@@ -78,9 +78,21 @@ ul.task-list li input[type="checkbox"] {
   .page-subtitle {
     color: #ffffff;
   }
+  .resource-intro {
+    max-width: 62ch;
+    color: #dbe8ff;
+    margin-bottom: 1.35rem;
+  }
+  .resource-intro > p {
+    margin: 0;
+  }
   .media-card {
     background: rgba(255, 255, 255, 0.06);
     border-color: rgba(255, 255, 255, 0.25);
+  }
+  .resource-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
   }
   .media-card a,
   .media-card a:visited {
@@ -96,9 +108,147 @@ ul.task-list li input[type="checkbox"] {
     color: #D4D4D4;
     font-size: 0.75rem;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+  .resource-visual {
+    position: relative;
+    height: 166px;
+    overflow: hidden;
+    isolation: isolate;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(145deg, var(--panel-bg-a, #05070d), var(--panel-bg-b, #0f1630));
+  }
+  .resource-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(circle at 18% 22%, var(--panel-glow-a, rgba(123, 97, 255, 0.3)), transparent 32%),
+      radial-gradient(circle at 82% 34%, var(--panel-glow-b, rgba(255, 89, 152, 0.18)), transparent 34%),
+      radial-gradient(circle at 58% 78%, var(--panel-glow-c, rgba(255, 191, 94, 0.14)), transparent 38%);
+  }
+  .resource-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.24;
+    background:
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 28px);
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.45));
+  }
+  .resource-visual > p {
+    margin: 0;
+  }
+  .resource-visual-note {
+    position: absolute;
+    top: 0.8rem;
+    left: 0.8rem;
+    z-index: 4;
+    color: var(--panel-note, rgba(255, 255, 255, 0.72));
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .resource-svg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+  .resource-svg path,
+  .resource-svg line,
+  .resource-svg polyline,
+  .resource-svg rect {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+  .resource-visual-stage-label {
+    position: absolute;
+    bottom: 0.6rem;
+    z-index: 4;
+    color: var(--panel-note, rgba(255, 255, 255, 0.68));
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .resource-visual-stage-label.is-left {
+    left: 0.8rem;
+  }
+  .resource-visual-stage-label.is-center {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .resource-visual-stage-label.is-right {
+    right: 0.8rem;
+  }
+  .resource-emphasis-band {
+    position: absolute;
+    top: 17%;
+    bottom: 15%;
+    left: 52%;
+    width: 14%;
+    z-index: 1;
+    transform: translateX(-50%);
+    border-left: 1px solid rgba(255, 255, 255, 0.16);
+    border-right: 1px solid rgba(255, 255, 255, 0.16);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  }
+  .resource-bullet {
+    position: absolute;
+    z-index: 2;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 2px;
+    background: var(--bullet-color);
+    opacity: var(--bullet-opacity);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 0 var(--glow) var(--bullet-color);
+    animation: resourceBulletPulse var(--duration) ease-in-out infinite;
+    animation-delay: var(--delay);
+    pointer-events: none;
+  }
+  .resource-bullet.is-outline {
+    background: transparent;
+    border: 1px solid var(--bullet-color);
+    box-shadow: none;
+  }
+  .resource-bullet.is-tile {
+    border-radius: 1px;
+  }
+  @keyframes resourceBulletPulse {
+    0%, 100% {
+      opacity: var(--bullet-min-opacity);
+      transform: translate(calc(-50% - var(--drift-x)), calc(-50% - var(--drift-y))) scale(0.82);
+    }
+    50% {
+      opacity: var(--bullet-opacity);
+      transform: translate(calc(-50% + var(--drift-x)), calc(-50% + var(--drift-y))) scale(1.08);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .resource-bullet {
+      animation: none;
+      transform: translate(-50%, -50%);
+    }
+  }
+  @media (max-width: 768px) {
+    .resource-visual {
+      height: 148px;
+    }
   }
 </style>
 
@@ -189,33 +339,44 @@ ul.task-list li input[type="checkbox"] {
 <p class="page-subtitle">
 Data, tools, profiles and platforms.
 </p>
+<div class="resource-intro">
+<p>Each resource opens with an animated square-based visual that hints at the underlying method or use case, rather than a generic thumbnail.</p>
+</div>
 <div class="media-grid">
-<div class="media-card">
-<p><img src="static/media/resources/count-data-modelling.png" class="img-fluid" alt="Count data modelling resource image"></p>
+<div class="media-card resource-card">
+<div class="resource-visual" aria-hidden="true" data-scene="count" data-palette="#778dff,#bf7bff,#ff6f91,#ffd166" data-seed="11" style="--panel-bg-a: #05070d; --panel-bg-b: #0f1630; --panel-glow-a: rgba(106, 114, 255, 0.30); --panel-glow-b: rgba(255, 89, 152, 0.20); --panel-glow-c: rgba(255, 191, 94, 0.16);">
+<p><span class="resource-visual-note">count distribution</span></p>
+</div>
 <section id="count-data-modelling" class="level3">
 <h3 data-anchor-id="count-data-modelling">Count Data Modelling</h3>
 <p><span class="meta">Methods, examples and code for modelling count outcomes.</span></p>
 <p><a href="https://fcorowe.github.io/countdata_modelling/">Open website</a></p>
 </section>
 </div>
-<div class="media-card">
-<p><img src="static/media/resources/binary-logistic-regression.png" class="img-fluid" alt="Binary logistic resource image"></p>
+<div class="media-card resource-card">
+<div class="resource-visual" aria-hidden="true" data-scene="logistic" data-palette="#85b8ff,#d8ebff,#ff957d,#ff5a4f" data-seed="19" style="--panel-bg-a: #f5f7fc; --panel-bg-b: #eef3fb; --panel-glow-a: rgba(124, 180, 255, 0.18); --panel-glow-b: rgba(255, 111, 97, 0.12); --panel-glow-c: rgba(255, 255, 255, 0); --panel-note: rgba(15, 33, 67, 0.72);">
+<p><span class="resource-visual-note">probability curve</span></p>
+</div>
 <section id="binary-logistic-regression" class="level3">
 <h3 data-anchor-id="binary-logistic-regression">Binary Logistic Regression</h3>
 <p><span class="meta">Methods, examples and code for binary outcome modelling.</span></p>
 <p><a href="https://fcorowe.github.io/binary_logistic/">Open website</a></p>
 </section>
 </div>
-<div class="media-card">
-<p><img src="static/media/resources/r-package-cim.png" class="img-fluid" alt="CIM package resource image"></p>
+<div class="media-card resource-card">
+<div class="resource-visual" aria-hidden="true" data-scene="composition" data-palette="#38bdf8,#34d399,#fde68a,#7dd3fc" data-seed="23" style="--panel-bg-a: #031018; --panel-bg-b: #0a2230; --panel-glow-a: rgba(56, 189, 248, 0.24); --panel-glow-b: rgba(52, 211, 153, 0.20); --panel-glow-c: rgba(167, 243, 208, 0.14);">
+<p><span class="resource-visual-note">migration composition</span></p>
+</div>
 <section id="r-package-cim" class="level3">
 <h3 data-anchor-id="r-package-cim">R Package CIM</h3>
 <p><span class="meta">Code and resources for compositional impact of migration analysis in R.</span></p>
 <p><a href="post/2019-01-31-r-rmarkdown/index.html">Open website</a></p>
 </section>
 </div>
-<div class="media-card">
-<p><img src="static/media/resources/census-mapping.png" class="img-fluid" alt="Census mapping resource image"></p>
+<div class="media-card resource-card">
+<div class="resource-visual" aria-hidden="true" data-scene="map" data-palette="#1d4ed8,#38bdf8,#93c5fd,#fde047" data-seed="29" style="--panel-bg-a: #04111f; --panel-bg-b: #0c1f38; --panel-glow-a: rgba(77, 171, 247, 0.22); --panel-glow-b: rgba(34, 211, 238, 0.18); --panel-glow-c: rgba(116, 192, 252, 0.12);">
+<p><span class="resource-visual-note">tiled map</span></p>
+</div>
 <section id="census-mapping" class="level3">
 <h3 data-anchor-id="census-mapping">Census Mapping</h3>
 <p><span class="meta">Interactive resources and examples for census-based spatial mapping.</span></p>
@@ -223,6 +384,437 @@ Data, tools, profiles and platforms.
 </section>
 </div>
 </div>
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  const panels = [...document.querySelectorAll(".resource-visual[data-scene]")];
+  if (!panels.length) return;
+
+  const svgNamespace = "http://www.w3.org/2000/svg";
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+  const mulberry32 = (seed) => {
+    let state = seed >>> 0;
+    return () => {
+      state += 0x6D2B79F5;
+      let t = state;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  };
+
+  const svgEl = (name, attributes = {}) => {
+    const node = document.createElementNS(svgNamespace, name);
+    Object.entries(attributes).forEach(([key, value]) => {
+      node.setAttribute(key, String(value));
+    });
+    return node;
+  };
+
+  const createSvg = (panel) => {
+    const svg = svgEl("svg", {
+      class: "resource-svg",
+      viewBox: "0 0 100 100",
+      preserveAspectRatio: "none",
+      "aria-hidden": "true"
+    });
+    panel.appendChild(svg);
+    return svg;
+  };
+
+  const appendLine = (svg, x1, y1, x2, y2, options = {}) => {
+    svg.appendChild(svgEl("line", {
+      x1,
+      y1,
+      x2,
+      y2,
+      stroke: options.stroke || "rgba(255,255,255,0.35)",
+      "stroke-width": options.strokeWidth || 1,
+      opacity: options.opacity ?? 1,
+      "stroke-dasharray": options.dasharray || ""
+    }));
+  };
+
+  const appendPath = (svg, points, options = {}) => {
+    const pathData = points
+      .map(([x, y], index) => `${index === 0 ? "M" : "L"} ${x.toFixed(2)} ${y.toFixed(2)}`)
+      .join(" ");
+
+    svg.appendChild(svgEl("path", {
+      d: pathData,
+      stroke: options.stroke || "rgba(255,255,255,0.7)",
+      "stroke-width": options.strokeWidth || 1.4,
+      opacity: options.opacity ?? 1,
+      "stroke-dasharray": options.dasharray || ""
+    }));
+  };
+
+  const appendRect = (svg, x, y, width, height, options = {}) => {
+    svg.appendChild(svgEl("rect", {
+      x,
+      y,
+      width,
+      height,
+      rx: options.rx ?? 1.2,
+      ry: options.ry ?? 1.2,
+      fill: options.fill || "none",
+      stroke: options.stroke || "rgba(255,255,255,0.18)",
+      "stroke-width": options.strokeWidth || 0.9,
+      opacity: options.opacity ?? 1
+    }));
+  };
+
+  const createBullet = (panel, options, random) => {
+    const bullet = document.createElement("span");
+    bullet.className = "resource-bullet";
+
+    if (options.outline) bullet.classList.add("is-outline");
+    if (options.tile) bullet.classList.add("is-tile");
+
+    bullet.style.setProperty("--x", `${options.x.toFixed(2)}%`);
+    bullet.style.setProperty("--y", `${options.y.toFixed(2)}%`);
+    bullet.style.setProperty("--size", `${options.size.toFixed(2)}px`);
+    bullet.style.setProperty("--bullet-color", options.color);
+    bullet.style.setProperty("--bullet-opacity", `${options.opacity.toFixed(2)}`);
+    bullet.style.setProperty("--bullet-min-opacity", `${Math.max(0.14, options.opacity * 0.45).toFixed(2)}`);
+    bullet.style.setProperty("--glow", `${(options.glow ?? 10).toFixed(2)}px`);
+    bullet.style.setProperty("--drift-x", `${(options.driftX ?? ((random() - 0.5) * 1.8)).toFixed(2)}px`);
+    bullet.style.setProperty("--drift-y", `${(options.driftY ?? ((random() - 0.5) * 1.8)).toFixed(2)}px`);
+    bullet.style.setProperty("--duration", `${(options.duration ?? (4.2 + random() * 2.8)).toFixed(2)}s`);
+    bullet.style.setProperty("--delay", `${(options.delay ?? (-random() * 5.4)).toFixed(2)}s`);
+
+    panel.appendChild(bullet);
+  };
+
+  const createPanelLabel = (panel, text, className) => {
+    const label = document.createElement("span");
+    label.className = `resource-visual-stage-label ${className}`;
+    label.textContent = text;
+    panel.appendChild(label);
+  };
+
+  const renderCountScene = (panel, random, colors) => {
+    const svg = createSvg(panel);
+    const bins = [2, 4, 7, 10, 13, 11, 8, 5, 3];
+    const topPoints = [];
+
+    appendLine(svg, 12, 84, 90, 84, { stroke: "rgba(255,255,255,0.24)", strokeWidth: 0.9 });
+    appendLine(svg, 12, 18, 12, 84, { stroke: "rgba(255,255,255,0.24)", strokeWidth: 0.9 });
+    appendLine(svg, 51, 22, 51, 84, {
+      stroke: colors[3] || colors[2] || "#ffd166",
+      strokeWidth: 0.9,
+      opacity: 0.35,
+      dasharray: "2.2 2.2"
+    });
+
+    bins.forEach((height, index) => {
+      const x = 18 + index * 7.6;
+      const colorIndex = clamp(Math.round((index / (bins.length - 1)) * (colors.length - 1)), 0, colors.length - 1);
+      const baseColor = colors[colorIndex] || colors[0];
+
+      for (let row = 0; row < height; row += 1) {
+        createBullet(panel, {
+          x: x + (random() - 0.5) * 0.8,
+          y: 79 - row * 5.1,
+          size: 7.1,
+          color: row === height - 1 ? (colors[3] || baseColor) : baseColor,
+          opacity: 0.38 + (row / Math.max(height, 1)) * 0.46,
+          glow: 10 + row * 0.8,
+          driftX: (random() - 0.5) * 0.9,
+          driftY: (random() - 0.5) * 0.9,
+          duration: 4.6 + random() * 1.8,
+          tile: true
+        }, random);
+      }
+
+      topPoints.push([x, 78 - (height - 1) * 5.1 - 2.4]);
+    });
+
+    appendPath(svg, topPoints, {
+      stroke: colors[1] || "#ffffff",
+      strokeWidth: 1.8,
+      opacity: 0.92
+    });
+
+    topPoints.forEach(([x, y], index) => {
+      createBullet(panel, {
+        x,
+        y,
+        size: 4.5,
+        color: index === 4 ? (colors[3] || colors[2] || "#ffd166") : (colors[1] || "#ffffff"),
+        opacity: 0.9,
+        glow: 12,
+        driftX: (random() - 0.5) * 0.6,
+        driftY: (random() - 0.5) * 0.6,
+        duration: 3.8 + random() * 1.4
+      }, random);
+    });
+
+    for (let index = 0; index < 12; index += 1) {
+      createBullet(panel, {
+        x: 14 + random() * 74,
+        y: 82 + random() * 4,
+        size: 3.2 + random() * 2.2,
+        color: colors[0] || "#778dff",
+        opacity: 0.18 + random() * 0.16,
+        glow: 6,
+        driftX: (random() - 0.5) * 0.4,
+        driftY: (random() - 0.5) * 0.4,
+        duration: 5.4 + random() * 1.8,
+        tile: true
+      }, random);
+    }
+  };
+
+  const renderLogisticScene = (panel, random, colors) => {
+    const svg = createSvg(panel);
+    const band = document.createElement("span");
+    band.className = "resource-emphasis-band";
+    panel.appendChild(band);
+
+    appendLine(svg, 12, 84, 90, 84, { stroke: "rgba(15,33,67,0.22)", strokeWidth: 0.9 });
+    appendLine(svg, 12, 18, 12, 84, { stroke: "rgba(15,33,67,0.22)", strokeWidth: 0.9 });
+
+    const curvePoints = [];
+    for (let step = 0; step <= 32; step += 1) {
+      const x = 16 + (68 * step) / 32;
+      const probability = 1 / (1 + Math.exp(-(x - 50) / 7.8));
+      const y = 78 - probability * 52;
+      curvePoints.push([x, y]);
+    }
+
+    appendPath(svg, curvePoints, {
+      stroke: colors[2] || colors[3] || "#ff5a4f",
+      strokeWidth: 1.8,
+      opacity: 0.9
+    });
+
+    curvePoints.forEach(([x, y], index) => {
+      if (index % 4 !== 0) return;
+      createBullet(panel, {
+        x,
+        y,
+        size: 4.3,
+        color: "#ffffff",
+        opacity: 0.7,
+        glow: 8,
+        driftX: (random() - 0.5) * 0.5,
+        driftY: (random() - 0.5) * 0.5,
+        duration: 4 + random() * 1.4
+      }, random);
+    });
+
+    for (let index = 0; index < 36; index += 1) {
+      const x = 18 + random() * 66;
+      const probability = 1 / (1 + Math.exp(-(x - 50) / 8));
+      const positive = random() < probability;
+      let y = positive ? 22 + random() * 16 : 66 + random() * 14;
+
+      if (positive && x < 42 && random() < 0.18) y = 34 + random() * 8;
+      if (!positive && x > 58 && random() < 0.18) y = 56 + random() * 8;
+
+      createBullet(panel, {
+        x,
+        y,
+        size: 5 + random() * 3.2,
+        color: positive ? (colors[3] || colors[2] || "#ff5a4f") : (colors[0] || "#85b8ff"),
+        opacity: 0.42 + random() * 0.34,
+        glow: positive ? 13 : 10,
+        driftX: (random() - 0.5) * 1.2,
+        driftY: (random() - 0.5) * 1.2,
+        duration: 4 + random() * 2.2,
+        outline: random() > 0.88,
+        tile: true
+      }, random);
+    }
+  };
+
+  const renderCompositionScene = (panel, random, colors) => {
+    const svg = createSvg(panel);
+    const before = [5, 4, 3];
+    const after = [3, 5, 4];
+    const centers = { left: 24, right: 76 };
+    const rowHeight = 4.8;
+    const barWidthOffsets = [-2.8, 0, 2.8];
+    const beforeMidpoints = [];
+    const afterMidpoints = [];
+
+    createPanelLabel(panel, "before", "is-left");
+    createPanelLabel(panel, "migration", "is-center");
+    createPanelLabel(panel, "after", "is-right");
+
+    appendRect(svg, 18.2, 22.2, 11.6, 58.2, {
+      stroke: "rgba(255,255,255,0.16)",
+      strokeWidth: 0.9,
+      opacity: 0.9
+    });
+    appendRect(svg, 70.2, 22.2, 11.6, 58.2, {
+      stroke: "rgba(255,255,255,0.16)",
+      strokeWidth: 0.9,
+      opacity: 0.9
+    });
+    appendLine(svg, 40, 51, 60, 51, {
+      stroke: colors[3] || colors[2] || "#fde68a",
+      strokeWidth: 1,
+      opacity: 0.3,
+      dasharray: "2.5 2.5"
+    });
+
+    const drawBar = (segments, centerX, midpointStore, mode) => {
+      let rowCursor = 0;
+
+      segments.forEach((rows, segmentIndex) => {
+        const yMid = 78 - (rowCursor + (rows - 1) / 2) * rowHeight;
+        midpointStore.push([centerX, yMid]);
+
+        for (let row = 0; row < rows; row += 1) {
+          const y = 78 - (rowCursor + row) * rowHeight;
+          barWidthOffsets.forEach((offset, laneIndex) => {
+            const sizeJitter = laneIndex === 1 ? 0.6 : 0;
+            const isIncoming = mode === "after" && segmentIndex === 1 && row >= rows - 2;
+            createBullet(panel, {
+              x: centerX + offset + (random() - 0.5) * 0.28,
+              y: y + (random() - 0.5) * 0.28,
+              size: 6.8 + sizeJitter,
+              color: isIncoming ? (colors[3] || colors[2] || "#fde68a") : (colors[segmentIndex] || colors[0]),
+              opacity: 0.48 + segmentIndex * 0.1 + (mode === "after" ? 0.04 : 0),
+              glow: isIncoming ? 15 : 9 + segmentIndex * 2.4,
+              driftX: (random() - 0.5) * 0.7,
+              driftY: (random() - 0.5) * 0.7,
+              duration: 4.6 + random() * 1.9,
+              tile: true
+            }, random);
+          });
+        }
+
+        rowCursor += rows;
+      });
+    };
+
+    drawBar(before, centers.left, beforeMidpoints, "before");
+    drawBar(after, centers.right, afterMidpoints, "after");
+
+    beforeMidpoints.forEach(([x1, y1], segmentIndex) => {
+      const [x2, y2] = afterMidpoints[segmentIndex];
+      const bendX = 50;
+      const bendY = (y1 + y2) / 2 + (segmentIndex - 1) * 4.4;
+      const flowColor = colors[segmentIndex] || colors[0];
+      const flowPoints = [[x1 + 6, y1], [bendX, bendY], [x2 - 6, y2]];
+
+      appendPath(svg, flowPoints, {
+        stroke: flowColor,
+        strokeWidth: 1.35,
+        opacity: 0.34
+      });
+
+      [0.2, 0.45, 0.7].forEach((t, index) => {
+        const x = flowPoints[0][0] + (flowPoints[2][0] - flowPoints[0][0]) * t;
+        const y = flowPoints[0][1] * (1 - t) * (1 - t)
+          + 2 * (1 - t) * t * flowPoints[1][1]
+          + flowPoints[2][1] * t * t;
+
+        createBullet(panel, {
+          x,
+          y,
+          size: 4.5 + index * 0.35,
+          color: flowColor,
+          opacity: 0.58 + index * 0.08,
+          glow: 10 + index * 1.8,
+          driftX: 0.7 + index * 0.3,
+          driftY: (random() - 0.5) * 0.5,
+          duration: 3.8 + random() * 1.2,
+          tile: true
+        }, random);
+      });
+    });
+
+    const migrantLaneY = [38, 47, 56];
+    migrantLaneY.forEach((y, laneIndex) => {
+      [0.1, 0.32, 0.56, 0.8].forEach((t) => {
+        createBullet(panel, {
+          x: 40 + t * 20 + (random() - 0.5) * 0.6,
+          y: y + Math.sin((t + laneIndex * 0.2) * Math.PI) * 1.8,
+          size: 4.1 + random() * 0.8,
+          color: colors[3] || colors[2] || "#fde68a",
+          opacity: 0.5 + random() * 0.18,
+          glow: 11,
+          driftX: 0.9,
+          driftY: (random() - 0.5) * 0.35,
+          duration: 3.5 + random() * 1.2,
+          tile: true
+        }, random);
+      });
+    });
+  };
+
+  const renderMapScene = (panel, random, colors) => {
+    const svg = createSvg(panel);
+    const outline = [
+      [19, 31], [24, 19], [39, 16], [56, 22], [74, 35], [82, 49],
+      [76, 67], [60, 78], [40, 75], [24, 64], [16, 49], [19, 31]
+    ];
+    const tiles = [
+      [3, 0], [4, 0], [5, 0], [6, 0],
+      [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1],
+      [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2], [8, 2],
+      [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3], [8, 3],
+      [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4], [7, 4],
+      [2, 5], [3, 5], [4, 5], [5, 5], [6, 5], [7, 5],
+      [3, 6], [4, 6], [5, 6], [6, 6]
+    ];
+    const highlight = new Set(["6,3", "7,3", "6,4", "7,4", "8,3"]);
+
+    appendPath(svg, outline, {
+      stroke: colors[2] || colors[1] || "#93c5fd",
+      strokeWidth: 1.1,
+      opacity: 0.35
+    });
+
+    tiles.forEach(([column, row]) => {
+      const x = 16 + column * 7.2;
+      const y = 22 + row * 8;
+      const key = `${column},${row}`;
+      const isHighlight = highlight.has(key);
+      const color = isHighlight
+        ? (colors[3] || "#fde047")
+        : (colors[Math.min(2, Math.floor(random() * 3))] || colors[0]);
+
+      createBullet(panel, {
+        x,
+        y,
+        size: 10.2,
+        color,
+        opacity: isHighlight ? 0.95 : 0.42 + row * 0.06 + random() * 0.1,
+        glow: isHighlight ? 18 : 8,
+        driftX: (random() - 0.5) * (isHighlight ? 0.9 : 0.4),
+        driftY: (random() - 0.5) * (isHighlight ? 0.9 : 0.4),
+        duration: isHighlight ? 3.8 + random() * 1.4 : 5 + random() * 1.8,
+        outline: !isHighlight && random() > 0.86,
+        tile: true
+      }, random);
+    });
+  };
+
+  panels.forEach((panel, panelIndex) => {
+    const random = mulberry32(Number(panel.dataset.seed || panelIndex + 1));
+    const colors = (panel.dataset.palette || "")
+      .split(",")
+      .map((value) => value.trim())
+      .filter(Boolean);
+    const scene = panel.dataset.scene || "count";
+
+    if (scene === "count") {
+      renderCountScene(panel, random, colors);
+    } else if (scene === "logistic") {
+      renderLogisticScene(panel, random, colors);
+    } else if (scene === "composition") {
+      renderCompositionScene(panel, random, colors);
+    } else if (scene === "map") {
+      renderMapScene(panel, random, colors);
+    }
+  });
+});
+</script>
 
 
 
