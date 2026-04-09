@@ -10,17 +10,8 @@ format:
             color: #ffffff;
           }
           h1, h2, h3, h4, h5, h6,
-          .meta,
-          .page-subtitle {
+          .meta {
             color: #ffffff;
-          }
-          .resource-intro {
-            max-width: 62ch;
-            color: #dbe8ff;
-            margin-bottom: 1.35rem;
-          }
-          .resource-intro > p {
-            margin: 0;
           }
           .media-card {
             background: rgba(255, 255, 255, 0.06);
@@ -188,12 +179,6 @@ format:
           }
         </style>
 ---
-
-<p class="page-subtitle">Data, tools, profiles and platforms.</p>
-
-<div class="resource-intro">
-Each resource opens with an animated square-based visual that hints at the underlying method or use case, rather than a generic thumbnail.
-</div>
 
 ::: {.media-grid}
 

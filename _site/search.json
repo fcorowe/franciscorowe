@@ -4,7 +4,7 @@
     "href": "resources.html",
     "title": "Resources",
     "section": "",
-    "text": "Data, tools, profiles and platforms.\n\n\nEach resource opens with an animated square-based visual that hints at the underlying method or use case, rather than a generic thumbnail.\n\n\n\n\ncount distribution\n\n\nCount Data Modelling\nMethods, examples and code for modelling count outcomes.\nOpen website\n\n\n\n\nprobability curve\n\n\nBinary Logistic Regression\nMethods, examples and code for binary outcome modelling.\nOpen website\n\n\n\n\nmigration composition\n\n\nR Package CIM\nCode and resources for compositional impact of migration analysis in R.\nOpen website\n\n\n\n\ntiled map\n\n\nCensus Mapping\nInteractive resources and examples for census-based spatial mapping.\nOpen website"
+    "text": "count distribution\n\n\nCount Data Modelling\nMethods, examples and code for modelling count outcomes.\nOpen website\n\n\n\n\nprobability curve\n\n\nBinary Logistic Regression\nMethods, examples and code for binary outcome modelling.\nOpen website\n\n\n\n\nmigration composition\n\n\nR Package CIM\nCode and resources for compositional impact of migration analysis in R.\nOpen website\n\n\n\n\ntiled map\n\n\nCensus Mapping\nInteractive resources and examples for census-based spatial mapping.\nOpen website"
   },
   {
     "objectID": "blog.html",
