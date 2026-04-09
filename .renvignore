@@ -1,0 +1,11 @@
+_site/
+_freeze/
+themes/
+tmp/
+public/
+post/
+blog/
+papers_files/
+index.Rmd
+content/post/*.html
+content/post/*_files/

@@ -40,6 +40,34 @@ Preview the built homepage:
 open _site/index.html
 ```
 
+Set up a fresh clone with the expected R dependencies:
+
+```bash
+Rscript scripts/setup_site.R
+```
+
+This project currently expects:
+
+- Quarto `1.8.26`
+- R `4.5.x`
+- R packages restored from `renv.lock`
+
+Recommended fresh-clone workflow:
+
+```bash
+git clone git@github.com:fcorowe/franciscorowe.git
+cd franciscorowe
+Rscript scripts/setup_site.R
+quarto render
+```
+
+Notes on reproducibility:
+
+- `renv.lock` pins the R package set used to render the site.
+- `.renvignore` excludes generated and legacy content from dependency scanning.
+- The repo no longer sources a user-specific `~/.Rprofile`, which previously made local behaviour machine-dependent.
+- Quarto itself is not managed by `renv`, so install the expected Quarto version separately.
+
 ## Deployment
 
 - Deploys are triggered by pushes to `main`.
