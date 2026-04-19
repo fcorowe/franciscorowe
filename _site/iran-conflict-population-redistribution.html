@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>Iran conflict and population redistribution – Francisco Rowe</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -33,14 +36,13 @@ ul.task-list li input[type="checkbox"] {
 <link href="./assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8d2a197f9d434ccba3251bcd43c361e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0bd233a42f3e286c7c9b45399caa7180.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
 <script src="site_libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
 <script src="site_libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
@@ -196,20 +198,20 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="what-is-this-story-about" class="level2">
 <h2 data-anchor-id="what-is-this-story-about">What is this story about?</h2>
-<p>This interactive resource updates our situation report published in <a href="https://reliefweb.int/report/iran-islamic-republic/situation-report-iran-conflict-digital-trace-data-analysis-experimental-reporting-period-28th-february-2026-19th-march-2026">Reliefweb</a> and organise it into a smaller set of visuals. It focuses on the provincial war-time population index and the Wikipedia pageview evidence used to support or qualify that interpretation.</p>
-<p>Our aim is to digital trace data as an alternative way to measure likely population dynamics in near real time in Iran. This is as conventional data sources to monitor population displacement in Iran following the outbreak of war on 28 February 2026 have been limited due to existing sanctions, active hostilities, information controls and restricted humanitarian access. Here we graphically show our estimates of population displacement. They help show where the strongest relative shifts in population presence appear, how those shifts evolve through time, and whether another digital trace points toward a similar geography.</p>
+<p>This interactive resource updates our situation report published in <a href="https://reliefweb.int/report/iran-islamic-republic/situation-report-iran-conflict-digital-trace-data-analysis-experimental-reporting-period-28th-february-2026-19th-march-2026">Reliefweb</a> and organises it into a smaller set of visuals. It focuses on population displacement estimations, based on Internet traffic data, and the validation of these estimations using Wikipedia pageview data.</p>
+<p>Our aim is to use digital trace data as an alternative way to measure likely population dynamics in near real time in Iran. Data sources typically used to monitor population displacement have been limited in Iran following the outbreak of war on 28 February 2026, due to existing sanctions, active hostilities, information controls and restricted humanitarian access. Here we graphically show our estimates of population displacement, which are based on <a href="https://radar.cloudflare.com/ir">Cloudflare Radar</a>. Cloudflare publishes aggregated, anonymised counts of encrypted web requests passing through its network, broken down by province. They help estimate where the strongest relative shifts in population presence appear and how those shifts evolve through time</p>
 <div class="story-summary">
 <ul>
-<li>The war-time population index is the core signal: it shows relative change in provincial presence against a pre-war baseline.</li>
-<li>The province maps and trajectories are the main evidence for geographic redistribution during the reporting period.</li>
-<li>The Wikipedia maps and time series are a contextual check, not a second population estimator.</li>
+<li>The war-time population index is the core signal: it captures relative change in provincial presence against a pre-war baseline.</li>
+<li>The provincial maps and time series are the main evidence for geographic redistribution during the reporting period.</li>
+<li>TThe Wikipedia maps and time series serve as a contextual check.</li>
 </ul>
 </div>
 </section>
 <section id="how-should-these-graphics-be-read" class="level2">
 <h2 data-anchor-id="how-should-these-graphics-be-read">How should these graphics be read?</h2>
-<p>The province index is strongest when it is interpreted as a relative measure. Positive values suggest higher presence than the pre-war baseline, while negative values suggest lower presence, but both can still be shaped by wartime observability and connectivity conditions.</p>
-<p>The Wikipedia evidence should be read even more cautiously. Pageview counts are small and partial, but they can still help show whether border-oriented attention and movement pressure are consistent with the geography seen in the province index.</p>
+<p>The provincial war-time index is a relative measure of population displacement. Positive values suggest higher presence than the pre-war baseline, while negative values suggest lower presence. However, this index should be interpreted with caution, as it can also be influenced by Internet connectivity conditions.</p>
+<p>The Wikipedia evidence should also be interpreted cautiously. Pageview counts are small and partial, but they can still help check whether geographic and temporal patterns are consistent with those seen in the province index.</p>
 </section>
 <div class="cr-section cr-column-screen overlay-right">
 <div class="narrative-col">
@@ -218,22 +220,22 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <div class="trigger new-trigger" data-focus-on="cr-war-map">
 <div class="narrative">
-<p>The first visual question is geographic. Where does the clearest redistribution signal appear once the war begins? In the sitrep, the strongest early changes appear first in border-oriented space rather than evenly across the country.</p>
+<p>How does the war-time population index vary over time? The maps show relative changes in war-time population index, which is intended to capture relative population presence with respect to the start of the war.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-war-map">
 <div class="narrative">
-<p>That makes the map sequence more than illustration. It is the first substantive claim of the story: the geography of the initial shock is clustered, and that clustering matters for how later changes are interpreted.</p>
+<p>For example, at the beginning of the conflict we observe a relative population increase in bordering provinces, especially in the North of Iran.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-war-series">
 <div class="narrative">
-<p>The second question is temporal. The provincial trajectories show whether those shifts persist, consolidate, or reverse as the reporting period continues.</p>
+<p>The provincial time series show whether those shifts persist, consolidate or reverse as the reporting period continues.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-war-series">
 <div class="narrative">
-<p>This is where the story becomes more careful about likely origin and destination areas. Provinces with sustained declines are more plausible candidates for out-movement, while provinces with repeated increases are more plausible concentration zones.</p>
+<p>What can we say about likely origin and destination areas? Provinces with sustained declines are more plausible candidates for out-movement, while provinces with repeated increases are more plausible concentration zones.</p>
 </div>
 </div>
 </div>
@@ -243,7 +245,7 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="assets/stories/iran-conflict-population-redistribution/war-relative-index-maps.png" class="img-fluid" alt="Provincial war-time population index maps for key dates in the reporting period."></p>
 </div>
 <div id="cr-war-series" class="sticky">
-<p><img src="assets/stories/iran-conflict-population-redistribution/province-war-trajectories.png" class="img-fluid" alt="Province-level war-time population index trajectories."></p>
+<p><img src="assets/stories/iran-conflict-population-redistribution/province-war-trajectories.png" class="img-fluid" alt="Province-level war-time population index time series."></p>
 </div>
 </div>
 </div>
@@ -255,12 +257,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <div class="trigger new-trigger" data-focus-on="cr-wiki-maps">
 <div class="narrative">
-<p>The Wikipedia material is not asked to do the same job as Cloudflare. It is there to show whether another digital trace points toward the same border-oriented geography of conflict attention and movement pressure.</p>
+<p>Data from Wikipedia page searches is used to check whether the patterns derived from Cloudflare data are consistent. It is intended to demonstrate whether another digital trace data source suggests the same geographic patterns of conflict attention and population displacement.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-wiki-maps">
 <div class="narrative">
-<p>That matters because alignment across signals strengthens confidence. It does not prove the population interpretation on its own, but it does make the spatial story more persuasive than a single-source reading.</p>
+<p>Alignment across signals from different sources strengthens confidence. It does not provide causal interpretations, but it does make the spatial story more persuasive than a single-source.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-wiki-series">
@@ -270,7 +272,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-wiki-series">
 <div class="narrative">
-<p>At the same time, the limits remain important: the signal is partial, the counts are small, and the value of the series is contextual rather than definitive.</p>
+<p>Important limitations still remain: the signal is partial, the counts are small and the value of the series is contextual.</p>
 </div>
 </div>
 </div>
@@ -289,12 +291,12 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="what-should-readers-take-away" class="level2">
 <h2 data-anchor-id="what-should-readers-take-away">What should readers take away?</h2>
-<p>This simplified interactive resource keeps the story close to the figures that carry the most interpretive weight.</p>
+<p>This simplified interactive resource focuses on the figures that carry the most interpretive weight. Further details can be found in the <a href="https://reliefweb.int/report/iran-islamic-republic/situation-report-iran-conflict-digital-trace-data-analysis-experimental-reporting-period-28th-february-2026-19th-march-2026">full report</a>.</p>
 <div class="story-summary">
 <ul>
-<li>The province maps and trajectories are the core evidence for relative redistribution during the reporting period.</li>
-<li>The Wikipedia maps and time series help assess whether another digital trace supports the same broad geography and timing.</li>
-<li>The results remain proxy evidence and should be read as structured signals rather than exact counts.</li>
+<li>The provincial maps and time series based on Cloudflare data are the core evidence for relative population redistribution during the reporting period.</li>
+<li>The Wikipedia maps and time series help assess whether another digital trace supports the same broad spatial and temporal patterns.</li>
+<li>The results are proxy evidence and should be read as signals rather than exact counts.</li>
 </ul>
 </div>
 <div class="story-footer">
