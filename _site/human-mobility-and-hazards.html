@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Human Mobility and Hazards – Francisco Rowe</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,14 +35,17 @@ ul.task-list li input[type="checkbox"] {
 <link href="./assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-44b4dbdd982461e02b893b80110ec9ce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0bd233a42f3e286c7c9b45399caa7180.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
+<script src="site_libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
+<script src="site_libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,17 +73,14 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<style>html{ scroll-behavior: smooth; }</style>
-<link rel="icon" href="./favicon.ico?v=4" sizes="any">
-<link rel="shortcut icon" href="./favicon.ico?v=4" type="image/x-icon">
-<link rel="icon" href="./favicon-v3.ico" sizes="any">
-<link rel="icon" href="./assets/favicon.svg?v=4" type="image/svg+xml">
-<link rel="apple-touch-icon" href="./apple-touch-icon.png?v=4">
+<meta cr-debug-mode="false">
+<meta cr-remove-header-space="false">
 
 
+<link rel="stylesheet" href="site_libs/quarto-contrib/quarto-project/qmd-lab/closeread/closeread.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -132,12 +135,12 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -146,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -160,26 +163,26 @@ ul.task-list li input[type="checkbox"] {
 
 <p>Understanding how human mobility systems respond to crisis is central to designing effective policy in an era of climate instability, geopolitical conflict and global health risk. Climate extremes, armed conflict and pandemics send shock waves reorganising mobility systems across territories. My research programme brings these domains together through a unified, empirically grounded framework that integrates digital trace data with demographic baselines to understand how mobility systems are perturbed under conditions of stress. Across climate change, conflict and epidemics, the central questions are consistent: how do populations reorganise in space when exposed to systemic shock? How can we measure that reorganisation rigorously and in near real time? And how can we leverage fast-evolving artificial intelligence and machine learning technologies and digitally collected data to address these questions?</p>
 <section id="human-mobility-and-climate" class="level2">
-<h2 data-anchor-id="human-mobility-and-climate">Human mobility and climate</h2>
+<h2 class="anchored" data-anchor-id="human-mobility-and-climate">Human mobility and climate</h2>
 <p>The climate strand of this work demonstrates how digital footprint data can support rapid humanitarian response and hazard monitoring. I show how spatially aggregated Meta Facebook data can identify sharp localised population declines along the Indus River during the 2022 Pakistan floods, with declines exceeding 20 per cent relative to baseline in severely affected areas (<a href="https://doi.org/10.1080/21681376.2022.2135458">Rowe, 2022</a>). The study illustrates both the operational value and the methodological challenges of such data. This work connects directly with disaster displacement modelling in <a href="https://doi.org/10.48550/arXiv.2511.01955">Pietrostefani et al.&nbsp;(2025)</a>, where we develop a policy-driven framework to triangulate digital traces with administrative and humanitarian data to produce calibrated displacement estimates. Similarly, wildfire displacement in Chile reveals spatially structured evacuation and return patterns rather than indiscriminate flight, highlighting how hazard exposure interacts with existing settlement systems (<a href="https://doi.org/10.1080/21681376.2024.2407404">Graells Garrido and Rowe, 2024</a>). Together, these studies move beyond speculative climate migration narratives and document short-term displacement dynamics embedded within broader spatial inequalities.</p>
 </section>
 <section id="human-mobility-and-conflict" class="level2">
-<h2 data-anchor-id="human-mobility-and-conflict">Human mobility and conflict</h2>
+<h2 class="anchored" data-anchor-id="human-mobility-and-conflict">Human mobility and conflict</h2>
 <p>The conflict strand advances this approach under conditions of active conflict. With Rodgers (my PhD student) and Elisabetta, we used data from approximately 25 million anonymised devices to generate daily subnational displacement estimates during the early phases of the Russian invasion (<a href="https://doi.org/10.1057/s41599-025-06137-4">Iradukunda, Rowe and Pietrostefani, 2025</a>). The core contribution lies in the bias correction and uncertainty quantification architecture that adjusts for uneven device penetration and validates estimates against independent humanitarian statistics. Complementing this, we integrated Facebook data with Eurostat to identify subnational refugee settlement patterns across Europe (<a href="https://doi.org/10.1002/psp.2790">Gonzalez Leonardo et al., 2024</a>). These studies demonstrated that digital trace data, when corrected and triangulated, can provide credible demographic intelligence during conflict, reducing reliance on delayed reporting systems.</p>
 </section>
 <section id="human-mobility-and-epidemics" class="level2">
-<h2 data-anchor-id="human-mobility-and-epidemics">Human mobility and epidemics</h2>
+<h2 class="anchored" data-anchor-id="human-mobility-and-epidemics">Human mobility and epidemics</h2>
 <p>The epidemic strand examines how mobility systems were restructured during epidemics. Most of this work has focused on the impacts of the COVID-19 pandemic but its implications have wider applicability. In Britain, we analysed 21 million observations over 18 months (<a href="https://doi.org/10.1002/psp.2637">Rowe et al., 2023</a>). We showed sustained reductions in movement during high-stringency periods, particularly in dense urban areas, alongside temporary increases in flows from high- to low-density areas. These shifts were transient. Mobility levels rebounded and the national structure of population movement remained largely intact.</p>
 <p>In Spain, administrative register data reveal similar dynamics (<a href="https://doi.org/10.1002/psp.2578">Gonzalez Leonardo et al., 2022</a>). We estimated a 2.5 per cent decline in internal moves in 2020, unusually large net losses in core cities and gains in rural areas, followed by convergence towards pre-pandemic patterns by late 2020. A complementary policy brief reinforced this evidence that rural gains were measurable but temporary. We did further work on this rural dimension (<a href="https://doi.org/10.1016/j.jrurstud.2022.11.006">Gonzalez Leonardo, Rowe and Fresolone Caparros, 2022</a>). We showed that inflows concentrated in rural municipalities close to cities and with high prevalence of second homes, with inflows persisting into 2021 while outflows converged to pre-pandemic levels. Expanding this evidence to less developed contexts, we revealed that mobility recorded the sharpest declines and remained below pre-pandemic levels in most high-density and low socio-economic deprivation areas, while low-density and more deprived communities returned to baseline (<a href="https://doi.org/10.48550/arXiv.2504.15871">Cabrera et al 2025</a>). These differences reflect the scale of the initial mobility shock rather than subsequent recovery rates. Net mobility to urban cores remained consistently below pre-pandemic levels, suggesting a shift in their functional role. By revealing how COVID-19 reinforced mobility-related inequalities, we contribute novel evidence for planners and policymakers seeking to build more inclusive and resilient mobility systems.</p>
 <p>We also examined how COVID-19 disrupted international migration systems (<a href="https://doi.org/10.1080/21681376.2022.2125824">Gonzalez Leonardo and Rowe, 2022</a>). We showed that net international migration declined across all provinces in 2020, particularly in dense regions, with gradual convergence in late 2021. At the European scale, we used ARIMA counterfactual forecasting to demonstrate that immigration to high-income countries fell sharply in 2020 but largely returned to expected levels in 2021, except for flows from outside the Schengen Area, which remained depressed (<a href="https://doi.org/10.1177/01979183241242445">Gonzalez Leonardo et al., 2024</a>). These findings reinforce a broader conclusion across hazard domains: mobility systems are shock-sensitive but tend to be structurally resilient.</p>
 </section>
 <section id="methodological-innovation" class="level2">
-<h2 data-anchor-id="methodological-innovation">Methodological innovation</h2>
+<h2 class="anchored" data-anchor-id="methodological-innovation">Methodological innovation</h2>
 <p>Running through all three research areas is DEBIAS, the cross-cutting methodological strand that transforms selective digital traces into calibrated demographic inference (<a href="https://doi.org/10.48550/arXiv.2509.02603">Cabrera and Rowe, 2025</a>). Digital mobility data systematically over-represent some groups and under-represent others, vary across space and time and are sensitive to behavioural change. Without correction, hazard mobility analysis risks misinterpreting platform dynamics as population dynamics. The displacement modelling in Ukraine and the humanitarian applications in Pakistan make explicit that penetration rate adjustment, weighting schemes and validation protocols are not optional technical refinements but necessary conditions for credible inference. DEBIAS therefore provides the statistical architecture that allows climate, conflict and epidemic applications to be analytically comparable and operationally robust.</p>
 <p>Taken together, this body of work reframes climate mobility, conflict displacement and epidemic redistribution as interconnected manifestations of hazard-induced perturbations of mobility systems. It demonstrates empirically that dramatic narratives of permanent exodus often overstate structural transformation, while simultaneously revealing profound short-term spatial inequalities in who moves, where and with what consequences. By integrating geographic data science, bias correction and multi-source validation, this programme builds a scientifically rigorous foundation for real-time mobility intelligence that is directly relevant to humanitarian agencies, national statistical offices and international policy frameworks.</p>
 </section>
 <section id="references" class="level2">
-<h2 data-anchor-id="references">References</h2>
+<h2 class="anchored" data-anchor-id="references">References</h2>
 <p>Cabrera, A., et al.&nbsp;(2025). Sustained changes to urban mobility after COVID-19 amplified socio-economic inequalities in Latin America. <em>arXiv (Cornell University)</em>. <a href="https://doi.org/10.48550/arXiv.2504.15871">https://doi.org/10.48550/arXiv.2504.15871</a></p>
 <p>Cabrera, A., &amp; Rowe, F. (2025). A systematic machine learning approach to measure and assess biases in mobile phone population data. <em>arXiv (Cornell University)</em>. <a href="https://doi.org/10.48550/arXiv.2509.02603">https://doi.org/10.48550/arXiv.2509.02603</a></p>
 <p>Gonzalez Leonardo, M., et al.&nbsp;(2022). Understanding patterns of internal migration during the COVID-19 pandemic in Spain. <em>Population, Space and Place</em>. <a href="https://doi.org/10.1002/psp.2578">https://doi.org/10.1002/psp.2578</a></p>
@@ -197,9 +200,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 
 </main> <!-- /main -->
-<script src="assets/menu.js"></script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -609,5 +618,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

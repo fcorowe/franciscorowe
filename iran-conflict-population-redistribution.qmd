@@ -61,39 +61,39 @@ Interactive adaptation of the Iran situation report based on Cloudflare and Wiki
 
 ## What is this story about?
 
-This interactive resource updates our situation report published in [Reliefweb](https://reliefweb.int/report/iran-islamic-republic/situation-report-iran-conflict-digital-trace-data-analysis-experimental-reporting-period-28th-february-2026-19th-march-2026) and organise it into a smaller set of visuals. It focuses on the provincial war-time population index and the Wikipedia pageview evidence used to support or qualify that interpretation.
+This interactive resource updates our situation report published in [Reliefweb](https://reliefweb.int/report/iran-islamic-republic/situation-report-iran-conflict-digital-trace-data-analysis-experimental-reporting-period-28th-february-2026-19th-march-2026) and organises it into a smaller set of visuals. It focuses on population displacement estimations, based on Internet traffic data, and the validation of these estimations using Wikipedia pageview data.
 
-Our aim is to digital trace data as an alternative way to measure likely population dynamics in near real time in Iran. This is as conventional data sources to monitor population displacement in Iran following the outbreak of war on 28 February 2026 have been limited due to existing sanctions, active hostilities, information controls and restricted humanitarian access. Here we graphically show our estimates of population displacement. They help show where the strongest relative shifts in population presence appear, how those shifts evolve through time, and whether another digital trace points toward a similar geography.
+Our aim is to use digital trace data as an alternative way to measure likely population dynamics in near real time in Iran. Data sources typically used to monitor population displacement have been limited in Iran following the outbreak of war on 28 February 2026, due to existing sanctions, active hostilities, information controls and restricted humanitarian access. Here we graphically show our estimates of population displacement, which are based on [Cloudflare Radar](https://radar.cloudflare.com/ir). Cloudflare publishes aggregated, anonymised counts of encrypted web requests passing through its network, broken down by province. They help estimate where the strongest relative shifts in population presence appear and how those shifts evolve through time
 
 ::: {.story-summary}
-- The war-time population index is the core signal: it shows relative change in provincial presence against a pre-war baseline.
-- The province maps and trajectories are the main evidence for geographic redistribution during the reporting period.
-- The Wikipedia maps and time series are a contextual check, not a second population estimator.
+- The war-time population index is the core signal: it captures relative change in provincial presence against a pre-war baseline.
+- The provincial maps and time series are the main evidence for geographic redistribution during the reporting period.
+- TThe Wikipedia maps and time series serve as a contextual check.
 :::
 
 ## How should these graphics be read?
 
-The province index is strongest when it is interpreted as a relative measure. Positive values suggest higher presence than the pre-war baseline, while negative values suggest lower presence, but both can still be shaped by wartime observability and connectivity conditions.
+The provincial war-time index is a relative measure of population displacement. Positive values suggest higher presence than the pre-war baseline, while negative values suggest lower presence. However, this index should be interpreted with caution, as it can also be influenced by Internet connectivity conditions.
 
-The Wikipedia evidence should be read even more cautiously. Pageview counts are small and partial, but they can still help show whether border-oriented attention and movement pressure are consistent with the geography seen in the province index.
+The Wikipedia evidence should also be interpreted cautiously. Pageview counts are small and partial, but they can still help check whether geographic and temporal patterns are consistent with those seen in the province index.
 
 :::{.cr-section}
 ## What does the war-time population index show?
 
-The first visual question is geographic. Where does the clearest redistribution signal appear once the war begins? In the sitrep, the strongest early changes appear first in border-oriented space rather than evenly across the country. @cr-war-map
+How does the war-time population index vary over time? The maps show relative changes in war-time population index, which is intended to capture relative population presence with respect to the start of the war. @cr-war-map
 
-That makes the map sequence more than illustration. It is the first substantive claim of the story: the geography of the initial shock is clustered, and that clustering matters for how later changes are interpreted. @cr-war-map
+For example, at the beginning of the conflict we observe a relative population increase in bordering provinces, especially in the North of Iran. @cr-war-map
 
-The second question is temporal. The provincial trajectories show whether those shifts persist, consolidate, or reverse as the reporting period continues. @cr-war-series
+The provincial time series show whether those shifts persist, consolidate or reverse as the reporting period continues. @cr-war-series
 
-This is where the story becomes more careful about likely origin and destination areas. Provinces with sustained declines are more plausible candidates for out-movement, while provinces with repeated increases are more plausible concentration zones. @cr-war-series
+What can we say about likely origin and destination areas? Provinces with sustained declines are more plausible candidates for out-movement, while provinces with repeated increases are more plausible concentration zones. @cr-war-series
 
 :::{#cr-war-map}
 ![](assets/stories/iran-conflict-population-redistribution/war-relative-index-maps.png){fig-alt="Provincial war-time population index maps for key dates in the reporting period."}
 :::
 
 :::{#cr-war-series}
-![](assets/stories/iran-conflict-population-redistribution/province-war-trajectories.png){fig-alt="Province-level war-time population index trajectories."}
+![](assets/stories/iran-conflict-population-redistribution/province-war-trajectories.png){fig-alt="Province-level war-time population index time series."}
 :::
 
 :::
@@ -101,13 +101,13 @@ This is where the story becomes more careful about likely origin and destination
 :::{.cr-section}
 ## What do Wikipedia pageviews add to the story?
 
-The Wikipedia material is not asked to do the same job as Cloudflare. It is there to show whether another digital trace points toward the same border-oriented geography of conflict attention and movement pressure. @cr-wiki-maps
+Data from Wikipedia page searches is used to check whether the patterns derived from Cloudflare data are consistent. It is intended to demonstrate whether another digital trace data source suggests the same geographic patterns of conflict attention and population displacement. @cr-wiki-maps
 
-That matters because alignment across signals strengthens confidence. It does not prove the population interpretation on its own, but it does make the spatial story more persuasive than a single-source reading. @cr-wiki-maps
+Alignment across signals from different sources strengthens confidence. It does not provide causal interpretations, but it does make the spatial story more persuasive than a single-source. @cr-wiki-maps
 
 The time series then adds a timing check. If pageview attention rises sharply around the same phase of the conflict in which the province index shifts most strongly, that supports a common interpretation of disruption and reorientation. @cr-wiki-series
 
-At the same time, the limits remain important: the signal is partial, the counts are small, and the value of the series is contextual rather than definitive. @cr-wiki-series
+Important limitations still remain: the signal is partial, the counts are small and the value of the series is contextual. @cr-wiki-series
 
 :::{#cr-wiki-maps}
 ::: {.story-figure-pair}
@@ -124,12 +124,12 @@ At the same time, the limits remain important: the signal is partial, the counts
 
 ## What should readers take away?
 
-This simplified interactive resource keeps the story close to the figures that carry the most interpretive weight.
+This simplified interactive resource focuses on the figures that carry the most interpretive weight. Further details can be found in the  [full report](https://reliefweb.int/report/iran-islamic-republic/situation-report-iran-conflict-digital-trace-data-analysis-experimental-reporting-period-28th-february-2026-19th-march-2026).
 
 ::: {.story-summary}
-- The province maps and trajectories are the core evidence for relative redistribution during the reporting period.
-- The Wikipedia maps and time series help assess whether another digital trace supports the same broad geography and timing.
-- The results remain proxy evidence and should be read as structured signals rather than exact counts.
+- The provincial maps and time series based on Cloudflare data are the core evidence for relative population redistribution during the reporting period.
+- The Wikipedia maps and time series help assess whether another digital trace supports the same broad spatial and temporal patterns.
+- The results are proxy evidence and should be read as signals rather than exact counts.
 :::
 
 ::: {.story-footer}

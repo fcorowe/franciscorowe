@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Resources – Francisco Rowe</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,14 +35,17 @@ ul.task-list li input[type="checkbox"] {
 <link href="./assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-44b4dbdd982461e02b893b80110ec9ce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0bd233a42f3e286c7c9b45399caa7180.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
+<script src="site_libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
+<script src="site_libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,209 +73,14 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<style>html{ scroll-behavior: smooth; }</style>
-<style>
-  body {
-    background: #0F2143;
-    color: #ffffff;
-  }
-  h1, h2, h3, h4, h5, h6,
-  .meta {
-    color: #ffffff;
-  }
-  .media-card {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.25);
-  }
-  .resource-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
-  }
-  .media-card a,
-  .media-card a:visited {
-    color: #ffffff;
-    text-decoration: underline;
-  }
-  .media-card a:hover,
-  .media-card a:focus-visible {
-    color: #dbe8ff;
-    text-decoration: underline;
-  }
-  .media-card h3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .media-grid .meta {
-    color: #D4D4D4;
-    font-size: 0.75rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .resource-visual {
-    position: relative;
-    height: 166px;
-    overflow: hidden;
-    isolation: isolate;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-    background: linear-gradient(145deg, var(--panel-bg-a, #05070d), var(--panel-bg-b, #0f1630));
-  }
-  .resource-visual::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background:
-      radial-gradient(circle at 18% 22%, var(--panel-glow-a, rgba(123, 97, 255, 0.3)), transparent 32%),
-      radial-gradient(circle at 82% 34%, var(--panel-glow-b, rgba(255, 89, 152, 0.18)), transparent 34%),
-      radial-gradient(circle at 58% 78%, var(--panel-glow-c, rgba(255, 191, 94, 0.14)), transparent 38%);
-  }
-  .resource-visual::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    opacity: 0.24;
-    background:
-      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 28px),
-      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 28px);
-    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.45));
-  }
-  .resource-visual > p {
-    margin: 0;
-  }
-  .resource-visual-note {
-    position: absolute;
-    top: 0.8rem;
-    left: 0.8rem;
-    z-index: 4;
-    color: var(--panel-note, rgba(255, 255, 255, 0.72));
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-  }
-  .resource-svg {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    pointer-events: none;
-  }
-  .resource-svg path,
-  .resource-svg line,
-  .resource-svg polyline,
-  .resource-svg rect {
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    vector-effect: non-scaling-stroke;
-  }
-  .resource-visual-stage-label {
-    position: absolute;
-    bottom: 0.6rem;
-    z-index: 4;
-    color: var(--panel-note, rgba(255, 255, 255, 0.68));
-    font-size: 0.52rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-  .resource-visual-stage-label.is-left {
-    left: 0.8rem;
-  }
-  .resource-visual-stage-label.is-center {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .resource-visual-stage-label.is-right {
-    right: 0.8rem;
-  }
-  .resource-story-visual > p {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    height: 100%;
-  }
-  .resource-story-visual > p > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-bottom: 0;
-    filter: saturate(0.94) contrast(1.04);
-    transform: scale(1.03);
-  }
-  .resource-story-visual .resource-visual-note {
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.34);
-  }
-  .resource-emphasis-band {
-    position: absolute;
-    top: 17%;
-    bottom: 15%;
-    left: 52%;
-    width: 14%;
-    z-index: 1;
-    transform: translateX(-50%);
-    border-left: 1px solid rgba(255, 255, 255, 0.16);
-    border-right: 1px solid rgba(255, 255, 255, 0.16);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-  }
-  .resource-bullet {
-    position: absolute;
-    z-index: 2;
-    left: var(--x);
-    top: var(--y);
-    width: var(--size);
-    height: var(--size);
-    border-radius: 2px;
-    background: var(--bullet-color);
-    opacity: var(--bullet-opacity);
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 0 var(--glow) var(--bullet-color);
-    animation: resourceBulletPulse var(--duration) ease-in-out infinite;
-    animation-delay: var(--delay);
-    pointer-events: none;
-  }
-  .resource-bullet.is-outline {
-    background: transparent;
-    border: 1px solid var(--bullet-color);
-    box-shadow: none;
-  }
-  .resource-bullet.is-tile {
-    border-radius: 1px;
-  }
-  @keyframes resourceBulletPulse {
-    0%, 100% {
-      opacity: var(--bullet-min-opacity);
-      transform: translate(calc(-50% - var(--drift-x)), calc(-50% - var(--drift-y))) scale(0.82);
-    }
-    50% {
-      opacity: var(--bullet-opacity);
-      transform: translate(calc(-50% + var(--drift-x)), calc(-50% + var(--drift-y))) scale(1.08);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .resource-bullet {
-      animation: none;
-      transform: translate(-50%, -50%);
-    }
-  }
-  @media (max-width: 768px) {
-    .resource-visual {
-      height: 148px;
-    }
-  }
-</style>
+<meta cr-debug-mode="false">
+<meta cr-remove-header-space="false">
 
 
+<link rel="stylesheet" href="site_libs/quarto-contrib/quarto-project/qmd-lab/closeread/closeread.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -324,12 +135,12 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -338,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -356,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="assets/stories/iran-conflict-population-redistribution/war-relative-index-maps.png" class="img-fluid" alt=""> <span class="resource-visual-note">interactive story</span></p>
 </div>
 <section id="iran-conflict-and-population-redistribution" class="level3">
-<h3 data-anchor-id="iran-conflict-and-population-redistribution">Iran Conflict and Population Redistribution</h3>
+<h3 class="anchored" data-anchor-id="iran-conflict-and-population-redistribution">Iran Conflict and Population Redistribution</h3>
 <p><span class="meta">Scroll-based narrative on conflict, mobility, and proxy population signals from the Iran sitrep.</span></p>
 <p><a href="iran-conflict-population-redistribution.html">Open story</a></p>
 </section>
@@ -366,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="resource-visual-note">count distribution</span></p>
 </div>
 <section id="count-data-modelling" class="level3">
-<h3 data-anchor-id="count-data-modelling">Count Data Modelling</h3>
+<h3 class="anchored" data-anchor-id="count-data-modelling">Count Data Modelling</h3>
 <p><span class="meta">Methods, examples and code for modelling count outcomes.</span></p>
 <p><a href="https://fcorowe.github.io/countdata_modelling/">Open website</a></p>
 </section>
@@ -376,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="resource-visual-note">probability curve</span></p>
 </div>
 <section id="binary-logistic-regression" class="level3">
-<h3 data-anchor-id="binary-logistic-regression">Binary Logistic Regression</h3>
+<h3 class="anchored" data-anchor-id="binary-logistic-regression">Binary Logistic Regression</h3>
 <p><span class="meta">Methods, examples and code for binary outcome modelling.</span></p>
 <p><a href="https://fcorowe.github.io/binary_logistic/">Open website</a></p>
 </section>
@@ -386,7 +197,7 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="resource-visual-note">migration composition</span></p>
 </div>
 <section id="r-package-cim" class="level3">
-<h3 data-anchor-id="r-package-cim">R Package CIM</h3>
+<h3 class="anchored" data-anchor-id="r-package-cim">R Package CIM</h3>
 <p><span class="meta">Code and resources for compositional impact of migration analysis in R.</span></p>
 <p><a href="post/2019-01-31-r-rmarkdown/index.html">Open website</a></p>
 </section>
@@ -396,7 +207,7 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="resource-visual-note">tiled map</span></p>
 </div>
 <section id="census-mapping" class="level3">
-<h3 data-anchor-id="census-mapping">Census Mapping</h3>
+<h3 class="anchored" data-anchor-id="census-mapping">Census Mapping</h3>
 <p><span class="meta">Interactive resources and examples for census-based spatial mapping.</span></p>
 <p><a href="https://fcorowe.github.io/census-mapping/">Open website</a></p>
 </section>
@@ -837,9 +648,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 </main> <!-- /main -->
-<script src="assets/menu.js"></script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -1249,5 +1066,4 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
