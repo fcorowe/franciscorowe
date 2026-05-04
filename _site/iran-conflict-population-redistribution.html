@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-04-09">
+<meta name="dcterms.date" content="2026-05-04">
 
 <title>Iran conflict and population redistribution – Francisco Rowe</title>
 <style>
@@ -144,6 +144,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Iran conflict and population redistribution</h1>
+<p class="subtitle lead">A Closeread prototype adapted from the situation report</p>
 </div>
 
 
@@ -154,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 9, 2026</p>
+      <p class="date">May 4, 2026</p>
     </div>
   </div>
   
@@ -167,12 +168,26 @@ ul.task-list li input[type="checkbox"] {
 
 
 <div class="story-shell">
+<nav class="story-nav" aria-label="In-page navigation">
+  <a class="story-nav-brand" href="#top">
+    <span class="story-nav-dot" aria-hidden="true"></span>
+    <span>Iran sitrep</span>
+  </a>
+  <ul class="story-nav-links">
+    <li><a href="#what-is-this-story-about"><span class="story-nav-num">01</span> About</a></li>
+    <li><a href="#how-should-these-graphics-be-read"><span class="story-nav-num">02</span> How to read</a></li>
+    <li><a href="#what-does-the-internal-redistribution-index-show"><span class="story-nav-num">03</span> Redistribution</a></li>
+    <li><a href="#what-do-wikipedia-pageviews-add-to-the-story"><span class="story-nav-num">04</span> Wikipedia</a></li>
+    <li><a href="#what-should-readers-know-before-interpreting-the-estimates"><span class="story-nav-num">05</span> Caveats</a></li>
+    <li><a href="#what-should-readers-take-away"><span class="story-nav-num">06</span> Takeaways</a></li>
+  </ul>
+  <a class="story-nav-cta" href="resources.html">
+    Resources
+    <span class="story-nav-cta-arrow" aria-hidden="true">→</span>
+  </a>
+</nav>
 <div class="story-topbar">
-  <a class="story-return" href="resources.html">Back to Resources</a>
-  <div class="story-brandmarks">
-    <img src="assets/stories/iran-conflict-population-redistribution/gds_logo_1.png" alt="Geographic Data Science Lab logo.">
-    <img src="assets/stories/iran-conflict-population-redistribution/uol_logo.png" alt="University of Liverpool logo.">
-  </div>
+<p><img src="assets/stories/iran-conflict-population-redistribution/gds_logo_1.png" class="img-fluid" alt="Geographic Data Science Lab logo."> <img src="assets/stories/iran-conflict-population-redistribution/uol_logo.png" class="img-fluid" alt="University of Liverpool logo."></p>
 </div>
 <section id="iran-conflict-and-population-redistribution" class="level1">
 <h1>Iran conflict and population redistribution</h1>
@@ -187,66 +202,81 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="story-meta-item">
 <p>Reporting period</p>
-<p>28 February 2026 to 9 April 2026</p>
+<p>28 February 2026 to 29 April 2026</p>
 </div>
 <div class="story-meta-item">
 <p>Source</p>
-<p>Interactive adaptation of the Iran situation report based on Cloudflare and Wikipedia signals</p>
+<p>Web adaptation of the experimental sitrep based on Cloudflare and Wikipedia signals</p>
 </div>
 </div>
+<ul class="story-stats" aria-label="Headline statistics">
+  <li class="story-stat">
+    <span class="story-stat-dot" data-tone="slate" aria-hidden="true"></span>
+    <span class="story-stat-num">31</span>
+    <span class="story-stat-label">provinces</span>
+  </li>
+  <li class="story-stat">
+    <span class="story-stat-dot" data-tone="ochre" aria-hidden="true"></span>
+    <span class="story-stat-num">61</span>
+    <span class="story-stat-label">days analysed</span>
+  </li>
+  <li class="story-stat">
+    <span class="story-stat-dot" data-tone="green" aria-hidden="true"></span>
+    <span class="story-stat-num">Updated</span>
+    <span class="story-stat-label">29 Apr 2026</span>
+  </li>
+</ul>
 <section id="what-is-this-story-about" class="level2">
 <h2 data-anchor-id="what-is-this-story-about">What is this story about?</h2>
-<p>This interactive resource updates our situation report published in <a href="https://reliefweb.int/report/iran-islamic-republic/situation-report-iran-conflict-digital-trace-data-analysis-experimental-reporting-period-28th-february-2026-19th-march-2026">Reliefweb</a> and organise it into a smaller set of visuals. It focuses on the provincial war-time population index and the Wikipedia pageview evidence used to support or qualify that interpretation.</p>
-<p>Our aim is to digital trace data as an alternative way to measure likely population dynamics in near real time in Iran. This is as conventional data sources to monitor population displacement in Iran following the outbreak of war on 28 February 2026 have been limited due to existing sanctions, active hostilities, information controls and restricted humanitarian access. Here we graphically show our estimates of population displacement. They help show where the strongest relative shifts in population presence appear, how those shifts evolve through time, and whether another digital trace points toward a similar geography.</p>
+<p>This interactive story updates the situation report methodology and condenses the analysis into a smaller set of visuals. It focuses on the internal redistribution indicators derived from Cloudflare-based estimates of relative population presence, and on Farsi Wikipedia pageviews used as a contextual validation signal.</p>
+<p>The aim is modest. These graphics do not estimate exact numbers of displaced people or observe origin-destination flows directly. They show where the strongest relative shifts in population presence appear, how those shifts evolve through time, and whether another digital trace points toward similar geography and timing.</p>
 <div class="story-summary">
 <ul>
-<li>The war-time population index is the core signal: it shows relative change in provincial presence against a pre-war baseline.</li>
-<li>The province maps and trajectories are the main evidence for geographic redistribution during the reporting period.</li>
-<li>The Wikipedia maps and time series are a contextual check, not a second population estimator.</li>
+<li>Cloudflare HTTPS request data provide the primary proxy for provincial relative presence.</li>
+<li>The reporting estimate constrains provincial shares to a national population control and converts share changes into zero-sum internal redistribution indicators.</li>
+<li>Wikipedia maps and time series serve as contextual validation, not as a second population estimator.</li>
 </ul>
 </div>
 </section>
 <section id="how-should-these-graphics-be-read" class="level2">
 <h2 data-anchor-id="how-should-these-graphics-be-read">How should these graphics be read?</h2>
-<p>The province index is strongest when it is interpreted as a relative measure. Positive values suggest higher presence than the pre-war baseline, while negative values suggest lower presence, but both can still be shaped by wartime observability and connectivity conditions.</p>
-<p>The Wikipedia evidence should be read even more cautiously. Pageview counts are small and partial, but they can still help show whether border-oriented attention and movement pressure are consistent with the geography seen in the province index.</p>
+<p>Cloudflare publishes aggregated, anonymised counts of encrypted web requests passing through its network. In this workflow, night-time provincial traffic is calibrated against WorldPop 2025 baseline population for December 2025 and then applied after the start of the war on 28 February 2026. The unconstrained relative-presence signal remains a diagnostic measure of Internet-derived presence, while the reporting estimate completes the ADM1-date panel, smooths provincial shares, and applies a national population control informed by external mobility evidence.</p>
+<p>The internal redistribution index is the main reporting measure. It captures how much each province’s share of the constrained national population estimate has changed relative to the war anchor. Positive values indicate population-share gain relative to other provinces; negative values indicate population-share loss relative to other provinces. Both can still be shaped by Internet connectivity, power cuts, routing disruptions and uneven observability, so persistent patterns and alignment with external signals matter more than any single date.</p>
 </section>
 <div class="cr-section cr-column-screen overlay-right">
 <div class="narrative-col">
-<section id="what-does-the-war-time-population-index-show" class="level2 narrative trigger">
-<h2 class="narrative" data-anchor-id="what-does-the-war-time-population-index-show">What does the war-time population index show?</h2>
+<section id="what-does-the-internal-redistribution-index-show" class="level2 narrative trigger">
+<h2 class="narrative" data-anchor-id="what-does-the-internal-redistribution-index-show">What does the internal redistribution index show?</h2>
 </section>
-<div class="trigger new-trigger" data-focus-on="cr-war-map">
+<div class="trigger new-trigger" data-focus-on="cr-redist-weekly">
 <div class="narrative">
-<p>The first visual question is geographic. Where does the clearest redistribution signal appear once the war begins? In the sitrep, the strongest early changes appear first in border-oriented space rather than evenly across the country.</p>
+<p>The redistribution maps ask a narrower question: which provinces gained or lost population share relative to the war-anchor distribution? This is the clearest way to separate internal redistribution from national-level change in the country control.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-focus-on="cr-war-map">
+<div class="trigger new-trigger" data-focus-on="cr-redist-series">
 <div class="narrative">
-<p>That makes the map sequence more than illustration. It is the first substantive claim of the story: the geography of the initial shock is clustered, and that clustering matters for how later changes are interpreted.</p>
+<p>The time series show whether those share changes persist, consolidate, or reverse. Sustained positive values are more plausible concentration signals, while sustained negative values are more plausible out-movement or relative-loss signals.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-focus-on="cr-war-series">
+<div class="trigger">
 <div class="narrative">
-<p>The second question is temporal. The provincial trajectories show whether those shifts persist, consolidate, or reverse as the reporting period continues.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-war-series">
-<div class="narrative">
-<p>This is where the story becomes more careful about likely origin and destination areas. Provinces with sustained declines are more plausible candidates for out-movement, while provinces with repeated increases are more plausible concentration zones.</p>
+<p>The latest table translates the share shifts into people-equivalent net internal redistribution. These values sum to zero nationally each day, so they should be read as a scale indicator for redistribution rather than as observed counts of movers.</p>
 </div>
 </div>
 </div>
 <div class="sticky-col">
 <div class="sticky-col-stack">
-<div id="cr-war-map" class="sticky">
-<p><img src="assets/stories/iran-conflict-population-redistribution/war-relative-index-maps.png" class="img-fluid" alt="Provincial war-time population index maps for key dates in the reporting period."></p>
+<div id="cr-redist-weekly" class="sticky">
+<p><img src="assets/stories/iran-conflict-population-redistribution/adm1-internal-redistribution-weekly-maps.png" class="img-fluid" alt="Weekly maps of the ADM1 internal redistribution index."></p>
 </div>
-<div id="cr-war-series" class="sticky">
-<p><img src="assets/stories/iran-conflict-population-redistribution/province-war-trajectories.png" class="img-fluid" alt="Province-level war-time population index trajectories."></p>
+<div id="cr-redist-series" class="sticky">
+<p><img src="assets/stories/iran-conflict-population-redistribution/adm1-internal-redistribution-timeseries.png" class="img-fluid" alt="Province-level internal redistribution index time series with uncertainty bands."></p>
 </div>
 </div>
 </div>
+</div>
+<div class="story-table-figure">
+<p><img src="assets/stories/iran-conflict-population-redistribution/adm1-internal-redistribution-latest-table.png" class="img-fluid" alt="Latest table of province-level people-equivalent net internal redistribution estimates."></p>
 </div>
 <div class="cr-section cr-column-screen overlay-right">
 <div class="narrative-col">
@@ -255,22 +285,22 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <div class="trigger new-trigger" data-focus-on="cr-wiki-maps">
 <div class="narrative">
-<p>The Wikipedia material is not asked to do the same job as Cloudflare. It is there to show whether another digital trace points toward the same border-oriented geography of conflict attention and movement pressure.</p>
+<p>The Wikipedia material is not asked to do the same job as Cloudflare. Farsi pageviews for border and border-town articles are used to check whether another digital trace points toward similar geography of conflict attention and movement pressure.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-wiki-maps">
 <div class="narrative">
-<p>That matters because alignment across signals strengthens confidence. It does not prove the population interpretation on its own, but it does make the spatial story more persuasive than a single-source reading.</p>
+<p>Alignment across sources strengthens confidence in the interpretation. It does not provide a causal estimate or prove movement on its own, but it makes the spatial reading more persuasive than a single-source claim.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-wiki-series">
 <div class="narrative">
-<p>The time series then adds a timing check. If pageview attention rises sharply around the same phase of the conflict in which the province index shifts most strongly, that supports a common interpretation of disruption and reorientation.</p>
+<p>The time series adds a timing check. If pageview attention rises around the same phase in which the redistribution signal shifts most strongly, that supports a shared interpretation of disruption and reorientation.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-wiki-series">
 <div class="narrative">
-<p>At the same time, the limits remain important: the signal is partial, the counts are small, and the value of the series is contextual rather than definitive.</p>
+<p>The limits remain important: counts are small, the signal is partial, and Farsi Wikipedia traffic can include users outside Iran. Its value is contextual and directional.</p>
 </div>
 </div>
 </div>
@@ -287,22 +317,103 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<section id="what-should-readers-know-before-interpreting-the-estimates" class="level2">
+<h2 data-anchor-id="what-should-readers-know-before-interpreting-the-estimates">What should readers know before interpreting the estimates?</h2>
+<div class="story-faq-grid">
+<section id="internet-shutdowns-do-not-make-the-signal-disappear-but-they-do-bias-it." class="level3 story-faq">
+<h3 data-anchor-id="internet-shutdowns-do-not-make-the-signal-disappear-but-they-do-bias-it.">Internet shutdowns do not make the signal disappear, but they do bias it.</h3>
+<p>Cloudflare data capture observable HTTPS request activity, not people directly. Blackouts, power cuts and routing disruption can suppress traffic where people remain physically present, while better-connected users, institutions or wealthier urban households may stay more visible.</p>
+</section>
+<section id="the-method-reduces-this-problem-without-eliminating-it." class="level3 story-faq">
+<h3 data-anchor-id="the-method-reduces-this-problem-without-eliminating-it.">The method reduces this problem without eliminating it.</h3>
+<p>The analysis uses province shares rather than raw national traffic, focuses on night-time activity, calibrates against a pre-war baseline, applies observability adjustments and gives more weight to patterns that persist and align with independent evidence.</p>
+</section>
+<section id="the-estimates-describe-relative-internet-observable-presence." class="level3 story-faq">
+<h3 data-anchor-id="the-estimates-describe-relative-internet-observable-presence.">The estimates describe relative internet-observable presence.</h3>
+<p>They are not raw flows, individual movements, unique users or absolute population counts. Positive values may indicate relative in-movement or more stable connectivity; negative values may indicate relative out-movement or local network shocks.</p>
+</section>
+<section id="wikipedia-is-a-directional-attention-signal." class="level3 story-faq">
+<h3 data-anchor-id="wikipedia-is-a-directional-attention-signal.">Wikipedia is a directional attention signal.</h3>
+<p>Farsi Wikipedia pageviews help test whether attention to borders and routes changes in ways that are consistent with the Cloudflare-derived geography. They are small, partial and may include users outside Iran, so they are not used to estimate displacement directly.</p>
+</section>
+</div>
+</section>
 <section id="what-should-readers-take-away" class="level2">
 <h2 data-anchor-id="what-should-readers-take-away">What should readers take away?</h2>
-<p>This simplified interactive resource keeps the story close to the figures that carry the most interpretive weight.</p>
+<p>This revised story keeps the interpretation close to the figures that carry the most weight and separates diagnostics from reporting estimates.</p>
 <div class="story-summary">
 <ul>
-<li>The province maps and trajectories are the core evidence for relative redistribution during the reporting period.</li>
-<li>The Wikipedia maps and time series help assess whether another digital trace supports the same broad geography and timing.</li>
-<li>The results remain proxy evidence and should be read as structured signals rather than exact counts.</li>
+<li>The internal redistribution maps, time series and latest table are the core evidence for province-level share shifts.</li>
+<li>The FAQ material clarifies why the estimates should be read as internet-observable, relative and triangulated evidence.</li>
+<li>The results remain proxy evidence and should be read as structured signals, not exact counts or direct flows.</li>
 </ul>
 </div>
 <div class="story-footer">
-<p>This webpage was created with <a href="https://quarto.org/">Quarto</a> and <a href="https://closeread.dev/">Closeread</a>. It is a story-first adaptation of the project sitrep, published here as an interactive resource.</p>
+<p>This webpage was created with <a href="https://quarto.org/">Quarto</a> and <a href="https://closeread.dev/">Closeread</a>. It is a story-first adaptation of the project sitrep and remains intentionally separate from the PDF report workflow.</p>
 </div>
 </section>
 </section>
 </div>
+<script>
+(function () {
+  function init() {
+    const nav = document.querySelector(".story-nav");
+    if (!nav) return;
+    const links = Array.from(nav.querySelectorAll(".story-nav-links a"));
+    const sections = links
+      .map(a => document.getElementById(a.getAttribute("href").slice(1)))
+      .filter(Boolean);
+    if (!sections.length) return;
+
+    // Smooth scroll for in-page links, with fixed-nav offset
+    const navOffset = 88;
+    nav.addEventListener("click", (ev) => {
+      const a = ev.target.closest("a[href^='#']");
+      if (!a) return;
+      const id = a.getAttribute("href").slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+      ev.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - navOffset;
+      window.scrollTo({ top, behavior: "smooth" });
+      history.replaceState(null, "", "#" + id);
+    });
+
+    // Active-section highlighting
+    const byId = new Map(sections.map(s => [s.id, s]));
+    const linkById = new Map(links.map(a => [a.getAttribute("href").slice(1), a]));
+
+    const setActive = (id) => {
+      links.forEach(a => a.classList.toggle("is-active", a.getAttribute("href") === "#" + id));
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      // Pick the entry whose top is closest to the navOffset and visible
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a, b) => Math.abs(a.boundingClientRect.top - navOffset) - Math.abs(b.boundingClientRect.top - navOffset));
+      if (visible[0]) setActive(visible[0].target.id);
+    }, {
+      rootMargin: `-${navOffset + 12}px 0px -55% 0px`,
+      threshold: [0, 0.2, 0.4, 0.6, 0.8, 1]
+    });
+    sections.forEach(s => observer.observe(s));
+
+    // Hide nav at the very top (let the masthead breathe)
+    const onScroll = () => {
+      nav.classList.toggle("is-floating", window.scrollY > 80);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
 
 
 
