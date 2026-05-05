@@ -550,8 +550,8 @@ body {
    Section headings (H2)
    ===================================================================== */
 
-/* Counter for top-level section numbering (H2s inside .story-shell that are
-   NOT closeread narrative cards). Reset on the shell, increment per H2. */
+/* Counter for all story h2s. Narrative h2s are included so visible page
+   badges stay aligned with the floating navigation numbers. */
 .story-shell {
   counter-reset: section;
 }
@@ -568,9 +568,9 @@ body {
   color: var(--story-ink);
 }
 
-/* Numbered pill badge above each top-level section heading.
-   Excludes h2s inside the closeread narrative card (class="narrative"). */
-.story-shell h2:not(.narrative) {
+/* Keep page badges aligned with the floating nav. Narrative h2s are counted
+   even though their pills are not displayed in the main page flow. */
+.story-shell h2 {
   counter-increment: section;
 }
 
