@@ -215,6 +215,14 @@ This revised story keeps the interpretation close to the figures that carry the 
 This webpage was created with [Quarto](https://quarto.org/) and [Closeread](https://closeread.dev/). It is a story-first adaptation of the project sitrep and remains intentionally separate from the PDF report workflow.
 :::
 
+::: {.story-references}
+## References
+
+<p id="ref-cabrera-pietrostefani-rowe-2026">Francisco Rowe, Carmen Cabrera, Elisabetta Pietrostefani. 2026. “Where Iranians are going under fire. A real-time picture of displacement.” <em>The Conversation</em>, May 5, 2026. <a href="https://doi.org/10.64628/AB.wxcpd6kxg">https://doi.org/10.64628/AB.wxcpd6kxg</a></p>
+
+<p id="ref-rowe-et-al-2026-iran-sitrep">Francisco Rowe, Carmen Cabrera, Elisabetta Pietrostefani, Matt Mason, Rodgers Iradukunda, Andrea Nasuto, and Emiliano Beltran. 2026. “Situation Report: Iran Conflict Digital Trace Data Analysis - Experimental (Reporting period: 28th of February 2026 to 19th of March 2026).” Geographic Data Science Lab, University of Liverpool, March 26, 2026. ReliefWeb: <a href="https://reliefweb.int/report/iran-islamic-republic/situation-report-iran-conflict-digital-trace-data-analysis-experimental-reporting-period-28th-february-2026-19th-march-2026">https://reliefweb.int/report/iran-islamic-republic/situation-report-iran-conflict-digital-trace-data-analysis-experimental-reporting-period-28th-february-2026-19th-march-2026</a>. OSF preprint: <a href="https://doi.org/10.31235/osf.io/4s7ve_v1">https://doi.org/10.31235/osf.io/4s7ve_v1</a></p>
+:::
+
 :::
 
 ```{=html}

@@ -245,10 +245,6 @@ format:
 
 <span class="meta">Scroll-based narrative on conflict, mobility, and proxy population signals from the Iran sitrep.</span>
 
-<div class="resource-citation">
-  Citations: [Cabrera, Pietrostefani, and Rowe (2026)](https://doi.org/10.64628/AB.wxcpd6kxg); [Rowe et al. (2026)](https://doi.org/10.31235/osf.io/4s7ve_v1)
-</div>
-
 [Open story](iran-conflict-population-redistribution.html)
 :::
 
@@ -340,10 +336,6 @@ format:
 
 ::: {.resource-references}
 ## References
-
-<p id="ref-cabrera-pietrostefani-rowe-2026">Cabrera, Carmen, Elisabetta Pietrostefani, and Francisco Rowe. 2026. “Where Iranians are going under fire - a real-time picture of displacement.” <em>The Conversation</em>, May 5, 2026. <a href="https://doi.org/10.64628/AB.wxcpd6kxg">https://doi.org/10.64628/AB.wxcpd6kxg</a></p>
-
-<p id="ref-rowe-et-al-2026-iran-sitrep">Rowe, Francisco, Carmen Cabrera, Elisabetta Pietrostefani, Matt Mason, Rodgers Iradukunda, Andrea Nasuto, and Emiliano Beltran. 2026. “Situation Report: Iran Conflict Digital Trace Data Analysis - Experimental (Reporting period: 28th of February 2026 to 19th of March 2026).” Geographic Data Science Lab, University of Liverpool, March 26, 2026. ReliefWeb: <a href="https://reliefweb.int/report/iran-islamic-republic/situation-report-iran-conflict-digital-trace-data-analysis-experimental-reporting-period-28th-february-2026-19th-march-2026">https://reliefweb.int/report/iran-islamic-republic/situation-report-iran-conflict-digital-trace-data-analysis-experimental-reporting-period-28th-february-2026-19th-march-2026</a>. OSF preprint: <a href="https://doi.org/10.31235/osf.io/4s7ve_v1">https://doi.org/10.31235/osf.io/4s7ve_v1</a></p>
 
 <p id="ref-rodriguez-vignoli-rowe-2018">Rodríguez-Vignoli, Jorge, and Francisco Rowe. 2018. “How is internal migration reshaping metropolitan populations in Latin America? A new method and new evidence.” <em>Population Studies</em> 72 (2): 253-273. <a href="https://doi.org/10.1080/00324728.2017.1416155">https://doi.org/10.1080/00324728.2017.1416155</a></p>
 :::
