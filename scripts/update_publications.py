@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import csv
+import difflib
 import json
 import multiprocessing as mp
 import re
@@ -12,8 +13,12 @@ ROOT = Path(__file__).resolve().parents[1]
 PUB_ROOT = ROOT / "content" / "publication"
 DATA_DIR = ROOT / "data"
 SCHOLAR_ID = "d8rThGQAAAAJ"
+PAPERS_MASTER = DATA_DIR / "papers_master.csv"
+CITATIONS_BY_YEAR = DATA_DIR / "citations_by_year.csv"
+UPDATE_META = DATA_DIR / "papers_update_meta.json"
 MANUAL_SCHOLAR_CITES = DATA_DIR / "google_scholar_citations_by_year.csv"
 MANUAL_OVERRIDES = DATA_DIR / "papers_manual_overrides.csv"
+PAPER_FIELDS = ["title", "authors", "journal", "year", "journal_link", "doi", "pdf_link", "source"]
 
 
 def norm_title(s: str) -> str:
@@ -21,6 +26,19 @@ def norm_title(s: str) -> str:
     s = re.sub(r"\\\{|\\\}", "", s)
     s = re.sub(r"[^a-z0-9]+", " ", s)
     return re.sub(r"\s+", " ", s).strip()
+
+
+def titles_match(a: str, b: str) -> bool:
+    """Conservative near-match for records that are visibly the same title."""
+    na, nb = norm_title(a), norm_title(b)
+    if not na or not nb:
+        return False
+    if na == nb:
+        return True
+    shorter, longer = sorted([na, nb], key=len)
+    if len(shorter) >= 24 and longer.startswith(shorter) and len(shorter) / len(longer) >= 0.82:
+        return True
+    return difflib.SequenceMatcher(None, na, nb).ratio() >= 0.97
 
 
 def clean(s: str) -> str:
@@ -126,6 +144,44 @@ def parse_bib_fields(path: Path) -> dict:
 
 def is_pdf_url(u: str) -> bool:
     return bool(u and ".pdf" in u.lower())
+
+
+def canonical_record(row: dict, default_source: str = "") -> dict:
+    doi = clean_doi(row.get("doi", ""))
+    return {
+        "title": clean_text(row.get("title", "")),
+        "authors": clean_text(row.get("authors", "")),
+        "journal": clean_text(row.get("journal", "")),
+        "year": clean(row.get("year", "")),
+        "journal_link": clean(row.get("journal_link", "")),
+        "doi": doi if is_valid_doi(doi) else "",
+        "pdf_link": clean(row.get("pdf_link", "")),
+        "source": clean(row.get("source", "")) or default_source,
+    }
+
+
+def load_papers_master() -> list:
+    if not PAPERS_MASTER.exists():
+        return []
+    with PAPERS_MASTER.open(newline="", encoding="utf-8") as f:
+        return [
+            canonical_record(row, default_source="existing")
+            for row in csv.DictReader(f)
+            if norm_title(row.get("title", ""))
+        ]
+
+
+def load_existing_citations() -> dict:
+    if not CITATIONS_BY_YEAR.exists():
+        return {}
+    out = {}
+    with CITATIONS_BY_YEAR.open(newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            y = str(row.get("year", "")).strip()
+            c = str(row.get("citations", "")).strip()
+            if y.isdigit() and c.isdigit():
+                out[int(y)] = int(c)
+    return out
 
 
 def build_local() -> list:
@@ -238,13 +294,11 @@ def merge_scholar(records: list, scholar_data: dict):
     if not scholar_data.get("ok"):
         return records, cites
 
-    seen_titles = {norm_title(r.get("title", "")) for r in records}
     for pub in scholar_data.get("publications", []):
         title = pub.get("title", "")
-        key = norm_title(title)
-        if not key:
+        if not norm_title(title):
             continue
-        if key not in seen_titles:
+        if not any(titles_match(title, r.get("title", "")) for r in records):
             records.append({
                 "title": title,
                 "authors": pub.get("authors", ""),
@@ -344,14 +398,19 @@ def fetch_openalex_work_by_title(title: str, year=None) -> dict:
         wtitle = clean(w.get("display_name", ""))
         if not wtitle:
             continue
-        score = 2 if norm_title(wtitle) == target else 1
+        if norm_title(wtitle) == target:
+            score = 3
+        elif titles_match(wtitle, title):
+            score = 2
+        else:
+            score = 0
         if score > best_score:
             best = w
             best_score = score
-        if score == 2:
+        if score == 3:
             break
 
-    if not best:
+    if not best or best_score < 2:
         return {}
 
     loc = best.get("primary_location") or {}
@@ -363,6 +422,7 @@ def fetch_openalex_work_by_title(title: str, year=None) -> dict:
         pdf_link = clean(oa_loc.get("pdf_url", ""))
 
     return {
+        "title": clean(best.get("display_name", "")),
         "doi": doi,
         "journal_link": journal_link,
         "pdf_link": pdf_link,
@@ -379,7 +439,7 @@ def enrich_links_from_web(records: list) -> tuple:
     else:
         cache = {}
 
-    stats = {"lookups": 0, "cache_hits": 0, "updated": 0, "errors": 0}
+    stats = {"lookups": 0, "cache_hits": 0, "updated": 0, "errors": 0, "title_mismatches": 0}
     scholar_q = "scholar.google.com/scholar?q="
 
     for rec in records:
@@ -414,6 +474,10 @@ def enrich_links_from_web(records: list) -> tuple:
         web_doi = clean_doi(web.get("doi", "")) if isinstance(web, dict) else ""
         web_journal = clean(web.get("journal_link", "")) if isinstance(web, dict) else ""
         web_pdf = clean(web.get("pdf_link", "")) if isinstance(web, dict) else ""
+        web_title = clean(web.get("title", "")) if isinstance(web, dict) else ""
+        if web_title and not titles_match(title, web_title):
+            stats["title_mismatches"] += 1
+            continue
 
         if web_doi and not doi:
             doi = web_doi
@@ -445,23 +509,40 @@ def year_value(v) -> int:
     return int(s) if s.isdigit() else -1
 
 
+def is_journal_record(rec: dict) -> int:
+    journal = clean_text(rec.get("journal", ""))
+    if not journal:
+        return 0
+    lower = journal.lower()
+    preprint_markers = ["preprint", "working paper", "scholar", "osf", "arxiv", "ssrn", "medrxiv", "biorxiv"]
+    return 0 if any(marker in lower for marker in preprint_markers) else 1
+
+
+def completeness_score(rec: dict) -> int:
+    fields = ["authors", "journal", "year", "journal_link", "doi", "pdf_link"]
+    return sum(1 for f in fields if clean(rec.get(f, "")))
+
+
 def record_score(rec: dict) -> tuple:
-    source_rank = {"local": 3, "openalex_recent": 2, "scholar": 1}.get(rec.get("source", ""), 0)
-    has_authors = 1 if clean_text(rec.get("authors", "")) else 0
-    has_journal = 1 if clean_text(rec.get("journal", "")) else 0
-    has_pdf = 1 if clean(rec.get("pdf_link", "")) else 0
-    has_journal_link = 1 if clean(rec.get("journal_link", "")) else 0
     has_doi = 1 if clean_doi(rec.get("doi", "")) else 0
-    return (source_rank, has_authors, has_journal, has_pdf, has_journal_link, has_doi)
+    source_rank = {
+        "local": 5,
+        "existing": 4,
+        "scholar": 3,
+        "openalex_recent": 2,
+        "manual_override": 1,
+    }.get(rec.get("source", ""), 0)
+    return (
+        is_journal_record(rec),
+        has_doi,
+        completeness_score(rec),
+        source_rank,
+        year_value(rec.get("year", "")),
+    )
 
 
 def _pick_better(a: dict, b: dict) -> dict:
-    # Keep the most recent record; break ties by metadata completeness.
-    ya, yb = year_value(a.get("year", "")), year_value(b.get("year", ""))
-    if yb > ya:
-        return b
-    if ya > yb:
-        return a
+    # Prefer published/DOI-rich records before recency, preserving stronger metadata.
     return b if record_score(b) > record_score(a) else a
 
 
@@ -483,7 +564,9 @@ def _merge_missing(base: dict, extra: dict) -> dict:
     return out
 
 
-def dedupe_records(records: list) -> list:
+def dedupe_records(records: list) -> tuple:
+    duplicate_groups = []
+
     # Stage 1: collapse DOI-identical records while retaining richest metadata.
     by_doi = {}
     no_doi = []
@@ -500,6 +583,14 @@ def dedupe_records(records: list) -> list:
                 best = _pick_better(prev, r)
                 other = r if best is prev else prev
                 by_doi[key] = _merge_missing(best, other)
+                duplicate_groups.append(
+                    {
+                        "reason": "same_doi",
+                        "key": key,
+                        "kept": by_doi[key].get("title", ""),
+                        "merged": other.get("title", ""),
+                    }
+                )
         else:
             no_doi.append(r)
 
@@ -509,17 +600,35 @@ def dedupe_records(records: list) -> list:
         tkey = norm_title(r.get("title", ""))
         if not tkey:
             continue
-        prev = by_title.get(tkey)
+        matching_key = None
+        for existing_key, existing in by_title.items():
+            if titles_match(r.get("title", ""), existing.get("title", "")):
+                existing_doi = clean_doi(existing.get("doi", ""))
+                incoming_doi = clean_doi(r.get("doi", ""))
+                if existing_doi and incoming_doi and existing_doi.lower() != incoming_doi.lower():
+                    continue
+                matching_key = existing_key
+                break
+        key = matching_key or tkey
+        prev = by_title.get(key)
         if prev is None:
-            by_title[tkey] = r
+            by_title[key] = r
         else:
             best = _pick_better(prev, r)
             other = r if best is prev else prev
-            by_title[tkey] = _merge_missing(best, other)
+            by_title[key] = _merge_missing(best, other)
+            duplicate_groups.append(
+                {
+                    "reason": "same_or_near_title",
+                    "key": key,
+                    "kept": by_title[key].get("title", ""),
+                    "merged": other.get("title", ""),
+                }
+            )
 
     out = list(by_title.values())
-    out.sort(key=lambda x: ((x.get("year") or 9999), (x.get("title") or "")))
-    return out
+    out.sort(key=lambda x: ((year_value(x.get("year", "")) if year_value(x.get("year", "")) >= 0 else 9999), (x.get("title") or "")))
+    return out, duplicate_groups
 
 
 def load_manual_scholar_cites() -> dict:
@@ -555,6 +664,7 @@ def load_manual_overrides() -> dict:
                 "journal_link": clean(row.get("journal_link", "")),
                 "doi": clean_doi(row.get("doi", "")),
                 "pdf_link": clean(row.get("pdf_link", "")),
+                "source": "manual_override",
             }
     return out
 
@@ -573,65 +683,193 @@ def apply_manual_overrides(records: list, overrides: dict) -> list:
     return records
 
 
+def has_matching_title(records: list, title: str) -> bool:
+    return any(titles_match(title, rec.get("title", "")) for rec in records)
+
+
+def append_missing(records: list, candidates: list) -> tuple:
+    added = []
+    duplicate_groups = []
+    for rec in candidates:
+        rec = canonical_record(rec, default_source=rec.get("source", ""))
+        title = rec.get("title", "")
+        if not norm_title(title):
+            continue
+        match_idx = next(
+            (idx for idx, existing in enumerate(records) if titles_match(title, existing.get("title", ""))),
+            None,
+        )
+        if match_idx is not None:
+            existing = records[match_idx]
+            before = canonical_record(existing)
+            best = _pick_better(existing, rec)
+            other = rec if best is existing else existing
+            records[match_idx] = _merge_missing(best, other)
+            after = canonical_record(records[match_idx])
+            if before != after or norm_title(existing.get("title", "")) != norm_title(title):
+                duplicate_groups.append(
+                    {
+                        "reason": "incoming_duplicate",
+                        "key": norm_title(title),
+                        "kept": records[match_idx].get("title", ""),
+                        "merged": other.get("title", ""),
+                    }
+                )
+        else:
+            records.append(rec)
+            added.append(title)
+    return records, added, duplicate_groups
+
+
+def rows_by_title(records: list) -> dict:
+    return {norm_title(r.get("title", "")): r for r in records if norm_title(r.get("title", ""))}
+
+
+def changed_titles(before: list, after: list) -> list:
+    before_map = rows_by_title(before)
+    out = []
+    for rec in after:
+        key = norm_title(rec.get("title", ""))
+        if key and key in before_map and canonical_record(before_map[key]) != canonical_record(rec):
+            out.append(rec.get("title", ""))
+    return sorted(out)
+
+
+def validate_output(before: list, after: list, source_new_titles: list) -> list:
+    errors = []
+    before_count = len(before)
+    after_count = len(after)
+    if before_count and after_count < before_count:
+        errors.append(f"Refusing to shrink publications from {before_count} to {after_count}.")
+    if source_new_titles and after_count <= before_count:
+        errors.append(
+            f"Source candidates include {len(source_new_titles)} new titles, "
+            f"but output count did not increase above {before_count}."
+        )
+    return errors
+
+
 def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
+    existing_master = load_papers_master()
+    existing_cites = load_existing_citations()
+    manual_overrides = load_manual_overrides()
     local = build_local()
     local_count = len(local)
     scholar_data = fetch_scholar()
-    papers, cites = merge_scholar(local, scholar_data)
+    source_errors = []
+    if not scholar_data.get("ok"):
+        source_errors.append(f"scholar: {scholar_data.get('error', 'unknown error')}")
 
+    papers = list(existing_master)
+    duplicate_groups = []
+    papers, local_new, incoming_dupes = append_missing(papers, local)
+    duplicate_groups.extend(incoming_dupes)
+    papers, cites = merge_scholar(papers, scholar_data)
+    scholar_new = []
+    if scholar_data.get("ok"):
+        existing_before_scholar = list(existing_master) + local
+        scholar_new = [
+            clean(p.get("title", ""))
+            for p in scholar_data.get("publications", [])
+            if clean(p.get("title", "")) and not has_matching_title(existing_before_scholar, p.get("title", ""))
+        ]
+
+    openalex_new = []
     if not scholar_data.get("ok"):
         try:
             oa_cites = fetch_openalex_citations()
-            if not cites:
+            if not cites and not existing_cites:
                 cites = oa_cites
-            existing = {norm_title(p.get("title", "")) for p in papers}
             for r in fetch_openalex_works(min_year=2008, max_year=2026):
-                if norm_title(r.get("title", "")) not in existing:
+                if not has_matching_title(papers, r.get("title", "")):
+                    openalex_new.append(r.get("title", ""))
                     papers.append(r)
         except Exception:
-            pass
+            source_errors.append("openalex: failed to fetch fallback works or citations")
 
     manual_cites = load_manual_scholar_cites()
     if manual_cites:
         cites = manual_cites
+    elif cites:
+        pass
+    elif existing_cites:
+        cites = existing_cites
 
+    for ov in manual_overrides.values():
+        if ov.get("title") and not has_matching_title(papers, ov.get("title", "")):
+            papers.append(ov)
+
+    papers = apply_manual_overrides(papers, manual_overrides)
     for p in papers:
         p["doi"] = clean_doi(p.get("doi", ""))
         if p["doi"] and not p.get("journal_link"):
             p["journal_link"] = f"https://doi.org/{p['doi']}"
-    papers = dedupe_records(papers)
-    papers, enrich_stats = enrich_links_from_web(papers)
-    papers = apply_manual_overrides(papers, load_manual_overrides())
 
-    with (DATA_DIR / "papers_master.csv").open("w", newline="", encoding="utf-8") as f:
+    papers, enrich_stats = enrich_links_from_web(papers)
+    deduped_papers, broad_duplicate_groups = dedupe_records(papers)
+    source_new_titles = sorted({t for t in local_new + scholar_new + openalex_new if t})
+    required_min_count = len(existing_master) + (1 if source_new_titles else 0)
+    if len(deduped_papers) >= required_min_count:
+        papers = deduped_papers
+        duplicate_groups.extend(broad_duplicate_groups)
+    elif broad_duplicate_groups:
+        source_errors.append(
+            "duplicate cleanup skipped: broad cleanup would violate publication-count safety check"
+        )
+    papers = apply_manual_overrides(papers, manual_overrides)
+    deduped_papers, duplicate_groups_after_overrides = dedupe_records(papers)
+    if len(deduped_papers) >= required_min_count:
+        papers = deduped_papers
+        duplicate_groups.extend(duplicate_groups_after_overrides)
+    elif duplicate_groups_after_overrides:
+        source_errors.append(
+            "post-override duplicate cleanup skipped: cleanup would violate publication-count safety check"
+        )
+
+    validation_errors = validate_output(existing_master, papers, source_new_titles)
+    if validation_errors:
+        print("Publication update blocked:")
+        for err in validation_errors:
+            print(f"- {err}")
+        print(f"Existing publications: {len(existing_master)}")
+        print(f"Candidate output publications: {len(papers)}")
+        raise SystemExit(2)
+
+    with PAPERS_MASTER.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(
             f,
-            fieldnames=["title", "authors", "journal", "year", "journal_link", "doi", "pdf_link", "source"],
+            fieldnames=PAPER_FIELDS,
         )
         w.writeheader()
         w.writerows(papers)
 
-    with (DATA_DIR / "citations_by_year.csv").open("w", newline="", encoding="utf-8") as f:
+    with CITATIONS_BY_YEAR.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["year", "citations"])
         for y in sorted(cites):
             w.writerow([y, cites[y]])
 
-    with (DATA_DIR / "papers_update_meta.json").open("w", encoding="utf-8") as f:
+    with UPDATE_META.open("w", encoding="utf-8") as f:
         json.dump(
             {
                 "count": len(papers),
+                "previous_count": len(existing_master),
                 "local_records": local_count,
                 "scholar_ok": bool(scholar_data.get("ok")),
                 "scholar_error": scholar_data.get("error", ""),
                 "fallback": "openalex" if (not scholar_data.get("ok")) else "",
                 "scholar_id": SCHOLAR_ID,
+                "new_titles": source_new_titles,
+                "updated_titles": changed_titles(existing_master, papers),
+                "duplicates_resolved": duplicate_groups,
+                "source_errors": source_errors,
                 "doi_web_lookups": enrich_stats.get("lookups", 0),
                 "doi_web_cache_hits": enrich_stats.get("cache_hits", 0),
                 "doi_links_updated": enrich_stats.get("updated", 0),
                 "doi_lookup_errors": enrich_stats.get("errors", 0),
+                "doi_title_mismatches": enrich_stats.get("title_mismatches", 0),
             },
             f,
             indent=2,
