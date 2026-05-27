@@ -749,6 +749,14 @@ def validate_output(before: list, after: list, source_new_titles: list) -> list:
     return errors
 
 
+def preserves_existing_titles(before: list, after: list) -> bool:
+    for rec in before:
+        title = rec.get("title", "")
+        if norm_title(title) and not has_matching_title(after, title):
+            return False
+    return True
+
+
 def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -811,21 +819,21 @@ def main():
     deduped_papers, broad_duplicate_groups = dedupe_records(papers)
     source_new_titles = sorted({t for t in local_new + scholar_new + openalex_new if t})
     required_min_count = len(existing_master) + (1 if source_new_titles else 0)
-    if len(deduped_papers) >= required_min_count:
+    if len(deduped_papers) >= required_min_count and preserves_existing_titles(existing_master, deduped_papers):
         papers = deduped_papers
         duplicate_groups.extend(broad_duplicate_groups)
     elif broad_duplicate_groups:
         source_errors.append(
-            "duplicate cleanup skipped: broad cleanup would violate publication-count safety check"
+            "duplicate cleanup skipped: broad cleanup would violate publication-count or baseline-title safety checks"
         )
     papers = apply_manual_overrides(papers, manual_overrides)
     deduped_papers, duplicate_groups_after_overrides = dedupe_records(papers)
-    if len(deduped_papers) >= required_min_count:
+    if len(deduped_papers) >= required_min_count and preserves_existing_titles(existing_master, deduped_papers):
         papers = deduped_papers
         duplicate_groups.extend(duplicate_groups_after_overrides)
     elif duplicate_groups_after_overrides:
         source_errors.append(
-            "post-override duplicate cleanup skipped: cleanup would violate publication-count safety check"
+            "post-override duplicate cleanup skipped: cleanup would violate publication-count or baseline-title safety checks"
         )
 
     validation_errors = validate_output(existing_master, papers, source_new_titles)
