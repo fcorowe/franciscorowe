@@ -3,7 +3,8 @@
   "previous_count": 211,
   "local_records": 104,
   "scholar_ok": false,
-  "scholar_error": "No module named 'scholarly'",
+  "scholar_error": "No module named 'scholarly'; direct_html: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+  "scholar_method": "",
   "fallback": "openalex",
   "scholar_id": "d8rThGQAAAAJ",
   "new_titles": [],
@@ -29,7 +30,7 @@
     }
   ],
   "source_errors": [
-    "scholar: No module named 'scholarly'",
+    "scholar: No module named 'scholarly'; direct_html: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
     "openalex: failed to fetch fallback works or citations",
     "duplicate cleanup skipped: broad cleanup would violate publication-count or baseline-title safety checks",
     "post-override duplicate cleanup skipped: cleanup would violate publication-count or baseline-title safety checks"

@@ -7,6 +7,7 @@ import re
 import urllib.parse
 import urllib.request
 import unicodedata
+from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -242,6 +243,76 @@ def build_local() -> list:
     return records
 
 
+class ScholarProfileParser(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.rows = []
+        self.current = None
+        self.capture = None
+        self.gray_index = 0
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        classes = set(attrs.get("class", "").split())
+        if tag == "tr" and "gsc_a_tr" in classes:
+            self.current = {"title": "", "authors": "", "journal": "", "year": ""}
+            self.gray_index = 0
+        elif self.current is not None and tag == "a" and "gsc_a_at" in classes:
+            self.capture = "title"
+        elif self.current is not None and tag == "div" and "gs_gray" in classes:
+            self.capture = "authors" if self.gray_index == 0 else "journal"
+            self.gray_index += 1
+        elif self.current is not None and tag == "span" and "gsc_a_h" in classes:
+            self.capture = "year"
+
+    def handle_data(self, data):
+        if self.current is None or self.capture is None:
+            return
+        self.current[self.capture] += data
+
+    def handle_endtag(self, tag):
+        if tag in {"a", "div", "span"}:
+            self.capture = None
+        elif tag == "tr" and self.current is not None:
+            if norm_title(self.current.get("title", "")):
+                rec = {k: clean(v) for k, v in self.current.items()}
+                if str(rec.get("year", "")).isdigit():
+                    rec["year"] = int(rec["year"])
+                self.rows.append(rec)
+            self.current = None
+            self.capture = None
+
+
+def fetch_scholar_direct() -> dict:
+    url = (
+        "https://scholar.google.com/citations?"
+        + urllib.parse.urlencode(
+            {
+                "user": SCHOLAR_ID,
+                "hl": "en",
+                "view_op": "list_works",
+                "pagesize": 100,
+            }
+        )
+    )
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": (
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36"
+            )
+        },
+    )
+    with urllib.request.urlopen(req, timeout=30) as r:
+        text = r.read().decode("utf-8", errors="ignore")
+    parser = ScholarProfileParser()
+    parser.feed(text)
+    if not parser.rows:
+        return {"ok": False, "error": "direct Scholar parse returned no publications"}
+    return {"ok": True, "publications": parser.rows, "cites_per_year": {}, "method": "direct_html"}
+
+
 def scholar_worker(queue):
     try:
         from scholarly import scholarly
@@ -286,7 +357,22 @@ def fetch_scholar(timeout_sec=35):
 
     if q.empty():
         return {"ok": False, "error": "empty"}
-    return q.get()
+    result = q.get()
+    if result.get("ok"):
+        result["method"] = "scholarly"
+        return result
+
+    try:
+        direct = fetch_scholar_direct()
+        if direct.get("ok"):
+            direct["error"] = result.get("error", "")
+            return direct
+    except Exception as e:
+        return {
+            "ok": False,
+            "error": f"{result.get('error', 'scholarly failed')}; direct_html: {e}",
+        }
+    return result
 
 
 def merge_scholar(records: list, scholar_data: dict):
@@ -867,6 +953,7 @@ def main():
                 "local_records": local_count,
                 "scholar_ok": bool(scholar_data.get("ok")),
                 "scholar_error": scholar_data.get("error", ""),
+                "scholar_method": scholar_data.get("method", ""),
                 "fallback": "openalex" if (not scholar_data.get("ok")) else "",
                 "scholar_id": SCHOLAR_ID,
                 "new_titles": source_new_titles,
