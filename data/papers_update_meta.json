@@ -1,11 +1,11 @@
 {
-  "count": 211,
-  "previous_count": 211,
+  "count": 214,
+  "previous_count": 214,
   "local_records": 104,
-  "scholar_ok": false,
-  "scholar_error": "No module named 'scholarly'; direct_html: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
-  "scholar_method": "",
-  "fallback": "openalex",
+  "scholar_ok": true,
+  "scholar_error": "No module named 'scholarly'",
+  "scholar_method": "direct_html",
+  "fallback": "",
   "scholar_id": "d8rThGQAAAAJ",
   "new_titles": [],
   "updated_titles": [],
@@ -30,13 +30,11 @@
     }
   ],
   "source_errors": [
-    "scholar: No module named 'scholarly'; direct_html: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
-    "openalex: failed to fetch fallback works or citations",
     "duplicate cleanup skipped: broad cleanup would violate publication-count or baseline-title safety checks",
     "post-override duplicate cleanup skipped: cleanup would violate publication-count or baseline-title safety checks"
   ],
   "doi_web_lookups": 0,
-  "doi_web_cache_hits": 29,
+  "doi_web_cache_hits": 30,
   "doi_links_updated": 0,
   "doi_lookup_errors": 0,
   "doi_title_mismatches": 0

@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
+import argparse
 import csv
 import difflib
 import json
 import multiprocessing as mp
+import os
 import re
 import urllib.parse
 import urllib.request
@@ -40,6 +42,10 @@ def titles_match(a: str, b: str) -> bool:
     if len(shorter) >= 24 and longer.startswith(shorter) and len(shorter) / len(longer) >= 0.82:
         return True
     return difflib.SequenceMatcher(None, na, nb).ratio() >= 0.97
+
+
+def strict_titles_match(a: str, b: str) -> bool:
+    return norm_title(a) == norm_title(b)
 
 
 def clean(s: str) -> str:
@@ -283,7 +289,13 @@ class ScholarProfileParser(HTMLParser):
             self.capture = None
 
 
-def fetch_scholar_direct() -> dict:
+def parse_scholar_profile_html(text: str) -> list:
+    parser = ScholarProfileParser()
+    parser.feed(text)
+    return parser.rows
+
+
+def fetch_scholar_direct_page(cstart: int = 0, pagesize: int = 100) -> list:
     url = (
         "https://scholar.google.com/citations?"
         + urllib.parse.urlencode(
@@ -291,7 +303,8 @@ def fetch_scholar_direct() -> dict:
                 "user": SCHOLAR_ID,
                 "hl": "en",
                 "view_op": "list_works",
-                "pagesize": 100,
+                "cstart": cstart,
+                "pagesize": pagesize,
             }
         )
     )
@@ -306,11 +319,44 @@ def fetch_scholar_direct() -> dict:
     )
     with urllib.request.urlopen(req, timeout=30) as r:
         text = r.read().decode("utf-8", errors="ignore")
-    parser = ScholarProfileParser()
-    parser.feed(text)
-    if not parser.rows:
+    return parse_scholar_profile_html(text)
+
+
+def fetch_scholar_direct(pagesize: int = 100, max_pages: int = 10) -> dict:
+    publications = []
+    seen = set()
+    page_count = 0
+    for page in range(max_pages):
+        rows = fetch_scholar_direct_page(cstart=page * pagesize, pagesize=pagesize)
+        if not rows:
+            break
+        page_count += 1
+        new_rows = []
+        for row in rows:
+            key = norm_title(row.get("title", ""))
+            if key and key not in seen:
+                seen.add(key)
+                new_rows.append(row)
+        if rows and not new_rows:
+            return {
+                "ok": False,
+                "error": "direct Scholar pagination repeated a previously seen page",
+                "publications": publications,
+                "method": "direct_html_partial",
+            }
+        publications.extend(new_rows)
+        if len(rows) < pagesize:
+            break
+
+    if not publications:
         return {"ok": False, "error": "direct Scholar parse returned no publications"}
-    return {"ok": True, "publications": parser.rows, "cites_per_year": {}, "method": "direct_html"}
+    return {
+        "ok": True,
+        "publications": publications,
+        "cites_per_year": {},
+        "method": "direct_html",
+        "pages_fetched": page_count,
+    }
 
 
 def scholar_worker(queue):
@@ -340,6 +386,19 @@ def scholar_worker(queue):
 
 
 def fetch_scholar(timeout_sec=35):
+    def direct_after(error):
+        try:
+            direct = fetch_scholar_direct()
+            if direct.get("ok"):
+                direct["error"] = error
+                return direct
+            return {
+                "ok": False,
+                "error": f"{error}; direct_html: {direct.get('error', 'failed')}",
+            }
+        except Exception as e:
+            return {"ok": False, "error": f"{error}; direct_html: {e}"}
+
     try:
         mp.set_start_method("fork")
     except RuntimeError:
@@ -353,26 +412,16 @@ def fetch_scholar(timeout_sec=35):
     if p.is_alive():
         p.terminate()
         p.join()
-        return {"ok": False, "error": "timeout"}
+        return direct_after("timeout")
 
     if q.empty():
-        return {"ok": False, "error": "empty"}
+        return direct_after("empty")
     result = q.get()
     if result.get("ok"):
         result["method"] = "scholarly"
         return result
 
-    try:
-        direct = fetch_scholar_direct()
-        if direct.get("ok"):
-            direct["error"] = result.get("error", "")
-            return direct
-    except Exception as e:
-        return {
-            "ok": False,
-            "error": f"{result.get('error', 'scholarly failed')}; direct_html: {e}",
-        }
-    return result
+    return direct_after(result.get("error", "scholarly failed"))
 
 
 def merge_scholar(records: list, scholar_data: dict):
@@ -384,7 +433,9 @@ def merge_scholar(records: list, scholar_data: dict):
         title = pub.get("title", "")
         if not norm_title(title):
             continue
-        if not any(titles_match(title, r.get("title", "")) for r in records):
+        if is_truncated_scholar_title(title, pub.get("journal", "")):
+            continue
+        if not any(strict_titles_match(title, r.get("title", "")) for r in records):
             records.append({
                 "title": title,
                 "authors": pub.get("authors", ""),
@@ -515,7 +566,7 @@ def fetch_openalex_work_by_title(title: str, year=None) -> dict:
     }
 
 
-def enrich_links_from_web(records: list) -> tuple:
+def enrich_links_from_web(records: list, write_cache: bool = True) -> tuple:
     cache_path = DATA_DIR / "doi_lookup_cache.json"
     if cache_path.exists():
         try:
@@ -586,7 +637,8 @@ def enrich_links_from_web(records: list) -> tuple:
         if after != before:
             stats["updated"] += 1
 
-    cache_path.write_text(json.dumps(cache, indent=2), encoding="utf-8")
+    if write_cache:
+        cache_path.write_text(json.dumps(cache, indent=2), encoding="utf-8")
     return records, stats
 
 
@@ -773,6 +825,21 @@ def has_matching_title(records: list, title: str) -> bool:
     return any(titles_match(title, rec.get("title", "")) for rec in records)
 
 
+def has_strict_title(records: list, title: str) -> bool:
+    return any(strict_titles_match(title, rec.get("title", "")) for rec in records)
+
+
+def is_truncated_scholar_title(title: str, journal: str = "") -> bool:
+    title = clean(title)
+    journal = clean(journal)
+    return (
+        bool(title)
+        and not re.search(r"[.!?:]$", title)
+        and len(norm_title(title).split()) >= 8
+        and re.search(r"\b\d{4}\b", journal) is not None
+    )
+
+
 def append_missing(records: list, candidates: list) -> tuple:
     added = []
     duplicate_groups = []
@@ -781,10 +848,7 @@ def append_missing(records: list, candidates: list) -> tuple:
         title = rec.get("title", "")
         if not norm_title(title):
             continue
-        match_idx = next(
-            (idx for idx, existing in enumerate(records) if titles_match(title, existing.get("title", ""))),
-            None,
-        )
+        match_idx = next((idx for idx, existing in enumerate(records) if titles_match(title, existing.get("title", ""))), None)
         if match_idx is not None:
             existing = records[match_idx]
             before = canonical_record(existing)
@@ -832,6 +896,12 @@ def validate_output(before: list, after: list, source_new_titles: list) -> list:
             f"Source candidates include {len(source_new_titles)} new titles, "
             f"but output count did not increase above {before_count}."
         )
+    missing_source_titles = [t for t in source_new_titles if not has_matching_title(after, t)]
+    if missing_source_titles:
+        errors.append(
+            "Source-discovered titles missing from output: "
+            + "; ".join(missing_source_titles[:10])
+        )
     return errors
 
 
@@ -843,7 +913,41 @@ def preserves_existing_titles(before: list, after: list) -> bool:
     return True
 
 
+def scholar_source_quality(existing_master: list, scholar_data: dict) -> list:
+    if not scholar_data.get("ok") or scholar_data.get("method") != "direct_html":
+        return []
+    existing_scholar_titles = {
+        norm_title(r.get("title", ""))
+        for r in existing_master
+        if clean(r.get("source", "")) == "scholar" and norm_title(r.get("title", ""))
+    }
+    fetched_titles = {
+        norm_title(r.get("title", ""))
+        for r in scholar_data.get("publications", [])
+        if norm_title(r.get("title", ""))
+    }
+    if existing_scholar_titles and len(fetched_titles) < max(25, int(len(existing_scholar_titles) * 0.8)):
+        return [
+            f"direct Scholar fetch returned {len(fetched_titles)} unique titles, "
+            f"below the protected Scholar baseline of {len(existing_scholar_titles)}"
+        ]
+    return []
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Synchronize website publication data with local records and external publication sources."
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Run discovery, merge, de-duplication, and validation without writing output files.",
+    )
+    return parser.parse_args()
+
+
 def main():
+    args = parse_args()
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
     existing_master = load_papers_master()
@@ -855,6 +959,7 @@ def main():
     source_errors = []
     if not scholar_data.get("ok"):
         source_errors.append(f"scholar: {scholar_data.get('error', 'unknown error')}")
+    source_errors.extend(scholar_source_quality(existing_master, scholar_data))
 
     papers = list(existing_master)
     duplicate_groups = []
@@ -867,21 +972,30 @@ def main():
         scholar_new = [
             clean(p.get("title", ""))
             for p in scholar_data.get("publications", [])
-            if clean(p.get("title", "")) and not has_matching_title(existing_before_scholar, p.get("title", ""))
+            if clean(p.get("title", ""))
+            and not has_strict_title(existing_before_scholar, p.get("title", ""))
+            and not is_truncated_scholar_title(p.get("title", ""), p.get("journal", ""))
         ]
 
     openalex_new = []
+    openalex_works_ok = False
     if not scholar_data.get("ok"):
         try:
             oa_cites = fetch_openalex_citations()
             if not cites and not existing_cites:
                 cites = oa_cites
+        except Exception:
+            source_errors.append("openalex citations: failed to fetch fallback citations")
+        try:
             for r in fetch_openalex_works(min_year=2008, max_year=2026):
-                if not has_matching_title(papers, r.get("title", "")):
+                openalex_works_ok = True
+                if not has_strict_title(papers, r.get("title", "")):
                     openalex_new.append(r.get("title", ""))
                     papers.append(r)
         except Exception:
-            source_errors.append("openalex: failed to fetch fallback works or citations")
+            source_errors.append("openalex works: failed to fetch fallback works")
+    elif scholar_data.get("ok"):
+        openalex_works_ok = True
 
     manual_cites = load_manual_scholar_cites()
     if manual_cites:
@@ -901,7 +1015,7 @@ def main():
         if p["doi"] and not p.get("journal_link"):
             p["journal_link"] = f"https://doi.org/{p['doi']}"
 
-    papers, enrich_stats = enrich_links_from_web(papers)
+    papers, enrich_stats = enrich_links_from_web(papers, write_cache=not args.dry_run)
     deduped_papers, broad_duplicate_groups = dedupe_records(papers)
     source_new_titles = sorted({t for t in local_new + scholar_new + openalex_new if t})
     required_min_count = len(existing_master) + (1 if source_new_titles else 0)
@@ -923,6 +1037,10 @@ def main():
         )
 
     validation_errors = validate_output(existing_master, papers, source_new_titles)
+    if not scholar_data.get("ok") and not openalex_works_ok and not os.environ.get("ALLOW_STALE_PUBLICATIONS"):
+        validation_errors.append(
+            "All external publication discovery sources failed; set ALLOW_STALE_PUBLICATIONS=1 to write unchanged output."
+        )
     if validation_errors:
         print("Publication update blocked:")
         for err in validation_errors:
@@ -930,6 +1048,30 @@ def main():
         print(f"Existing publications: {len(existing_master)}")
         print(f"Candidate output publications: {len(papers)}")
         raise SystemExit(2)
+
+    if args.dry_run:
+        meta = {
+            "count": len(papers),
+            "previous_count": len(existing_master),
+            "local_records": local_count,
+            "scholar_ok": bool(scholar_data.get("ok")),
+            "scholar_error": scholar_data.get("error", ""),
+            "scholar_method": scholar_data.get("method", ""),
+            "fallback": "openalex" if (not scholar_data.get("ok")) else "",
+            "scholar_id": SCHOLAR_ID,
+            "new_titles": source_new_titles,
+            "updated_titles": changed_titles(existing_master, papers),
+            "duplicates_resolved": duplicate_groups,
+            "source_errors": source_errors,
+            "doi_web_lookups": enrich_stats.get("lookups", 0),
+            "doi_web_cache_hits": enrich_stats.get("cache_hits", 0),
+            "doi_links_updated": enrich_stats.get("updated", 0),
+            "doi_lookup_errors": enrich_stats.get("errors", 0),
+            "doi_title_mismatches": enrich_stats.get("title_mismatches", 0),
+        }
+        print(json.dumps(meta, indent=2))
+        print(f"Dry run complete: candidate output has {len(papers)} publications")
+        return
 
     with PAPERS_MASTER.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(
