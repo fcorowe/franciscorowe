@@ -15,7 +15,7 @@ format:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(collapse = TRUE)
+knitr::opts_chunk$set(collapse = TRUE, warning = FALSE, message = FALSE)
 if (!requireNamespace("CIM", quietly = TRUE)) {
   stop("Package 'CIM' is required. Install it with install.packages('CIM').")
 }
@@ -25,13 +25,17 @@ if (!requireNamespace("sf", quietly = TRUE)) {
 if (!requireNamespace("dplyr", quietly = TRUE)) {
   stop("Package 'dplyr' is required. Install it with install.packages('dplyr').")
 }
-if (!requireNamespace("tmap", quietly = TRUE)) {
-  stop("Package 'tmap' is required. Install it with install.packages('tmap').")
+if (!requireNamespace("ggplot2", quietly = TRUE)) {
+  stop("Package 'ggplot2' is required. Install it with install.packages('ggplot2').")
+}
+if (!requireNamespace("viridis", quietly = TRUE)) {
+  stop("Package 'viridis' is required. Install it with install.packages('viridis').")
 }
 library(CIM)
 library(sf)
 library(dplyr)
-library(tmap)
+library(ggplot2)
+library(viridis)
 ```
 
 # R Markdown
@@ -70,10 +74,11 @@ To visualise where the population aged 65 and over in the Greater London Metropo
 First install and load the needed packages
 
 ```{r viz_packages, eval=FALSE}
-install.packages(c("sf", "dplyr", "tmap"))
+install.packages(c("sf", "dplyr", "ggplot2", "viridis"))
 library(sf)
 library(dplyr)
-library(tmap)
+library(ggplot2)
+library(viridis)
 ```
   
 NOTE: Download a shapefile containing the Greater London Local Authority Districts from the shapefile folder from this [github repository](https://github.com/fcorowe/cim)
@@ -94,7 +99,14 @@ Greater_London <- st_read(shapefile_path, quiet = TRUE)
 Plot the shapefile
 
 ```{r plot_shapefile}
-plot(st_geometry(Greater_London))
+ggplot(Greater_London) +
+  geom_sf(fill = "#f8fafc", colour = "#475569", linewidth = 0.2) +
+  labs(title = "Greater London local authority boundaries") +
+  theme_void(base_size = 11) +
+  theme(
+    plot.title = element_text(face = "bold", colour = "#111827", size = 12),
+    plot.background = element_rect(fill = "white", colour = NA)
+  )
 ```
   
 Obtain the differences in the spatial distribution of the population aged 65 and over across local authority districts using the CIM.Duncan function:
@@ -119,24 +131,78 @@ Duncan_65p <- left_join(Greater_London, dun_df, by = "name")
 head(st_drop_geometry(Duncan_65p))
 ```
   
-Set to a static map view and create a map using tmap
+Create a map using ggplot.
 
-```{r tmap_static}
-tmap_mode('plot')
-tm_shape(Duncan_65p) +
-tm_polygons("ASShareFV_diff", style = "quantile", border.alpha = 0.1, palette = "YlOrRd",
-            title = "ASShareFV_diff") +
-tm_compass(position = c("left", "bottom")) +
-tm_scale_bar(position = c("left", "bottom"))
+```{r ggplot_map, fig.width=8, fig.height=6, dpi=160}
+plot_data <- Duncan_65p |>
+  filter(!is.na(ASShareFV_diff))
+
+map_labels <- bind_rows(
+  slice_max(plot_data, ASShareFV_diff, n = 1, with_ties = FALSE),
+  slice_min(plot_data, ASShareFV_diff, n = 1, with_ties = FALSE)
+) |>
+  mutate(
+    label = paste0(
+      if_else(ASShareFV_diff == max(plot_data$ASShareFV_diff), "Highest: ", "Lowest: "),
+      name,
+      "\n",
+      round(ASShareFV_diff * 100, 2),
+      " percentage points"
+    )
+  )
+label_points <- suppressWarnings(st_point_on_surface(map_labels))
+
+ggplot(plot_data) +
+  geom_sf(aes(fill = ASShareFV_diff), colour = "white", linewidth = 0.18) +
+  geom_sf_label(
+    data = label_points,
+    aes(label = label),
+    size = 3,
+    linewidth = 0.2,
+    label.padding = unit(0.18, "lines"),
+    fill = "white",
+    colour = "#1f2937"
+  ) +
+  scale_fill_viridis_c(
+    option = "viridis",
+    labels = scales::label_percent(accuracy = 0.1),
+    name = "Change in share"
+  ) +
+  labs(
+    title = "Internal migration and age segregation in Greater London",
+    subtitle = "Difference in the local share of the population aged 65+ attributable to migration",
+    caption = "Source: CIM package example data and Greater London local authority boundaries."
+  ) +
+  theme_void(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", colour = "#111827", size = 14),
+    plot.subtitle = element_text(colour = "#4b5563", size = 10, margin = margin(b = 10)),
+    plot.caption = element_text(colour = "#6b7280", size = 9, hjust = 0),
+    legend.position = "right",
+    legend.title = element_text(face = "bold", size = 10),
+    legend.text = element_text(size = 9),
+    panel.background = element_rect(fill = "#f8fafc", colour = NA),
+    plot.background = element_rect(fill = "white", colour = NA),
+    plot.margin = margin(8, 10, 8, 10)
+  )
 ```
-  
-Or, even better we can create an interactive map! by setting an interactive map view
 
-```{r tmap_interactive}
-tmap_mode('view')
-tm_shape(Duncan_65p) +
-tm_polygons("ASShareFV_diff", style = "quantile", border.alpha = 0.1, palette = "YlOrRd",
-            title = "ASShareFV_diff") +
-tm_compass(position = c("left", "bottom")) +
-tm_scale_bar(position = c("left", "bottom"))
+```{r map_interpretation, echo=FALSE, results='asis'}
+highest_area <- map_labels |>
+  filter(ASShareFV_diff == max(plot_data$ASShareFV_diff)) |>
+  st_drop_geometry()
+
+lowest_area <- map_labels |>
+  filter(ASShareFV_diff == min(plot_data$ASShareFV_diff)) |>
+  st_drop_geometry()
+
+cat(
+  sprintf(
+    "Migration had the largest estimated contribution to the concentration of residents aged 65+ in **%s** (%.2f percentage points), while the smallest contribution was in **%s** (%.2f percentage points).",
+    highest_area$name,
+    highest_area$ASShareFV_diff * 100,
+    lowest_area$name,
+    lowest_area$ASShareFV_diff * 100
+  )
+)
 ```
