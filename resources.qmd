@@ -45,34 +45,12 @@ format:
             -webkit-box-orient: vertical;
             overflow: hidden;
           }
-          .resource-citation,
-          .resource-references {
-            color: #dbe8ff;
-          }
-          .resource-citation {
-            margin: 0.45rem 0 0;
-            font-size: 0.72rem;
-            line-height: 1.35;
-          }
-          .resource-citation a,
-          .resource-citation a:visited,
-          .resource-references a,
-          .resource-references a:visited {
+          .resource-reference-link,
+          .resource-reference-link:visited {
             color: #ffffff;
             text-transform: none;
             letter-spacing: normal;
-            font-size: inherit;
-          }
-          .resource-references {
-            margin-top: 1.6rem;
-            font-size: 0.82rem;
-            line-height: 1.5;
-          }
-          .resource-references h2 {
-            margin-bottom: 0.75rem;
-          }
-          .resource-references p {
-            margin-bottom: 0.65rem;
+            font-size: 0.72rem;
           }
           .resource-visual {
             position: relative;
@@ -305,10 +283,6 @@ format:
 
 <span class="meta">Code and resources for compositional impact of migration analysis in R.</span>
 
-<div class="resource-citation">
-  Citation: [Rodríguez-Vignoli and Rowe (2018)](https://doi.org/10.1080/00324728.2017.1416155)
-</div>
-
 [Open website](post/2019-01-31-r-rmarkdown/index.html)
 :::
 
@@ -332,12 +306,6 @@ format:
 [Open website](https://fcorowe.github.io/census-mapping/)
 :::
 
-:::
-
-::: {.resource-references}
-## References
-
-<p id="ref-rodriguez-vignoli-rowe-2018">Rodríguez-Vignoli, Jorge, and Francisco Rowe. 2018. “How is internal migration reshaping metropolitan populations in Latin America? A new method and new evidence.” <em>Population Studies</em> 72 (2): 253-273. <a href="https://doi.org/10.1080/00324728.2017.1416155">https://doi.org/10.1080/00324728.2017.1416155</a></p>
 :::
 
 <script>
