@@ -206,3 +206,7 @@ cat(
   )
 )
 ```
+
+## References
+
+Rodríguez-Vignoli, Jorge, and Francisco Rowe. 2018. "How is internal migration reshaping metropolitan populations in Latin America? A new method and new evidence." *Population Studies* 72 (2): 253-273. <https://doi.org/10.1080/00324728.2017.1416155>
