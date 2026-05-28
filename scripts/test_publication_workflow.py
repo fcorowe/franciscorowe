@@ -144,6 +144,72 @@ def test_validation_requires_source_titles(module):
     assert_true(errors, "Validation should block when source-discovered titles are missing")
 
 
+def test_existing_scholar_records_get_author_metadata(module):
+    records = [
+        {
+            "title": "Known Scholar Paper",
+            "authors": "",
+            "journal": "",
+            "year": "",
+            "journal_link": "https://scholar.google.com/scholar?q=Known+Scholar+Paper",
+            "doi": "",
+            "pdf_link": "",
+            "source": "scholar",
+        }
+    ]
+    scholar_data = {
+        "ok": True,
+        "publications": [
+            {
+                "title": "Known Scholar Paper",
+                "authors": "A Author, F Rowe",
+                "journal": "Journal of Scholar Tests, 2026",
+                "year": 2026,
+            }
+        ],
+        "cites_per_year": {},
+    }
+    merged, _ = module.merge_scholar(records, scholar_data)
+    assert_true(merged[0]["authors"] == "A Author, F Rowe", "Scholar merge should fill missing authors")
+    assert_true(merged[0]["journal"] == "Journal of Scholar Tests, 2026", "Scholar merge should fill missing journal")
+    assert_true(merged[0]["year"] == 2026, "Scholar merge should fill missing year")
+
+
+def test_arxiv_preferred_over_osf_duplicate(module):
+    records = [
+        {
+            "title": "Same Preprint Title",
+            "authors": "F Rowe",
+            "journal": "OSF Preprints",
+            "year": "2026",
+            "journal_link": "https://osf.io/example",
+            "doi": "10.31235/osf.io/example",
+            "pdf_link": "https://osf.io/example/download",
+            "source": "scholar",
+        },
+        {
+            "title": "Same Preprint Title",
+            "authors": "F Rowe",
+            "journal": "arXiv preprint arXiv:2601.00001",
+            "year": "2026",
+            "journal_link": "https://arxiv.org/abs/2601.00001",
+            "doi": "",
+            "pdf_link": "https://arxiv.org/pdf/2601.00001",
+            "source": "scholar",
+        },
+    ]
+    deduped, _ = module.dedupe_records(records)
+    assert_true(len(deduped) == 1, "Duplicate preprint records should collapse")
+    assert_true("arxiv" in deduped[0]["journal"].lower(), "arXiv should be preferred over OSF")
+    assert_true(deduped[0]["doi"] == "10.48550/arXiv.2601.00001", "arXiv DOI should replace OSF DOI")
+    assert_true(deduped[0]["pdf_link"] == "https://arxiv.org/pdf/2601.00001", "arXiv PDF should replace OSF PDF")
+
+
+def test_validation_blocks_missing_authors(module):
+    errors = module.validate_output([], [{"title": "No Author Paper", "authors": ""}], [])
+    assert_true(errors, "Validation should block publication records missing authors")
+
+
 def test_truncated_scholar_title_filter(module):
     assert_true(
         module.is_truncated_scholar_title("Global sequencing of human mobility data reveals migration disparities in", "Nature, 2026"),
@@ -163,6 +229,9 @@ def main():
         test_repeated_scholar_page_blocks,
         test_duplicate_preference_and_manual_override,
         test_validation_requires_source_titles,
+        test_existing_scholar_records_get_author_metadata,
+        test_arxiv_preferred_over_osf_duplicate,
+        test_validation_blocks_missing_authors,
         test_truncated_scholar_title_filter,
     ]
     for test in tests:

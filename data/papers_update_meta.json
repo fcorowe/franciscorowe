@@ -8,8 +8,29 @@
   "fallback": "",
   "scholar_id": "d8rThGQAAAAJ",
   "new_titles": [],
-  "updated_titles": [],
+  "updated_titles": [
+    "A Generalisable Data Fusion Framework to Infer Mode of Transport Using Mobile Phone Data.",
+    "A city of cities: Measuring how 15-minutes urban accessibility shapes human mobility in Barcelona",
+    "A systematic machine learning approach to measure and assess biases in mobile phone population data",
+    "Assessing Machine Learning Algorithms for Near-Real Time Bus Ridership Prediction During Extreme Weather",
+    "Dynamic Estimates of Displacement in Disaster Regions: A Policy-driven framework triangulating data",
+    "Feel Old Yet? Updating Mode of Transportation Distributions from Travel Surveys using Data Fusion with Mobile Phone Data",
+    "Sustained changes to urban mobility after COVID-19 amplified socio-economic inequalities in Latin America",
+    "Understanding the Trajectories of Population Decline Across Rural and Urban Europe: A Sequence Analysis"
+  ],
   "duplicates_resolved": [
+    {
+      "reason": "incoming_duplicate",
+      "key": "a city of cities measuring how 15 minutes urban accessibility shapes human mobility in barcelona",
+      "kept": "A city of cities: Measuring how 15-minutes urban accessibility shapes human mobility in Barcelona",
+      "merged": "A city of cities: Measuring how 15-minutes urban accessibility shapes human mobility in Barcelona"
+    },
+    {
+      "reason": "incoming_duplicate",
+      "key": "understanding the trajectories of population decline across rural and urban europe a sequence analysis",
+      "kept": "Understanding the Trajectories of Population Decline Across Rural and Urban Europe: A Sequence Analysis",
+      "merged": "Understanding the Trajectories of Population Decline Across Rural and Urban Europe: A Sequence Analysis"
+    },
     {
       "reason": "incoming_duplicate",
       "key": "how is internal migration reshaping metropolitan populations in latin america a new method and new evidence",

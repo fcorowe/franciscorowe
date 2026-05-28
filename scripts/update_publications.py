@@ -433,19 +433,28 @@ def merge_scholar(records: list, scholar_data: dict):
         title = pub.get("title", "")
         if not norm_title(title):
             continue
-        if is_truncated_scholar_title(title, pub.get("journal", "")):
-            continue
-        if not any(strict_titles_match(title, r.get("title", "")) for r in records):
+        scholar_record = {
+            "title": title,
+            "authors": pub.get("authors", ""),
+            "journal": pub.get("journal", ""),
+            "year": pub.get("year", ""),
+            "journal_link": f"https://scholar.google.com/scholar?q={urllib.parse.quote_plus(title)}",
+            "doi": "",
+            "pdf_link": "",
+            "source": "scholar",
+        }
+        match_idx = next(
+            (idx for idx, r in enumerate(records) if strict_titles_match(title, r.get("title", ""))),
+            None,
+        )
+        if match_idx is None:
+            if is_truncated_scholar_title(title, pub.get("journal", "")):
+                continue
             records.append({
-                "title": title,
-                "authors": pub.get("authors", ""),
-                "journal": pub.get("journal", ""),
-                "year": pub.get("year", ""),
-                "journal_link": f"https://scholar.google.com/scholar?q={urllib.parse.quote_plus(title)}",
-                "doi": "",
-                "pdf_link": "",
-                "source": "scholar",
+                **scholar_record,
             })
+        else:
+            records[match_idx] = _merge_missing(records[match_idx], scholar_record)
 
     cites = scholar_data.get("cites_per_year", {}) or {}
     return records, cites
@@ -647,6 +656,23 @@ def year_value(v) -> int:
     return int(s) if s.isdigit() else -1
 
 
+def extract_arxiv_id(rec: dict) -> str:
+    text = " ".join(
+        clean_text(rec.get(field, ""))
+        for field in ["journal", "journal_link", "doi", "pdf_link"]
+    )
+    patterns = [
+        r"arxiv[:\s./]+([0-9]{4}\.[0-9]{4,5}(?:v[0-9]+)?)",
+        r"arxiv\.org/(?:abs|pdf)/([0-9]{4}\.[0-9]{4,5}(?:v[0-9]+)?)",
+        r"10\.48550/arxiv\.([0-9]{4}\.[0-9]{4,5}(?:v[0-9]+)?)",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.I)
+        if match:
+            return match.group(1)
+    return ""
+
+
 def is_journal_record(rec: dict) -> int:
     journal = clean_text(rec.get("journal", ""))
     if not journal:
@@ -654,6 +680,33 @@ def is_journal_record(rec: dict) -> int:
     lower = journal.lower()
     preprint_markers = ["preprint", "working paper", "scholar", "osf", "arxiv", "ssrn", "medrxiv", "biorxiv"]
     return 0 if any(marker in lower for marker in preprint_markers) else 1
+
+
+def preprint_platform_rank(rec: dict) -> int:
+    text = " ".join(
+        clean_text(rec.get(field, ""))
+        for field in ["journal", "journal_link", "doi", "pdf_link", "source"]
+    ).lower()
+    if "arxiv" in text:
+        return 4
+    if "osf" in text:
+        return 3
+    if "ssrn" in text:
+        return 2
+    if "medrxiv" in text or "biorxiv" in text:
+        return 1
+    return 0
+
+
+def prefer_arxiv_metadata(rec: dict) -> dict:
+    out = dict(rec)
+    arxiv_id = extract_arxiv_id(out)
+    if not arxiv_id or is_journal_record(out):
+        return out
+    out["doi"] = f"10.48550/arXiv.{arxiv_id}"
+    out["journal_link"] = f"https://doi.org/10.48550/arXiv.{arxiv_id}"
+    out["pdf_link"] = f"https://arxiv.org/pdf/{arxiv_id}"
+    return out
 
 
 def completeness_score(rec: dict) -> int:
@@ -672,6 +725,7 @@ def record_score(rec: dict) -> tuple:
     }.get(rec.get("source", ""), 0)
     return (
         is_journal_record(rec),
+        preprint_platform_rank(rec),
         has_doi,
         completeness_score(rec),
         source_rank,
@@ -686,7 +740,7 @@ def _pick_better(a: dict, b: dict) -> dict:
 
 def _merge_missing(base: dict, extra: dict) -> dict:
     out = dict(base)
-    for f in ["authors", "journal", "journal_link", "doi", "pdf_link"]:
+    for f in ["authors", "journal", "year", "journal_link", "doi", "pdf_link"]:
         if not clean(out.get(f, "")) and clean(extra.get(f, "")):
             out[f] = extra[f]
 
@@ -699,7 +753,7 @@ def _merge_missing(base: dict, extra: dict) -> dict:
 
     if not clean(out.get("source", "")) and clean(extra.get("source", "")):
         out["source"] = extra["source"]
-    return out
+    return prefer_arxiv_metadata(out)
 
 
 def dedupe_records(records: list) -> tuple:
@@ -764,7 +818,7 @@ def dedupe_records(records: list) -> tuple:
                 }
             )
 
-    out = list(by_title.values())
+    out = [prefer_arxiv_metadata(r) for r in by_title.values()]
     out.sort(key=lambda x: ((year_value(x.get("year", "")) if year_value(x.get("year", "")) >= 0 else 9999), (x.get("title") or "")))
     return out, duplicate_groups
 
@@ -901,6 +955,16 @@ def validate_output(before: list, after: list, source_new_titles: list) -> list:
         errors.append(
             "Source-discovered titles missing from output: "
             + "; ".join(missing_source_titles[:10])
+        )
+    missing_author_titles = [
+        rec.get("title", "")
+        for rec in after
+        if norm_title(rec.get("title", "")) and not clean(rec.get("authors", ""))
+    ]
+    if missing_author_titles:
+        errors.append(
+            "Publication records missing authors: "
+            + "; ".join(missing_author_titles[:10])
         )
     return errors
 
