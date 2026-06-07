@@ -1,121 +1,46 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<html lang="en">
+<head>
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Francisco Rowe">
-<meta name="dcterms.date" content="2019-10-12">
-
-<title>Introducing the R Package CIM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introducing the R Package CIM | Francisco Rowe</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
+body{font-family:"Source Sans 3","Open Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f5f7;color:#1d1d1f;margin:0;line-height:1.65}
+.post-wrap{max-width:900px;margin:2rem auto;padding:0 1rem}
+.post-card{background:#fff;border:1px solid #d2d2d7;border-radius:18px;padding:1.1rem 1.2rem}
+.post-back{display:inline-block;margin-bottom:.9rem;color:#023E8A;text-decoration:underline;box-shadow:none;font-weight:700}
+.post-back:hover{color:#012f68;text-decoration:underline}
+h1{margin:0 0 .35rem;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.15}
+.post-subtitle{margin:0 0 .8rem;color:#6e6e73;font-size:1.05rem;font-weight:400}
+.post-meta{color:#6e6e73;font-size:.95rem;margin-bottom:1rem}
+.post-badges{display:flex;gap:.5rem;flex-wrap:wrap;margin:0 0 1rem}
+.doi-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.28rem .62rem;border-radius:999px;background:#e8f1ff;border:1px solid #b9d2ff;color:#0b4aa2;text-decoration:none;font-size:.78rem;font-weight:700;letter-spacing:.01em}
+.doi-badge:hover{background:#dce9ff;color:#083b80;text-decoration:none}
+img{max-width:100%;height:auto;border-radius:10px}
+pre{overflow:auto;background:#f6f8fa;border:1px solid #e5e7eb;border-radius:10px;padding:.75rem}
+blockquote{border-left:3px solid #d2d2d7;padding:.2rem .9rem;margin:1rem 0;color:#2f3b48;background:#fafbfc}
+a{color:#023E8A;text-decoration:underline;box-shadow:none;font-weight:700}
+a:hover{color:#012f68;text-decoration:underline}
+.post-citation{margin-top:1.6rem;padding:1rem;border:1px solid #d2d2d7;border-radius:14px;background:#f8f9fb}
+.post-citation h2{font-size:1rem;margin:0 0 .55rem}
+.post-citation p{margin:.35rem 0}
+.post-citation-doi{margin:.45rem 0 .6rem;color:#2f3b48}
+.post-citation pre{margin:.6rem 0 0;white-space:pre-wrap}
 </style>
-
-
-<script src="2019-01-31-r-rmarkdown_files/libs/clipboard/clipboard.min.js"></script>
-<script src="2019-01-31-r-rmarkdown_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="2019-01-31-r-rmarkdown_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="2019-01-31-r-rmarkdown_files/libs/quarto-html/popper.min.js"></script>
-<script src="2019-01-31-r-rmarkdown_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="2019-01-31-r-rmarkdown_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="2019-01-31-r-rmarkdown_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="2019-01-31-r-rmarkdown_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="2019-01-31-r-rmarkdown_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="2019-01-31-r-rmarkdown_files/libs/bootstrap/bootstrap-7000dc8cd3133c9ecd1a196399328ca6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<style>html{ scroll-behavior: smooth; }</style>
-
-
 </head>
+<body>
+<main class="post-wrap">
+<article class="post-card">
+<a class="post-back" href="../../blog.html">Back to Blog</a>
+<h1>Introducing the R Package CIM</h1>
 
-<body class="fullcontent quarto-light">
 
+<div class="post-meta">2019-10-11 • 2 min read</div>
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Introducing the R Package CIM</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">R</div>
-  </div>
-  </div>
 
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Francisco Rowe </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 12, 2019</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
 
 
 <section id="r-markdown" class="level1">
@@ -701,4 +626,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="2019-01-31-r-rmarkdown_files/libs/quarto-html/zenscroll-min.js"></script>
-</body></html>
+<section class="post-citation">
+<h2>Suggested citation</h2>
+<p>Francisco Rowe (2019-10-11). Introducing the R Package CIM. <em>Francisco Rowe</em>. <a href="https://franciscorowe.com/post/2019-01-31-r-rmarkdown/">https://franciscorowe.com/post/2019-01-31-r-rmarkdown/</a></p>
+
+<details>
+<summary>BibTeX</summary>
+<pre><code>@online{rowe201920190131rrmarkdown,
+  author = {Francisco Rowe},
+  title = {Introducing the R Package CIM},
+  year = {2019},
+  date = {2019-10-11},
+  url = {https://franciscorowe.com/post/2019-01-31-r-rmarkdown/}
+}</code></pre>
+</details>
+</section>
+</article>
+</main>
+</body>
+</html>
