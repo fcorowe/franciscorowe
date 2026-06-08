@@ -323,7 +323,7 @@ format:
 
 ::: {.media-card .resource-card}
 
-::: {.resource-visual .resource-story-visual aria-hidden="true"}
+::: {.resource-visual .resource-story-visual aria-hidden="true" data-scene="particles" data-palette="#38bdf8,#f97316,#facc15,#ffffff" data-seed="7"}
 ![](assets/stories/iran-conflict-population-redistribution/war-relative-index-maps.png){fig-alt=""}
 <span class="resource-visual-note">interactive story</span>
 :::
@@ -340,6 +340,9 @@ format:
 <div
   class="resource-visual resource-finance-visual"
   aria-hidden="true"
+  data-scene="particles"
+  data-palette="#34d399,#5b9dff,#f9b54c,#ffffff"
+  data-seed="13"
   style="--panel-bg-a: #0f1729; --panel-bg-b: #16213e; --panel-glow-a: rgba(52, 211, 153, 0.24); --panel-glow-b: rgba(91, 157, 255, 0.20); --panel-glow-c: rgba(249, 181, 76, 0.14);"
 >
 <span class="resource-visual-note">institution finance</span>
@@ -864,6 +867,30 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const renderParticleScene = (panel, random, colors) => {
+    const count = Number(panel.dataset.particleCount || 32);
+
+    for (let index = 0; index < count; index += 1) {
+      const color = colors[index % Math.max(colors.length, 1)] || "#ffffff";
+      const prominence = index % 7 === 0;
+
+      createBullet(panel, {
+        x: 8 + random() * 84,
+        y: 16 + random() * 72,
+        size: prominence ? 6.4 + random() * 2.6 : 2.8 + random() * 4.2,
+        color,
+        opacity: prominence ? 0.58 + random() * 0.22 : 0.18 + random() * 0.34,
+        glow: prominence ? 18 : 8 + random() * 9,
+        driftX: (random() - 0.5) * 2.6,
+        driftY: -0.4 - random() * 1.8,
+        duration: 4.2 + random() * 3.6,
+        delay: -random() * 6,
+        outline: !prominence && random() > 0.82,
+        tile: random() > 0.72
+      }, random);
+    }
+  };
+
   panels.forEach((panel, panelIndex) => {
     const random = mulberry32(Number(panel.dataset.seed || panelIndex + 1));
     const colors = (panel.dataset.palette || "")
@@ -880,6 +907,8 @@ window.addEventListener("DOMContentLoaded", () => {
       renderCompositionScene(panel, random, colors);
     } else if (scene === "map") {
       renderMapScene(panel, random, colors);
+    } else if (scene === "particles") {
+      renderParticleScene(panel, random, colors);
     }
   });
 });
