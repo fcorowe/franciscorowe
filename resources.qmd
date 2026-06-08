@@ -186,6 +186,105 @@ format:
           .resource-bullet.is-tile {
             border-radius: 1px;
           }
+          .resource-finance-visual {
+            display: grid;
+            grid-template-columns: 0.82fr 1.18fr;
+            gap: 0.55rem;
+            padding: 2.25rem 0.8rem 0.75rem;
+          }
+          .resource-finance-visual::after {
+            opacity: 0.13;
+          }
+          .resource-finance-kpis,
+          .resource-finance-panel {
+            position: relative;
+            z-index: 2;
+          }
+          .resource-finance-kpis {
+            display: grid;
+            gap: 0.38rem;
+          }
+          .resource-finance-kpis > p,
+          .resource-finance-bars > p {
+            display: contents;
+            margin: 0;
+          }
+          .resource-finance-kpi {
+            min-height: 1.9rem;
+            padding: 0.32rem 0.42rem;
+            border: 1px solid rgba(232, 237, 247, 0.18);
+            border-radius: 6px;
+            background: rgba(232, 237, 247, 0.08);
+          }
+          .resource-finance-kpi strong,
+          .resource-finance-kpi span {
+            display: block;
+            line-height: 1.05;
+          }
+          .resource-finance-kpi strong {
+            color: #ffffff;
+            font-size: 0.82rem;
+            font-weight: 700;
+          }
+          .resource-finance-kpi span {
+            margin-top: 0.13rem;
+            color: rgba(232, 237, 247, 0.66);
+            font-size: 0.48rem;
+            font-weight: 700;
+            text-transform: uppercase;
+          }
+          .resource-finance-panel {
+            display: grid;
+            grid-template-rows: 1fr 0.95fr;
+            gap: 0.5rem;
+            min-width: 0;
+          }
+          .resource-finance-bars {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            align-items: end;
+            gap: 0.32rem;
+            min-height: 3.8rem;
+            padding: 0.5rem 0.48rem 0.42rem;
+            border: 1px solid rgba(232, 237, 247, 0.14);
+            border-radius: 6px;
+            background: rgba(12, 19, 34, 0.36);
+          }
+          .resource-finance-bar {
+            height: var(--bar-height);
+            min-height: 0.45rem;
+            border-radius: 3px 3px 1px 1px;
+            background: var(--bar-color);
+            box-shadow: 0 0 14px color-mix(in srgb, var(--bar-color), transparent 64%);
+          }
+          .resource-finance-line {
+            position: relative;
+            min-height: 3.2rem;
+            border: 1px solid rgba(232, 237, 247, 0.14);
+            border-radius: 6px;
+            background:
+              linear-gradient(180deg, transparent 0 48%, rgba(232, 237, 247, 0.12) 48% 50%, transparent 50%),
+              rgba(12, 19, 34, 0.28);
+          }
+          .resource-finance-line svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+          }
+          .resource-finance-line polyline {
+            fill: none;
+            stroke: #5b9dff;
+            stroke-width: 3.1;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 0 6px rgba(91, 157, 255, 0.46));
+          }
+          .resource-finance-line circle {
+            fill: #f9b54c;
+            stroke: rgba(12, 19, 34, 0.9);
+            stroke-width: 1.5;
+          }
           @keyframes resourceBulletPulse {
             0%, 100% {
               opacity: var(--bullet-min-opacity);
@@ -205,6 +304,16 @@ format:
           @media (max-width: 768px) {
             .resource-visual {
               height: 148px;
+            }
+            .resource-finance-visual {
+              padding-top: 2rem;
+              gap: 0.45rem;
+            }
+            .resource-finance-kpi {
+              padding: 0.28rem 0.36rem;
+            }
+            .resource-finance-kpi strong {
+              font-size: 0.74rem;
             }
           }
         </style>
@@ -229,14 +338,30 @@ format:
 ::: {.media-card .resource-card}
 
 <div
-  class="resource-visual"
+  class="resource-visual resource-finance-visual"
   aria-hidden="true"
-  data-scene="count"
-  data-palette="#34d399,#5b9dff,#f9b54c,#ff6b6b"
-  data-seed="7"
   style="--panel-bg-a: #0f1729; --panel-bg-b: #16213e; --panel-glow-a: rgba(52, 211, 153, 0.24); --panel-glow-b: rgba(91, 157, 255, 0.20); --panel-glow-c: rgba(249, 181, 76, 0.14);"
 >
-  <span class="resource-visual-note">finance dashboard</span>
+<span class="resource-visual-note">institution finance</span>
+<div class="resource-finance-kpis">
+<span class="resource-finance-kpi"><strong>155</strong><span>institutions</span></span>
+<span class="resource-finance-kpi"><strong>4</strong><span>growth bands</span></span>
+<span class="resource-finance-kpi"><strong>12</strong><span>metrics</span></span>
+</div>
+<div class="resource-finance-panel">
+<div class="resource-finance-bars">
+<span class="resource-finance-bar" style="--bar-height: 86%; --bar-color: #34d399;"></span>
+<span class="resource-finance-bar" style="--bar-height: 68%; --bar-color: #5b9dff;"></span>
+<span class="resource-finance-bar" style="--bar-height: 48%; --bar-color: #f9b54c;"></span>
+<span class="resource-finance-bar" style="--bar-height: 31%; --bar-color: #ff6b6b;"></span>
+</div>
+<div class="resource-finance-line">
+<svg viewBox="0 0 120 52" preserveAspectRatio="none" aria-hidden="true">
+<polyline points="6,35 28,27 50,31 72,19 94,23 114,12"></polyline>
+<circle cx="114" cy="12" r="3.4"></circle>
+</svg>
+</div>
+</div>
 </div>
 
 ### UK University Sustainable Growth
