@@ -232,6 +232,26 @@ format:
   class="resource-visual"
   aria-hidden="true"
   data-scene="count"
+  data-palette="#34d399,#5b9dff,#f9b54c,#ff6b6b"
+  data-seed="7"
+  style="--panel-bg-a: #0f1729; --panel-bg-b: #16213e; --panel-glow-a: rgba(52, 211, 153, 0.24); --panel-glow-b: rgba(91, 157, 255, 0.20); --panel-glow-c: rgba(249, 181, 76, 0.14);"
+>
+  <span class="resource-visual-note">finance dashboard</span>
+</div>
+
+### UK University Sustainable Growth
+
+<span class="meta">Interactive dashboard ranking 155 UK institutions by sustainable-growth financial performance.</span>
+
+[Open dashboard](assets/resources/sustainable-growth-dashboard.html)
+:::
+
+::: {.media-card .resource-card}
+
+<div
+  class="resource-visual"
+  aria-hidden="true"
+  data-scene="count"
   data-palette="#778dff,#bf7bff,#ff6f91,#ffd166"
   data-seed="11"
   style="--panel-bg-a: #05070d; --panel-bg-b: #0f1630; --panel-glow-a: rgba(106, 114, 255, 0.30); --panel-glow-b: rgba(255, 89, 152, 0.20); --panel-glow-c: rgba(255, 191, 94, 0.16);"
