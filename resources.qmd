@@ -147,6 +147,10 @@ format:
             filter: saturate(0.94) contrast(1.04);
             transform: scale(1.03);
           }
+          .resource-story-visual.is-breathing-map > p > img {
+            transform-origin: center;
+            animation: resourceMapBreathe 5.4s ease-in-out infinite;
+          }
           .resource-story-visual .resource-visual-note {
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.34);
           }
@@ -256,6 +260,9 @@ format:
             border-radius: 3px 3px 1px 1px;
             background: var(--bar-color);
             box-shadow: 0 0 14px color-mix(in srgb, var(--bar-color), transparent 64%);
+            transform-origin: bottom;
+            animation: resourceBarBreathe var(--bar-duration, 4.8s) ease-in-out infinite;
+            animation-delay: var(--bar-delay, 0s);
           }
           .resource-finance-line {
             position: relative;
@@ -279,11 +286,15 @@ format:
             stroke-linecap: round;
             stroke-linejoin: round;
             filter: drop-shadow(0 0 6px rgba(91, 157, 255, 0.46));
+            transform-origin: center;
+            animation: resourceLineBreathe 5.2s ease-in-out infinite;
           }
           .resource-finance-line circle {
             fill: #f9b54c;
             stroke: rgba(12, 19, 34, 0.9);
             stroke-width: 1.5;
+            transform-origin: center;
+            animation: resourcePointBreathe 5.2s ease-in-out infinite;
           }
           @keyframes resourceBulletPulse {
             0%, 100% {
@@ -295,9 +306,55 @@ format:
               transform: translate(calc(-50% + var(--drift-x)), calc(-50% + var(--drift-y))) scale(1.08);
             }
           }
+          @keyframes resourceMapBreathe {
+            0%, 100% {
+              transform: scale(1.03);
+              filter: saturate(0.94) contrast(1.04);
+            }
+            50% {
+              transform: scale(1.09);
+              filter: saturate(1.04) contrast(1.08);
+            }
+          }
+          @keyframes resourceBarBreathe {
+            0%, 100% {
+              transform: scaleY(0.88);
+              opacity: 0.78;
+            }
+            50% {
+              transform: scaleY(1.08);
+              opacity: 1;
+            }
+          }
+          @keyframes resourceLineBreathe {
+            0%, 100% {
+              transform: scaleY(0.86);
+              opacity: 0.72;
+            }
+            50% {
+              transform: scaleY(1.08);
+              opacity: 1;
+            }
+          }
+          @keyframes resourcePointBreathe {
+            0%, 100% {
+              transform: scale(0.86);
+              opacity: 0.74;
+            }
+            50% {
+              transform: scale(1.22);
+              opacity: 1;
+            }
+          }
           @media (prefers-reduced-motion: reduce) {
-            .resource-bullet {
+            .resource-bullet,
+            .resource-story-visual.is-breathing-map > p > img,
+            .resource-finance-bar,
+            .resource-finance-line polyline,
+            .resource-finance-line circle {
               animation: none;
+            }
+            .resource-bullet {
               transform: translate(-50%, -50%);
             }
           }
@@ -323,7 +380,7 @@ format:
 
 ::: {.media-card .resource-card}
 
-::: {.resource-visual .resource-story-visual aria-hidden="true" data-scene="particles" data-palette="#38bdf8,#f97316,#facc15,#ffffff" data-seed="7"}
+::: {.resource-visual .resource-story-visual .is-breathing-map aria-hidden="true"}
 ![](assets/stories/iran-conflict-population-redistribution/war-relative-index-maps.png){fig-alt=""}
 <span class="resource-visual-note">interactive story</span>
 :::
@@ -340,9 +397,6 @@ format:
 <div
   class="resource-visual resource-finance-visual"
   aria-hidden="true"
-  data-scene="particles"
-  data-palette="#34d399,#5b9dff,#f9b54c,#ffffff"
-  data-seed="13"
   style="--panel-bg-a: #0f1729; --panel-bg-b: #16213e; --panel-glow-a: rgba(52, 211, 153, 0.24); --panel-glow-b: rgba(91, 157, 255, 0.20); --panel-glow-c: rgba(249, 181, 76, 0.14);"
 >
 <span class="resource-visual-note">institution finance</span>
@@ -353,10 +407,10 @@ format:
 </div>
 <div class="resource-finance-panel">
 <div class="resource-finance-bars">
-<span class="resource-finance-bar" style="--bar-height: 86%; --bar-color: #34d399;"></span>
-<span class="resource-finance-bar" style="--bar-height: 68%; --bar-color: #5b9dff;"></span>
-<span class="resource-finance-bar" style="--bar-height: 48%; --bar-color: #f9b54c;"></span>
-<span class="resource-finance-bar" style="--bar-height: 31%; --bar-color: #ff6b6b;"></span>
+<span class="resource-finance-bar" style="--bar-height: 86%; --bar-color: #34d399; --bar-duration: 4.4s; --bar-delay: -0.2s;"></span>
+<span class="resource-finance-bar" style="--bar-height: 68%; --bar-color: #5b9dff; --bar-duration: 5s; --bar-delay: -1s;"></span>
+<span class="resource-finance-bar" style="--bar-height: 48%; --bar-color: #f9b54c; --bar-duration: 4.7s; --bar-delay: -1.8s;"></span>
+<span class="resource-finance-bar" style="--bar-height: 31%; --bar-color: #ff6b6b; --bar-duration: 5.3s; --bar-delay: -0.7s;"></span>
 </div>
 <div class="resource-finance-line">
 <svg viewBox="0 0 120 52" preserveAspectRatio="none" aria-hidden="true">
@@ -867,30 +921,6 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  const renderParticleScene = (panel, random, colors) => {
-    const count = Number(panel.dataset.particleCount || 32);
-
-    for (let index = 0; index < count; index += 1) {
-      const color = colors[index % Math.max(colors.length, 1)] || "#ffffff";
-      const prominence = index % 7 === 0;
-
-      createBullet(panel, {
-        x: 8 + random() * 84,
-        y: 16 + random() * 72,
-        size: prominence ? 6.4 + random() * 2.6 : 2.8 + random() * 4.2,
-        color,
-        opacity: prominence ? 0.58 + random() * 0.22 : 0.18 + random() * 0.34,
-        glow: prominence ? 18 : 8 + random() * 9,
-        driftX: (random() - 0.5) * 2.6,
-        driftY: -0.4 - random() * 1.8,
-        duration: 4.2 + random() * 3.6,
-        delay: -random() * 6,
-        outline: !prominence && random() > 0.82,
-        tile: random() > 0.72
-      }, random);
-    }
-  };
-
   panels.forEach((panel, panelIndex) => {
     const random = mulberry32(Number(panel.dataset.seed || panelIndex + 1));
     const colors = (panel.dataset.palette || "")
@@ -907,8 +937,6 @@ window.addEventListener("DOMContentLoaded", () => {
       renderCompositionScene(panel, random, colors);
     } else if (scene === "map") {
       renderMapScene(panel, random, colors);
-    } else if (scene === "particles") {
-      renderParticleScene(panel, random, colors);
     }
   });
 });
