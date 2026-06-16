@@ -154,6 +154,43 @@ format:
           .resource-story-visual .resource-visual-note {
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.34);
           }
+          .resource-debias-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.05rem 0.95rem 0.75rem;
+          }
+          .resource-debias-visual > p {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+          }
+          .resource-debias-visual > p::before {
+            content: "";
+            position: absolute;
+            width: min(8.6rem, 72%);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.26), rgba(20, 184, 166, 0.10) 48%, transparent 70%);
+            animation: resourceDebiasPulse 2.4s ease-in-out infinite;
+          }
+          .resource-debias-visual img {
+            position: relative;
+            z-index: 3;
+            width: min(9.2rem, 78%);
+            max-height: 7.1rem;
+            object-fit: contain;
+            border: 0;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 16px 28px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(255, 255, 255, 0.22);
+            animation: resourceDebiasBeat 2.4s ease-in-out infinite;
+          }
           .resource-emphasis-band {
             position: absolute;
             top: 17%;
@@ -346,9 +383,42 @@ format:
               opacity: 1;
             }
           }
+          @keyframes resourceDebiasBeat {
+            0%, 100% {
+              transform: scale(1);
+            }
+            13% {
+              transform: scale(1.055);
+            }
+            24% {
+              transform: scale(0.985);
+            }
+            38% {
+              transform: scale(1.035);
+            }
+            58% {
+              transform: scale(1);
+            }
+          }
+          @keyframes resourceDebiasPulse {
+            0%, 100% {
+              opacity: 0.42;
+              transform: scale(0.86);
+            }
+            18% {
+              opacity: 0.84;
+              transform: scale(1.08);
+            }
+            42% {
+              opacity: 0.58;
+              transform: scale(0.96);
+            }
+          }
           @media (prefers-reduced-motion: reduce) {
             .resource-bullet,
             .resource-story-visual.is-breathing-map > p > img,
+            .resource-debias-visual > p::before,
+            .resource-debias-visual img,
             .resource-finance-bar,
             .resource-finance-line polyline,
             .resource-finance-line circle {
@@ -426,6 +496,20 @@ format:
 <span class="meta">Interactive dashboard ranking 155 UK institutions by sustainable-growth financial performance.</span>
 
 [Open dashboard](assets/resources/sustainable-growth-dashboard.html)
+:::
+
+::: {.media-card .resource-card}
+
+::: {.resource-visual .resource-debias-visual aria-hidden="true" style="--panel-bg-a: #071916; --panel-bg-b: #0f2a33; --panel-glow-a: rgba(34, 197, 94, 0.24); --panel-glow-b: rgba(20, 184, 166, 0.20); --panel-glow-c: rgba(250, 204, 21, 0.13);"}
+![](static/media/images/debias-logo-white-bgn.png){fig-alt=""}
+<span class="resource-visual-note">DEBIAS package</span>
+:::
+
+### debiasR
+
+<span class="meta">R package for assessing and correcting representation bias in digital trace counts and origin-destination flows.</span>
+
+[Open package site](https://de-bias.github.io/debiasR/)
 :::
 
 ::: {.media-card .resource-card}
