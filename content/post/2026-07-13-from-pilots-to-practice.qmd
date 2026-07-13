@@ -1,0 +1,43 @@
+---
+title: "From pilots to practice"
+subtitle: "Building the standards that turn digital signals into trusted evidence"
+draft: false
+author: "Francisco Rowe"
+date: "2026-07-13"
+categories: ["reflections"]
+tags: ["DEBIAS", "Digital mobility data", "Bias adjustment", "Standards", "Reflections"]
+---
+
+Last week, we hosted the [DEBIAS Stakeholder Workshop and Symposium](https://de-bias.github.io/debias/updates/posts/2026/07/07/debias-workshop-symposium-agenda.html) at the University of Liverpool. Across two days, the event brought together a diverse community of researchers and people working in government, official statistics, public health, transport and humanitarian response. Participants joined us from across Europe and beyond, connected by a shared interest in understanding human mobility through mobile phone and other forms of digital trace data.
+
+The vibe in the room was energising. There was a sense that a community which had previously been dispersed across different disciplines, countries and institutional settings was beginning to recognise itself as a field. Many participants had been working on closely related problems for years, but often through separate projects, using different terminology, methods and measures of success. The event created a space in which those parallel efforts could begin to converge around a common challenge.
+
+Over the past decade, digital trace data have transformed what it is possible to observe about human mobility. Mobile phone records, smartphone location data and other digital signals can reveal population movements at spatial and temporal resolutions that traditional data systems cannot easily match. They offer particular value when conditions are changing quickly and decision-makers cannot wait months or years for conventional statistics to become available.
+
+Yet access to new data is not the same as access to reliable evidence. A digital trace is not a direct representation of a population. It is produced through a particular technology, business model and pattern of user behaviour. Some groups are more likely to appear in the data than others. Coverage varies across places and over time. The mechanisms through which observations are generated are often only partially visible to researchers. Apparent precision can therefore conceal considerable uncertainty.
+
+This creates a problem that is methodological, but not only methodological. We have become increasingly capable of extracting mobility signals from digital data, but we have not yet built all the systems needed to determine when those signals are sufficiently reliable for operational use. The missing layer between data and action includes validation standards, reporting protocols, governance arrangements and shared expectations about what constitutes credible evidence.
+
+That missing layer became tangible during the structured discussion at the workshop. Participants first identified the principal sources of bias and uncertainty within different domains of digital mobility data. They then had to translate those concerns into concrete measures and minimum reporting requirements. It was not enough to say that geographic coverage, population representativeness or temporal stability mattered. The groups had to ask what should actually be calculated, documented and reported before an analysis could be considered trustworthy.
+
+Consider population representativeness. It is relatively easy for a study to acknowledge that the users captured by a digital platform may not represent the wider population. But that acknowledgement provides little practical guidance. A meaningful standard would need to specify which dimensions of representativeness should be assessed, which reference populations should be used, which metrics should be reported and what should happen when substantial differences are detected. It would also need to make clear whether any correction method genuinely improves the estimates or merely creates another layer of modelling assumptions.
+
+The discussion exposed how difficult this work is. Metrics that appear appropriate in one setting may be inadequate in another. The evidence needed for exploratory research may be different from that required for official statistics or high-stakes humanitarian decisions. A minimum standard must therefore be demanding enough to protect the credibility of the evidence, but sufficiently adaptable to accommodate different data-generating processes and applications.
+
+This was the point at which the event began to feel more consequential than a conventional academic workshop. The conversation was no longer simply about whether bias matters or whether a particular correction method performs well. It was about establishing collective expectations for how bias should be detected, measured, corrected and communicated. The community was beginning to move from recognising a problem to defining what responsible practice should look like.
+
+That shift is important because fields generally do not mature through case studies. They mature when communities establish shared standards of evidence. Common metrics make findings easier to compare. Reporting protocols make assumptions and limitations more visible. Validation frameworks help users distinguish between an informative experimental signal and evidence that is sufficiently robust to support a decision.
+
+This is particularly important for the adoption of digital trace data in official statistics, policy and operational practice. Technical sophistication in isolation does not generate institutional trust. A complex model may produce accurate predictions under one set of conditions while failing when the population, platform or geographic context changes. A timely mobility estimate may appear useful while systematically excluding the people most affected by a crisis. Decision-makers need to know not only what an estimate shows, but how it was generated, whom it represents, where it is likely to fail and how much confidence they should place in it.
+
+We often describe innovation in this area through the emergence of new datasets, algorithms and predictive tools. But the next major advance may depend less on novelty than on infrastructure. Shared benchmarks, minimum reporting requirements, transparent validation procedures and clear decision frameworks are less immediately exciting than a new model. Yet these are exactly the mechanisms through which experimental research becomes dependable practice.
+
+The future challenge is therefore not simply to generate better digital signals. It is to build the methodological and institutional architecture that allows those signals to become trusted evidence. Without that architecture, digital trace data risk remaining trapped in a cycle of promising pilots: repeatedly demonstrating potential, but rarely becoming embedded in the systems through which consequential decisions are made.
+
+Looking back, the most important outcome of the [DEBIAS](https://de-bias.github.io/debias/) event was the emergence of a more coherent and energised community around a shared standards agenda. Researchers and practitioners were exchanging findings and beginning to define collectively what good practice should mean.
+
+There is still considerable work ahead. Establishing standards will require sustained collaboration across disciplines, sectors and countries. It will require difficult choices about uncertainty, transparency, ethics and acceptable levels of evidence. No project or institution can resolve those questions independently.
+
+But something changed during those two days. We are no longer seeking to demonstrate that digital trace data can contribute to understanding human mobility. We have begun to establish the shared expectations needed to make that contribution trustworthy and usable.
+
+That is the shift from pilots to practice. The work will also inform the continued development of [debiasR](https://de-bias.github.io/debiasR/), the DEBIAS R package for bias-adjusted mobility-data workflows.
