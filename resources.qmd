@@ -459,8 +459,7 @@ format:
 
 <span class="meta">Making hidden biases visible in population location data from mobile phones — published in *Royal Society Open Science*.</span>
 
-[Explore the data story](https://de-bias.github.io/debias/stories/making-hidden-biases-visible/)\
-[Read the published article](https://doi.org/10.1098/rsos.251703)
+[Open story](https://de-bias.github.io/debias/stories/making-hidden-biases-visible/)
 :::
 
 ::: {.media-card .resource-card}
