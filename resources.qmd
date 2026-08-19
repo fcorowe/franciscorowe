@@ -450,6 +450,21 @@ format:
 
 ::: {.media-card .resource-card}
 
+::: {.resource-visual .resource-story-visual aria-hidden="true"}
+![](assets/stories/making-hidden-biases-visible/social-card.png){fig-alt=""}
+<span class="resource-visual-note">DEBIAS data story</span>
+:::
+
+### Who is missing from the map?
+
+<span class="meta">Making hidden biases visible in population location data from mobile phones — published in *Royal Society Open Science*.</span>
+
+[Explore the data story](https://de-bias.github.io/debias/stories/making-hidden-biases-visible/)\
+[Read the published article](https://doi.org/10.1098/rsos.251703)
+:::
+
+::: {.media-card .resource-card}
+
 ::: {.resource-visual .resource-story-visual .is-breathing-map aria-hidden="true"}
 ![](assets/stories/iran-conflict-population-redistribution/war-relative-index-maps.png){fig-alt=""}
 <span class="resource-visual-note">interactive story</span>
