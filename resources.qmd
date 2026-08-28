@@ -465,7 +465,6 @@ format:
 
 ::: {.resource-visual .resource-story-visual aria-hidden="true"}
 ![](assets/stories/making-hidden-biases-visible/social-card.png){fig-alt=""}
-<span class="resource-visual-note">DEBIAS data story</span>
 :::
 
 ### Who is missing from the map?
