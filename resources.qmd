@@ -148,6 +148,12 @@ format:
             filter: saturate(0.94) contrast(1.04);
             transform: none;
           }
+          .resource-story-visual--fit {
+            background: #071528;
+          }
+          .resource-story-visual--fit > p > img {
+            object-fit: contain;
+          }
           .resource-story-visual.is-breathing-map > p > img {
             transform-origin: center;
             animation: resourceMapBreathe 5.4s ease-in-out infinite;
@@ -463,7 +469,7 @@ format:
 
 ::: {.media-card .resource-card}
 
-::: {.resource-visual .resource-story-visual aria-hidden="true"}
+::: {.resource-visual .resource-story-visual .resource-story-visual--fit aria-hidden="true"}
 ![](assets/stories/making-hidden-biases-visible/social-card.png){fig-alt=""}
 :::
 
