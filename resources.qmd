@@ -159,6 +159,9 @@ format:
             padding: 0;
             background: #ffffff;
           }
+          .resource-debias-visual .resource-visual-note {
+            top: 0.42rem;
+          }
           .resource-debias-visual > p {
             position: absolute;
             inset: 0;
