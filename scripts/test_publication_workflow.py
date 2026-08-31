@@ -221,6 +221,32 @@ def test_truncated_scholar_title_filter(module):
     )
 
 
+def test_canonical_record_rejects_active_or_insecure_links(module):
+    unsafe = module.canonical_record(
+        {
+            "title": "Unsafe links",
+            "journal_link": "javascript:alert(1)",
+            "pdf_link": "http://example.org/paper.pdf",
+            "doi": '10.1234/example\" onmouseover=\"alert(1)',
+        }
+    )
+    assert_true(unsafe["journal_link"] == "", "Active URL schemes must be rejected")
+    assert_true(unsafe["pdf_link"] == "", "Plain-HTTP publication links must be rejected")
+    assert_true(unsafe["doi"] == "", "DOIs containing attribute-breaking characters must be rejected")
+
+    safe = module.canonical_record(
+        {
+            "title": "Safe links",
+            "journal_link": "https://example.org/paper?x=1&y=2",
+            "pdf_link": "https://example.org/paper.pdf",
+            "doi": "10.1234/example.1",
+        }
+    )
+    assert_true(safe["journal_link"] == "https://example.org/paper?x=1&y=2", "HTTPS links must be preserved")
+    assert_true(safe["pdf_link"] == "https://example.org/paper.pdf", "HTTPS PDF links must be preserved")
+    assert_true(safe["doi"] == "10.1234/example.1", "Valid DOIs must be preserved")
+
+
 def main():
     module = load_module()
     tests = [
@@ -233,6 +259,7 @@ def main():
         test_arxiv_preferred_over_osf_duplicate,
         test_validation_blocks_missing_authors,
         test_truncated_scholar_title_filter,
+        test_canonical_record_rejects_active_or_insecure_links,
     ]
     for test in tests:
         test(module)

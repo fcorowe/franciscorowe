@@ -17,4 +17,11 @@ if [ ! -f "_site/index.html" ]; then
   exit 1
 fi
 
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "ERROR: python3 is required for the static-site security checks."
+  exit 1
+fi
+
+python3 scripts/check_site_security.py
+
 echo "Preflight check passed."

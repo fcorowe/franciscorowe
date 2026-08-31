@@ -10,7 +10,7 @@ tags: ["Spatial Analysis", "Migration", "Spatial Impact", "Europe"]
 
 # Net Internal Migration Rate Across Europe
 
-At the end of last year, we published a paper assessing the impact of internal migration on redistributing population within European countries. Specifically we assessed the impact of internal migration on promoting population concentration or deconcentration. Below is a thread I posted on Twitter summarising key aspects of the paper. The paper is [open access](http://dx.doi.org/10.12765/CPoS-2019-18en) - see reference at the end of this post.
+At the end of last year, we published a paper assessing the impact of internal migration on redistributing population within European countries. Specifically we assessed the impact of internal migration on promoting population concentration or deconcentration. Below is a thread I posted on Twitter summarising key aspects of the paper. The paper is [open access](https://doi.org/10.12765/CPoS-2019-18en) - see reference at the end of this post.
 
 **Why this matters?** First, while considerable attention is devoted to international migration, the number of internal migration (763 million) is significantly greater -almost 3 times that of international migrants (272 million)
 
@@ -38,4 +38,4 @@ By contrast, patterns of population concentration in Switzerland, Bulgaria, Germ
 
 **References**
 
-Rowe, F., Bell, M., Bernard, A., Charles-Edwards, E. and Ueffing, P., 2019. Impact of Internal Migration on Population Redistribution in Europe: Urbanisation, Counterurbanisation or Spatial Equilibrium?. *Comparative Population Studies*, 44: 201-34. doi: http://dx.doi.org/10.12765/CPoS-2019-18en
+Rowe, F., Bell, M., Bernard, A., Charles-Edwards, E. and Ueffing, P., 2019. Impact of Internal Migration on Population Redistribution in Europe: Urbanisation, Counterurbanisation or Spatial Equilibrium?. *Comparative Population Studies*, 44: 201-34. doi: https://doi.org/10.12765/CPoS-2019-18en

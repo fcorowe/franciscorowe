@@ -115,10 +115,26 @@ def clean_doi(v: str) -> str:
     return v.strip()
 
 
+def clean_https_url(v: str) -> str:
+    value = clean(v)
+    if not value or any(char.isspace() or ord(char) < 32 or ord(char) == 127 for char in value):
+        return ""
+    try:
+        parsed = urllib.parse.urlsplit(value)
+        _ = parsed.port
+    except ValueError:
+        return ""
+    if parsed.scheme.lower() != "https" or not parsed.hostname:
+        return ""
+    if parsed.username is not None or parsed.password is not None:
+        return ""
+    return value
+
+
 def is_valid_doi(v: str) -> bool:
     if not v:
         return False
-    return re.match(r"^10\.\d{4,9}/\S+$", v) is not None
+    return re.fullmatch(r"10\.\d{4,9}/[-._;()/:A-Za-z0-9%+]+", v) is not None
 
 
 def parse_front_matter(path: Path) -> dict:
@@ -160,9 +176,9 @@ def canonical_record(row: dict, default_source: str = "") -> dict:
         "authors": clean_text(row.get("authors", "")),
         "journal": clean_text(row.get("journal", "")),
         "year": clean(row.get("year", "")),
-        "journal_link": clean(row.get("journal_link", "")),
+        "journal_link": clean_https_url(row.get("journal_link", "")),
         "doi": doi if is_valid_doi(doi) else "",
-        "pdf_link": clean(row.get("pdf_link", "")),
+        "pdf_link": clean_https_url(row.get("pdf_link", "")),
         "source": clean(row.get("source", "")) or default_source,
     }
 
@@ -1099,6 +1115,8 @@ def main():
         source_errors.append(
             "post-override duplicate cleanup skipped: cleanup would violate publication-count or baseline-title safety checks"
         )
+
+    papers = [canonical_record(p, default_source=p.get("source", "")) for p in papers]
 
     validation_errors = validate_output(existing_master, papers, source_new_titles)
     if not scholar_data.get("ok") and not openalex_works_ok and not os.environ.get("ALLOW_STALE_PUBLICATIONS"):

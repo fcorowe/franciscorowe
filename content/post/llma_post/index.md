@@ -28,7 +28,7 @@ Applying our algorithm, we proposed a set of 62 FLMAs, which we called “GEA-LM
 Figure 1. Maps of local self-containment: provinces, TTWA-LMAs and GEA-LMAs (labels for regional capital cities are displayed).
 Note: Local self-containment of an area is calculated as the minimum value of the share of residents of a BTU working within its considered region, and the share of jobs of that BTU occupied by its residents. 
 
-Our paper is open access and our code is available with the paper if you would like to implement our approach! Get it now from Spatial Economic Analysis on this link!: http://dx.doi.org/10.1080/17421772.2017.1273541
+Our paper is open access and our code is available with the paper if you would like to implement our approach! Get it now from Spatial Economic Analysis on this link!: https://doi.org/10.1080/17421772.2017.1273541
 
 ### Reference
-José Manuel Casado-Díaz, Lucas Martínez-Bernabéu & Francisco Rowe (2017) An evolutionary approach to the delimitation of labour market areas: an empirical application for Chile, Spatial Economic Analysis, 12:4, 379-403, DOI: http://dx.doi.org/10.1080/17421772.2017.1273541
+José Manuel Casado-Díaz, Lucas Martínez-Bernabéu & Francisco Rowe (2017) An evolutionary approach to the delimitation of labour market areas: an empirical application for Chile, Spatial Economic Analysis, 12:4, 379-403, DOI: https://doi.org/10.1080/17421772.2017.1273541

@@ -8,6 +8,7 @@ project:
     - apple-touch-icon-v3.png
     - assets/favicon.svg
     - assets/resources/sustainable-growth-dashboard.html
+    - assets/vendor/chart.js/4.4.1/chart.umd.min.js
   render:
     - index.qmd
     - bio.qmd
