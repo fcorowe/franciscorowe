@@ -312,25 +312,22 @@ def parse_scholar_profile_html(text: str) -> list:
 
 
 def fetch_scholar_direct_page(cstart: int = 0, pagesize: int = 100) -> list:
+    params = {
+        "user": SCHOLAR_ID,
+        "hl": "en",
+        "pagesize": pagesize,
+        "sortby": "pubdate",
+    }
+    if cstart:
+        params["cstart"] = cstart
     url = (
         "https://scholar.google.com/citations?"
-        + urllib.parse.urlencode(
-            {
-                "user": SCHOLAR_ID,
-                "hl": "en",
-                "view_op": "list_works",
-                "cstart": cstart,
-                "pagesize": pagesize,
-            }
-        )
+        + urllib.parse.urlencode(params)
     )
     req = urllib.request.Request(
         url,
         headers={
-            "User-Agent": (
-                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36"
-            )
+            "User-Agent": "Mozilla/5.0",
         },
     )
     with urllib.request.urlopen(req, timeout=30) as r:
@@ -1085,9 +1082,11 @@ def main():
     elif existing_cites:
         cites = existing_cites
 
+    manual_new = []
     for ov in manual_overrides.values():
         if ov.get("title") and not has_matching_title(papers, ov.get("title", "")):
             papers.append(ov)
+            manual_new.append(ov["title"])
 
     papers = apply_manual_overrides(papers, manual_overrides)
     for p in papers:
@@ -1097,7 +1096,7 @@ def main():
 
     papers, enrich_stats = enrich_links_from_web(papers, write_cache=not args.dry_run)
     deduped_papers, broad_duplicate_groups = dedupe_records(papers)
-    source_new_titles = sorted({t for t in local_new + scholar_new + openalex_new if t})
+    source_new_titles = sorted({t for t in local_new + scholar_new + openalex_new + manual_new if t})
     required_min_count = len(existing_master) + (1 if source_new_titles else 0)
     if len(deduped_papers) >= required_min_count and preserves_existing_titles(existing_master, deduped_papers):
         papers = deduped_papers

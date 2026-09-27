@@ -77,6 +77,38 @@ def test_scholar_pagination(module):
     assert_true(titles == {"First Page Paper", "Second Page Paper"}, "Scholar pagination should keep all pages")
 
 
+def test_scholar_request_uses_publication_date(module):
+    requests = []
+    original = module.urllib.request.urlopen
+
+    class Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+        def read(self):
+            return b"<table></table>"
+
+    def capture_request(request, timeout):
+        requests.append(request)
+        return Response()
+
+    try:
+        module.urllib.request.urlopen = capture_request
+        module.fetch_scholar_direct_page()
+        module.fetch_scholar_direct_page(cstart=100)
+    finally:
+        module.urllib.request.urlopen = original
+
+    queries = [module.urllib.parse.parse_qs(module.urllib.parse.urlsplit(r.full_url).query) for r in requests]
+    assert_true(all(q.get("sortby") == ["pubdate"] for q in queries), "Scholar requests should prioritize recent publications")
+    assert_true("view_op" not in queries[0], "Profile request should use the standard Scholar profile URL")
+    assert_true("cstart" not in queries[0], "First page should use the standard profile URL")
+    assert_true(queries[1].get("cstart") == ["100"], "Subsequent pages should retain pagination")
+
+
 def test_repeated_scholar_page_blocks(module):
     original = module.fetch_scholar_direct_page
 
@@ -252,6 +284,7 @@ def main():
     tests = [
         test_scholar_html_parser,
         test_scholar_pagination,
+        test_scholar_request_uses_publication_date,
         test_repeated_scholar_page_blocks,
         test_duplicate_preference_and_manual_override,
         test_validation_requires_source_titles,

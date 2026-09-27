@@ -1,5 +1,5 @@
 {
-  "count": 214,
+  "count": 224,
   "previous_count": 214,
   "local_records": 104,
   "scholar_ok": true,
@@ -7,9 +7,25 @@
   "scholar_method": "direct_html",
   "fallback": "",
   "scholar_id": "d8rThGQAAAAJ",
-  "new_titles": [],
+  "new_titles": [
+    "A Biographical Approach to Understand Long-Term Occupational Trajectories of Immigrants in the UK Labour Market",
+    "Advancing sustainable geospatial analytics and geoinformatics through repeatable, reproducible, and expandable (RRE) framework and design",
+    "Divergent impacts of internal migration on regional human capital in Latin America: concentration, deconcentration and limited effect",
+    "Global sequencing of researcher migration reveals factors associated with disparities in subnational patterns of brain gain and drain",
+    "Hate speech toward migrants on a citizen reporting platform concentrates in neighborhoods undergoing demographic change",
+    "Living spaces, flows and structures across the EU internal borders",
+    "Machine learning forecasts suggest a concentration paradox in international student mobility to the United Kingdom",
+    "Making hidden biases visible in population location data from mobile phones",
+    "One country, multiple portraits: representativeness in GPS-based mobility data is source-specific and spatially dependent",
+    "Situation report: Iran conflict. Digital trace data analysis - experimental"
+  ],
   "updated_titles": [
-    "Voting Red Again: How Social Capital and Local Change Drove the Trump Swing"
+    "Efectos cambiantes de la migraci\u00f3n sobre el crecimiento, la estructura demogr\u00e1fica y la segregaci\u00f3n residencial en ciudades grandes: el caso de Santiago, Chile, 1977-2017",
+    "Labour market outcomes and educational and occupational pathways of young movers starting off in regional Victoria",
+    "Migraci\u00f3n interregional en Chile: Una perspectiva espacial",
+    "Neighbourhood change and trajectories of inequality in Britain, 1971-2011",
+    "The effects of economic liberalisation on inter-regional labour migration in a transition economy, Chile",
+    "Tweeting migration: A decade of shifting sentiment across local areas of Great Britain"
   ],
   "duplicates_resolved": [
     {
@@ -17,6 +33,12 @@
       "key": "how is internal migration reshaping metropolitan populations in latin america a new method and new evidence",
       "kept": "(2018) How is internal migration reshaping metropolitan populations in Latin America? A new method and new evidence",
       "merged": "How is internal migration reshaping metropolitan populations in Latin America? A new method and new evidence"
+    },
+    {
+      "reason": "incoming_duplicate",
+      "key": "efectos cambiantes de la migraci n sobre el crecimiento la estructura demogr fica y la segregaci n residencial en ciudades grandes el caso de santiago chile 1977 2017",
+      "kept": "Efectos cambiantes de la migraci\u00f3n sobre el crecimiento, la estructura demogr\u00e1fica y la segregaci\u00f3n residencial en ciudades grandes: el caso de Santiago, Chile, 1977-2017",
+      "merged": "Efectos cambiantes de la migraci\u00f3n sobre el crecimiento, la estructura demogr\u00e1fica y la segregaci\u00f3n residencial en ciudades grandes. El caso de Santiago, Chile, 1977-2017"
     },
     {
       "reason": "incoming_duplicate",
@@ -35,9 +57,9 @@
     "duplicate cleanup skipped: broad cleanup would violate publication-count or baseline-title safety checks",
     "post-override duplicate cleanup skipped: cleanup would violate publication-count or baseline-title safety checks"
   ],
-  "doi_web_lookups": 1,
-  "doi_web_cache_hits": 29,
-  "doi_links_updated": 1,
+  "doi_web_lookups": 2,
+  "doi_web_cache_hits": 40,
+  "doi_links_updated": 15,
   "doi_lookup_errors": 0,
   "doi_title_mismatches": 0
 }
