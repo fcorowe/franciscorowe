@@ -109,6 +109,45 @@ def test_scholar_request_uses_publication_date(module):
     assert_true(queries[1].get("cstart") == ["100"], "Subsequent pages should retain pagination")
 
 
+def test_openalex_default_year_is_dynamic(module):
+    requests = []
+    original_urlopen = module.urllib.request.urlopen
+    original_date = module.date
+
+    class FutureDate:
+        @classmethod
+        def today(cls):
+            return original_date(2027, 1, 1)
+
+    class Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+        def read(self):
+            return b'{"meta": {"next_cursor": null}, "results": []}'
+
+    def capture_request(request, timeout):
+        requests.append(request)
+        return Response()
+
+    try:
+        module.date = FutureDate
+        module.urllib.request.urlopen = capture_request
+        module.fetch_openalex_works()
+    finally:
+        module.date = original_date
+        module.urllib.request.urlopen = original_urlopen
+
+    query = module.urllib.parse.parse_qs(module.urllib.parse.urlsplit(requests[0].full_url).query)
+    assert_true(
+        "to_publication_date:2027-12-31" in query["filter"][0],
+        "OpenAlex default upper year should follow the current year",
+    )
+
+
 def test_repeated_scholar_page_blocks(module):
     original = module.fetch_scholar_direct_page
 

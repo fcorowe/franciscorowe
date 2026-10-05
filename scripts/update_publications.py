@@ -9,6 +9,7 @@ import re
 import urllib.parse
 import urllib.request
 import unicodedata
+from datetime import date
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -489,7 +490,9 @@ def fetch_openalex_citations():
     return cites
 
 
-def fetch_openalex_works(min_year=2008, max_year=2026):
+def fetch_openalex_works(min_year=2008, max_year=None):
+    if max_year is None:
+        max_year = date.today().year
     author_id = "A5003397338"
     out = []
     cursor = "*"
@@ -1064,7 +1067,7 @@ def main():
         except Exception:
             source_errors.append("openalex citations: failed to fetch fallback citations")
         try:
-            for r in fetch_openalex_works(min_year=2008, max_year=2026):
+            for r in fetch_openalex_works(min_year=2008):
                 openalex_works_ok = True
                 if not has_strict_title(papers, r.get("title", "")):
                     openalex_new.append(r.get("title", ""))
