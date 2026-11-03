@@ -45,3 +45,13 @@ assert_true(grepl('href="https://example.org/article?x=1&amp;y=2"', rendered_leg
 assert_true(grepl('href="https://doi.org/10.1234/example.1"', rendered_legitimate, fixed = TRUE), "Valid DOI link changed")
 
 cat("Publication renderer security tests passed\n")
+
+accepted <- legitimate
+accepted$journal <- "Nature Communications — accepted for publication"
+accepted$journal_link <- "https://arxiv.org/abs/2504.15871"
+accepted$doi <- "10.48550/arXiv.2504.15871"
+accepted_html <- render_publication_card(accepted)
+assert_true(grepl(">Preprint</a>", accepted_html, fixed = TRUE), "arXiv link must be labelled as a preprint")
+assert_true(grepl(">Preprint DOI</a>", accepted_html, fixed = TRUE), "arXiv DOI must not be labelled as a journal DOI")
+assert_true(grepl("accepted for publication", accepted_html, fixed = TRUE), "Acceptance status was lost")
+cat("Accepted-paper preprint link tests passed\n")

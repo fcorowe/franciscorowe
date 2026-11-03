@@ -106,8 +106,10 @@ render_publication_card <- function(paper) {
     journal <- publication_platform(journal_link, doi, paper$source)
   }
 
-  journal_tab <- publication_tab("Journal page", journal_link)
-  doi_tab <- publication_tab("DOI", if (nzchar(doi)) paste0("https://doi.org/", doi) else "")
+  preprint_link <- grepl("arxiv[.]org|doi[.]org/10[.]48550/arxiv[.]", tolower(journal_link))
+  preprint_doi <- grepl("^10[.]48550/arxiv[.]", tolower(doi))
+  journal_tab <- publication_tab(if (preprint_link) "Preprint" else "Journal page", journal_link)
+  doi_tab <- publication_tab(if (preprint_doi) "Preprint DOI" else "DOI", if (nzchar(doi)) paste0("https://doi.org/", doi) else "")
   pdf_tab <- publication_tab("PDF", pdf_link)
 
   paste0(

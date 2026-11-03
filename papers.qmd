@@ -23,6 +23,9 @@ format:
             border-color: rgba(255, 255, 255, 0.25);
             color: #ffffff;
           }
+          .paper-card {
+            overflow-wrap: anywhere;
+          }
           .paper-tab {
             background: rgba(255, 255, 255, 0.12);
             border-color: rgba(255, 255, 255, 0.4);
