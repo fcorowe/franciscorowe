@@ -21,6 +21,8 @@ format:
             transform: translateY(-3px);
             box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
           }
+          .resource-nav a,
+          .resource-nav a:visited,
           .media-card a,
           .media-card a:visited {
             color: #ffffff;
@@ -33,7 +35,7 @@ format:
           }
           .media-card h3 {
             display: -webkit-box;
-            -webkit-line-clamp: 1;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
           }
@@ -41,7 +43,7 @@ format:
             color: #D4D4D4;
             font-size: 0.75rem;
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 5;
             -webkit-box-orient: vertical;
             overflow: hidden;
           }
@@ -465,7 +467,116 @@ format:
         </style>
 ---
 
+::: {.resource-nav}
+[Scientific software](#scientific-software) · [Open data products](#open-data-products) · [Interactive tools](#interactive-tools) · [Books and learning](#books-and-learning)
+:::
+
+## Scientific software {#scientific-software}
+
+Reusable methods and code for population and mobility research.
+
 ::: {.media-grid}
+
+::: {.media-card .resource-card}
+
+::: {.resource-visual .resource-debias-visual aria-hidden="true" style="--panel-bg-a: #071916; --panel-bg-b: #0f2a33; --panel-glow-a: rgba(34, 197, 94, 0.24); --panel-glow-b: rgba(20, 184, 166, 0.20); --panel-glow-c: rgba(250, 204, 21, 0.13);"}
+![](static/media/images/debias-logo-white-bgn.png){fig-alt=""}
+:::
+
+### debiasR
+
+<span class="meta">R package for measuring population coverage bias and adjusting origin–destination flows using deterministic and Bayesian methods. Development version.</span>
+
+[Open package site](https://de-bias.github.io/debiasR/)
+:::
+
+::: {.media-card .resource-card}
+
+<div class="resource-visual" aria-hidden="true" data-scene="map" data-palette="#38bdf8,#34d399,#93c5fd,#fde047" data-seed="43" style="--panel-bg-a: #04111f; --panel-bg-b: #0c1f38;">
+<span class="resource-visual-note">population coverage bias</span>
+</div>
+
+### debiaspy
+
+<span class="meta">Python package for measuring population coverage bias in digital-trace data. Development version; flow adjustment and validation are under development.</span>
+
+[Open Python repository](https://github.com/de-bias/debiaspy)
+:::
+
+::: {.media-card .resource-card}
+
+<div
+  class="resource-visual"
+  aria-hidden="true"
+  data-scene="composition"
+  data-palette="#38bdf8,#34d399,#fde68a,#7dd3fc"
+  data-seed="23"
+  style="--panel-bg-a: #031018; --panel-bg-b: #0a2230; --panel-glow-a: rgba(56, 189, 248, 0.24); --panel-glow-b: rgba(52, 211, 153, 0.20); --panel-glow-c: rgba(167, 243, 208, 0.14);"
+>
+  <span class="resource-visual-note">migration composition</span>
+</div>
+
+### R Package CIM
+
+<span class="meta">Code and resources for compositional impact of migration analysis in R.</span>
+
+[Open website](post/2019-01-31-r-rmarkdown/index.html)
+:::
+
+:::
+
+## Open data products {#open-data-products}
+
+Analysis-ready environmental indicators for linkage to social, health and economic data.
+
+::: {.media-grid}
+
+::: {.media-card .resource-card}
+
+<div class="resource-visual" aria-hidden="true" data-scene="map" data-palette="#38bdf8,#34d399,#93c5fd,#fde047" data-seed="47" style="--panel-bg-a: #04111f; --panel-bg-b: #0c1f38;">
+<span class="resource-visual-note">local environmental hazards</span>
+</div>
+
+### CLiVE data products
+
+<span class="meta">Climate Local Vulnerability and Exposure: harmonised small-area indicators of temperature, precipitation, PM2.5 and mapped flood hazard. Analysis-ready CSV and GeoPackage datasets; DOIs forthcoming.</span>
+
+[Open Imago data catalogue](https://data.imago.ac.uk) · [Read the CLiVE chapter](https://boi.imago.ac.uk/chapters/clive.html)
+:::
+
+::: {.media-card .resource-card}
+
+<div class="resource-visual" aria-hidden="true" data-scene="map" data-palette="#38bdf8,#34d399,#93c5fd,#fde047" data-seed="53" style="--panel-bg-a: #04111f; --panel-bg-b: #0c1f38;">
+<span class="resource-visual-note">air pollution exposure</span>
+</div>
+
+### EXHALE data products
+
+<span class="meta">UK small-area residential exposure to six air pollutants, with population-weighted and threshold-based measures and demographic and socioeconomic breakdowns. Census-year population: 2021 (Scotland 2022). DOIs forthcoming.</span>
+
+[Open Imago data catalogue](https://data.imago.ac.uk)
+:::
+
+:::
+
+## Interactive tools and data stories {#interactive-tools}
+
+Explore research findings, population patterns and decision-support tools.
+
+::: {.media-grid}
+
+::: {.media-card .resource-card}
+
+<div class="resource-visual" aria-hidden="true" data-scene="map" data-palette="#38bdf8,#34d399,#93c5fd,#fde047" data-seed="59" style="--panel-bg-a: #04111f; --panel-bg-b: #0c1f38;">
+<span class="resource-visual-note">interactive exposure explorer</span>
+</div>
+
+### EXHALE UK Data Explorer
+
+<span class="meta">Explore population exposure to environmental hazards. Created by Emiliano Beltran Alipio, Carmen Cabrera, Weiming Huang, Rodgers Iradukunda, Leran Zheng and Francisco Rowe.</span>
+
+[Open data explorer](https://imago-sdruk.github.io/exhale-uk-explorer/)
+:::
 
 ::: {.media-card .resource-card}
 
@@ -530,17 +641,25 @@ format:
 [Open dashboard](assets/resources/sustainable-growth-dashboard.html)
 :::
 
-::: {.media-card .resource-card}
-
-::: {.resource-visual .resource-debias-visual aria-hidden="true" style="--panel-bg-a: #071916; --panel-bg-b: #0f2a33; --panel-glow-a: rgba(34, 197, 94, 0.24); --panel-glow-b: rgba(20, 184, 166, 0.20); --panel-glow-c: rgba(250, 204, 21, 0.13);"}
-![](static/media/images/debias-logo-white-bgn.png){fig-alt=""}
 :::
 
-### debiasR
+## Books and learning resources {#books-and-learning}
 
-<span class="meta">R package for assessing and correcting representation bias in digital trace counts and origin-destination flows.</span>
+Open reference material, methods and worked examples.
 
-[Open package site](https://de-bias.github.io/debiasR/)
+::: {.media-grid}
+
+::: {.media-card .resource-card}
+
+<div class="resource-visual" aria-hidden="true" data-scene="map" data-palette="#38bdf8,#34d399,#93c5fd,#fde047" data-seed="61" style="--panel-bg-a: #04111f; --panel-bg-b: #0c1f38;">
+<span class="resource-visual-note">from imagery to evidence</span>
+</div>
+
+### Book of Imagery
+
+<span class="meta">A living, open-access reference book translating imagery into meaningful social and policy measures. Includes CLiVE: Climate Local Vulnerability and Exposure.</span>
+
+[Read the book](https://boi.imago.ac.uk) · [Book DOI](https://doi.org/10.5281/zenodo.17976055)
 :::
 
 ::: {.media-card .resource-card}
@@ -581,26 +700,6 @@ format:
 <span class="meta">Methods, examples and code for binary outcome modelling.</span>
 
 [Open website](https://fcorowe.github.io/binary_logistic/)
-:::
-
-::: {.media-card .resource-card}
-
-<div
-  class="resource-visual"
-  aria-hidden="true"
-  data-scene="composition"
-  data-palette="#38bdf8,#34d399,#fde68a,#7dd3fc"
-  data-seed="23"
-  style="--panel-bg-a: #031018; --panel-bg-b: #0a2230; --panel-glow-a: rgba(56, 189, 248, 0.24); --panel-glow-b: rgba(52, 211, 153, 0.20); --panel-glow-c: rgba(167, 243, 208, 0.14);"
->
-  <span class="resource-visual-note">migration composition</span>
-</div>
-
-### R Package CIM
-
-<span class="meta">Code and resources for compositional impact of migration analysis in R.</span>
-
-[Open website](post/2019-01-31-r-rmarkdown/index.html)
 :::
 
 ::: {.media-card .resource-card}

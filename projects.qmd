@@ -12,6 +12,8 @@ title: "Project"
 <span class="meta">Making satellite imagery useful, usable and used across social research and policy.</span>
 
 [Project website](https://imago.ac.uk)
+
+[CLiVE and EXHALE data](resources.html#open-data-products) · [EXHALE explorer](https://imago-sdruk.github.io/exhale-uk-explorer/) · [Book of Imagery](https://boi.imago.ac.uk)
 :::
 
 ::: {.media-card}
@@ -22,6 +24,8 @@ title: "Project"
 <span class="meta">Developing methods to measure and correct biases in digital-footprint mobility data.</span>
 
 [Project website](https://de-bias.github.io/debias/)
+
+[debiasR](https://de-bias.github.io/debiasR/) · [debiaspy](https://github.com/de-bias/debiaspy) · [Interactive data story](https://de-bias.github.io/debias/stories/making-hidden-biases-visible/)
 :::
 
 ::: {.media-card}
