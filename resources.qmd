@@ -651,6 +651,20 @@ Open reference material, methods and worked examples.
 
 ::: {.media-card .resource-card}
 
+<div class="resource-visual" aria-hidden="true" data-scene="composition" data-palette="#38bdf8,#34d399,#fde68a,#7dd3fc" data-seed="67" style="--panel-bg-a: #031018; --panel-bg-b: #0a2230;">
+<span class="resource-visual-note">mobile phone data initiatives</span>
+</div>
+
+### Mobile Phone Data Handbook
+
+<span class="meta">Open-access UN-CEBD practical manual on designing and implementing mobile phone data initiatives, co-authored by Francisco Rowe.</span>
+
+[Read the handbook](https://un-cebd-mobile-data.github.io/mobile-phone-data-handbook/) · [Handbook DOI](https://doi.org/10.5281/zenodo.20498954)
+:::
+
+
+::: {.media-card .resource-card}
+
 <div class="resource-visual" aria-hidden="true" data-scene="map" data-palette="#38bdf8,#34d399,#93c5fd,#fde047" data-seed="61" style="--panel-bg-a: #04111f; --panel-bg-b: #0c1f38;">
 <span class="resource-visual-note">from imagery to evidence</span>
 </div>
