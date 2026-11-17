@@ -1,0 +1,67 @@
+{
+ "backbone_areas": 2042,
+ "backbone_without_country": [
+  "Bender",
+  "Transnistria",
+  "Avtonomna Respublika Krym",
+  "Sevastopol",
+  "Mayotte",
+  "Guadeloupe"
+ ],
+ "coast": {
+  "method": "Minimum polygon-to-exterior shoreline distance in local AEQD (km)",
+  "source": "Natural Earth 1:10m land",
+  "version": "5.1.1"
+ },
+ "fuzzy_review_pairs": 116,
+ "geometry_overrides": [
+  {
+   "id": 356,
+   "map_name": "Srednjobanatska",
+   "note": "The centroid (45.4570 N, 20.4902 E) is nearest Zrenjanin, the Central Banat seat. The separate Severno-Banatski polygon (45.9097 N, 20.1859 E) is nearest Kikinda among these northern and central candidates.",
+   "original_name": "Severnobanatska"
+  }
+ ],
+ "geometry_restored_after_simplification": [
+  {
+   "id": 95,
+   "name": "Christiansø"
+  }
+ ],
+ "paper1_states_extra": 27,
+ "paper1_trajectories": {
+  "duplicate_targets": [],
+  "match_method": {
+   "code": 467,
+   "fuzzy-reviewed": 70,
+   "manual": 15,
+   "name+country": 144
+  },
+  "matched": 696,
+  "rows": 696,
+  "unmatched": []
+ },
+ "paper2_rates": {
+  "duplicate_targets": [],
+  "match_method": {
+   "fuzzy-reviewed": 106,
+   "manual": 30,
+   "name+country": 596
+  },
+  "matched": 732,
+  "mergesheet_only": [],
+  "rows": 732,
+  "signature_disagreements": [],
+  "signature_overridden_from_rates_file": 0,
+  "unmatched": []
+ },
+ "place_attributes": {
+  "matched": 0,
+  "status": "absent"
+ },
+ "sizes_kb": {
+  "regions.json": 584,
+  "regions.topo.json": 1202,
+  "signatures.json": 3
+ }
+}

@@ -2,6 +2,7 @@ project:
   type: website
   output-dir: _site
   resources:
+    - atlas/shrinking-places/**
     - favicon.ico
     - favicon-v3.ico
     - apple-touch-icon.png

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shrinking places: population decline across Europe, 2000–2018</title>
+<meta name="description" content="Explore where and how sub-national populations across Europe declined between 2000 and 2018, and whether fertility, mortality or migration drove the losses.">
+<meta name="theme-color" content="#faf8f2">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shrinking places: population decline across Europe">
+<meta property="og:description" content="Explore seven trajectories and five demographic signatures of population decline across Europe, 2000–2018.">
+<meta property="og:url" content="https://www.franciscorowe.com/atlas/shrinking-places/">
+<meta property="og:image" content="https://www.franciscorowe.com/atlas/shrinking-places/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Map showing seven trajectories of population decline across Europe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shrinking places: population decline across Europe">
+<meta name="twitter:description" content="Explore seven trajectories and five demographic signatures of population decline across Europe, 2000–2018.">
+<meta name="twitter:image" content="https://www.franciscorowe.com/atlas/shrinking-places/og.png">
+<meta name="twitter:image:alt" content="Map showing seven trajectories of population decline across Europe">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="data/regions.topo.json" as="fetch" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#panel">Skip to details</a>
+
+<svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="find" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.3 15.3 5.2 5.2"/></symbol>
+  <symbol id="download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></symbol>
+  <symbol id="reset-view" viewBox="0 0 24 24"><path d="M4 9V4h5m6 0h5v5m0 6v5h-5m-6 0H4v-5"/></symbol>
+</svg>
+<header class="masthead">
+  <div class="imprint"><img class="gdsl-logo" src="gdsl-logo.svg" alt="" width="27" height="37">
+    <span>Geographic Data Science Lab</span><span class="university">University of Liverpool</span>
+  </div>
+  <div class="utilities">
+    <button type="button" class="text-link" id="about-open">About &amp; cite</button>
+    <a class="download" href="data/regions.csv" download aria-label="Download data (CSV)"><svg class="icon" aria-hidden="true"><use href="#download"/></svg><span>Download data</span></a>
+  </div>
+</header>
+
+<main class="layout">
+  <header class="brand">
+    <h1>Shrinking <span>places</span></h1>
+    <p class="sub">Population decline across Europe, <span>2000–2018</span></p>
+  </header>
+
+  <div class="workspace">
+    <div class="toolbar">
+      <nav class="modes" role="tablist" aria-label="Map view">
+        <button role="tab" id="tab-traj" data-mode="traj" aria-controls="panel" aria-selected="true">Trajectories</button>
+        <button role="tab" id="tab-year" data-mode="year" aria-controls="panel" aria-selected="false" tabindex="-1">Year by year</button>
+        <button role="tab" id="tab-sig" data-mode="sig" aria-controls="panel" aria-selected="false" tabindex="-1">Drivers</button>
+      </nav>
+      <div class="search">
+        <label for="q" class="vh">Find a region</label>
+        <svg class="icon" aria-hidden="true"><use href="#find"/></svg>
+        <input id="q" type="search" placeholder="Find a region…" autocomplete="off" list="names" enterkeyhint="search">
+        <datalist id="names"></datalist>
+      </div>
+    </div>
+
+    <figure class="sheet" aria-labelledby="map-title">
+      <div class="mapwrap">
+        <div id="map" class="map" role="img" aria-label="Choropleth map of sub-national areas in Europe"></div>
+        <div class="maptools">
+          <button id="zin" aria-label="Zoom in">+</button>
+          <button id="zout" aria-label="Zoom out">−</button>
+          <button id="zreset" aria-label="Reset view"><svg class="icon" aria-hidden="true"><use href="#reset-view"/></svg></button>
+        </div>
+        <div id="yearbar" class="yearbar" hidden>
+          <button id="play" aria-label="Play years">▶</button>
+          <label for="year" class="vh">Year</label>
+          <input id="year" type="range" min="2001" max="2018" step="1" value="2001">
+          <output id="yearout" for="year">2001</output>
+        </div>
+        <button id="pill" class="pill" hidden></button>
+        <div id="tip" class="tip" role="status" aria-live="polite" hidden></div>
+        <div id="loading" class="loading">Loading map…</div>
+      </div>
+      <figcaption><span id="map-title">Population trajectories</span>
+        <span class="scale" aria-hidden="true"><i></i><span id="scale-label"></span></span>
+      </figcaption>
+    </figure>
+    <div class="source"><span>Research by Niall Newsham &amp; Francisco Rowe</span>
+      <span><a href="https://doi.org/10.1002/psp.2630">Trajectory study</a> · <a href="https://doi.org/10.1007/s10680-025-09730-0">Drivers study</a></span></div>
+  </div>
+
+  <section id="panel" class="panel" role="tabpanel" aria-labelledby="tab-traj" tabindex="-1">
+    <div id="statistics"></div>
+    <details id="legend" open>
+      <summary><span class="key-action">Map key</span><h2>Trajectory of decline</h2><span class="count-label" aria-hidden="true">Areas</span></summary>
+      <div id="legend-body"></div>
+    </details>
+    <div id="content"></div>
+  </section>
+</main>
+
+<dialog id="about" aria-labelledby="about-title">
+  <h2 id="about-title">About &amp; cite</h2>
+  <p>Newsham, N., &amp; Rowe, F. (2023). <a href="https://doi.org/10.1002/psp.2630">Understanding trajectories of population decline across rural and urban Europe: A sequence analysis</a>. <i>Population, Space and Place</i>, 29(3), e2630. First published online in 2022.</p>
+  <p>The study classifies annual population change for 696 declining areas from 2000 to 2018. Sequence analysis groups areas with similar patterns of annual change into seven trajectories.</p>
+  <p>Newsham, N., &amp; Rowe, F. (2025). <a href="https://doi.org/10.1007/s10680-025-09730-0">The demographic causes of European sub-national population declines</a>. <i>European Journal of Population</i>, 41, Article 10.</p>
+  <p>The study uses demographic decomposition to estimate how fertility, mortality and net migration contributed to change in 732 declining areas. The authors group areas with similar component profiles into five signatures using multivariate functional principal component analysis and k-medoid clustering.</p>
+  <p>Boundaries are simplified for the map. Some names were matched by spelling similarity, and the Central Banat boundary was identified from its location. Signature assignments follow the demographic rates file. The 2011 population changes may partly reflect census revisions. Coastal measures are withheld pending confirmation of the study definition.</p>
+  <h3>Suggested dashboard citation</h3>
+  <p>Newsham, N., &amp; Rowe, F. (2026). <i>Shrinking places: Population decline across Europe, 2000–2018</i> [Interactive dashboard]. <a href="./">Open dashboard</a>.</p>
+  <form method="dialog"><button class="back" autofocus>Close</button></form>
+</dialog>
+
+<script src="vendor/d3.min.js" defer></script>
+<script src="vendor/topojson-client.min.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>
