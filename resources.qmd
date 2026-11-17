@@ -567,6 +567,19 @@ Explore research findings, population patterns and decision-support tools.
 
 ::: {.media-card .resource-card}
 
+<div class="resource-visual" aria-hidden="true" data-scene="map" data-palette="#d2462d,#e0a100,#3a6fd8,#12a07a" data-seed="83" style="--panel-bg-a: #04111f; --panel-bg-b: #0c1f38;">
+<span class="resource-visual-note">interactive data explorer</span>
+</div>
+
+### Shrinking places: population decline across Europe
+
+<span class="meta">Explore seven trajectories and five demographic signatures of sub-national population decline across Europe, 2000–2018. Based on Newsham &amp; Rowe (2022, 2025). Created by Niall Newsham and Francisco Rowe.</span>
+
+[Open dashboard](https://fcorowe.github.io/pop-decline-dashboard/)
+:::
+
+::: {.media-card .resource-card}
+
 <div class="resource-visual" aria-hidden="true" data-scene="map" data-palette="#38bdf8,#34d399,#93c5fd,#fde047" data-seed="59" style="--panel-bg-a: #04111f; --panel-bg-b: #0c1f38;">
 <span class="resource-visual-note">interactive exposure explorer</span>
 </div>
