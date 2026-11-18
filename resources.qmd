@@ -33,17 +33,36 @@ format:
             color: #dbe8ff;
             text-decoration: underline;
           }
-          .media-card h3 {
+          .level2 > .media-grid {
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 245px), 1fr));
+          }
+          .resource-card > section {
+            display: grid;
+            grid-template-rows: 2.6rem 2.4rem 2.4rem;
+            gap: 0.35rem;
+          }
+          .resource-card > section > :is(h3, p) {
+            margin: 0;
+          }
+          .resource-card h3 {
             display: -webkit-box;
+            font-size: 1rem;
+            line-height: 1.3rem;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
           }
-          .media-grid .meta {
+          .resource-card > section > p:last-child {
+            align-self: end;
+            font-size: 0.76rem;
+            line-height: 1.2rem;
+          }
+          .resource-card .meta {
             color: #D4D4D4;
-            font-size: 0.75rem;
+            font-size: 0.82rem;
+            line-height: 1.2rem;
             display: -webkit-box;
-            -webkit-line-clamp: 5;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
           }
@@ -171,18 +190,11 @@ format:
             position: absolute;
             inset: 0;
             z-index: 2;
+            display: grid;
+            place-items: center;
             width: 100%;
             height: 100%;
             margin: 0;
-          }
-          .resource-debias-visual > p::before {
-            content: "";
-            position: absolute;
-            width: min(8.6rem, 72%);
-            aspect-ratio: 1;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(34, 197, 94, 0.26), rgba(20, 184, 166, 0.10) 48%, transparent 70%);
-            animation: resourceDebiasPulse 2.4s ease-in-out infinite;
           }
           .resource-debias-visual img {
             position: relative;
@@ -197,20 +209,6 @@ format:
             background: #ffffff;
             box-shadow: none;
             animation: resourceDebiasBeat 2.4s ease-in-out infinite;
-          }
-          .resource-debias-visual > p::after {
-            content: "";
-            position: absolute;
-            top: 19%;
-            right: 8%;
-            z-index: 4;
-            width: 40%;
-            height: 18%;
-            background: #ffffff;
-          }
-          .resource-debias-visual .resource-visual-note {
-            color: #0f2143;
-            text-shadow: none;
           }
           .resource-emphasis-band {
             position: absolute;
@@ -252,7 +250,7 @@ format:
             display: grid;
             grid-template-columns: 0.82fr 1.18fr;
             gap: 0.55rem;
-            padding: 2.25rem 0.8rem 0.75rem;
+            padding: 2rem 0.8rem 0.65rem;
           }
           .resource-finance-visual::after {
             opacity: 0.13;
@@ -306,7 +304,7 @@ format:
             grid-template-columns: repeat(4, 1fr);
             align-items: end;
             gap: 0.32rem;
-            min-height: 3.8rem;
+            min-height: 3rem;
             padding: 0.5rem 0.48rem 0.42rem;
             border: 1px solid rgba(232, 237, 247, 0.14);
             border-radius: 6px;
@@ -324,7 +322,7 @@ format:
           }
           .resource-finance-line {
             position: relative;
-            min-height: 3.2rem;
+            min-height: 2.5rem;
             border: 1px solid rgba(232, 237, 247, 0.14);
             border-radius: 6px;
             background:
@@ -421,24 +419,144 @@ format:
               transform: scale(1);
             }
           }
-          @keyframes resourceDebiasPulse {
-            0%, 100% {
-              opacity: 0.42;
-              transform: scale(0.86);
-            }
-            18% {
-              opacity: 0.84;
-              transform: scale(1.08);
-            }
-            42% {
-              opacity: 0.58;
-              transform: scale(0.96);
-            }
+          .resource-diagram {
+            display: block;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+          }
+          .visual-coverage {
+            background: #30273b;
+          }
+          .visual-coverage path {
+            fill: none;
+          }
+          .diagram-guide {
+            stroke: #cabbd7;
+            stroke-dasharray: 4 4;
+          }
+          .coverage-gaps {
+            stroke: #eaa9a0;
+            stroke-width: 2;
+            transition: opacity 300ms ease;
+            opacity: 0.55;
+          }
+          .coverage-points {
+            stroke: #ffd0ac;
+            stroke-width: 7;
+            stroke-linecap: round;
+          }
+          .resource-card:is(:hover, :focus-within) .coverage-gaps {
+            opacity: 1;
+          }
+          .visual-pollutants {
+            background: #20352f;
+          }
+          .pollutant-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.45rem;
+            width: min(84%, 16rem);
+            height: 74%;
+            margin: 0 auto;
+            top: 13%;
+          }
+          .pollutant-grid span {
+            display: block;
+            align-content: center;
+            text-align: center;
+            border: 1px solid #8da38d;
+            border-radius: 4px;
+            color: #eef5dd;
+            background: #31483c;
+            transition: background-color 260ms ease;
+          }
+          .pollutant-grid > p {
+            display: contents;
+          }
+          .pollutant-grid span:nth-child(even) {
+            transition-delay: 100ms;
+          }
+          .resource-card:is(:hover, :focus-within) .pollutant-grid span {
+            background-color: #526749;
+          }
+          .visual-explorer {
+            background: #eaf0df;
+          }
+          .exposure-focus {
+            fill: none;
+            stroke: #253e37;
+            stroke-width: 2;
+            transition: transform 320ms ease;
+          }
+          .resource-card:is(:hover, :focus-within) .exposure-focus {
+            transform: translate(35px, -28px);
+          }
+          .visual-clive {
+            background: #f8f5ed;
+          }
+          .visual-handbook {
+            background: #dbe8f1;
+          }
+          .visual-imagery {
+            background: #e9eee5;
+          }
+          .visual-census {
+            background: #eff0f4;
+          }
+          .visual-atlas {
+            background: #18232d;
+          }
+          .resource-visual:is(.visual-atlas, .visual-clive, .visual-handbook, .visual-imagery, .visual-census) > p > img {
+            object-fit: contain;
+            filter: none;
+          }
+          .visual-handbook > p > img {
+            padding: 0.4rem;
+            transition: transform 300ms ease;
+          }
+          .resource-card:is(:hover, :focus-within) .visual-handbook img {
+            transform: perspective(400px) rotateY(-13deg);
+          }
+          .resource-card:is(:hover, :focus-within) .visual-atlas img {
+            transform: scale(1.06);
+          }
+          .resource-card:is(:hover, :focus-within) .visual-clive img {
+            filter: saturate(1.35);
+          }
+          .resource-card:is(:hover, :focus-within) .visual-bias-story img {
+            filter: saturate(1.1) contrast(1.18);
+          }
+          .resource-card:is(:hover, :focus-within) .visual-imagery img {
+            transform: translateX(-3%) scale(1.1);
+          }
+          .resource-card:is(:hover, :focus-within) .visual-census img {
+            filter: contrast(1.23);
+            transform: translateY(-3%);
+          }
+          .resource-card:is(:hover, :focus-within) [data-scene="logistic"] .resource-emphasis-band {
+            border-color: #b65b45;
+          }
+          .resource-card:is(:hover, :focus-within) [data-scene="composition"] .resource-svg path {
+            opacity: 0.9;
           }
           @media (prefers-reduced-motion: reduce) {
+            .resource-card,
+            .resource-visual *,
+            .resource-visual *::before,
+            .resource-visual *::after {
+              transition: none;
+            }
+            .resource-card:is(:hover, :focus-within),
+            .resource-card:is(:hover, :focus-within) .resource-visual img,
+            .resource-card:is(:hover, :focus-within) .exposure-focus {
+              transform: none;
+            }
             .resource-bullet,
             .resource-story-visual.is-breathing-map > p > img,
-            .resource-debias-visual > p::before,
             .resource-debias-visual img,
             .resource-finance-bar,
             .resource-finance-line polyline,
@@ -479,26 +597,30 @@ Reusable methods and code for population and mobility research.
 
 ::: {.media-card .resource-card}
 
-::: {.resource-visual .resource-debias-visual aria-hidden="true" style="--panel-bg-a: #071916; --panel-bg-b: #0f2a33; --panel-glow-a: rgba(34, 197, 94, 0.24); --panel-glow-b: rgba(20, 184, 166, 0.20); --panel-glow-c: rgba(250, 204, 21, 0.13);"}
+::: {.resource-visual .resource-debias-visual aria-hidden="true"}
 ![](static/media/images/debias-logo-white-bgn.png){fig-alt=""}
 :::
 
 ### debiasR
 
-<span class="meta">R package for measuring population coverage bias and adjusting origin–destination flows using deterministic and Bayesian methods. Development version.</span>
+<span class="meta">Measure coverage bias and adjust mobility flows in R.</span>
 
 [Open package site](https://de-bias.github.io/debiasR/)
 :::
 
 ::: {.media-card .resource-card}
 
-<div class="resource-visual" aria-hidden="true" data-scene="map" data-palette="#38bdf8,#34d399,#93c5fd,#fde047" data-seed="43" style="--panel-bg-a: #04111f; --panel-bg-b: #0c1f38;">
-<span class="resource-visual-note">population coverage bias</span>
+<div class="resource-visual visual-coverage" aria-hidden="true">
+<svg viewBox="0 0 280 146" class="resource-diagram">
+  <path class="diagram-guide" d="M36 23v98h212M36 115L238 29"/>
+  <path class="coverage-gaps" d="M64 103v8m28-20v15m28-27v3m28-15v19m28-31v12m28-24v25m28-37v18"/>
+  <path class="coverage-points" d="M64 111h.01m28-5h.01m28-24h.01m28 4h.01m28-19h.01m28 1h.01m28-19h.01"/>
+</svg>
 </div>
 
 ### debiaspy
 
-<span class="meta">Python package for measuring population coverage bias in digital-trace data. Development version; flow adjustment and validation are under development.</span>
+<span class="meta">Measure digital-trace coverage bias in Python.</span>
 
 [Open Python repository](https://github.com/de-bias/debiaspy)
 :::
@@ -518,7 +640,7 @@ Reusable methods and code for population and mobility research.
 
 ### R Package CIM
 
-<span class="meta">Code and resources for compositional impact of migration analysis in R.</span>
+<span class="meta">Analyse how migration changes population composition in R.</span>
 
 [Open website](post/2019-01-31-r-rmarkdown/index.html)
 :::
@@ -533,28 +655,36 @@ Analysis-ready environmental indicators for linkage to social, health and econom
 
 ::: {.media-card .resource-card}
 
-<div class="resource-visual" aria-hidden="true" data-scene="map" data-palette="#38bdf8,#34d399,#93c5fd,#fde047" data-seed="47" style="--panel-bg-a: #04111f; --panel-bg-b: #0c1f38;">
-<span class="resource-visual-note">local environmental hazards</span>
-</div>
+::: {.resource-visual .resource-story-visual .visual-clive aria-hidden="true"}
+<!-- Source: https://boi.imago.ac.uk/chapters/clive.html (temperature map). -->
+![](static/media/resources/clive-temperature-map.png){fig-alt="" loading="lazy"}
+:::
 
 ### CLiVE data products
 
-<span class="meta">Climate Local Vulnerability and Exposure: harmonised small-area indicators of temperature, precipitation, PM2.5 and mapped flood hazard. Analysis-ready CSV and GeoPackage datasets; DOIs forthcoming.</span>
+<span class="meta">Local data on heat, rainfall, pollution and flooding.</span>
 
-[Open Imago data catalogue](https://data.imago.ac.uk) · [Read the CLiVE chapter](https://boi.imago.ac.uk/chapters/clive.html)
+[Data catalogue](https://data.imago.ac.uk) · [CLiVE chapter](https://boi.imago.ac.uk/chapters/clive.html)
 :::
 
 ::: {.media-card .resource-card}
 
-<div class="resource-visual" aria-hidden="true" data-scene="map" data-palette="#38bdf8,#34d399,#93c5fd,#fde047" data-seed="53" style="--panel-bg-a: #04111f; --panel-bg-b: #0c1f38;">
-<span class="resource-visual-note">air pollution exposure</span>
+<div class="resource-visual visual-pollutants" aria-hidden="true">
+<div class="pollutant-grid">
+<span>NO<sub>2</sub></span>
+<span>PM<sub>2.5</sub></span>
+<span>O<sub>3</sub></span>
+<span>SO<sub>2</sub></span>
+<span>PM<sub>10</sub></span>
+<span>NO<sub>x</sub></span>
+</div>
 </div>
 
 ### EXHALE data products
 
-<span class="meta">UK small-area residential exposure to six air pollutants, with population-weighted and threshold-based measures and demographic and socioeconomic breakdowns. Census-year population: 2021 (Scotland 2022). DOIs forthcoming.</span>
+<span class="meta">UK neighbourhood data on exposure to six air pollutants.</span>
 
-[Open Imago data catalogue](https://data.imago.ac.uk)
+[Data catalogue](https://data.imago.ac.uk)
 :::
 
 :::
@@ -567,37 +697,50 @@ Explore research findings, population patterns and decision-support tools.
 
 ::: {.media-card .resource-card}
 
-<img src="atlas/shrinking-places/og.png" alt="" loading="lazy" style="display:block;width:100%;height:auto;border-radius:0.6rem;">
+::: {.resource-visual .resource-story-visual .visual-atlas aria-hidden="true"}
+![](atlas/shrinking-places/og.png){fig-alt="" loading="lazy"}
+:::
 
-### Shrinking places: population decline across Europe
+### Shrinking places {#shrinking-places-population-decline-across-europe}
 
-<span class="meta">Explore seven trajectories and five demographic signatures of sub-national population decline across Europe, 2000–2018. Based on Newsham &amp; Rowe (2022, 2025). Created by Niall Newsham and Francisco Rowe.</span>
+<span class="meta">Map population decline across Europe, 2000–2018.</span>
 
 [Open the atlas](/atlas/shrinking-places/)
 :::
 
 ::: {.media-card .resource-card}
 
-<div class="resource-visual" aria-hidden="true" data-scene="map" data-palette="#38bdf8,#34d399,#93c5fd,#fde047" data-seed="59" style="--panel-bg-a: #04111f; --panel-bg-b: #0c1f38;">
-<span class="resource-visual-note">interactive exposure explorer</span>
+<div class="resource-visual visual-explorer" aria-hidden="true">
+<svg viewBox="0 0 280 146" class="resource-diagram">
+  <g class="exposure-areas" stroke="#eff4e8" stroke-width="2">
+    <path d="M35 30l55-13 34 33-15 30-62 6z" fill="#93b4a1"/>
+    <path d="M90 17l59 3 27 46-52-16z" fill="#cad7a0"/>
+    <path d="M149 20l58 14 34 31-65 1z" fill="#c7a86d"/>
+    <path d="M47 86l62-6 22 45-70-5z" fill="#bed9bd"/>
+    <path d="M109 80l15-30 52 16 13 41-58 18z" fill="#d6c586"/>
+    <path d="M176 66l65-1-11 49-41-7z" fill="#ac785d"/>
+  </g>
+  <circle class="exposure-focus" cx="156" cy="83" r="15"/>
+  <path class="exposure-focus" d="M156 62v11m0 20v11m-21-21h11m20 0h11"/>
+</svg>
 </div>
 
 ### EXHALE UK Data Explorer
 
-<span class="meta">Explore population exposure to environmental hazards. Created by Emiliano Beltran Alipio, Carmen Cabrera, Weiming Huang, Rodgers Iradukunda, Leran Zheng and Francisco Rowe.</span>
+<span class="meta">Compare air pollution exposure across UK neighbourhoods.</span>
 
 [Open data explorer](https://imago-sdruk.github.io/exhale-uk-explorer/)
 :::
 
 ::: {.media-card .resource-card}
 
-::: {.resource-visual .resource-story-visual .resource-story-visual--fit aria-hidden="true"}
+::: {.resource-visual .resource-story-visual .resource-story-visual--fit .visual-bias-story aria-hidden="true"}
 ![](assets/stories/making-hidden-biases-visible/social-card.png){fig-alt=""}
 :::
 
 ### Who is missing from the map?
 
-<span class="meta">Making hidden biases visible in population location data from mobile phones — published in *Royal Society Open Science*.</span>
+<span class="meta">See who is missing from mobile phone data.</span>
 
 [Open story](https://de-bias.github.io/debias/stories/making-hidden-biases-visible/)
 :::
@@ -611,7 +754,7 @@ Explore research findings, population patterns and decision-support tools.
 
 ### Iran Conflict and Population Redistribution
 
-<span class="meta">Scroll-based narrative on conflict, mobility, and proxy population signals from the Iran sitrep.</span>
+<span class="meta">Track shifts in population during the Iran conflict.</span>
 
 [Open story](iran-conflict-population-redistribution.html)
 :::
@@ -647,7 +790,7 @@ Explore research findings, population patterns and decision-support tools.
 
 ### UK University Sustainable Growth
 
-<span class="meta">Interactive dashboard ranking 155 UK institutions by sustainable-growth financial performance.</span>
+<span class="meta">Compare sustainable growth across 155 UK universities.</span>
 
 [Open dashboard](assets/resources/sustainable-growth-dashboard.html)
 :::
@@ -662,29 +805,31 @@ Open reference material, methods and worked examples.
 
 ::: {.media-card .resource-card}
 
-<div class="resource-visual" aria-hidden="true" data-scene="composition" data-palette="#38bdf8,#34d399,#fde68a,#7dd3fc" data-seed="67" style="--panel-bg-a: #031018; --panel-bg-b: #0a2230;">
-<span class="resource-visual-note">mobile phone data initiatives</span>
-</div>
+::: {.resource-visual .resource-story-visual .visual-handbook aria-hidden="true"}
+<!-- Source: https://un-cebd-mobile-data.github.io/mobile-phone-data-handbook/ (official cover). -->
+![](static/media/resources/mobile-phone-data-handbook.png){fig-alt="" loading="lazy"}
+:::
 
 ### Mobile Phone Data Handbook
 
-<span class="meta">Open-access UN-CEBD practical manual on designing and implementing mobile phone data initiatives, co-authored by Francisco Rowe.</span>
+<span class="meta">A UN guide to running mobile phone data initiatives.</span>
 
-[Read the handbook](https://un-cebd-mobile-data.github.io/mobile-phone-data-handbook/) · [Handbook DOI](https://doi.org/10.5281/zenodo.20498954)
+[Read handbook](https://un-cebd-mobile-data.github.io/mobile-phone-data-handbook/) · [DOI](https://doi.org/10.5281/zenodo.20498954)
 :::
 
 
 ::: {.media-card .resource-card}
 
-<div class="resource-visual" aria-hidden="true" data-scene="map" data-palette="#38bdf8,#34d399,#93c5fd,#fde047" data-seed="61" style="--panel-bg-a: #04111f; --panel-bg-b: #0c1f38;">
-<span class="resource-visual-note">from imagery to evidence</span>
-</div>
+::: {.resource-visual .resource-story-visual .visual-imagery aria-hidden="true"}
+<!-- Source: https://boi.imago.ac.uk/chapters/image-data.html (Figure 2.1). -->
+![](static/media/resources/book-of-imagery-resolution.png){fig-alt="" loading="lazy"}
+:::
 
 ### Book of Imagery
 
-<span class="meta">A living, open-access reference book translating imagery into meaningful social and policy measures. Includes CLiVE: Climate Local Vulnerability and Exposure.</span>
+<span class="meta">Turn satellite imagery into measures for social research.</span>
 
-[Read the book](https://boi.imago.ac.uk) · [Book DOI](https://doi.org/10.5281/zenodo.17976055)
+[Read the book](https://boi.imago.ac.uk) · [DOI](https://doi.org/10.5281/zenodo.17976055)
 :::
 
 ::: {.media-card .resource-card}
@@ -702,7 +847,7 @@ Open reference material, methods and worked examples.
 
 ### Count Data Modelling
 
-<span class="meta">Methods, examples and code for modelling count outcomes.</span>
+<span class="meta">Model count outcomes with worked examples and code.</span>
 
 [Open website](https://fcorowe.github.io/countdata_modelling/)
 :::
@@ -722,27 +867,20 @@ Open reference material, methods and worked examples.
 
 ### Binary Logistic Regression
 
-<span class="meta">Methods, examples and code for binary outcome modelling.</span>
+<span class="meta">Model binary outcomes with worked examples and code.</span>
 
 [Open website](https://fcorowe.github.io/binary_logistic/)
 :::
 
 ::: {.media-card .resource-card}
 
-<div
-  class="resource-visual"
-  aria-hidden="true"
-  data-scene="map"
-  data-palette="#1d4ed8,#38bdf8,#93c5fd,#fde047"
-  data-seed="29"
-  style="--panel-bg-a: #04111f; --panel-bg-b: #0c1f38; --panel-glow-a: rgba(77, 171, 247, 0.22); --panel-glow-b: rgba(34, 211, 238, 0.18); --panel-glow-c: rgba(116, 192, 252, 0.12);"
->
-  <span class="resource-visual-note">tiled map</span>
-</div>
+::: {.resource-visual .resource-story-visual .visual-census aria-hidden="true"}
+![](static/media/resources/census-mapping.png){fig-alt="" loading="lazy"}
+:::
 
 ### Census Mapping
 
-<span class="meta">Interactive resources and examples for census-based spatial mapping.</span>
+<span class="meta">Learn to map census data with interactive examples.</span>
 
 [Open website](https://fcorowe.github.io/census-mapping/)
 :::
@@ -885,7 +1023,7 @@ window.addEventListener("DOMContentLoaded", () => {
           color: row === height - 1 ? (colors[3] || baseColor) : baseColor,
           opacity: 0.38 + (row / Math.max(height, 1)) * 0.46,
           glow: 10 + row * 0.8,
-          driftX: (random() - 0.5) * 0.9,
+          driftX: 0,
           driftY: (random() - 0.5) * 0.9,
           duration: 4.6 + random() * 1.8,
           tile: true
@@ -1112,53 +1250,6 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  const renderMapScene = (panel, random, colors) => {
-    const svg = createSvg(panel);
-    const outline = [
-      [19, 31], [24, 19], [39, 16], [56, 22], [74, 35], [82, 49],
-      [76, 67], [60, 78], [40, 75], [24, 64], [16, 49], [19, 31]
-    ];
-    const tiles = [
-      [3, 0], [4, 0], [5, 0], [6, 0],
-      [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1],
-      [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2], [8, 2],
-      [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3], [8, 3],
-      [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4], [7, 4],
-      [2, 5], [3, 5], [4, 5], [5, 5], [6, 5], [7, 5],
-      [3, 6], [4, 6], [5, 6], [6, 6]
-    ];
-    const highlight = new Set(["6,3", "7,3", "6,4", "7,4", "8,3"]);
-
-    appendPath(svg, outline, {
-      stroke: colors[2] || colors[1] || "#93c5fd",
-      strokeWidth: 1.1,
-      opacity: 0.35
-    });
-
-    tiles.forEach(([column, row]) => {
-      const x = 16 + column * 7.2;
-      const y = 22 + row * 8;
-      const key = `${column},${row}`;
-      const isHighlight = highlight.has(key);
-      const color = isHighlight
-        ? (colors[3] || "#fde047")
-        : (colors[Math.min(2, Math.floor(random() * 3))] || colors[0]);
-
-      createBullet(panel, {
-        x,
-        y,
-        size: 10.2,
-        color,
-        opacity: isHighlight ? 0.95 : 0.42 + row * 0.06 + random() * 0.1,
-        glow: isHighlight ? 18 : 8,
-        driftX: (random() - 0.5) * (isHighlight ? 0.9 : 0.4),
-        driftY: (random() - 0.5) * (isHighlight ? 0.9 : 0.4),
-        duration: isHighlight ? 3.8 + random() * 1.4 : 5 + random() * 1.8,
-        outline: !isHighlight && random() > 0.86,
-        tile: true
-      }, random);
-    });
-  };
 
   panels.forEach((panel, panelIndex) => {
     const random = mulberry32(Number(panel.dataset.seed || panelIndex + 1));
@@ -1174,8 +1265,6 @@ window.addEventListener("DOMContentLoaded", () => {
       renderLogisticScene(panel, random, colors);
     } else if (scene === "composition") {
       renderCompositionScene(panel, random, colors);
-    } else if (scene === "map") {
-      renderMapScene(panel, random, colors);
     }
   });
 });
