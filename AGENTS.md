@@ -9,3 +9,9 @@
 - Publication maintenance uses `python scripts/update_publications.py --dry-run`, `python scripts/test_publication_workflow.py`, and `python scripts/verify_publications_page.py` after rendering.
 - `python scripts/zenodo_stage_post.py` only stages candidate metadata for posts with `archive: zenodo` and no DOI; it does not mint DOIs.
 - For completed website updates, commit and push directly to `main` unless the user explicitly requests a branch or pull request.
+
+## Resources page cards
+
+- At any given screen width, all cards across all sections of `resources.qmd` must have the same width and height.
+- Keep each card description to at most two rendered lines at every screen width.
+- Give each card its own visual and its own visual effect. Both must reflect the content of the resource it links to.
