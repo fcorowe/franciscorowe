@@ -13,7 +13,7 @@ title: "Project"
 
 [Project website](https://imago.ac.uk)
 
-[CLiVE and EXHALE data](resources.html#open-data-products) · [EXHALE explorer](https://imago-sdruk.github.io/exhale-uk-explorer/) · [Book of Imagery](https://boi.imago.ac.uk)
+[CLiVE and EXHALE data](resources.html#open-data-products) · [EXHALE explorer](https://fcorowe.github.io/exhale-explorer/) · [Book of Imagery](https://boi.imago.ac.uk)
 :::
 
 ::: {.media-card}
