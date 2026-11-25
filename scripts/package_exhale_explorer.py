@@ -53,11 +53,15 @@ def package(source_repo):
     scripts = b"".join(f'<script src="{name}"></script>\n'.encode() for name in files)
     html = html[:geometry.start()] + scripts + b"<script>\n" + html[geometry.end():]
 
-    catalogue_end = b"HASP data catalogue</a>.</div>"
-    if html.count(catalogue_end) != 1:
-        raise ValueError("Expected a single data catalogue sentence ending the EXHALE help note")
+    catalogue = re.search(
+        rb"<br><br>(Find this data product and related indicators in the [^\n]+HASP data catalogue</a>\.)</div>",
+        html,
+    )
+    if catalogue is None:
+        raise ValueError("Expected the data catalogue sentence at the end of the EXHALE help note")
     sources = (
-        b'\n    <p>The indicators combine modelled air pollution grids from the '
+        b"\n    <p>" + catalogue[1] + b" Sign in for free and explore the indicators. "
+        b'The indicators combine modelled air pollution grids from the '
         b'<a href="https://compliance-data.defra.gov.uk/" title="https://compliance-data.defra.gov.uk/" '
         b'target="_blank" rel="noopener noreferrer">UK Department for Environment, Food &amp; Rural Affairs (DEFRA)</a> '
         b'with synthetic population data produced by the '
@@ -67,10 +71,10 @@ def package(source_repo):
         b'The inputs refer to 2021 for England, Wales and Northern Ireland, and 2022 for Scotland. '
         b'Official statistical boundaries and geographic lookups support the calculation of indicators '
         b'at lower and upper geography levels. Geographic boundary datasets are available from the '
-        b'<a href="https://geoportal.statistics.gov.uk" target="_blank" rel="noopener noreferrer">'
-        b'Open Geography portal from the Office for National Statistics (ONS)</a>.</p>\n    '
+        b'<a href="https://geoportal.statistics.gov.uk/" target="_blank" rel="noopener noreferrer">'
+        b'Open Geography portal from the Office for National Statistics (ONS)</a>.</p>\n    </div>'
     )
-    html = html.replace(catalogue_end, catalogue_end.removesuffix(b"</div>") + sources + b"</div>")
+    html = html[:catalogue.start()] + sources + html[catalogue.end():]
 
     attribution = b"  map.attributionControl.addAttribution("
     if html.count(attribution) != 1:
