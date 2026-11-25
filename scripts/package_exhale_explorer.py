@@ -52,6 +52,26 @@ def package(source_repo):
 
     scripts = b"".join(f'<script src="{name}"></script>\n'.encode() for name in files)
     html = html[:geometry.start()] + scripts + b"<script>\n" + html[geometry.end():]
+
+    catalogue_end = b"HASP data catalogue</a>.</div>"
+    if html.count(catalogue_end) != 1:
+        raise ValueError("Expected a single data catalogue sentence ending the EXHALE help note")
+    sources = (
+        b'\n    <p>The indicators combine modelled air pollution grids from the '
+        b'<a href="https://compliance-data.defra.gov.uk/" title="https://compliance-data.defra.gov.uk/" '
+        b'target="_blank" rel="noopener noreferrer">UK Department for Environment, Food &amp; Rural Affairs (DEFRA)</a> '
+        b'with synthetic population data produced by the '
+        b'<a href="https://data.hasp.ac.uk/" title="https://data.hasp.ac.uk/" target="_blank" '
+        b'rel="noopener noreferrer">Healthy and Sustainable Places Data Service (HASP)</a>, '
+        b'including demographic, socioeconomic, household and health attributes. '
+        b'The inputs refer to 2021 for England, Wales and Northern Ireland, and 2022 for Scotland. '
+        b'Official statistical boundaries and geographic lookups support the calculation of indicators '
+        b'at lower and upper geography levels. Geographic boundary datasets are available from the '
+        b'<a href="https://geoportal.statistics.gov.uk" target="_blank" rel="noopener noreferrer">'
+        b'Open Geography portal from the Office for National Statistics (ONS)</a>.</p>\n    '
+    )
+    html = html.replace(catalogue_end, catalogue_end.removesuffix(b"</div>") + sources + b"</div>")
+
     attribution = b"  map.attributionControl.addAttribution("
     if html.count(attribution) != 1:
         raise ValueError("Expected a single map attribution in the EXHALE build")
