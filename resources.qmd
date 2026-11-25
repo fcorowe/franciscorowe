@@ -729,7 +729,7 @@ Explore research findings, population patterns and decision-support tools.
 
 <span class="meta">Compare air pollution exposure across UK neighbourhoods.</span>
 
-[Open data explorer](https://fcorowe.github.io/exhale-explorer/)
+[Open data explorer](/atlas/exhale/)
 :::
 
 ::: {.media-card .resource-card}
