@@ -782,6 +782,19 @@ svg.leaflet-image-layer.leaflet-interactive path {
     </div>
 
     <div id="legend"></div><div class="water-key"><span style="display:inline-block;width:16px;height:12px;background:#9ecae1;margin-right:7px;vertical-align:middle"></span>Lakes and reservoirs</div>
+    <section class="help-note" style="margin-top: 16px" aria-labelledby="boundary-credits">
+      <h2 id="boundary-credits" tabindex="-1">Boundary credits</h2>
+      <p><strong>England and Wales.</strong> Source: Office for National Statistics licensed under the
+        <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v.3.0</a>.
+        Contains OS data © Crown copyright and database right 2024.
+        <a href="https://www.ons.gov.uk/methodology/geography/licences/">ONS licensing requirements</a></p>
+      <p><strong>Scotland.</strong> Copyright Scottish Government, contains Ordnance Survey data © Crown
+        copyright and database right (2024). Ordnance Survey (OS Licence number AC0000849451).
+        <a href="https://www.arcgis.com/home/item.html?id=033861da4bb4485d9cad527a841d0eb3">Scottish Government boundary source</a></p>
+      <p><strong>Northern Ireland.</strong> Contains Ordnance Survey of Northern Ireland information licensed under the
+        <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>.
+        <a href="https://www.nisra.gov.uk/publications/super-data-zone-boundaries-gis-format">NISRA boundary source</a></p>
+    </section>
   </div>
   <div class="map-panel"><div id="map"></div></div>
 </div>
@@ -835,7 +848,7 @@ const MARKER_ICONS = {"iconUrl":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA
   var map = L.map('map', { preferCanvas: true, zoomSnap: 0.25, attributionControl: true });
 
   map.attributionControl.addAttribution('<a href="https://github.com/Imago-SDRUK/DataProduct-EXHALE">Imago EXHALE</a> (<a href="license.txt">licence</a>)');
-  map.attributionControl.addAttribution('Boundaries: ONS, Scottish Government, NISRA; contains OS and OSNI data, Crown copyright and database rights. Lakes: Natural Earth.');
+  map.attributionControl.addAttribution('<a href="#boundary-credits">Boundary credits</a>. Lakes: Natural Earth.');
   var layers = new Array(N);
   var tip = document.createElement('div');
   tip.className = 'tip';

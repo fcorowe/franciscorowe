@@ -76,14 +76,37 @@ def package(source_repo):
     )
     html = html[:catalogue.start()] + sources + html[catalogue.end():]
 
-    attribution = b"  map.attributionControl.addAttribution("
-    if html.count(attribution) != 1:
-        raise ValueError("Expected a single map attribution in the EXHALE build")
-    credit = (
-        attribution
-        + b"""'<a href="https://github.com/Imago-SDRUK/DataProduct-EXHALE">Imago EXHALE</a> (<a href="license.txt">licence</a>)');\n"""
+    water_key_end = b"Lakes and reservoirs</div>\n  </div>"
+    if html.count(water_key_end) != 1:
+        raise ValueError("Expected the water key at the end of the EXHALE sidebar")
+    boundary_credits = """Lakes and reservoirs</div>
+    <section class="help-note" style="margin-top: 16px" aria-labelledby="boundary-credits">
+      <h2 id="boundary-credits" tabindex="-1">Boundary credits</h2>
+      <p><strong>England and Wales.</strong> Source: Office for National Statistics licensed under the
+        <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v.3.0</a>.
+        Contains OS data © Crown copyright and database right 2024.
+        <a href="https://www.ons.gov.uk/methodology/geography/licences/">ONS licensing requirements</a></p>
+      <p><strong>Scotland.</strong> Copyright Scottish Government, contains Ordnance Survey data © Crown
+        copyright and database right (2024). Ordnance Survey (OS Licence number AC0000849451).
+        <a href="https://www.arcgis.com/home/item.html?id=033861da4bb4485d9cad527a841d0eb3">Scottish Government boundary source</a></p>
+      <p><strong>Northern Ireland.</strong> Contains Ordnance Survey of Northern Ireland information licensed under the
+        <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>.
+        <a href="https://www.nisra.gov.uk/publications/super-data-zone-boundaries-gis-format">NISRA boundary source</a></p>
+    </section>
+  </div>"""
+    html = html.replace(water_key_end, boundary_credits.encode("utf-8"))
+
+    attribution = (
+        b"  map.attributionControl.addAttribution('Boundaries: ONS, Scottish Government, NISRA; "
+        b"contains OS and OSNI data, Crown copyright and database rights. Lakes: Natural Earth.');"
     )
-    files["index.html"] = html.replace(attribution, credit + attribution)
+    if html.count(attribution) != 1:
+        raise ValueError("Expected a single boundary attribution in the EXHALE map")
+    credit = (
+        b"""  map.attributionControl.addAttribution('<a href="https://github.com/Imago-SDRUK/DataProduct-EXHALE">Imago EXHALE</a> (<a href="license.txt">licence</a>)');\n"""
+        b"""  map.attributionControl.addAttribution('<a href="#boundary-credits">Boundary credits</a>. Lakes: Natural Earth.');"""
+    )
+    files["index.html"] = html.replace(attribution, credit)
     files["license.txt"] = (source_repo / "LICENSE").read_bytes()
 
     for name, content in files.items():
