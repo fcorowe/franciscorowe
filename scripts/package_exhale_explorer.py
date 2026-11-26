@@ -107,7 +107,7 @@ def package(source_repo):
         b"""  map.attributionControl.addAttribution('<a href="https://github.com/Imago-SDRUK/DataProduct-EXHALE">Imago EXHALE</a> (<a href="license.txt">licence</a>)');\n"""
         b"""  map.attributionControl.addAttribution('<a href="#boundary-credits">Boundary credits</a>. Lakes: Natural Earth.');"""
     )
-    files["index.html"] = html.replace(attribution, credit)
+    files["index.html"] = add_accessible_views(html.replace(attribution, credit))
     files["license.txt"] = (source_repo / "LICENSE").read_bytes()
 
     for name, content in files.items():
@@ -124,6 +124,134 @@ def package(source_repo):
 
 def write_features(features):
     return b"GEOJSON.features.push(\n" + b",\n".join(features) + b"\n);\n"
+
+
+def replace_once(html, old, new):
+    if html.count(old) != 1:
+        raise ValueError(f"Unexpected EXHALE template near {old[:110]!r}")
+    return html.replace(old, new, 1)
+
+
+def add_accessible_views(html):
+    # Keep the original filter IDs, map legend, and source notices in the published layout.
+    original = re.search(
+        rb'<div class="app-header">\n(?P<header>.*?)\n</div>\n'
+        rb'<div class="app-body">\n  <div class="side-panel">\n(?P<filters>.*?)\n'
+        rb'(?P<note>    <div class="help-note">.*?)\n\n'
+        rb'(?P<legend>    <div id="legend">.*?Lakes and reservoirs</div>)\n'
+        rb'(?P<credits>    <section .*?</section>)\n  </div>\n'
+        rb'  <div class="map-panel"><div id="map"></div></div>\n</div>',
+        html,
+        re.DOTALL,
+    )
+    if original is None:
+        raise ValueError("Expected the original EXHALE header, sidebar, legend and map")
+    sections = {key: value.decode("utf-8") for key, value in original.groupdict().items()}
+    layout = f"""<a class="skip-link" href="#neighbourhood-query">Skip to neighbourhood search</a>
+<header class="app-header">
+{sections["header"]}
+</header>
+<main class="app-body">
+  <section class="side-panel" aria-labelledby="explorer-filters">
+    <h2 id="explorer-filters" tabindex="-1">Map and table filters</h2>
+    <p><a href="#neighbourhood-results">Find a neighbourhood</a></p>
+{sections["filters"]}
+{sections["legend"]}
+  </section>
+  <section class="map-panel" aria-label="Exposure map">
+    <div id="map" role="group" aria-label="Air pollution exposure map"></div>
+  </section>
+  <section class="neighbourhood-results" aria-labelledby="neighbourhood-results">
+    <h2 id="neighbourhood-results" tabindex="-1">Neighbourhood results</h2>
+    <form id="neighbourhood-search" class="neighbourhood-form" role="search" aria-label="Find neighbourhoods">
+      <label for="neighbourhood-query">Neighbourhood name or code</label>
+      <div class="neighbourhood-controls">
+        <input id="neighbourhood-query" type="text" enterkeyhint="search" autocomplete="off">
+        <button type="submit">Search</button>
+        <button type="button" id="neighbourhood-clear">Clear</button>
+      </div>
+    </form>
+    <p id="neighbourhood-status" class="neighbourhood-status" role="status" aria-atomic="true"></p>
+    <div id="neighbourhood-pages" class="neighbourhood-page-controls" role="group" aria-label="Neighbourhood result pages" hidden>
+      <button type="button" id="neighbourhood-previous" aria-controls="neighbourhood-table">Previous page</button>
+      <button type="button" id="neighbourhood-next" aria-controls="neighbourhood-table">Next page</button>
+    </div>
+    <table id="neighbourhood-table" class="neighbourhood-table" hidden>
+      <caption>Selected exposure measures</caption>
+      <thead><tr>
+        <th scope="col">Neighbourhood</th>
+        <th scope="col">Exposure</th>
+        <th scope="col" id="neighbourhood-vulnerability" hidden>Age-based exposure</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+    <p><a href="#explorer-filters">Back to map and table filters</a></p>
+  </section>
+  <section class="explorer-notes" aria-labelledby="explorer-notes">
+    <h2 id="explorer-notes">About the data</h2>
+{sections["note"]}
+{sections["credits"]}
+  </section>
+</main>""".encode("utf-8")
+    html = html[:original.start()] + layout + html[original.end():]
+    html = replace_once(html, b"</head>", b'<link rel="stylesheet" href="explorer-layout.css">\n</head>')
+    html = replace_once(
+        html, b"<script>\n(function () {\n  L.Icon.Default",
+        b'<script src="neighbourhood-results.js"></script>\n<script>\n(function () {\n  L.Icon.Default',
+    )
+
+    # Native selects provide keyboard and screen-reader behaviour across browsers.
+    dropdown_start = html.index(b"  function makeDropdown(sel) {")
+    dropdown_end = html.index(b"  function populate(poll) {", dropdown_start)
+    html = html[:dropdown_start] + html[dropdown_end:]
+    html = replace_once(html, b"    document.getElementById('vulnerability-btn').disabled = unavailable;\n", b"")
+    html = replace_once(html, b"    refreshAll();\n", b"")
+    html = replace_once(
+        html, b"'None (Color By Static Exposure Indicator)'", b"'None'",
+    )
+    html = replace_once(
+        html, b"  dds = [makeDropdown(selPoll), makeDropdown(selInd), makeDropdown(selVul)];",
+        b"  var updateResults = createNeighbourhoodResults(META, resultValues);",
+    )
+    html = replace_once(
+        html, b"    return esc(v) + (suffix || '');",
+        b"    return String(v) + (suffix || '');",
+    )
+    html = replace_once(
+        html, b"  function infoHtml(i) {\n    var d = DATA[S.poll];",
+        b"""  function resultValues(i) {
+    var d = DATA[S.poll];
+    return {
+      indicator: fmt(d[S.ind][i], unitFor(S.poll, S.ind)),
+      vulnerability: S.vul ? fmt(d[S.vul][i], '%') : null
+    };
+  }
+
+  function infoHtml(i) {
+    var values = resultValues(i);""",
+    )
+    html = replace_once(html, b" + fmt(d[S.ind][i], unitFor(S.poll, S.ind));", b" + esc(values.indicator);")
+    html = replace_once(html, b" + fmt(d[S.vul][i], '%');", b" + esc(values.vulnerability);")
+    html = replace_once(
+        html, b"  var map = L.map('map', { preferCanvas: true, zoomSnap: 0.25, attributionControl: true });",
+        b"""  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var map = L.map('map', { preferCanvas: true, zoomSnap: 0.25, attributionControl: true,
+    scrollWheelZoom: false, zoomAnimation: !reduceMotion, fadeAnimation: !reduceMotion });
+  var activePopup;""",
+    )
+    html = replace_once(
+        html, b"        L.popup({ maxWidth: 500 }).setLatLng(e.latlng).setContent(infoHtml(i)).openOn(map);",
+        b"""        var popup = L.popup({ maxWidth: 500 }).setLatLng(e.latlng).setContent(infoHtml(i)).openOn(map);
+        activePopup = { popup: popup, index: i };""",
+    )
+    return replace_once(
+        html, b"    renderLegend(lg);",
+        b"""    renderLegend(lg);
+    updateResults(S);
+    if (activePopup && activePopup.popup.isOpen()) {
+      activePopup.popup.setContent(infoHtml(activePopup.index));
+    }""",
+    )
 
 
 if __name__ == "__main__":

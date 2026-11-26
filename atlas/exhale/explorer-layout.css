@@ -1,0 +1,296 @@
+html,
+body {
+  height: auto;
+  min-height: 100%;
+  overflow: visible;
+}
+
+body {
+  display: block;
+  background: #f7f7fc;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+#map:focus-visible {
+  outline: 2px solid #24226f;
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  z-index: 2000;
+  top: 1rem;
+  left: 1rem;
+  transform: translateY(calc(-100% - 2rem));
+  padding: 0.65rem 0.9rem;
+  background: #fff;
+  color: #24226f;
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+.app-header {
+  padding: clamp(1rem, 3vw, 1.75rem);
+  box-shadow: none;
+}
+
+.app-header h1 {
+  max-width: 68ch;
+  margin-inline: auto;
+  font-size: clamp(1.25rem, 0.9rem + 1.25vw, 2.25rem);
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+.app-header p {
+  max-width: 85ch;
+  margin-inline: auto;
+}
+
+.app-body {
+  display: grid;
+  grid-template-columns: minmax(15rem, 19rem) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(0.8rem, 2vw, 1.5rem);
+  box-sizing: border-box;
+  max-width: 95rem;
+  margin-inline: auto;
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.side-panel,
+.map-panel,
+.neighbourhood-results,
+.explorer-notes {
+  min-width: 0;
+  box-sizing: border-box;
+  border: 1px solid #d9d8eb;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.side-panel,
+.neighbourhood-results,
+.explorer-notes {
+  padding: clamp(0.9rem, 2vw, 1.35rem);
+}
+
+.side-panel {
+  width: auto;
+  overflow: visible;
+}
+
+.side-panel h2,
+.neighbourhood-results h2,
+.explorer-notes h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.side-panel label,
+.neighbourhood-form label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.side-panel select,
+.neighbourhood-form input {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 2.75rem;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid #767499;
+  border-radius: 5px;
+  color: #24226f;
+  background: #fff;
+  font: inherit;
+  font-size: 1rem;
+}
+
+.side-panel select {
+  margin-bottom: 1rem;
+}
+
+.side-panel p {
+  margin: 0 0 1rem;
+}
+
+.water-key {
+  margin-bottom: 0;
+}
+
+.map-panel {
+  position: relative;
+  min-height: 30rem;
+  height: min(64vh, 44rem);
+}
+
+#map {
+  border-radius: 7px;
+}
+
+#map:focus-visible {
+  outline-offset: 0;
+}
+
+.leaflet-popup-content .info {
+  width: auto;
+  overflow-wrap: anywhere;
+}
+
+.leaflet-container .leaflet-control-attribution {
+  background: #fff;
+  color: #24226f;
+}
+
+.leaflet-container .leaflet-control-attribution a {
+  color: #2e4388;
+  text-decoration: underline;
+}
+
+.neighbourhood-results,
+.explorer-notes {
+  grid-column: 1 / -1;
+}
+
+.neighbourhood-controls,
+.neighbourhood-page-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.neighbourhood-controls input {
+  flex: 1 1 15rem;
+  scroll-margin-block-start: 5rem;
+}
+
+.neighbourhood-form {
+  max-width: 44rem;
+}
+
+.neighbourhood-results button {
+  min-height: 2.75rem;
+  box-sizing: border-box;
+  border: 1px solid #767499;
+  border-radius: 5px;
+  padding: 0.45rem 0.8rem;
+  color: #24226f;
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.neighbourhood-results button[type="submit"] {
+  color: #fff;
+  background: #24226f;
+  border-color: #24226f;
+}
+
+.neighbourhood-results button[aria-disabled="true"] {
+  color: #5a5777;
+  background: #f7f7fc;
+  cursor: default;
+}
+
+.neighbourhood-status {
+  margin: 0.9rem 0 0.55rem;
+}
+
+.neighbourhood-table {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.neighbourhood-table caption {
+  padding: 0 0 0.7rem;
+  text-align: left;
+  color: #4f4c80;
+}
+
+.neighbourhood-table caption strong,
+.neighbourhood-table caption span {
+  display: block;
+}
+
+.neighbourhood-table th,
+.neighbourhood-table td {
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid #deddf0;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+.neighbourhood-table thead th {
+  background: #efeff8;
+}
+
+.neighbourhood-table thead th:first-child {
+  width: 44%;
+}
+
+.neighbourhood-code,
+.neighbourhood-location {
+  display: block;
+  margin-top: 0.15rem;
+  color: #4f4c80;
+  font-size: 0.85em;
+  font-weight: normal;
+}
+
+.explorer-notes .help-note {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.explorer-notes a {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 48rem) {
+  .app-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .map-panel {
+    height: clamp(21rem, 62vh, 34rem);
+    min-height: 0;
+  }
+
+  .leaflet-control-zoom a {
+    width: 2.75rem;
+    height: 2.75rem;
+    line-height: 2.75rem;
+  }
+
+  .neighbourhood-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .neighbourhood-controls input {
+    grid-column: 1 / -1;
+  }
+
+  .neighbourhood-table th,
+  .neighbourhood-table td {
+    padding-inline: 0.3rem;
+    font-size: 0.875rem;
+  }
+}
