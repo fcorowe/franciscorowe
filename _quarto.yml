@@ -23,6 +23,7 @@ project:
     - blog.qmd
     - talks.qmd
     - resources.qmd
+    - exhale-privacy.qmd
 
 website:
   title: "Francisco Rowe"

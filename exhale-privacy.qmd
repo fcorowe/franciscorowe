@@ -1,0 +1,25 @@
+---
+title: "EXHALE explorer privacy notice"
+---
+
+I am Francisco Rowe, the operator of this website and the data controller for personal information processed through the [EXHALE UK Data Explorer](/atlas/exhale/) on this site. For privacy questions or requests, email [fcorowe@liverpool.ac.uk](mailto:fcorowe@liverpool.ac.uk).
+
+## Using the explorer
+
+The map is open to everyone without an account. Your map selections stay in your browser. The explorer uses no cookies or tracking scripts, and Netlify Web Analytics and real-user monitoring are disabled. The Imago and HASP catalogues are separate services. Their own privacy notices apply when you visit or sign in to those sites.
+
+## Hosting and request logs
+
+Netlify, Inc. hosts the explorer and processes technical information to deliver it, diagnose errors and maintain its security and availability. Request logs can include your IP address, the date and time, the file or page requested, browser information and the server response. My lawful basis under the UK GDPR is my legitimate interest in making the explorer available and keeping it secure.
+
+The project dashboard shows the most recent hour of request activity. Netlify manages storage and deletion of the underlying hosting logs under its [data processing agreement](https://www.netlify.com/pdf/netlify-dpa.pdf). Netlify and its service providers may process the information outside the UK, including in the United States. Section 14.4 of the agreement describes the safeguards for UK transfers, including standard contractual clauses and the UK International Data Transfer Addendum.
+
+## If you contact me
+
+I use your email address and the information you send to respond and follow up. My lawful basis is my legitimate interest in handling enquiries, or a legal obligation when responding to a data protection request. I retain correspondence for as long as needed to deal with your enquiry and any follow-up, or longer where required by law.
+
+## Your rights
+
+You can ask to access or correct your personal information, ask me to erase it or restrict its use, or object to processing based on legitimate interests. These rights apply according to the circumstances. To make a request or raise a complaint, contact [fcorowe@liverpool.ac.uk](mailto:fcorowe@liverpool.ac.uk). You can also [complain to the Information Commissioner’s Office (ICO)](https://ico.org.uk/make-a-complaint/data-protection-complaints/).
+
+*Last updated 26 November 2026.*

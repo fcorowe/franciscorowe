@@ -242,7 +242,7 @@
     "href": "resources.html#interactive-tools",
     "title": "Resources",
     "section": "Interactive tools and data stories",
-    "text": "Interactive tools and data stories\nExplore research findings, population patterns and decision-support tools.\n\n\n\n\n\n\nShrinking places\nMap population decline across Europe, 2000–2018.\nOpen the atlas\n\n\n\n\n\n         \n\n\n\nEXHALE UK Data Explorer\nCompare air pollution exposure across UK neighbourhoods.\nOpen data explorer\n\n\n\n\n\n\n\nWho is missing from the map?\nSee who is missing from mobile phone data.\nOpen story\n\n\n\n\n interactive story\n\n\nIran Conflict and Population Redistribution\nTrack shifts in population during the Iran conflict.\nOpen story\n\n\n\n\ninstitution finance\n\n155institutions 4growth bands 12metrics\n\n\n\n   \n\n\n\n \n\n\n\n\n\nUK University Sustainable Growth\nCompare sustainable growth across 155 UK universities.\nOpen dashboard"
+    "text": "Interactive tools and data stories\nExplore research findings, population patterns and decision-support tools.\n\n\n\n\n\n\nShrinking places\nMap population decline across Europe, 2000–2018.\nOpen the atlas\n\n\n\n\n\n         \n\n\n\nEXHALE UK Data Explorer\nCompare air pollution exposure across UK neighbourhoods.\nOpen data explorer · Privacy notice\n\n\n\n\n\n\n\nWho is missing from the map?\nSee who is missing from mobile phone data.\nOpen story\n\n\n\n\n interactive story\n\n\nIran Conflict and Population Redistribution\nTrack shifts in population during the Iran conflict.\nOpen story\n\n\n\n\ninstitution finance\n\n155institutions 4growth bands 12metrics\n\n\n\n   \n\n\n\n \n\n\n\n\n\nUK University Sustainable Growth\nCompare sustainable growth across 155 UK universities.\nOpen dashboard"
   },
   {
     "objectID": "resources.html#books-and-learning",
@@ -250,5 +250,40 @@
     "title": "Resources",
     "section": "Books and learning resources",
     "text": "Books and learning resources\nOpen reference material, methods and worked examples.\n\n\n\n\n\n\n\nMobile Phone Data Handbook\nA UN guide to running mobile phone data initiatives.\nRead handbook · DOI\n\n\n\n\n\n\n\n\nBook of Imagery\nTurn satellite imagery into measures for social research.\nRead the book · DOI\n\n\n\n\ncount distribution\n\n\nCount Data Modelling\nModel count outcomes with worked examples and code.\nOpen website\n\n\n\n\nprobability curve\n\n\nBinary Logistic Regression\nModel binary outcomes with worked examples and code.\nOpen website\n\n\n\n\n\n\n\nCensus Mapping\nLearn to map census data with interactive examples.\nOpen website"
+  },
+  {
+    "objectID": "exhale-privacy.html",
+    "href": "exhale-privacy.html",
+    "title": "EXHALE explorer privacy notice",
+    "section": "",
+    "text": "I am Francisco Rowe, the operator of this website and the data controller for personal information processed through the EXHALE UK Data Explorer on this site. For privacy questions or requests, email fcorowe@liverpool.ac.uk."
+  },
+  {
+    "objectID": "exhale-privacy.html#using-the-explorer",
+    "href": "exhale-privacy.html#using-the-explorer",
+    "title": "EXHALE explorer privacy notice",
+    "section": "Using the explorer",
+    "text": "Using the explorer\nThe map is open to everyone without an account. Your map selections stay in your browser. The explorer uses no cookies or tracking scripts, and Netlify Web Analytics and real-user monitoring are disabled. The Imago and HASP catalogues are separate services. Their own privacy notices apply when you visit or sign in to those sites."
+  },
+  {
+    "objectID": "exhale-privacy.html#hosting-and-request-logs",
+    "href": "exhale-privacy.html#hosting-and-request-logs",
+    "title": "EXHALE explorer privacy notice",
+    "section": "Hosting and request logs",
+    "text": "Hosting and request logs\nNetlify, Inc. hosts the explorer and processes technical information to deliver it, diagnose errors and maintain its security and availability. Request logs can include your IP address, the date and time, the file or page requested, browser information and the server response. My lawful basis under the UK GDPR is my legitimate interest in making the explorer available and keeping it secure.\nThe project dashboard shows the most recent hour of request activity. Netlify manages storage and deletion of the underlying hosting logs under its data processing agreement. Netlify and its service providers may process the information outside the UK, including in the United States. Section 14.4 of the agreement describes the safeguards for UK transfers, including standard contractual clauses and the UK International Data Transfer Addendum."
+  },
+  {
+    "objectID": "exhale-privacy.html#if-you-contact-me",
+    "href": "exhale-privacy.html#if-you-contact-me",
+    "title": "EXHALE explorer privacy notice",
+    "section": "If you contact me",
+    "text": "If you contact me\nI use your email address and the information you send to respond and follow up. My lawful basis is my legitimate interest in handling enquiries, or a legal obligation when responding to a data protection request. I retain correspondence for as long as needed to deal with your enquiry and any follow-up, or longer where required by law."
+  },
+  {
+    "objectID": "exhale-privacy.html#your-rights",
+    "href": "exhale-privacy.html#your-rights",
+    "title": "EXHALE explorer privacy notice",
+    "section": "Your rights",
+    "text": "Your rights\nYou can ask to access or correct your personal information, ask me to erase it or restrict its use, or object to processing based on legitimate interests. These rights apply according to the circumstances. To make a request or raise a complaint, contact fcorowe@liverpool.ac.uk. You can also complain to the Information Commissioner’s Office (ICO).\nLast updated 26 November 2026."
   }
 ]

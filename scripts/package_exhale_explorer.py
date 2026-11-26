@@ -72,7 +72,8 @@ def package(source_repo):
         b'Official statistical boundaries and geographic lookups support the calculation of indicators '
         b'at lower and upper geography levels. Geographic boundary datasets are available from the '
         b'<a href="https://geoportal.statistics.gov.uk/" target="_blank" rel="noopener noreferrer">'
-        b'Open Geography portal from the Office for National Statistics (ONS)</a>.</p>\n    </div>'
+        b'Open Geography portal from the Office for National Statistics (ONS)</a>.</p>\n'
+        b'      <a href="/exhale-privacy.html">Privacy notice</a>\n    </div>'
     )
     html = html[:catalogue.start()] + sources + html[catalogue.end():]
 

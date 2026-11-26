@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://franciscorowe.com/resources.html</loc>
-    <lastmod>2026-11-18T06:23:50.684Z</lastmod>
+    <lastmod>2026-11-26T06:55:30.023Z</lastmod>
   </url>
   <url>
     <loc>https://franciscorowe.com/blog.html</loc>
@@ -43,5 +43,9 @@
   <url>
     <loc>https://franciscorowe.com/talks.html</loc>
     <lastmod>2026-08-31T22:20:59.180Z</lastmod>
+  </url>
+  <url>
+    <loc>https://franciscorowe.com/exhale-privacy.html</loc>
+    <lastmod>2026-11-26T06:55:30.139Z</lastmod>
   </url>
 </urlset>
